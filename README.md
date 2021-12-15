@@ -1,8 +1,8 @@
-# FEW 2.1
+# ACS 3310
 
-| Course Section | Instructor | Slack Channel | Course Website | Instructor 1-on-1 |
+<!-- | Course Section | Instructor | Slack Channel | Course Website | Instructor 1-on-1 |
 | :---: | :---: | :---: | :---: | :---: |
-| A | **@mitchell** | `#few-2-1-js-libs` | [make.sc/few2.1](https://make.sc/few2.1) | [Virtual Office](https://make.sc/mitchell-zoom) |
+| A | **@mitchell** | `#few-2-1-js-libs` | [make.sc/few2.1](https://make.sc/few2.1) | [Virtual Office](https://make.sc/mitchell-zoom) | -->
 
 ## Course Description
 
@@ -16,7 +16,7 @@ Take this class if you want to further your understanding of the JavaScript lang
 
 ## Prerequisites:  
 
-[FEW 1.2](https://github.com/Make-School-Courses/FEW-1.2-JavaScript-Foundations)
+[ACS 1320](https://github.com/Tech-at-DU/ACS-1320-JavaScript-Foundations)
 
 ## Course Specifics
 
@@ -36,28 +36,32 @@ Students by the end of the course will be able to ...
 
 ## Schedule
 
-**Course Dates:** Monday, March 29 – Wednesday, May 12, 2021 (7 weeks)
+**Course Dates:** January 18, 2022 to March 4, 2022
 
-**Class Times:** Monday and Wednesday at 2:45 PM - 5:30 PM (13 class sessions)
-
-[GradeScope](https://www.gradescope.com/courses/219049)
+**Class Times:** Monday, Wednesday, and Friday 4:30 PM to 5:20 PM
 
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
-|  1    | Mon, Mar 29 | [Lesson 1 - Solving string problems] | [String Lib] | - |
-|  -    | Wed, Mar 31 | **No Class - Cesar Chavez** | - |
-|  2    | Mon, Apr 5  | [Lesson 2 - Publishing to npm] | [Publish to npm] | - |
-|  3    | Wed, Apr 7  | [Lesson 3 - Unit testing] | [Add Unit Tests] | [String Lib] - [GradeScope] | 
-|  4    | Mon, Apr 12 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
-|  5    | Wed, Apr 14 | [Lesson 5 - Solving problems with Dates] | - |  - |
-|  6    | Mon, Apr 19 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] - [GradeScope] |
-|  7    | Wed, Apr 21 | Lesson 7 - Lab | Work on API project | - |
-|  8    | Mon, Apr 26 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] - [GradeScope] |
-|  9    | Wed, Apr 28 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] - [Final Project] | [Continuous Integration] |
-| 10    | Mon, May 3  | [Lesson 10 - Typescript Intro] | - | [Bundling code for distribution] |
-| 11    | Wed, May 5  | [Lesson 11 - Typescript] | - | - |
-| 12    | Mon, May 10 | Lesson 12 - Final Presentation | - | - |
-| 13    | Wed, May 12 | Lesson 13 - Final Assesment | Final Assessment | - |
+|  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | [String Lib] | - |
+|  2    | Fri, Jan 21 | [Lesson 2 - Publishing to npm] | [Publish to npm] | - |
+|  3    | Mon, Jan 24 | [Lesson 3 - Unit testing] | [Add Unit Tests] | [String Lib] - [GradeScope] | 
+|  4    | Wed, Jan 26 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
+|  5    | Fri, Jan 28 | [Lesson 5 - Solving problems with Dates] | - |  - |
+|  6    | Mon, Jan 31 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] - [GradeScope] |
+|  7    | Wed, Feb  2 | Lesson 7 - Lab | Work on API project | - |
+|  8    | Fri, Feb  4 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] - [GradeScope] |
+|  9    | Mon, Feb  7 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] - [Final Project] | [Continuous Integration] |
+| 10    | Wed, Feb  9 | [Lesson 10 - Typescript Intro] | - | [Bundling code for distribution] |
+| 11    | Fri, Feb 11 | [Lesson 11 - Typescript] | - | - |
+| 12    | Mon, Feb 14 | Lesson 12 - Final Presentation | - | - |
+| 13    | Wed, Feb 16 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 14    | Fri, Feb 18 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 15    | Mon, Feb 21 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 16    | Wed, Feb 23 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 17    | Fri, Feb 25 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 18    | Mon, Feb 28 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 19    | Wed, Mar  2 | Lesson 13 - Final Assesment | Final Assessment | - |
+| 20    | Fri, Mar  4 | Lesson 13 - Final Assesment | Final Assessment | - |
 
 <!-- | 14 | Tue, May 13 | [Lesson 14](./lessons/lesson-14.md) | [Present your work](./assignments/assignment-10.md) - Final Presentations | -->
 
