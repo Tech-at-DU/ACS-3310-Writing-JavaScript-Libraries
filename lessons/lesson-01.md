@@ -5,7 +5,7 @@
 
 <!-- Put a link to the slides so that students can find them -->
 
-➡️ [**Slides**](https://docs.google.com/presentation/d/1JMHlFPjdAM9FLhOU3WsUfBaQyTK-pQ31rnbb3AMM5hc/edit?usp=sharing ':ignore')
+➡️ [**Slides**](https://docs.google.com/presentation/d/1z827q9AWQoOGm2-4msKoOtrVdp93GAjkx-lHKWp8NBw/edit?usp=sharing)
 
 <!-- > -->
 
