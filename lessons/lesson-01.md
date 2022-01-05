@@ -293,6 +293,10 @@ What are the pros and cons of each?
 - What is the `prototype`?
 - Why add methods to the `prototype`?
 
+## After Class 
+
+ - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-01.md
+
 <!-- > -->
 
 ## Additional Resources
