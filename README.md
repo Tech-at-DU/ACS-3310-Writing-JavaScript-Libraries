@@ -42,26 +42,26 @@ Students by the end of the course will be able to ...
 
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
-|  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | [String Lib] | - |
-|  2    | Fri, Jan 21 | [Lesson 2 - Publishing to npm] | [Publish to npm] | - |
-|  3    | Mon, Jan 24 | [Lesson 3 - Unit testing] | [Add Unit Tests] | [String Lib] - [GradeScope] | 
-|  4    | Wed, Jan 26 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
-|  5    | Fri, Jan 28 | [Lesson 5 - Solving problems with Dates] | - |  - |
-|  6    | Mon, Jan 31 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] - [GradeScope] |
-|  7    | Wed, Feb  2 | Lesson 7 - Lab | Work on API project | - |
-|  8    | Fri, Feb  4 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] - [GradeScope] |
-|  9    | Mon, Feb  7 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] - [Final Project] | [Continuous Integration] |
-| 10    | Wed, Feb  9 | [Lesson 10 - Typescript Intro] | - | [Bundling code for distribution] |
-| 11    | Fri, Feb 11 | [Lesson 11 - Typescript] | - | - |
-| 12    | Mon, Feb 14 | Lesson 12 - Final Presentation | - | - |
-| 13    | Wed, Feb 16 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 14    | Fri, Feb 18 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 15    | Mon, Feb 21 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 16    | Wed, Feb 23 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 17    | Fri, Feb 25 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 18    | Mon, Feb 28 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 19    | Wed, Mar  2 | Lesson 13 - Final Assesment | Final Assessment | - |
-| 20    | Fri, Mar  4 | Lesson 13 - Final Assesment | Final Assessment | - |
+|  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | - | - |
+|  2    | Fri, Jan 21 | Lab | - | - |
+|  3    | Mon, Jan 24 | [Lesson 2 - Publishing to npm] | [Publish to npm] | - | 
+|  4    | Wed, Jan 26 | [Lesson 3 - Unit testing] | [Add Unit Tests] | - |
+|  5    | Fri, Jan 28 | Lab | - | [Fizz Buzz Unit Tests]] |
+|  6    | Mon, Jan 31 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
+|  7    | Wed, Feb  2 | [Lesson 5 - Solving problems with Dates] |  |  |
+|  8    | Fri, Feb  4 | Lab | - | - |
+|  9    | Mon, Feb  7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
+| 10    | Wed, Feb  9 | [Lesson 7 - TBD] | Work on API project | - |
+| 11    | Fri, Feb 11 | Lab | - | - |
+| 12    | Mon, Feb 14 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] |
+| 13    | Wed, Feb 16 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] | [Continuous Integration] |
+| 14    | Fri, Feb 18 | Lab | - | - |
+| 15    | Mon, Feb 21 | [Lesson 10 - Typescript Intro] | - | Fizz Buzz TypeScript |
+| 16    | Wed, Feb 23 | [Lesson 11 - Typescript] | - | TypeScript Exercisms |
+| 17    | Fri, Feb 25 | Lab | - | - |
+| 18    | Mon, Feb 28 | Lesson 12 - TBD | - | - |
+| 19    | Wed, Mar  2 | Final Assesment | Final Assessment | - |
+| 20    | Fri, Mar  4 | Final Presentation | - | - |
 
 <!-- | 14 | Tue, May 13 | [Lesson 14](./lessons/lesson-14.md) | [Present your work](./assignments/assignment-10.md) - Final Presentations | -->
 
