@@ -54,12 +54,12 @@ Students by the end of the course will be able to ...
 | 10    | Wed, Feb  9 | [Lesson 7 - TBD] | Work on API project | - |
 | 11    | Fri, Feb 11 | Lab | - | - |
 | 12    | Mon, Feb 14 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] |
-| 13    | Wed, Feb 16 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] | [Continuous Integration] |
+| 13    | Wed, Feb 16 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] | - |
 | 14    | Fri, Feb 18 | Lab | - | - |
-| 15    | Mon, Feb 21 | [Lesson 10 - Typescript Intro] | - | Fizz Buzz TypeScript |
-| 16    | Wed, Feb 23 | [Lesson 11 - Typescript] | - | TypeScript Exercisms |
+| 15    | Mon, Feb 21 | **President's Day** | - | - |
+| 16    | Wed, Feb 23 | [Lesson 10 - Typescript Intro] | [TypeScript Exercisms] | [Continuous Integration] |
 | 17    | Fri, Feb 25 | Lab | - | - |
-| 18    | Mon, Feb 28 | Lesson 12 - TBD | - | - |
+| 18    | Mon, Feb 28 | [Lesson 11 - Typescript] | - | - |
 | 19    | Wed, Mar  2 | Final Assesment | Final Assessment | - |
 | 20    | Fri, Mar  4 | Final Presentation | - | - |
 
