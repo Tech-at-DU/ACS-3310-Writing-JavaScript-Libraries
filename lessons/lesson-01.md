@@ -12,121 +12,131 @@
 ## Learning Objectives
 
 1. Describe a software library
-  - How they are used
-  - Common use cases
 1. Build a library of string functions/utilities
 1. Use JavaScript String methods
 1. Use prototype to inherit methods
 
 <!-- > -->
 
-## JavaScript Libraries
+## JavaScript Libraries 📚
 
 <!-- > -->
 
-### Why make JavaScript libraries? 
+### Why make JavaScript libraries? 🤔
 
 <!-- > -->
 
-- You've been using npm time to get a closer look
-- Practice your programming skills
-- Industry best practices 
+- You've been using npm, now it's time to take a closer look
+- Practice your programming skills!
+- Apply industry best practices 
 
 <!-- > -->
 
-## Q: What is npm?
+## Q: What is npm? 🤔
 
 <!-- > -->
 
-npm is the world’s largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
+> npm is the world’s largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
 
 <!-- > -->
 
 **NPM has three parts:**
 
-- the website
-- the Command Line Interface (CLI)
-- the registry
+- Website 👩‍💻
+- Command Line Interface (CLI) 🖥
+- the registry 💾
 
 <!-- > -->
 
-Use **npm** to host and distribute your software frameworks and libraries as “packages”. 
+Use **npm** to host and distribute your software frameworks and libraries as “packages”. 📦
 
-This class you will write a library. Next class you will publish your library to npm.
-
-<!-- > -->
-
-### Q: What are libraries?
+This class you will write a library. Next class you will publish your library to npm. 💪
 
 <!-- > -->
 
-- A library is a collection of code. 
-- Written to be used in any application. 
-- Best when they handle a single task. 
+### Q: What are libraries? 📚
 
 <!-- > -->
 
-**When to write a library?**
+- 📚 A library is a collection of code. 
+- 👩‍💻 Written to be used in any application. 
+- ☝️ Best when they handle a single task. 
 
 <!-- > -->
 
-- Code that has a _very specific use case_ - **probably not**
-- Code that _has general uses_ - **probably!**
-- “I wish this was built in…” - **write a library**
+**When to write a library?** 🤔
 
 <!-- > -->
 
-### Q: Why make a library?
+- Code that has a _specific use case_ - **probably not** 👎
+- Code that _has general uses_ - **probably!** 👍
+- “I wish this was built in…” - **write a library** 👍
 
 <!-- > -->
 
-By putting the code in a library you are making it **portable** and packaging it in a form that is **easily shared**.
+### Q: Why make a library? 🤔
+
+<!-- > -->
+
+By putting the code in a library you are making it **portable** and packaging 📦 it in a form that is **easily shared**. 🤝
 
 <!-- > -->
 
 You're also **taking DRY to the next level!** 
 
-<!-- > -->
-
-The code in a library can be **shared across multiple projects**, and  changes, and bug fixes can all be made in a single location.
+<small>(DRY = Don't Repeat yourself)</small>
 
 <!-- > -->
 
-### Q: When to make a library?
+The code in a library can be **shared across multiple projects**, changes, and bug fixes can all be made in a single location.
+
+📦 ➡ 👩‍💻 🧑‍💻 👩‍💻
+
+<!-- > -->
+
+### Q: When to make a library? 🤔
 
 <!-- > -->
 
 Any time you find you are writing the same code in more than one project. 
 
-<!-- > -->
-
-When you have code that you want to share with other people.
+💾 ➡ 🤖 👾
 
 <!-- > -->
 
-### Q: What will I make in this class?
+When you have code that you want to share.
+
+📦 ➡ 👩‍💻 🧑‍💻 👩‍💻
 
 <!-- > -->
 
-You will write several libraries. The libraries you write will be smaller and focus on utility functions at first. 
+### Q: What will I make in this class? 🤔
 
 <!-- > -->
 
-Think of the code in each of the libraries written in this class as a practice interview question.
+You will write several libraries. 
+
+The libraries you write will be smaller and focus on utility functions at first. 
 
 <!-- > -->
 
-Much of the code we write here has already been written. Normally we wouldn't want to reinvent the wheel, but the goal of this class is learning how to write code and how to turn it into libraries. From that perspective, recreating code that already exists is a great learning experience.
+Think of the code in each of the libraries written in this class as a practice interview question. 📋
 
 <!-- > -->
 
-### Q: What kinds of libraries are people making in 2019?
+Much of the code we write here has already been written. Normally we wouldn't want to reinvent the wheel, but the goal of this class is learning how to write code and how to turn it into libraries. From that perspective, recreating code that already exists is a great learning experience. 💪
+
+<!-- > -->
+
+### Q: What kinds of libraries are people making in 2019? 🤔
 
 <!-- > -->
 
 Here is a list of libraries that you may have used before. Pair up and take a look at the list at the link below and discuss what's there.
 
-https://tutorialzine.com/2019/04/10-interesting-javascript-and-css-libraries-for-april-2019
+https://kinsta.com/blog/javascript-libraries/
+
+<!-- > -->
 
 **Discussion:** What did you find on that list?
 
@@ -160,7 +170,7 @@ Answer these questions as you explore the repos below.
 - How is it organized?
 - What language?
 
-Repos
+**Repos**
 
 - [has-values](https://github.com/jonschlinkert/has-values)
 - [fill-range](https://github.com/jonschlinkert/fill-range/blob/master/index.js)
@@ -173,11 +183,15 @@ Repos
 
 <!-- > -->
 
-## Writing your first library
+## Writing your first library 🧐
+
+<!-- > -->
 
 The goal of the first homework assignment is to write a simple library.
 
 Why write a simple library? If we keep it simple you will be able to do a good job and get it finished before the next class.
+
+<!-- > -->
 
 Why write a library at all? Remember all of the advantages of storing code in a central location. While it might not seem to add too much to your workflow today, this is how professionals handle code.
 
@@ -206,7 +220,7 @@ Strings are one of, if not the most common data type you might work with. JavaSc
 **Uppercase first letter with String methods**
 
 1. Get the first letter: `sourceStr[0]`
-1. Convert to uppercase with: [`String.toUpperCase()`]()
+1. Convert to uppercase with: [`String.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
 1. Get all the characters after the first [`sourceString.slice(1)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
 1. Combine the two and return the result
 
@@ -214,7 +228,7 @@ Strings are one of, if not the most common data type you might work with. JavaSc
 
 **Your turn**
 
-How would you uppercase the **first letter of each word** in a string? 
+How would you uppercase the first letter of **each word** in a string? 
 
 - Whats' your strategy? 
 - Which methods will you use? 
@@ -230,7 +244,7 @@ For example give all strings a new method.
 
 <!-- > -->
 
-Ever wonder why the docs show: 
+Ever wonder why the docs show:
 
 `String.prototype.slice()`
 

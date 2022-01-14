@@ -1,5 +1,9 @@
 # reveal-md
 
+```bash
+reveal-md Lessons/ --css makeschool.css
+```
+
 ## Installation:
 
 ```bash
