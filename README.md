@@ -107,6 +107,12 @@ Students by the end of the course will be able to ...
 - API Library 
 - Continuous Integration
 
+## Video Lectures
+
+You can follow video lectures for this class here: 
+
+https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
+
 ## Evaluation
 
 To pass this course you must meet the following requirements:

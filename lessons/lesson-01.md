@@ -1,11 +1,11 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# FEW 2.1 - JS Libraries
+# ACS 3310 - JS Libraries
 
 <small style="display:block;text-align:center">Introduction to JS Libraries</small>
 
 <!-- Put a link to the slides so that students can find them -->
-
-➡️ [**Slides**](https://docs.google.com/presentation/d/1z827q9AWQoOGm2-4msKoOtrVdp93GAjkx-lHKWp8NBw/edit?usp=sharing)
+<!-- 
+➡️ [**Slides**](https://docs.google.com/presentation/d/1z827q9AWQoOGm2-4msKoOtrVdp93GAjkx-lHKWp8NBw/edit?usp=sharing) -->
 
 <!-- > -->
 
@@ -44,7 +44,7 @@
 
 - Website 👩‍💻
 - Command Line Interface (CLI) 🖥
-- the registry 💾
+- The package registry 💾
 
 <!-- > -->
 
@@ -70,7 +70,7 @@ This class you will write a library. Next class you will publish your library to
 
 - Code that has a _specific use case_ - **probably not** 👎
 - Code that _has general uses_ - **probably!** 👍
-- “I wish this was built in…” - **write a library** 👍
+- Code you write _often_ - **write a library** 👍
 
 <!-- > -->
 
@@ -78,7 +78,8 @@ This class you will write a library. Next class you will publish your library to
 
 <!-- > -->
 
-By putting the code in a library you are making it **portable** and packaging 📦 it in a form that is **easily shared**. 🤝
+By putting code in a library you are making it **portable** 
+and packaging 📦 it in a form that is **easily shared**. 🤝
 
 <!-- > -->
 
@@ -187,19 +188,21 @@ Answer these questions as you explore the repos below.
 
 <!-- > -->
 
-The goal of the first homework assignment is to write a simple library.
-
-Why write a simple library? If we keep it simple you will be able to do a good job and get it finished before the next class.
+The goal of the first homework assignment is to write a simple library that works with strings. 
 
 <!-- > -->
 
-Why write a library at all? Remember all of the advantages of storing code in a central location. While it might not seem to add too much to your workflow today, this is how professionals handle code.
+Why write a library at all? 
+
+Putting useful code in one place will benefit your software developement process! 🐿
 
 <!-- > -->
 
-### String functions
+### String functions 🧶
 
-Strings are one of, if not the most common data type you might work with. JavaScript provides many string functions such as:
+Strings are one of, if not the most common data type you might work with. 
+
+JavaScript provides many string functions such as:
 
 - [`String.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
 - [`String.slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
@@ -208,7 +211,15 @@ Strings are one of, if not the most common data type you might work with. JavaSc
 
 <!-- > -->
 
-**Uppercase the first letter of a word with an array**
+## Challenge 1
+
+Uppercase the first letter of a string. For example: 
+
+> "hello" -> "Hello"
+
+<!-- > -->
+
+**Uppercase the first letter with split**
 
 1. Split the string into an array of characters with [`String.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
 1. Uppercase the first element with [`String.toUpperCase()`]()
@@ -217,7 +228,7 @@ Strings are one of, if not the most common data type you might work with. JavaSc
 
 <!-- > -->
 
-**Uppercase first letter with String methods**
+**Uppercase first letter with bracket notation**
 
 1. Get the first letter: `sourceStr[0]`
 1. Convert to uppercase with: [`String.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
@@ -226,9 +237,25 @@ Strings are one of, if not the most common data type you might work with. JavaSc
 
 <!-- > -->
 
-**Your turn**
+Create a function that takes a string as a parameter and returns the string with the uppercase first letter: 
 
-How would you uppercase the first letter of **each word** in a string? 
+```JS
+function upperFirst(str) {
+   // ...
+}
+
+upperFirst("hello") // "Hello"
+```
+
+<!-- > -->
+
+## Challenge 2
+
+Uppercase the first letter of each word in a string. For example: 
+
+> "hello world" -> "Hello World"
+
+<!-- > -->
 
 - Whats' your strategy? 
 - Which methods will you use? 
@@ -236,61 +263,8 @@ How would you uppercase the first letter of **each word** in a string?
 
 <!-- > -->
 
-**Prototype**
-
-Use the `prototype` to share methods by all instances of a class.
-
-For example give all strings a new method. 
-
-<!-- > -->
-
-Ever wonder why the docs show:
-
-`String.prototype.slice()`
-
-Looks like `slice()` is a property of `String.prototype`
-
-You can add new methods to `prototype`
-
-<!-- > -->
-
-**Without prototype**
-
-You could write a function that takes a string as a parameter and returns a string: 
-
-```js
-function capitalize(str) {
-   return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
-const results = capitalize("hello") // returns "Hello"
-```
-
-<!-- > -->
-
-**Here the method is added to `prototype`**
-
-This makes the methods available to all instances of that class.
-
-```js
-String.prototype.capitalize = function() {
-   return this.charAt(0).toUpperCase() + this.slice(1)
-}
-
-const result = "hello".capitalize() // returns "Hello"
-```
-
-<!-- > -->
-
-What's the difference between
-
-`const results = capitalize("hello") // "Hello"`
-
-and 
-
-`const result = "hello".capitalize() // "Hello"`
-
-What are the pros and cons of each? 
+- Split the string on the space to get an array of words
+- Use the previous function to uppercase the first letter of each word
 
 <!-- > -->
 
@@ -307,9 +281,11 @@ What are the pros and cons of each?
 - What is the `prototype`?
 - Why add methods to the `prototype`?
 
+<!-- > -->
+
 ## After Class 
 
- - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-01.md
+ - [String Lib](./assignments/assignment-01.md)
 
 <!-- > -->
 
