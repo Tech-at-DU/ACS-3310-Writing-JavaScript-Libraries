@@ -7,6 +7,8 @@
 <!-- 
 ➡️ [**Slides**](https://docs.google.com/presentation/d/1z827q9AWQoOGm2-4msKoOtrVdp93GAjkx-lHKWp8NBw/edit?usp=sharing) -->
 
+Video Lecture: https://youtu.be/TwaUOUPmeMM
+
 <!-- > -->
 
 ## Learning Objectives
