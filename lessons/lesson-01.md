@@ -256,9 +256,8 @@ Uppercase the first letter of each word in a string. For example:
 ## Wrap Up
 
 - What is a library? 
-- Why write a library? 
-- What is the `prototype`?
-- Why add methods to the `prototype`?
+- Why write a library?
+- Name three JS String methods?
 
 <!-- > -->
 
