@@ -14,7 +14,6 @@
 1. Describe a software library
 1. Build a library of string functions/utilities
 1. Use JavaScript String methods
-1. Use prototype to inherit methods
 
 <!-- > -->
 
