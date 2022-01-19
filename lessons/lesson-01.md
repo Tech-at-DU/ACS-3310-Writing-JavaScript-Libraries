@@ -21,45 +21,23 @@
 
 <!-- > -->
 
-### Why make JavaScript libraries? 🤔
-
-<!-- > -->
-
-- You've been using npm, now it's time to take a closer look
-- Practice your programming skills!
-- Apply industry best practices 
-
-<!-- > -->
-
-## Q: What is npm? 🤔
-
-<!-- > -->
-
-> npm is the world’s largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
-
-<!-- > -->
-
-**NPM has three parts:**
-
-- Website 👩‍💻
-- Command Line Interface (CLI) 🖥
-- The package registry 💾
-
-<!-- > -->
-
-Use **npm** to host and distribute your software frameworks and libraries as “packages”. 📦
-
-This class you will write a library. Next class you will publish your library to npm. 💪
-
-<!-- > -->
-
 ### Q: What are libraries? 📚
 
 <!-- > -->
 
 - 📚 A library is a collection of code. 
 - 👩‍💻 Written to be used in any application. 
-- ☝️ Best when they handle a single task. 
+- ☝️ Best when they handle a single task.
+
+<!-- > -->
+
+### Why make JavaScript libraries? 🤔
+
+<!-- > -->
+
+- You've been using npm, now it's time to take a closer look
+- Practice your programming skills!
+- Apply industry best practices  
 
 <!-- > -->
 
