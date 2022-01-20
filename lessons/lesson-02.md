@@ -1,5 +1,5 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# FEW 2.1 - Publishing JS Libraries
+# ACS 3310 - Publishing JS Libraries
 
 <small style="display:block;text-align:center">Publishing JS Libraries</small>
 

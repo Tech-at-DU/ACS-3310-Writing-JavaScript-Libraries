@@ -1,4 +1,4 @@
-# FEW 2.1 - TypeScript Activities
+# ACS 3310 - TypeScript Activities
 
 ## Activity: Getting started with Typescript
 
