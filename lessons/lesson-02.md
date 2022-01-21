@@ -60,7 +60,7 @@ Unit testing is a part of the **Agile Methodology**. 🐇
 
 ## Learning Objectives
 
-By the end of this lesson you should by able to: 
+By the end of this lesson you should be able to: 
 
 1. 🤔 Define unit testing
 1. 🔎 Identify what to test
@@ -99,7 +99,7 @@ In this class, we will use [Jest](https://jestjs.io).
 <!-- > -->
 
 - **Q:** Why Jest?
-- **A:** It's it's straight forward to use and Jest works well with React. 
+- **A:** It's straightforward to use and Jest works well with React. 
 
 If you're building React apps Jest is a good choice.
 
@@ -108,7 +108,7 @@ If you're building React apps Jest is a good choice.
 <!-- > -->
 
 - **Q:** How do you write a test?
-- **A:** Before writing a test you'll want to think about what you are testing and what the test will consider to be passing.
+- **A:** Before writing a test you'll want to think about what you are testing and what the test will consider passing.
 
 <!-- > -->
 
@@ -124,7 +124,7 @@ Your unit test might expect the following input and output:
 
 <!-- > -->
 
-Have you heard of: **Fizz Buzz?** Everyone is writing this program but no one is writing tests! There are so many faulty FizzBuzz applications in the world we could have a major problem on our hands!
+Have you heard of **Fizz Buzz?** Everyone is writing this program but no one is writing tests! There are so many faulty FizzBuzz applications in the world we could have a major problem on our hands!
 
 If you haven't heard of FizzBuzz take a quick read.
 
@@ -156,7 +156,7 @@ The goal of this exercise is to write some tests with Jest that test the functio
 
 Jest is a framework that you will use as a *dev dependency*. 👨‍💻
 
-<small>A dev dependency is one that is used for development but _not used in your published code_.</small>
+<small>A dev dependency is used for development but _not used in your published code_.</small>
 
 <!-- > -->
 
@@ -198,7 +198,7 @@ Add a new directory 📁 named "tests".
 
 `mkdir tests`
 
-Add a new 📄 file `tests/test.js`. Your tests will be written here.  
+Add a new 📄 file `tests/test.js`. Your tests will be written here. 
 
 `touch tests/test.js`
 
@@ -242,11 +242,11 @@ You should see some output in the console.
 
 ```
 ...
- PASS  tests/test.js
-  ✓ Sanity check (1ms)
+PASS tests/test.js
+✓ Sanity check (1ms)
 
 Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+Tests: 1 passed, 1 total
 ...
 ```
 
@@ -258,7 +258,7 @@ Looks like 1 test 🥇 passed out of a total of 1 test.
 
 Nothing. 🤨
 
-The test will register an error **only** if an error is thrown in the callback! Otherwise the test is passing.
+The test will register an error **only** if an error is thrown in the callback! Otherwise, the test is passing.
 
 <!-- > -->
 
@@ -279,7 +279,7 @@ Run your test again. The test should *fail* this time.
 ```
 ...
 Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
+Tests: 1 failed, 1 total
 ...
 ```
 
@@ -299,7 +299,7 @@ https://jestjs.io/docs/en/getting-started
 
 ## Testing Fizz Buzz
 
-Your goal is to examine the source code and write some tests. The [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test) contains these functions. Each function takes some input and returns output. 
+Your goal is to examine the source code and write some tests. The [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test) contains these functions. Each function takes some input and returns the output. 
 
 - `isFizzy()`
 - `isBuzzy()`
@@ -314,7 +314,7 @@ What is the range of possible values am I expecting?
 
 What possible numbers do you think would be input? 
 
-<small>What numebrs would you input if you were playing fizzbuzz?</small>
+<small>What numbers would you input if you were playing fizzbuzz?</small>
 
 <!-- > -->
 
@@ -328,7 +328,7 @@ All of the methods exported from `fizzbuzz.js` will be on the `fb` object. For e
 
 <!-- > -->
 
-The fizzbuzz package/module has 3 constants, and 4 methods. You should test them all!
+The fizzbuzz package/module has 3 constants and 4 methods. You should test them all!
 
 Constants: 
 
@@ -430,14 +430,14 @@ This should provide output similar to:
 
 ```
 ----------|----------|----------|----------|----------|-------------------|
-File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+File | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
 ----------|----------|----------|----------|----------|-------------------|
-All files |    96.88 |      100 |       80 |    96.55 |                   |
- index.js |    96.88 |      100 |       80 |    96.55 |                70 |
+All files | 96.88 | 100 | 80 | 96.55 | |
+ index.js | 96.88 | 100 | 80 | 96.55 | 70 |
 ----------|----------|----------|----------|----------|-------------------|
 ```
 
-This tells you what % of code statements were covered by the tests. What % of code branches were covered, these are if else, switch cases etc. What % of functions were tested. What % of lines of code were tested, and line numbers for lines of code that were not tested. 
+This tells you what % of code statements were covered by the tests. What % of code branches were covered, these are if-else, switch cases, etc. What % of functions were tested. What % of lines of code were tested, and line numbers for lines of code that were not tested. 
 
 Check coverage and identify what has not been tested. 
 
@@ -493,7 +493,6 @@ Use the coverage command with Jest to test the coverage of your tests.
 
 1. https://github.com/Make-School-Labs/fizz-buzz-test
 1. https://jestjs.io
-
 
 <!-- > -->
 
