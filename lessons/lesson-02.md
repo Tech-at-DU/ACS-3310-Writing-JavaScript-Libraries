@@ -16,33 +16,45 @@
 
 ## Overview
 
-**Quality code** is test passing code. 
+**Quality code** 🏅 is test passing code. 
+
+<!-- > -->
 
 Unit testing is used to test **units of code**. 
 
-Code that passes the test is **deemed quality** and fit for publication. 
-
-Unit testing is a part of the **Agile Methodology**.
+We can look at units of code as functions! ⚙️
 
 <!-- > -->
 
-### Why use unit tests?
+Code that passes tests is **deemed quality** and fit for publication. 💝
+
+Unit testing is a part of the **Agile Methodology**. 🐇
 
 <!-- > -->
 
-**Improves code quality** by exposing edge cases and finding bugs.
+### Why use unit tests? 🤔
+
+<!-- > -->
+
+**Improves code quality** by exposing edge cases and finding bugs. 🐞
 
 <!-- > -->
 
 **Spots bugs earlier.** Using tests will bring bugs to light before you publish your app.
 
+🔎 🐞
+
 <!-- > -->
 
 **Reduces defects** when integrating new features.
 
+🤹
+
 <!-- > -->
 
 **Professionals use unit tests.** If you are planning to get a job with a company that employs more than a single developer, you will probably be writing unit tests at some point.
+
+👩‍💻 🧑‍💻
 
 <!-- > -->
 
@@ -50,68 +62,53 @@ Unit testing is a part of the **Agile Methodology**.
 
 By the end of this lesson you should by able to: 
 
-1. Define unit testing
-1. Identify what to test
-1. Write Unit tests
-1. Measure code coverage
+1. 🤔 Define unit testing
+1. 🔎 Identify what to test
+1. 🧪 Write Unit tests
+1. 📐 Measure code coverage
 
 <!-- > -->
 
-## Unit Testing
+## Unit Testing 🧪
 
 <!-- > -->
 
-**Q:** What is a unit test?
+- **Q:** What is a unit test?
+- **A:** A unit test is a test of a software system, _usually a single function._ 
+
+**Important!** A unit test is most often testing that the expected output of a function is correct for a given input.
+
+🍏 ➡️ 🥧
 
 <!-- > -->
 
-**A:** A unit test is a test of a software system, _usually a single function._ 
-
-**Important! A unit test is most often testing the expected output of a function is correct for a given input.**
-
-<!-- > -->
-
-**Q:** How do you unit test?
-
-<!-- > -->
-
-**A:** Unit tests are run by software. 
+- **Q:** How do you unit test?
+- **A:** Unit tests are run by software. 
 
 In this class, we will use [Jest](https://jestjs.io).
 
-<!-- > -->
-
-**Q:** What is Jest?
+🤡
 
 <!-- > -->
 
-**A:** [Jest](https://jestjs.io) is a JavaScript testing framework that was written by Facebook. It works with:
+- **Q:** What is Jest?
+- **A:** [Jest](https://jestjs.io) is a JavaScript testing framework that was written by Facebook.
 
-- JavaScript
-- TypeScript
-- Node
-- React
-- Vue
-- Angular
-- and more ...
+🤡 📚
 
 <!-- > -->
 
-**Q:** Why Jest?
+- **Q:** Why Jest?
+- **A:** It's it's straight forward to use and Jest works well with React. 
+
+If you're building React apps Jest is a good choice.
+
+🏆
 
 <!-- > -->
 
-**A:** It's it's straight forward to use and Jest works well with React. 
-
-If you're building React apps Jest is a good choice. 
-
-<!-- > -->
-
-**Q:** How do you write a test?
-
-<!-- > -->
-
-**A:** Before writing a test you'll want to think about what you are testing and what the test will consider passing.
+- **Q:** How do you write a test?
+- **A:** Before writing a test you'll want to think about what you are testing and what the test will consider to be passing.
 
 <!-- > -->
 
@@ -123,11 +120,11 @@ Your unit test might expect the following input and output:
 
 <!-- > -->
 
-## Testing example
+## Testing example 🎬
 
 <!-- > -->
 
-**Heard of Fizz Buzz?** Everyone is writing this program but no one is writing tests! There are so many faulty FizzBuzz applications in the world we could have a major problem on our hands!
+Have you heard of: **Fizz Buzz?** Everyone is writing this program but no one is writing tests! There are so many faulty FizzBuzz applications in the world we could have a major problem on our hands!
 
 If you haven't heard of FizzBuzz take a quick read.
 
@@ -146,30 +143,32 @@ The goal of this exercise is to write some tests with Jest that test the functio
 
 <!-- > -->
 
-### Getting Started Fizz Buzz
+### Getting Started Fizz Buzz 
 
 - Navigate the terminal to the directory
 - `npm init -y` 
 
 <!-- > -->
 
-### Writing tests with Jest
+### Writing tests with Jest 🤡
 
-Jest is a framework that you will use as a *dev dependency*. 
+<!-- > -->
 
-A dev dependency is one that is used for development but _not used in your source code_.
+Jest is a framework that you will use as a *dev dependency*. 👨‍💻
+
+<small>A dev dependency is one that is used for development but _not used in your published code_.</small>
 
 <!-- > -->
 
 Add Jest:
 
-- `npm install --save-dev jest`
+`npm install --save-dev jest`
 
-`--save-dev` creates an entry under - `"devDependencies"` in your `package.json`. Look for this right now.
+<small>`--save-dev` creates an entry under - `"devDependencies"` in your `package.json`. Look for this right now.</small>
 
 <!-- > -->
 
-Now that jest is installed, you need a test command. Add this to `package.json`. Add/edit `package.json` to look like this:
+Add a test command. Add this to `package.json`. Add/edit `package.json` to look like this:
 
 ```JSON
 "scripts": {
@@ -179,7 +178,7 @@ Now that jest is installed, you need a test command. Add this to `package.json`.
 
 <!-- > -->
 
-You'll run a test with:
+🧪 Run a test with:
 
 `npm run test`
 
@@ -195,15 +194,17 @@ You haven't written any tests yet so this makes sense.
 
 <!-- > -->
 
-Add a new directory named "tests".
+Add a new directory 📁 named "tests".
 
-- `mkdir tests`
+`mkdir tests`
 
-Now add a new file `tests/test.js`. Your tests will be written here.  
+Add a new 📄 file `tests/test.js`. Your tests will be written here.  
 
-- `touch tests/test.js`
+`touch tests/test.js`
 
 <!-- > -->
+
+🔬 👩‍🔬 🧫
 
 When you run Jest it will look for any files with `test.js` in the name and run any test code found there. 
 
@@ -211,13 +212,15 @@ Jest logs the results of all tests to the console.
 
 <!-- > -->
 
-A test is run by calling:
+📐 🧑‍🔬 📋
+
+Write the following code to create a new test:
 
 ```JavaScript
 test(desc, callback)
 ```
 
-You supply two parameters a *description string* and a *callback function*.
+<small>You supply two parameters a *description string* and a *callback function*.</small>
 
 <!-- > -->
 
@@ -247,13 +250,15 @@ Tests:       1 passed, 1 total
 ...
 ```
 
-Looks like 1 test  passed out of a total of 1 test.
+Looks like 1 test 🥇 passed out of a total of 1 test.
 
 <!-- > -->
 
 **What did you test?**
 
-Nothing. The callback function will register an error **only** if any code executed inside it *throws an error*, otherwise the test is passing.
+Nothing. 🤨
+
+The test will register an error **only** if an error is thrown in the callback! Otherwise the test is passing.
 
 <!-- > -->
 
@@ -264,6 +269,8 @@ test('Sanity check', () => {
   expect(2+2).toBe(5)
 })
 ```
+
+<small>2+2 is not equal to 5 so this test should fail!</small>
 
 <!-- > -->
 
@@ -276,7 +283,9 @@ Tests:       1 failed, 1 total
 ...
 ```
 
-### Assertions
+<!-- > -->
+
+### Assertions 
 
 `expect().toBe()` is an assertion. An assertion is you expressing the answer you are expecting to get. *Here you are saying you expect `2+2` to be `5`*. Expecting `2+2` to `5` is insane so the assertion fails.
 

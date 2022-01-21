@@ -39,7 +39,7 @@ Video Lecture: https://youtu.be/TwaUOUPmeMM
 
 - You've been using npm, now it's time to take a closer look
 - Practice your programming skills!
-- Apply industry best practices  
+- Apply industry best practices 
 
 <!-- > -->
 
@@ -68,7 +68,7 @@ You're also **taking DRY to the next level!**
 
 <!-- > -->
 
-The code in a library can be **shared across multiple projects**, changes, and bug fixes can all be made in a single location.
+The code in a library can be **shared across multiple projects**, changes and bug fixes can all be made in a single location.
 
 📦 ➡ 👩‍💻 🧑‍💻 👩‍💻
 
@@ -104,7 +104,7 @@ Think of the code in each of the libraries written in this class as a practice i
 
 <!-- > -->
 
-Much of the code we write here has already been written. Normally we wouldn't want to reinvent the wheel, but the goal of this class is learning how to write code and how to turn it into libraries. From that perspective, recreating code that already exists is a great learning experience. 💪
+Much of the code we write here has already been written. Normally we wouldn't want to reinvent the wheel, but the goal of this class is to learn how to write code and how to turn it into libraries. From that perspective, recreating code that already exists is a great learning experience. 💪
 
 <!-- > -->
 
@@ -173,7 +173,7 @@ The goal of the first homework assignment is to write a simple library that work
 
 Why write a library at all? 
 
-Putting useful code in one place will benefit your software developement process! 🐿
+Putting useful code in one place will benefit your software development process! 🐿
 
 <!-- > -->
 
@@ -220,7 +220,7 @@ Create a function that takes a string as a parameter and returns the string with
 
 ```JS
 function upperFirst(str) {
-   // ...
+ // ...
 }
 
 upperFirst("hello") // "Hello"
@@ -236,7 +236,7 @@ Uppercase the first letter of each word in a string. For example:
 
 <!-- > -->
 
-- Whats' your strategy? 
+- What's your strategy? 
 - Which methods will you use? 
 - Pseudo Code...
 
@@ -273,8 +273,9 @@ Uppercase the first letter of each word in a string. For example:
 - https://www.sitepoint.com/15-javascript-string-functions/
 - [JS String Method references](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 - JS Libraries
-  - https://tutorialzine.com/2019/04/10-interesting-javascript-and-css-libraries-for-april-2019
-  - https://blog.bitsrc.io/11-javascript-utility-libraries-you-should-know-in-2018-3646fb31ade
-  - https://github.com/jonschlinkert/has-values
-  - https://github.com/jonschlinkert/fill-range/blob/master/index.js
+ - https://tutorialzine.com/2019/04/10-interesting-javascript-and-css-libraries-for-april-2019
+ - https://blog.bitsrc.io/11-javascript-utility-libraries-you-should-know-in-2018-3646fb31ade
+ - https://github.com/jonschlinkert/has-values
+ - https://github.com/jonschlinkert/fill-range/blob/master/index.js
 - https://github.com/lodash/lodash
+
