@@ -1,4 +1,4 @@
-# FEW 2.1 - Assignment 2 - Publish String Lib to npm
+#  ACS 3310 - Assignment 2 - Publish String Lib to npm
 
 ## Description 
 

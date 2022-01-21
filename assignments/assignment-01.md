@@ -1,4 +1,4 @@
-# FEW 2.1 Assignment 1 - String Lib
+# ACS 3310 - Assignment 1 - String Lib
 
 
 <!--
@@ -18,7 +18,6 @@ Add challenge:
 - convert to html entities 
 
 -->
-
 
 The goal of this assignment is to create a JavaScript Library of String functions. 
 

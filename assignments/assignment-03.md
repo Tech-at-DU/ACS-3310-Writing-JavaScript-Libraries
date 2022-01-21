@@ -1,4 +1,4 @@
-# FEW 2.1 - Assignment 3 - String Lib Tests
+#  ACS 3310 - Assignment 3 - String Lib Tests
 
 ## Description 
 

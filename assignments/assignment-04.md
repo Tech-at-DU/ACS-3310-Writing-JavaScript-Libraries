@@ -1,4 +1,4 @@
-# FEW 2.1 - Assignment 4 - Continuous Integration
+#  ACS 3310 - Assignment 4 - Continuous Integration
 
 ## Description 
 

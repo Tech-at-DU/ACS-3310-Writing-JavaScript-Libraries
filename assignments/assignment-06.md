@@ -1,4 +1,4 @@
-# FEW 2.1 - Assignment 6 - Bundling 
+#  ACS 3310 - Assignment 6 - Bundling 
 
 ## Description 
 

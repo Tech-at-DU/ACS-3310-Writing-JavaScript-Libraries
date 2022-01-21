@@ -44,9 +44,9 @@ Students by the end of the course will be able to ...
 |:------|:-----|:-------|:-----------|:--------------|
 |  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | - | - |
 |  2    | Fri, Jan 21 | Lab | - | - |
-|  3    | Mon, Jan 24 | [Lesson 2 - Publishing to npm] | [Publish to npm] | - | 
-|  4    | Wed, Jan 26 | [Lesson 3 - Unit testing] | [Add Unit Tests] | - |
-|  5    | Fri, Jan 28 | Lab | - | [Fizz Buzz Unit Tests]] |
+|  3    | Mon, Jan 24 | [Lesson 3 - Unit testing] | - | - | 
+|  4    | Wed, Jan 26 | [Lesson 2 - Publishing to npm] | [Add Unit Tests] | - |
+|  5    | Fri, Jan 28 | Lab | - | [Fizz Buzz Unit Tests] |
 |  6    | Mon, Jan 31 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
 |  7    | Wed, Feb  2 | [Lesson 5 - Solving problems with Dates] |  |  |
 |  8    | Fri, Feb  4 | Lab | - | - |
