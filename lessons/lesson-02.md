@@ -1,519 +1,503 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# ACS 3310 - Publishing JS Libraries
+# ACS 3310 - Unit Testing
 
-<small style="display:block;text-align:center">Publishing JS Libraries</small>
+<small style="display:block;text-align:center">Unit Testing</small>
 
 <!-- Put a link to the slides so that students can find them -->
 
-➡️ [**Slides**](https://docs.google.com/presentation/d/1BdgVBeemOXlARsS_wbS798UNFjCixwuIN9QhlDdxshg/edit?usp=sharing)
+➡️ [**Slides**](https://docs.google.com/presentation/d/1aBUDlkov4Bg3BHjALA3u6NQPDSsLvHNwgO-pzNvcl-4/edit?usp=sharing ':ignore')
+
+### Video Lessons
+
+- https://youtu.be/xXm_8DYjW6w
+- https://youtu.be/04y5jPykoIY
+
+<!-- > -->
+
+## Overview
+
+**Quality code** is test passing code. 
+
+Unit testing is used to test **units of code**. 
+
+Code that passes the test is **deemed quality** and fit for publication. 
+
+Unit testing is a part of the **Agile Methodology**.
+
+<!-- > -->
+
+### Why use unit tests?
+
+<!-- > -->
+
+**Improves code quality** by exposing edge cases and finding bugs.
+
+<!-- > -->
+
+**Spots bugs earlier.** Using tests will bring bugs to light before you publish your app.
+
+<!-- > -->
+
+**Reduces defects** when integrating new features.
+
+<!-- > -->
+
+**Professionals use unit tests.** If you are planning to get a job with a company that employs more than a single developer, you will probably be writing unit tests at some point.
 
 <!-- > -->
 
 ## Learning Objectives
 
-1. Describe, define, and use SEMVer
-1. Create NPM Packages
-1. Publish your NPM package
-1. Use ESLint to apply best practices to coding.
+By the end of this lesson you should by able to: 
+
+1. Define unit testing
+1. Identify what to test
+1. Write Unit tests
+1. Measure code coverage
 
 <!-- > -->
 
-## Why?
-
-Get a deeper understanding of npm and it's ecosystem. Contribute to open source.
+## Unit Testing
 
 <!-- > -->
 
-## What is npm?
-
-<div>Node Package Manager</div>
-
-<div>So what's a Package?</div>
+**Q:** What is a unit test?
 
 <!-- > -->
 
-npm organizes code into *packages* (sometimes called *modules*).
+**A:** A unit test is a test of a software system, _usually a single function._ 
+
+**Important! A unit test is most often testing the expected output of a function is correct for a given input.**
 
 <!-- > -->
 
-**A package is a directory with one or more files**. 
-
-And, a file named `package.json` which contains metadata about the package.
+**Q:** How do you unit test?
 
 <!-- > -->
 
-A **_dependency_** is a package that your project (or another package) depends on.
+**A:** Unit tests are run by software. 
+
+In this class, we will use [Jest](https://jestjs.io).
 
 <!-- > -->
 
-A package should contain code that **does one thing** well.
-
-In this way, you can use these shared packages like **building blocks** to build large complex projects.
+**Q:** What is Jest?
 
 <!-- > -->
 
-Packages can be written that work with **Node.js** on the server side, run on the **command line**, or can be used in a **web page**.
+**A:** [Jest](https://jestjs.io) is a JavaScript testing framework that was written by Facebook. It works with:
 
-You can publish your packages and use them with all of your projects and share them with other developers around the world.
-
-<!-- > -->
-
-## How does NPM work?
-
-<div>NPM is three things: a <strong>website</strong>, <strong>registry</strong>, and <strong>client</strong>.</div>
-
-<!-- > -->
-
-### The Website
-
-<div style="">https://www.npmjs.com</div> 
-
-<div>is the web portal for all things npm.</div>
+- JavaScript
+- TypeScript
+- Node
+- React
+- Vue
+- Angular
+- and more ...
 
 <!-- > -->
 
-### The registry
-
-<div>is a database of all packages that have been shared via npm.</div>
+**Q:** Why Jest?
 
 <!-- > -->
 
-### The client
+**A:** It's it's straight forward to use and Jest works well with React. 
 
-<div>is a command line tool used to publish and manage your npm packages.</div>
-
-<!-- > -->
-
-All of the packages you publish can be published from source code hosted on GitHub.com. 
-
-The published packages each get a page on npm.com with notes and documentation.
-
-https://docs.npmjs.com/about-npm/
+If you're building React apps Jest is a good choice. 
 
 <!-- > -->
 
-## Publish packages to npm
-
-Follow these instructions to create an account, install npm CLI, and publish a package to the npm registry.
-
-You should publish your String Library to npm following the steps below. 
+**Q:** How do you write a test?
 
 <!-- > -->
 
-### Sign up
-
-Create an account: https://www.npmjs.com/signup
+**A:** Before writing a test you'll want to think about what you are testing and what the test will consider passing.
 
 <!-- > -->
 
-### Install
+For example, you wrote a function that uppercases the first letter of a string. 
 
-You will need to install Node.js and npm. Follow the instructions here if you haven't already done this.
+Your unit test might expect the following input and output:
 
-https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-
-<!-- > -->
-
-### npm init and package.json
-
-When you run `npm init` in a directory, npm creates a new file called package.json. This is json file with information about your package.
-
-The data describes:
-
-- name
-- version
-- entry point
-- dependencies
-- and more...
+<div><code>widget -> Widget</code></div>
 
 <!-- > -->
 
-package.json is also a manifest listing all of the dependencies a package may require. 
-
-One package may depend on another which in turn has its own dependencies. (It's a little like those Russian dolls.)
+## Testing example
 
 <!-- > -->
 
-### Make your package
+**Heard of Fizz Buzz?** Everyone is writing this program but no one is writing tests! There are so many faulty FizzBuzz applications in the world we could have a major problem on our hands!
 
-Using Terminal, navigate to the directory containing your String lib. Run the command:
+If you haven't heard of FizzBuzz take a quick read.
 
-`npm init`
-
-This should create a new `package.json` in the current directory. 
-
-<!-- > -->
-
-Answer all the questions to the best of your ability. You can edit these later. Everything you enter here is metadata that describes the package that will eventually be hosted on npm.com. This includes:
-
-- name
-- description
-- version
-
-(You can use the default values, shown in (...), by hitting the Enter key when it appears.)
+- https://en.wikipedia.org/wiki/Fizz_buzz
+- https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/
+- https://wiki.c2.com/?FizzBuzzTest
+- https://blog.codinghorror.com/why-cant-programmers-program/
 
 <!-- > -->
 
-### Login into npm
+Pair with someone **you haven't paired with before**.
 
-We are using the npm CLI you need to log in in the command line.
+The goal of this exercise is to write some tests with Jest that test the functions in the [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test).
 
-You'll need to enter your:
-
-- npm username
-- npm password
-- email address used with npm
-
-`npm login`
+**Download this repo now.** Download the repo as a zip file and unzip it.
 
 <!-- > -->
 
-### Publishing your package
+### Getting Started Fizz Buzz
 
-To publish your package use:
-
-`npm publish --access=public`
-
-The first time you publish, you will need to add `--access=public` to avoid an error. After that, future publications will default to public access.
+- Navigate the terminal to the directory
+- `npm init -y` 
 
 <!-- > -->
 
-#### Resolving errors
+### Writing tests with Jest
 
-All packages on npm are public and share the same _namespace_. The most common error will be a _name collision_. It might look like:
+Jest is a framework that you will use as a *dev dependency*. 
 
-```
-npm ERR! 403 Forbidden - PUT https://registry.npmjs.org/test-error - You do not have permission to publish "test-error". Are you logged in as the correct user?
-```
-
-Here I tried to publish a package with the name `test-error`. This package already exists. Hint: **Search for a name on npm** before publishing.
+A dev dependency is one that is used for development but _not used in your source code_.
 
 <!-- > -->
 
-Another option is to publish to a scope. This puts all of the packages under the scope of your username and you can use any name. 
+Add Jest:
 
-To publish under a scope prefix your package name with `@` and your npm user name. For example: 
+- `npm install --save-dev jest`
 
-`@soggybag/really-cool-package`
-
-<!-- > -->
-
-### Publishing in scope
-
-To publish to a scope, you can either:
-
-Change the name to `@username/package-name` manually in package.json
-
-Run `npm init --scope=username` instead of `npm init`
+`--save-dev` creates an entry under - `"devDependencies"` in your `package.json`. Look for this right now.
 
 <!-- > -->
 
-### View your package npm
+Now that jest is installed, you need a test command. Add this to `package.json`. Add/edit `package.json` to look like this:
 
-Visit https://www.npmjs.com
-
-Log in and click the profile icon in the upper right. Choose "Packages" from the menu. This should show the list of packages you have published.
-
-Your package should appear on the list, **pat yourself on the back!**
-
-<!-- > -->
-
-Click the name of your package on the list and view it on npm. Notice a few things.
-
-The npm page for a package shows the **text from the README.md** file in the GitHub repo for the package. Your readme should look good and document what your library. This will encourage other developers to use your library.
-
-The version number, last update date, weekly downloads, GitHub repo and more are shown here.
-
-<!-- > -->
-
-## Connect your GitHub to npm
-
-Connecting your npm package to the GitHub source code is a good idea.
-
-https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry
-
-<!-- > -->
-
-## Version numbers and SemVer
-
-All packages on npm are using semver. What's semver? Semver stands for semantic version. It's those version numbers you see on everything software:
-
-`1.0.0` or `1.0.16` or `2.1.18`
-
-<!-- > -->
-
-<div style="font-size:2em">
-  <strong>16</strong>.10.2
-</div>
-
-The first digit is the **MAJOR** version. You'll update this when you make changes that make a new version **incompatible** with an older version.
-
-<div style="font-size: 2em; text-align: center"><strong>MAJOR</strong>.MINOR.PATCH</div>
-
-<!-- > -->
-
-<div style="font-size:2em">
-  16.<strong>10</strong>.2
-</div>
-
-
-The second digit is the **MINOR** version. You'll change this when you add **more functionality** but are **still backward compatible**.
-
-<div style="font-size: 2em; text-align: center">MAJOR.<strong>MINOR</strong>.PATCH</div>
-
-<!-- > -->
-
-<div style="font-size:2em">
-  16.10.<strong>2</strong>
-</div>
-
-The last digit is a **PATCH** version. You'll change this when you make **bug fixes and improvements** that are backward compatible but do not add new features.
-
-<div style="font-size: 2em; text-align: center">MAJOR.MINOR.<strong>PATCH</strong></div>
-
-<!-- > -->
-
-<div style="font-size:2em">
-  16.10.2
-</div>
-
-<div style="font-size: 3em; text-align: center">MAJOR.MINOR.PATCH</div>
-
-<!-- > -->
-
-### Version activities
-
-Read the questions below and figure out the new version numbers
-
-- You just **edited** the readme on version 3.1.0
-- You just fixed a problem with the `twizzle()` function, a public API, it now **requires** a number: twizzle(times), previous version: 12.11.10
-- You just updated `twizzle(times)` again but added a default parameter: `twizzle(times = 1)`
-
-https://semver.org
-
-<!-- > -->
-
-## Updating your package
-
-When you make changes to your library run:
-
-`npm publish`
-
-Do it now.
-
-You'll probably see an error:
-
-```
-npm ERR! 403 Forbidden - PUT https://registry.npmjs.org/@soggybag%2fjustincase - You cannot publish over the previously published versions: 1.0.2.
+```JSON
+"scripts": {
+  "test": "jest"
+},
 ```
 
 <!-- > -->
 
-Here I tried to publish but the currently published version is: 1.0.2 and the version I'm publishing is: 1.0.2. These are the same.
+You'll run a test with:
 
-**To publish a new version you need to update the version number in package.json.**
+`npm run test`
 
-<!-- > -->
-
-## Install ESLint
-
-Install and use ESLint. Use the Airbnb style guide. 
-
-Lint your code and publish and update to your npm package. 
-
-<!-- > -->
-
-### Make a patch, update, and publish
-
-Try that for yourself. Edit the README.md to improve the description.
-
-Call it a PATCH. 
-
-<small>This change is just an improvement, you didn't change any of the method names or parameters, so the API has stayed the same. You also didn't add any new features.</small>
-
-In `package.json` add 1 to the last digit in the version.
-
-If the version was: 1.0.0 change this to 1.0.1
-
-<!-- > -->
-
-**Now run:**
-
-`npm publish`
-
-Check your package on [npm](https://www.npmjs.com ).
-
-Look for the changes to the read and check the version number.
-
-<Small>
-Making changes only to the GitHub repo will not show on npm. You'll need to publish a new version.
-</small>
-
-<!-- > -->
-
-## Testing your lib on npm with RunKit
-
-Visit your library on [npm](https://www.npmjs.com ). Find the "Test with RunKit" button.
-
-Clicking this opens RunKit. You'll see a code editor on the left and the ReadMe documenting your library on the right.
-
-Good thing you wrote that documentation!
-
-Write some code and test your package.
-
-<!-- > -->
-
-## Give yourself a badge!
-
-Great work, you deserve a badge!
-
-You've probably seen those nifty badges on display on GitHub repos. Take a look at:
-
-https://github.com/badges/shields
-
-![IXVf2.png](images/IXVf2.png)
-
-<!-- > -->
-
-The badges make your repos look legit. That's short for *legitimate*, which means:  
-
-> conforming to recognized principles or accepted rules and standards
-
-Code libraries that conform to rules and standards are more likely to get adopters!
-
-<!-- > -->
-
-These badges show all sorts of information about the repo, the code in the repo and more. Your repo is just getting started so you can't make use of all of these yet.
-
-<!-- > -->
-
-Let's start with a couple of easy badges. Size and version.
-
-Go to:
-
-https://shields.io
-
-Click: Size
-
-Click the link to the right of npm bundle size. It looks like:
-
-`/bundlephobia/:format/:packageName.svg`
-
-<!-- > -->
-
-Now select the format: min, and type your package name into the field. If you have scoped your package include your @username like this: `@username/packagename`.
-
-Choose "Copy Markdown" from the menu at the bottom.
-
-Paste this into your README.md.
-
-Commit and push this to GitHub.
-
-Check out your GitHub page and you should see your new badge!
-
-<!-- > -->
-
-Repeat this again for the version. Try this on your own. 
-
-Get the npm version number.
-
-<!-- > -->
-
-### Update your npm package page
-
-After you're happy with your GitHub README, update your work on npm.
-
-Update the version number of your package. Is this a MAJOR? MINOR? or PATCH?
-
-`npm publish`
-
-Visit npm and check out your package.
-
-<!-- > -->
-
-## Extend String with prototype
-
-The functions you wrote might take a String as a parameter and return a String. There is nothing wrong with this but there are other approaches.
-
-An alternative might be to add your methods to the String class through the prototype chain. This is how the built-in String functions work!
-
-<!-- > -->
-
-Q: What is prototype?
-
-A: In JavaScript prototype is a special property all objects have. Objects inherit methods through the prototype. When you call a method on an object, if the method doesn't exist on that object then JavaScript looks for the method on the prototype. By adding a method to an object's prototype all other objects that share the prototype are able to also use the method.
-
-<!-- > -->
-
-For example, all Strings share the same prototype. When you call: `"hello".toUpperCase()` calls `toUpperCase()` on the prototype. 'toUpperCase' is really long, so I'd rather write 'allCaps' to do the same thing.
+Try it now. You should see an error:
 
 ```
-// Assign a new method to String.prototype
-String.prototype.allCaps = function() {
-  return this.toUpperCase()
+...
+No tests found, exiting with code 1
+...
+```
+
+You haven't written any tests yet so this makes sense.
+
+<!-- > -->
+
+Add a new directory named "tests".
+
+- `mkdir tests`
+
+Now add a new file `tests/test.js`. Your tests will be written here.  
+
+- `touch tests/test.js`
+
+<!-- > -->
+
+When you run Jest it will look for any files with `test.js` in the name and run any test code found there. 
+
+Jest logs the results of all tests to the console.
+
+<!-- > -->
+
+A test is run by calling:
+
+```JavaScript
+test(desc, callback)
+```
+
+You supply two parameters a *description string* and a *callback function*.
+
+<!-- > -->
+
+Open `test.js` and write a test:
+
+```JavaScript
+test('Sanity check', () => {
+
+})
+```
+
+<!-- > -->
+
+Run your test.
+
+`npm run test`
+
+You should see some output in the console.
+
+```
+...
+ PASS  tests/test.js
+  ✓ Sanity check (1ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+...
+```
+
+Looks like 1 test  passed out of a total of 1 test.
+
+<!-- > -->
+
+**What did you test?**
+
+Nothing. The callback function will register an error **only** if any code executed inside it *throws an error*, otherwise the test is passing.
+
+<!-- > -->
+
+Add the following inside the callback.
+
+```
+test('Sanity check', () => {
+  expect(2+2).toBe(5)
+})
+```
+
+<!-- > -->
+
+Run your test again. The test should *fail* this time.
+
+```
+...
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+...
+```
+
+### Assertions
+
+`expect().toBe()` is an assertion. An assertion is you expressing the answer you are expecting to get. *Here you are saying you expect `2+2` to be `5`*. Expecting `2+2` to `5` is insane so the assertion fails.
+
+<!-- > -->
+
+Fix the test by changing `5` to `4` and run it again. This time the test passes since no error was thrown.
+
+https://jestjs.io/docs/en/getting-started
+
+<!-- > -->
+
+## Testing Fizz Buzz
+
+Your goal is to examine the source code and write some tests. The [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test) contains these functions. Each function takes some input and returns output. 
+
+- `isFizzy()`
+- `isBuzzy()`
+- `fizzyBuzzy()`
+- `fizzBuzz()`
+
+<!-- > -->
+
+When writing the tests for these functions ask yourself: 
+
+What is the range of possible values am I expecting? 
+
+What possible numbers do you think would be input? 
+
+<small>What numebrs would you input if you were playing fizzbuzz?</small>
+
+<!-- > -->
+
+You'll need to import these methods into your `test.js`. The example code is set up for a Node. Use require at the top of the file:
+
+`const fb = require('../fizzbuzz')`
+
+All of the methods exported from `fizzbuzz.js` will be on the `fb` object. For example: 
+
+`fb.fizzBuzz(16)`
+
+<!-- > -->
+
+The fizzbuzz package/module has 3 constants, and 4 methods. You should test them all!
+
+Constants: 
+
+- `FIZZ`
+- `BUZZ`
+- `FIZZBUZZ`
+
+Methods: 
+
+- `isFizzy(n: Number)`
+- `isBuzzy(n: Number)`
+- `fizzBuzzy(n: Number)`
+- `fizzBuzz(n: Number)`
+
+<!-- > -->
+
+For example, the `isFizzy()` function takes a number and returns true if that number is divisible by 3. The test for this might look like:
+
+```JavaScript
+test('Test isFizzy', () => {
+  expect(tests.isFizzy(1)).toBe(false)
+  expect(tests.isFizzy(3)).toBe(true)
+  expect(tests.isFizzy(4)).toBe(false)
+  expect(tests.isFizzy(6)).toBe(true)
+})
+```
+
+<!-- > -->
+
+Use `expect(x).toBe(y)` to compare the value of x and y.
+
+`expect(99).toBe(99)` passes
+
+`expect(99).toBe(100)` throws an error
+
+
+```JS 
+function getAnswer() {
+  return 42
 }
-
-const str = 'hello world'
-console.log(str.allCaps()) // HELLO WORLD
+...
+expect(getAnswer()).tobe(42) // passes
 ```
 
 <!-- > -->
 
-**Important!**
+### Testing basics 
 
-Inside the allCaps function `this` is the string/object that you called the method on. In this case, it's `str` on the last line above.
+**[`expect()`](https://jestjs.io/docs/en/expect)**
 
-You cannot use an arrow function here! *Arrow functions do not bind this* so this is lost! It's not the object that called the method.
+Use `expect()` to look at a value. Call one of these methods to check that value: 
 
-Using ES5 functions the value for this is the object the method was called on.
+- [`.toBe(value)`](https://jestjs.io/docs/en/expect#tobevalue) to compare primitive values
+- [`.toEqual(value)`](https://jestjs.io/docs/en/expect#toequalvalue) to check equality of objects. This does a recursive "deep" check for equality. 
+- [`.not`](https://jestjs.io/docs/en/expect#not) to check something is not the value you were expecting. 
 
-<!-- > -->
-
-### Challenge
-
-Rewrite your string functions so they are all methods of the String object. This means you'll need to add them all to `String.prototype`. Here is a sample:
-
-```
-// Capitalize first letter
-String.prototype.capitalize = function() {
-  return this.charAt(0).toUpperCase() + this.slice(1)
-}
-```
+See the link to the docs above for more information. 
 
 <!-- > -->
 
-## Review Objective
+## Activity
 
-Q: What was covered today?
+**Before writing any code.** Discuss with a partner what you are going to test. 
+
+Describe the test you are going to write. Your partner should think of any edge cases or problems areas. Switch roles for each test you write.
+
+Write tests for FizzBuzz. Write a test for each function.
+
+<!-- > -->
+
+Import fizzbuzz functions from `fizzbuzz.js` with require: 
+
+`const fb = require('../fizzbuzz')`
+
+From here you can all of any of the fizzbuzz methods on `fb` for example: 
+
+- `fb.isFizzy(n)`
+- `fb.isBuzzy(n)`
+- `fb.fizzBuzz(n)`
+- etc ...
+
+<!-- > -->
+
+Refer to the [Jest docs](https://jestjs.io/docs/en/getting-started.html) while you work. 
+
+<!-- > -->
+
+## Checking Coverage
+
+How much of your code is covered by the test you wrote? Pretty good question huh?
+
+Jest will automate this for you. 
+
+`npx jest --coverage`
+
+<!-- > -->
+
+This should provide output similar to: 
+
+```
+----------|----------|----------|----------|----------|-------------------|
+File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------|----------|----------|----------|----------|-------------------|
+All files |    96.88 |      100 |       80 |    96.55 |                   |
+ index.js |    96.88 |      100 |       80 |    96.55 |                70 |
+----------|----------|----------|----------|----------|-------------------|
+```
+
+This tells you what % of code statements were covered by the tests. What % of code branches were covered, these are if else, switch cases etc. What % of functions were tested. What % of lines of code were tested, and line numbers for lines of code that were not tested. 
+
+Check coverage and identify what has not been tested. 
+
+<!-- > -->
+
+### Debriefing the tests
+
+Discuss these questions
+
+- What did you test?
+- What was easy to test?
+- What was difficult to test?
+- How many things did a test have to look at?
+- Are you confident that your tests will catch errors that might arise with any possible input?
+
+<!-- > -->
+
+## Testing the string functions
+
+To use your library in your tests you'll need to import it. Tests are run in the Node environment use `require()` to import them as a module.
+
+`const lib = require('../index.js')`
+
+Modify the line above to suit your situation. The name of the var can be anything. The path and name to point to your string lib relative to `test.js`.
+
+<!-- > -->
+
+Note! If your functions are global or they are added to the prototype of a global object you can just use something like:
+
+`require('../index.js')`
+
+<!-- > -->
+
+Use the coverage command with Jest to test the coverage of your tests. 
 
 <!-- > -->
 
 ### Homework
 
-- [String Lib](./assignments/assignment-01.md)
-- [Publish to npm](./assignments/assignment-02.md)
+[Add Unit Tests](../assignments/assignment-03.md)
 
 <!-- > -->
 
-## Resources
+## Wrap Up
 
-Publish to NPM: https://zellwk.com/blog/publish-to-npm/
+- Q: Why use unit tests? 
+- Q: What makes a good test?
+- Q: What is Jest?
 
 <!-- > -->
 
-## Minute-by-Minute [OPTIONAL]
+## Additional Resources
+
+1. https://github.com/Make-School-Labs/fizz-buzz-test
+1. https://jestjs.io
+
+
+<!-- > -->
+
+## Minute-by-Minute 
 
 | **Elapsed** | **Time** | **Activity** |
 | ----------- | -------- | ------------ |
-| 0:05 | 0:05 | [Objectives](#learning-objectives) (Lecture) |
-| 0:15 | 0:10 | [What is npm?](#what-is-npm) (Lecture) |
-| 0:45 | 0:30 | [Publish packages to npm](#publish-packages-to-npm) (Lab) |
-| 1:00 | 0:15 | [Semver](#version-numbers-and-semver) (Dicussion) |
-| 1:10 | 0:10 | BREAK |
-| 1:25 | 0:15 | [Updating your package](#updating-your-package) (Activity) |
-| 1:55 | 0:30 | [Give yourself a badge](#give-yourself-a-badge) (Lecture/Lab) |
-| 2:35 | 0:40 | Code Review (Lab) |
-| 2:40 | 0:05 | Review Objectives (Lecture) |
-| 2:45 | 0:05 | Review Homework (Lecture) |
-
-In this lesson you will publish your library and share it with the world.
+| 0:10 | 0:10 | [Overview](#overview) (Lecture) |
+| 0:05 | 0:15 | [Learning Objectives](#learning-objectives) (Lecture) |
+| 0:10 | 0:25 | [Unit Testing](#unit-testing) (Discussion) |
+| 0:15 | 0:40 | [Testing Example](#testing-example) (Demo/setup) |
+| 1:00 | 1:40 | [Testing Fizz Buzz](#testing-fizz-buzz) (Activity) |
+| 0:10 | 1:50 | BREAK |
+| 0:15 | 2:05 | Discuss Testing |
+| 0:30 | 2:35 | Start Homework |
+| 0:10 | 2:45 | Wrap up |

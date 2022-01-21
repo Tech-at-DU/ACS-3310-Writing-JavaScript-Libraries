@@ -44,8 +44,8 @@ Students by the end of the course will be able to ...
 |:------|:-----|:-------|:-----------|:--------------|
 |  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | - | - |
 |  2    | Fri, Jan 21 | Lab | - | - |
-|  3    | Mon, Jan 24 | [Lesson 3 - Unit testing] | - | - | 
-|  4    | Wed, Jan 26 | [Lesson 2 - Publishing to npm] | [Add Unit Tests] | - |
+|  3    | Mon, Jan 24 | [Lesson 2 - Unit testing] | - | - | 
+|  4    | Wed, Jan 26 | [Lesson 3 - Publishing to npm] | [Add Unit Tests] | - |
 |  5    | Fri, Jan 28 | Lab | - | [Fizz Buzz Unit Tests] |
 |  6    | Mon, Jan 31 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
 |  7    | Wed, Feb  2 | [Lesson 5 - Solving problems with Dates] |  |  |
@@ -66,8 +66,8 @@ Students by the end of the course will be able to ...
 <!-- | 14 | Tue, May 13 | [Lesson 14](./lessons/lesson-14.md) | [Present your work](./assignments/assignment-10.md) - Final Presentations | -->
 
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
-[Lesson 2 - Publishing to npm]: ./lessons/lesson-02.md
-[Lesson 3 - Unit testing]: ./lessons/lesson-03.md
+[Lesson 2 - Unit testing]: ./lessons/lesson-02.md
+[Lesson 3 - Publishing to npm]: ./lessons/lesson-03.md
 [Lesson 4 - Working with Dates]: ./lessons/lesson-04.md
 [Lesson 5 - Solving problems with Dates]: ./lessons/lesson-05.md
 [Lesson 6 - Async JS]: ./lessons/lesson-06.md
