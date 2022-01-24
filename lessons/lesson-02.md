@@ -287,7 +287,13 @@ Tests: 1 failed, 1 total
 
 ### Assertions 
 
-`expect().toBe()` is an assertion. An assertion is you expressing the answer you are expecting to get. *Here you are saying you expect `2+2` to be `5`*. Expecting `2+2` to `5` is insane so the assertion fails.
+`expect().toBe()` is an assertion. 
+
+An assertion states the question and the answer you expect to receive. 
+
+*In the last test you expect `2+2` to be `5`*. 
+
+Expecting `2+2` to `5` is insane so the assertion fails.
 
 <!-- > -->
 
@@ -310,31 +316,35 @@ Your goal is to examine the source code and write some tests. The [Fizz Buzz sam
 
 When writing the tests for these functions ask yourself: 
 
-What is the range of possible values am I expecting? 
-
-What possible numbers do you think would be input? 
-
-<small>What numbers would you input if you were playing fizzbuzz?</small>
+> What output do I expect for a given input? 
 
 <!-- > -->
 
-You'll need to import these methods into your `test.js`. The example code is set up for a Node. Use require at the top of the file:
+Import the methods you are testing into your `test.js`. For example:
 
-`const fb = require('../fizzbuzz')`
+```js
+const fb = require('../fizzbuzz')
+```
 
 All of the methods exported from `fizzbuzz.js` will be on the `fb` object. For example: 
 
-`fb.fizzBuzz(16)`
+```JS
+fb.fizzBuzz(16)
+```
 
 <!-- > -->
 
 The fizzbuzz package/module has 3 constants and 4 methods. You should test them all!
+
+<!-- > -->
 
 Constants: 
 
 - `FIZZ`
 - `BUZZ`
 - `FIZZBUZZ`
+
+<!-- > -->
 
 Methods: 
 
@@ -399,19 +409,6 @@ Write tests for FizzBuzz. Write a test for each function.
 
 <!-- > -->
 
-Import fizzbuzz functions from `fizzbuzz.js` with require: 
-
-`const fb = require('../fizzbuzz')`
-
-From here you can all of any of the fizzbuzz methods on `fb` for example: 
-
-- `fb.isFizzy(n)`
-- `fb.isBuzzy(n)`
-- `fb.fizzBuzz(n)`
-- etc ...
-
-<!-- > -->
-
 Refer to the [Jest docs](https://jestjs.io/docs/en/getting-started.html) while you work. 
 
 <!-- > -->
@@ -430,12 +427,14 @@ This should provide output similar to:
 
 ```
 ----------|----------|----------|----------|----------|-------------------|
-File | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+File      | % Stmts  | % Branch | % Funcs  | % Lines  | Uncovered Line #s |
 ----------|----------|----------|----------|----------|-------------------|
-All files | 96.88 | 100 | 80 | 96.55 | |
- index.js | 96.88 | 100 | 80 | 96.55 | 70 |
+All files | 96.88    | 100      | 80       | 96.55    |                   |
+ index.js | 96.88    | 100      | 80       | 96.55    | 70                |
 ----------|----------|----------|----------|----------|-------------------|
 ```
+
+<!-- > -->
 
 This tells you what % of code statements were covered by the tests. What % of code branches were covered, these are if-else, switch cases, etc. What % of functions were tested. What % of lines of code were tested, and line numbers for lines of code that were not tested. 
 
