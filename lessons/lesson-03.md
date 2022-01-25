@@ -11,20 +11,20 @@
 
 ## Learning Objectives
 
-1. Describe, define, and use SEMVer
-1. Create NPM Packages
-1. Publish your NPM package
-1. Use ESLint to apply best practices to coding.
+1. 🤓 Describe, define, and use SEMVer
+1. 🛠 Create NPM Packages
+1. 🎬 Publish your NPM package
+1. 🥇 Use ESLint to apply best practices to coding.
 
 <!-- > -->
 
-## Why?
+## Why? 🤔
 
 Get a deeper understanding of npm and it's ecosystem. Contribute to open source.
 
 <!-- > -->
 
-## What is npm?
+## What is npm? 🤔
 
 <div>Node Package Manager</div>
 
@@ -32,29 +32,25 @@ Get a deeper understanding of npm and it's ecosystem. Contribute to open source.
 
 <!-- > -->
 
-npm organizes code into *packages* (sometimes called *modules*).
+npm organizes code into *packages* (sometimes called *modules*). 📦
 
 <!-- > -->
 
-**A package is a directory with one or more files**. 
-
-And, a file named `package.json` which contains metadata about the package.
+> **A package is a directory with one or more files**. And, a file named `package.json` which contains metadata about the package.
 
 <!-- > -->
 
-A **_dependency_** is a package that your project (or another package) depends on.
+A **_dependency_** is a package that your project (or another package) *depends* on. 🤝
 
 <!-- > -->
 
-A package should contain code that **does one thing** well.
-
-In this way, you can use these shared packages like **building blocks** to build large complex projects.
+In this way, you can use these shared packages like **building blocks** to build large complex projects. 👷‍♀️
 
 <!-- > -->
 
 Packages can be written that work with **Node.js** on the server side, run on the **command line**, or can be used in a **web page**.
 
-You can publish your packages and use them with all of your projects and share them with other developers around the world.
+You can publish your packages and use them with all of your projects and share them with other developers around the world. 🌏
 
 <!-- > -->
 
@@ -62,9 +58,11 @@ You can publish your packages and use them with all of your projects and share t
 
 <div>NPM is three things: a <strong>website</strong>, <strong>registry</strong>, and <strong>client</strong>.</div>
 
+👩‍💻 📚 💻
+
 <!-- > -->
 
-### The Website
+### The Website 👩‍💻
 
 <div style="">https://www.npmjs.com</div> 
 
@@ -72,13 +70,13 @@ You can publish your packages and use them with all of your projects and share t
 
 <!-- > -->
 
-### The registry
+### The registry 📚
 
 <div>is a database of all packages that have been shared via npm.</div>
 
 <!-- > -->
 
-### The client
+### The client 💻
 
 <div>is a command line tool used to publish and manage your npm packages.</div>
 
@@ -92,7 +90,11 @@ https://docs.npmjs.com/about-npm/
 
 <!-- > -->
 
-## Publish packages to npm
+## Publish packages to npm 
+
+✍️
+
+<!-- > -->
 
 Follow these instructions to create an account, install npm CLI, and publish a package to the npm registry.
 
@@ -100,13 +102,13 @@ You should publish your String Library to npm following the steps below.
 
 <!-- > -->
 
-### Sign up
+### Sign up 🆗
 
 Create an account: https://www.npmjs.com/signup
 
 <!-- > -->
 
-### Install
+### Install 🛠
 
 You will need to install Node.js and npm. Follow the instructions here if you haven't already done this.
 
@@ -114,7 +116,7 @@ https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 <!-- > -->
 
-### npm init and package.json
+### Package.json
 
 When you run `npm init` in a directory, npm creates a new file called package.json. This is json file with information about your package.
 
@@ -132,15 +134,21 @@ package.json is also a manifest listing all of the dependencies a package may re
 
 One package may depend on another which in turn has its own dependencies. (It's a little like those Russian dolls.)
 
+🪆 🪆 🪆
+
 <!-- > -->
 
-### Make your package
+### Make your package 🔨
+
+<!-- > -->
 
 Using Terminal, navigate to the directory containing your String lib. Run the command:
 
-`npm init`
+```
+npm init
+```
 
-This should create a new `package.json` in the current directory. 
+<small>This should create a new `package.json` in the current directory.</small> 
 
 <!-- > -->
 
@@ -150,13 +158,19 @@ Answer all the questions to the best of your ability. You can edit these later. 
 - description
 - version
 
-(You can use the default values, shown in (...), by hitting the Enter key when it appears.)
+<small>(You can use the default values, shown in (...), by hitting the Enter key when it appears.)</small>
 
 <!-- > -->
 
-### Login into npm
+### Login into npm 👩‍💻
+
+<!-- > -->
 
 We are using the npm CLI you need to log in in the command line.
+
+```
+npm login
+```
 
 You'll need to enter your:
 
@@ -164,21 +178,25 @@ You'll need to enter your:
 - npm password
 - email address used with npm
 
-`npm login`
+<!-- > -->
+
+### Publishing your package 📰
 
 <!-- > -->
 
-### Publishing your package
+📣 To publish your package use:
 
-To publish your package use:
+```
+npm publish --access=public
+```
 
-`npm publish --access=public`
-
-The first time you publish, you will need to add `--access=public` to avoid an error. After that, future publications will default to public access.
+<small>The first time you publish, you will need to add `--access=public` to avoid an error. After that, future publications will default to public access.</small>
 
 <!-- > -->
 
-#### Resolving errors
+#### Resolving errors 😱
+
+<!-- > -->
 
 All packages on npm are public and share the same _namespace_. The most common error will be a _name collision_. It might look like:
 
@@ -186,19 +204,23 @@ All packages on npm are public and share the same _namespace_. The most common e
 npm ERR! 403 Forbidden - PUT https://registry.npmjs.org/test-error - You do not have permission to publish "test-error". Are you logged in as the correct user?
 ```
 
-Here I tried to publish a package with the name `test-error`. This package already exists. Hint: **Search for a name on npm** before publishing.
+<small>Here I tried to publish a package with the name `test-error`. This package already exists. Hint: **Search for a name on npm** before publishing.</small>
 
 <!-- > -->
 
-Another option is to publish to a scope. This puts all of the packages under the scope of your username and you can use any name. 
+Another option is to publish to a scope. This puts all of the packages under the scope of your username and you can use any name.
+
+```
+@soggybag/really-cool-package
+```
 
 To publish under a scope prefix your package name with `@` and your npm user name. For example: 
 
-`@soggybag/really-cool-package`
-
 <!-- > -->
 
-### Publishing in scope
+### Publishing in scope 🪐
+
+<!-- > -->
 
 To publish to a scope, you can either:
 
@@ -208,7 +230,9 @@ Run `npm init --scope=username` instead of `npm init`
 
 <!-- > -->
 
-### View your package npm
+### View your package npm 📡
+
+<!-- > -->
 
 Visit https://www.npmjs.com
 
@@ -228,6 +252,12 @@ The version number, last update date, weekly downloads, GitHub repo and more are
 
 ## Connect your GitHub to npm
 
+🤝
+
+<!-- > -->
+
+🤓
+
 Connecting your npm package to the GitHub source code is a good idea.
 
 https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry
@@ -235,6 +265,10 @@ https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-
 <!-- > -->
 
 ## Version numbers and SemVer
+
+🔟.5️⃣.3️⃣
+
+<!-- > -->
 
 All packages on npm are using semver. What's semver? Semver stands for semantic version. It's those version numbers you see on everything software:
 
@@ -248,7 +282,7 @@ All packages on npm are using semver. What's semver? Semver stands for semantic 
 
 The first digit is the **MAJOR** version. You'll update this when you make changes that make a new version **incompatible** with an older version.
 
-<div style="font-size: 2em; text-align: center"><strong>MAJOR</strong>.MINOR.PATCH</div>
+<div style="font-size: 2em; text-align: center"><strong>MAJOR</strong>.<small>MINOR.PATCH</small></div>
 
 <!-- > -->
 
@@ -259,7 +293,8 @@ The first digit is the **MAJOR** version. You'll update this when you make chang
 
 The second digit is the **MINOR** version. You'll change this when you add **more functionality** but are **still backward compatible**.
 
-<div style="font-size: 2em; text-align: center">MAJOR.<strong>MINOR</strong>.PATCH</div>
+<div style="font-size: 2em; text-align: center">
+<small>MAJOR.</small><strong>MINOR</strong><small>.PATCH</small></div>
 
 <!-- > -->
 
@@ -269,7 +304,7 @@ The second digit is the **MINOR** version. You'll change this when you add **mor
 
 The last digit is a **PATCH** version. You'll change this when you make **bug fixes and improvements** that are backward compatible but do not add new features.
 
-<div style="font-size: 2em; text-align: center">MAJOR.MINOR.<strong>PATCH</strong></div>
+<div style="font-size: 2em; text-align: center"><small>MAJOR.MINOR.</small><strong>PATCH</strong></div>
 
 <!-- > -->
 
@@ -281,13 +316,15 @@ The last digit is a **PATCH** version. You'll change this when you make **bug fi
 
 <!-- > -->
 
-### Version activities
+### Version Numbers
+
+<!-- > -->
 
 Read the questions below and figure out the new version numbers
 
 - You just **edited** the readme on version 3.1.0
-- You just fixed a problem with the `twizzle()` function, a public API, it now **requires** a number: twizzle(times), previous version: 12.11.10
-- You just updated `twizzle(times)` again but added a default parameter: `twizzle(times = 1)`
+- You just fixed a problem with the `twizzle()` function, a public API, it now **requires** a number: `twizzle(count)`, previous version: 12.11.10
+- You just updated `twizzle(count)` again but added a default parameter: `twizzle(count = 1)`
 
 https://semver.org
 
@@ -295,16 +332,23 @@ https://semver.org
 
 ## Updating your package
 
+<!-- > -->
+
 When you make changes to your library run:
 
-`npm publish`
+```
+npm publish
+```
 
 Do it now.
 
 You'll probably see an error:
 
 ```
-npm ERR! 403 Forbidden - PUT https://registry.npmjs.org/@soggybag%2fjustincase - You cannot publish over the previously published versions: 1.0.2.
+npm ERR! 403 Forbidden 
+- PUT https://registry.npmjs.org/@soggybag%2fjustincase 
+- You cannot publish over the previously published 
+versions: 1.0.2.
 ```
 
 <!-- > -->
@@ -315,7 +359,9 @@ Here I tried to publish but the currently published version is: 1.0.2 and the ve
 
 <!-- > -->
 
-## Install ESLint
+## Install ESLint 🧼
+
+<!-- > -->
 
 Install and use ESLint. Use the Airbnb style guide. 
 
@@ -324,6 +370,8 @@ Lint your code and publish and update to your npm package.
 <!-- > -->
 
 ### Make a patch, update, and publish
+
+<!-- > -->
 
 Try that for yourself. Edit the README.md to improve the description.
 
@@ -339,7 +387,9 @@ If the version was: 1.0.0 change this to 1.0.1
 
 **Now run:**
 
-`npm publish`
+```
+npm publish
+```
 
 Check your package on [npm](https://www.npmjs.com ).
 
@@ -351,7 +401,9 @@ Making changes only to the GitHub repo will not show on npm. You'll need to publ
 
 <!-- > -->
 
-## Testing your lib on npm with RunKit
+## Testing your lib with RunKit
+
+<!-- > -->
 
 Visit your library on [npm](https://www.npmjs.com ). Find the "Test with RunKit" button.
 
@@ -364,6 +416,8 @@ Write some code and test your package.
 <!-- > -->
 
 ## Give yourself a badge!
+
+<!-- > -->
 
 Great work, you deserve a badge!
 
@@ -421,17 +475,23 @@ Get the npm version number.
 
 ### Update your npm package page
 
+<!-- > -->
+
 After you're happy with your GitHub README, update your work on npm.
 
 Update the version number of your package. Is this a MAJOR? MINOR? or PATCH?
 
-`npm publish`
+```
+npm publish
+```
 
 Visit npm and check out your package.
 
 <!-- > -->
 
 ## Extend String with prototype
+
+<!-- > -->
 
 The functions you wrote might take a String as a parameter and return a String. There is nothing wrong with this but there are other approaches.
 
@@ -470,6 +530,8 @@ Using ES5 functions the value for this is the object the method was called on.
 <!-- > -->
 
 ### Challenge
+
+<!-- > -->
 
 Rewrite your string functions so they are all methods of the String object. This means you'll need to add them all to `String.prototype`. Here is a sample:
 

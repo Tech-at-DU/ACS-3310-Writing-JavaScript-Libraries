@@ -1,5 +1,9 @@
 # reveal-md
 
+## Quick start
+
+Run Slides with: 
+
 ```bash
 reveal-md Lessons/ --css makeschool.css
 ```
@@ -44,6 +48,10 @@ This starts a local server and opens any Markdown file as a reveal.js presentati
 
 ```bash
 reveal-md Lessons/
+
+reveal-md Lessons/ --theme solarized
+
+reveal-md Lessons/ --css makeschool.css
 ```
 
 ### Generate Slides
@@ -52,6 +60,10 @@ Generate static HTML (for GitHub Pages):
 
 ```bash
 reveal-md Lessons/ --static Slides
+
+reveal-md Lessons/ --static Slides --theme solarized
+
+reveal-md Lessons/ --static Slides --css makeschool.css
 ```
 
 ## Resources
