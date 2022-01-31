@@ -7,11 +7,17 @@
 
 Time for another library! This time you'll make a library that works with Dates.
 
+📆 ⏰ ⌛️
+
+<!-- > -->
+
 <!-- Put a link to the slides so that students can find them -->
 <!-- 
 ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
 
-➡️ [**Slides**](https://docs.google.com/presentation/d/1zBpVfNByDj5u4Bsg1EtW_zx3qm_6oEm85BStYOyKlDk/edit?usp=sharing ':ignore')
+<!-- ➡️ [**Slides**](https://docs.google.com/presentation/d/1zBpVfNByDj5u4Bsg1EtW_zx3qm_6oEm85BStYOyKlDk/edit?usp=sharing ':ignore') -->
+
+
 
 ## Video Lessons 
 
@@ -27,17 +33,29 @@ Time for another library! This time you'll make a library that works with Dates.
 - https://youtu.be/gbKwrr94rbw
 - https://youtu.be/JeIe7hbITEc
 
+<!-- > -->
+
 Playlist: 
 
 https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 
 <!-- > -->
 
-## Why you should know this?
+## Why you should know this? 
 
-Practice is the best way to solidify your skills and knowledge.
+🤔
 
-Working with dates will expand your knowledge of JS. 
+<!-- > -->
+
+Writing JavaScript will make you better at writing JavaScript! 
+
+👩‍💻
+
+<!-- > -->
+
+Working with dates will expand your knowledge of JS. You might work with dates in any app you create. 
+
+🧐
 
 <!-- > -->
 
@@ -49,19 +67,21 @@ Working with dates will expand your knowledge of JS.
 
 <!-- > -->
 
-Open this Repl: https://repl.it/@MitchellHudson/date-object
+Get this repo: https://github.com/Tech-at-DU/JavaScript-Dates-lab
 
 <!-- > -->
 
-## UTC and JS Date
+## UTC and the JS Date Object
 
 <!-- > -->
 
-What's a Date? 
+What's a Date? 🤔
 
 <!-- > -->
 
 A date is the day of the month and year specified as a number. 
+
+📆 ➡️ 3️⃣
 
 <!-- > -->
 
@@ -69,35 +89,57 @@ In JS this will also include the year and the time.
 
 It pinpoints a point in time down to a millisecond as a number. 
 
+⏰
+
 <!-- > -->
 
 Dates in JS are represented as the number of milliseconds since 1970
+
+0️⃣
 
 <!-- > -->
 
 **UNIX Epoch**
 
-What is this? Also known as a timestamp. It's a number that represents the number of seconds since **Thursday, 1 January 1970**. The premise is that each day takes 86,400 seconds. 
+<!-- > -->
+
+Q: What is UTC? Also known as a timestamp. 
+
+A: It's a number that represents the number of seconds since **Thursday, 1 January 1970**. 
+
+The premise is that each day takes 86,400 seconds.
+
+🌏
 
 <!-- > -->
 
 Dates before the epoch can be expressed as a negative number.
 
+🌍 🦖
+
 <!-- > -->
 
 Are there any weird things about dates in JS?
+
+📆 🤔
 
 <!-- > -->
 
 Plenty, just think of leap years?
 
+📆 🏃
+
 <!-- > -->
 
-Can you do Math with this stuff? 
+Can you do Math with dates? 
+
+🧮
 
 <!-- > -->
 
 Yes! The Date Object, like the Number Object, is a wrapper around a primitive value. 
+
+⏰
 
 JS will convert a date to a number when needed. 
 
@@ -153,7 +195,7 @@ Since your birthday.
 
 <!-- > -->
 
-Initialize a with Year, month, and date. 
+Initialize a date with Year, month, and date. 
 
 ```JS 
 const newYears = new Date(2020, 0, 1)
@@ -179,47 +221,64 @@ Notice the month starts with a 0 index.
 
 <!-- > -->
 
-## Date methods 
+## Date methods 🛠
 
-The Date object has many instance methods most are getters and setters. There are a few class methods also.
+<!-- > -->
+
+The Date object has many instance methods. Most are getters and setters. There are a few class methods also.
 
 <!-- > -->
 
 ### Getters 
 
-These mostly get at components of a date such as a year, month, day, hours, minutes, etc. Some format the date in a variety of ways. 
+These mostly return components of a date such as a year, month, day, hours, minutes, etc. Some format the date in a variety of ways. 
 
 <!-- > -->
 
-- Date Components 
-  - `new Date().getFullYear()  // 2019`
-  - `new Date().getMonth()     // 6` July
-  - `new Date().getHours()     // 10` 10 AM
+**Date Components** 
+
+```JS 
+new Date().getFullYear()  // 2019
+new Date().getMonth()     // 6` July
+new Date().getHours()     // 10` 10 AM
+```
 
 <!-- > -->
 
-- Formatted Dates 
-  - `new Date().toLocaleString()` 7/27/2019, 10:15:36 AM
-  - `new Date().toDateString()` Sat Jul 27 2019
+**Formatted Dates** 
+
+```JS
+new Date().toLocaleString() // 7/27/2019, 10:15:36 AM
+new Date().toDateString()   // Sat Jul 27 2019
+```
 
 <!-- > -->
 
 ### Setters 
 
-Setters change the value of various components of a date. 
+Setters set the value of various components of a date. 
 
 <!-- > -->
 
-- `myDate.setMonth(6)` Sets the month to July
-  - January === 0
+**Date.setMonth()**
+
+```js
+myDate.setMonth(6) // Sets the month to July
+// 0 would be January
+```
+
+<!-- > -->
+**Date.setMinutes**
+
+```JS 
+myDate.setMinutes(30)
+```
 
 <!-- > -->
 
-- `myDate.setMinutes(30)`
+Best Practice! 👩‍💻
 
-<!-- > -->
-
-_Never mutate source object always make a copy and mutate that to avoid side effects._
+_Never mutate source object. Always make a copy and mutate the copy to avoid side effects._
 
 ```JS
 const d = new Date(2019, 0, 10)
@@ -236,17 +295,35 @@ console.log(newDate) // 10 June 2019
 
 Date provides a couple of class methods. 
 
+<!-- > -->
+
 Class methods are methods that are called from the class (class methods are not called from an instance)
 
+```JS
+const now = Date.now() // Class method is called on the Class Object
+
+// As opposed to an instance method
+const today = new Date() 
+today.getFullYear() // method called on an instance
+```
+
 <!-- > -->
 
-- `Date.now() // 1564251902406` the ms at the current moment
-- `Date.UTC(year, month, day, hour, min, sec, ms)` create date from UTC parameters 
-- `Date.parse(string)` creates a date from date string or returns NaN if unable to parse the string. 
+```JS
+// 1564251902406` the ms at the current moment
+Date.now() 
+// create date from UTC parameters 
+Date.UTC(year, month, day, hour, min, sec, ms) 
+// creates a date from date string or returns 
+// NaN if unable to parse the string.
+Date.parse(string)  
+```
 
 <!-- > -->
 
-## Timezones 
+## Timezones 🌎 🌍 🌏
+
+<!-- > -->
 
 - Local time refers to the timezone set on your computer.
 - UTC is synonymous with Greenwich Mean Time (GMT) in practice.
