@@ -1,9 +1,13 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 - API Lib
 
-<small style="display:block;text-align:center">API Lib</small>
+<!-- > -->
 
-The last Library you will work on is a library that works with an API. APIs are used everywhere and are an important part of the ecosystem. Libraries that make working with APIs easier are an important part of the ecosystem. 
+This project will create a library that works with an API. ⚙️
+
+APIs are used everywhere and are an important part of the web ecosystem. 🌍
+
+Libraries make working with APIs easier. 🧰
 
 <!-- Put a link to the slides so that students can find them -->
 
@@ -33,7 +37,11 @@ Follow these lessons in these videos:
 
 ## What's a callback? 
 
+<!-- > -->
+
 A callback is a function that invoked by another function. A callback is often used with asynchronous actions like handling network requests. 
+
+<!-- > -->
 
 Some examples of callbacks: 
 
@@ -41,27 +49,41 @@ Some examples of callbacks:
 - `map()`, `filter()`, and `reduce()` use a callback to execute code with each iteration. 
 - `addEventListener()` uses a callback to run code when an event occurs. 
 
-In practical terms a callback is a function passed to another function or method as an argument. 
+<!-- > -->
+
+In practical terms a callback is a function passed to another function or method as an argument.
+
+```JS
+function hello() {
+  console.log('Hello World')
+}
+
+setTimeout(hello, 3000)
+```
+
+<!-- > -->
 
 In javascript a function is value and can be assigned or passed around your code just like any other type of value. 
 
 ```JS
 // doStuff is a function
-function doStuff(a,b) { 
-  // doing stuff
-  // ...
+function doStuff(n) { 
+  return n * 2
 }
 
 // doStuff can be assigned to variables: 
-const doesIt = doStuff
+const doingThings = doStuff
+doingThings(11, 44)
 
 // Passed as a parameter (it's a callback here)
-setTimeout(doesIt, 1000)
-
 [1,2,3,4].map(doStuff)
 ```
 
-### Implement a function with a callback. 
+<!-- > -->
+
+### Implement a function with a callback
+
+<!-- > -->
 
 Imagine you have worked with the OpenWeatherMap API. The next step is to take the code that fetches the weather and put it into a form that can be used anywhere in ann application.
 
@@ -86,11 +108,11 @@ function getWeather(callBack) {
   callback()
 }
 
-getWeather(handleWeather)
-
 function handleWeather() {
   // Something happens here after the weather data is loaded. 
 }
+
+getWeather(handleWeather)
 ```
 
 Here `handleWeather` is a function that is passed to `getWeather` and is executed as `callback` there. 
@@ -106,7 +128,7 @@ function getWeather(callBack) {
   callback()
 }
 
-getWeather(() => {
+getWeather(function() {
   // something happens here after the weather data is loaded
 })
 
@@ -119,7 +141,7 @@ getWeather(() => {
 
 <!-- > -->
 
-Might be good if it had some parameters.
+Make the callback more useful by adding parameters. 
 
 ```JS 
 function getWeather(callBack, apikey, units) {
@@ -137,9 +159,11 @@ How do we get data from a callback? Pass it as a parameter!
 ```JS 
 function getWeather(callBack, apikey, units) {
   // loads json with apikey and units
-  callback(json) // passes json to callback
+  const json = ...
+  callback(json) // passes JSON to callback
 }
 
+// Our callback receives JSON
 getWeather( (data) => { // receives json here!
   // do stuff with data received from callback
 })
@@ -147,7 +171,11 @@ getWeather( (data) => { // receives json here!
 
 <!-- > -->
 
-What if there is an error? Add an error callback! 
+What if there is an error? 🤔
+
+Add an error callback! 😮
+
+<!-- > -->
 
 This is how most JS methods handled errors before promises. Many systems still use this arranegment. 
 
@@ -161,11 +189,11 @@ function getWeather(apikey, units, onSuccess, onError) {
       onError(error)
     })
 }
-
-getWeather('myapikey', 'metric', (data) => { // receives json here!
-  // do stuff with data received from callback
-}, function(err) {
-  // something went wrong
+// Call getWeather with two callbacks
+getWeather('myapikey', 'metric', (data) => { 
+  // onSuccess callback receives json here!
+}, (err) => {
+  // onError callback receives an error
 })
 ```
 
@@ -175,13 +203,7 @@ Or write all of that in separate functions.
 
 ```JS 
 function getWeather(apikey, units, onSuccess, onError) {
-  fetch(...)
-    .then((data) => {
-      onSuccess(data)
-    })
-    .catch((error) => {
-      onError(error)
-    })
+  ...
 }
 
 getWeather('myapikey', 'metric', handleData, handleError)
@@ -195,11 +217,19 @@ function handleError(err) {
 }
 ```
 
+<!-- > -->
+
 The core idea presented above is that of passing a function to another function like you would pass other values like strings and numbers and executing that function inside the receiving function. 
+
+<!-- > -->
 
 ## Promise
 
+<!-- > -->
+
 Promise is an object in JavaScript that is used to handle asynchronous actions. A Promise works with callbacks you can think of Promise as managing the success and error callbacks. 
+
+<!-- > -->
 
 ```JS 
 function getWeather() {
@@ -222,11 +252,27 @@ function handleError(err) { ... }
 
 The `Promise.then()` and `Promise.catch()` methods take the callbacks you used earlier and the Promise decides which to execute.
 
+<!-- > -->
+
 ### async and await
 
-The `async` and `await` keywords are used to handle Promise. 
+<!-- > -->
+
+The `async` and `await` keywords are used to handle Promises.
+
+<!-- > -->
 
 Any function that that begins with `async` will return a Promise, even if you don't explicitly return a promise in the code block.
+
+```JS
+async function something() {
+
+}
+
+something().then().catch()
+```
+
+<!-- > -->
 
 The `await` key word can only be used inside of an `async` function. Use it to resolve a Promise. 
 
@@ -244,19 +290,23 @@ getWeather().then(json => ...)
 
 ## Using a callback with an API
 
+<!-- > -->
+
 The following examples are more detailed and turn the previouse examples into actual code. 
 
 <!-- > -->
 
 Start with some no frills code. Start here: 
 
-https://github.com/Make-School-Labs/weather-api
+https://github.com/Tech-at-DU/weather-api
+
+Follow the instructions in the readme.
 
 <!-- > -->
 
 ## Here are a few ideas
 
-Workign with the code above apply the following ideas. 
+Working with the code above apply the following ideas. 
 
 <!-- > -->
 
@@ -276,6 +326,8 @@ function getWeather(zip, apiKey, success, error) {
     .catch(err => error(err))
 }
 ```
+
+<!-- > -->
 
 Externally you would use the function above like this: 
 
@@ -302,6 +354,8 @@ function getWeatherPromise(zip, apiKey) {
 }
 ```
 
+<!-- > -->
+
 Externally uou would use the code above like this: 
 
 ```JS 
@@ -315,6 +369,8 @@ function onError(err) { ... }
 ```
 
 <!-- > -->
+
+You could also use aysnc and await. 
 
 ```JS
 async function getWeatherAsync(zip, apiKey) {
@@ -330,6 +386,8 @@ async function getWeatherAsync(zip, apiKey) {
 }
 ```
 
+<!-- > -->
+
 This works exactly the same as the previous example and would be called the same from outside. 
 
 ```JS 
@@ -342,13 +400,19 @@ function onSuccess(json) { ... }
 function onError(err) { ... }
 ```
 
+<!-- > -->
+
 ## Improving the Experience
+
+<!-- > -->
 
 The current data from OpenWeatherMap is really hard to parse.
 
 - Has multiple levels of data stored
 - Some of the keys use the same names
 - Some of the keys are confusing
+
+<!-- > -->
 
 You can improve on this. 
 
@@ -382,6 +446,8 @@ Currently OpenWeatherMap is returning something that looks like this:
 }
 ```
 
+<!-- > -->
+
 That's really hard to grasp. What's the difference between `main` and `weather`? Main has the temperature but weather has the description of the weather conditions. Main really seems to be about the temp and air pressure. 
 
 Why is weather an array with only one value? Everything else is objects.
@@ -389,6 +455,8 @@ Why is weather an array with only one value? Everything else is objects.
 You could improve on this, developers would thank you. 
 
 <!-- > -->
+
+Format a better data object. 
 
 ```JS
 async function getWeatherAsync(zip, apiKey) {
@@ -412,7 +480,7 @@ async function getWeatherAsync(zip, apiKey) {
 
 ## Homework
 
-- See the main page for the schedule of assignments.
+[API Lib](../assignments/assignment-09.md)
 
 <!-- > -->
 
