@@ -51,7 +51,7 @@ Students by the end of the course will be able to ...
 |  7    | Wed, Feb  2 | [Lesson 5 - Solving problems with Dates] |  |  |
 |  8    | Fri, Feb  4 | Lab | - | - |
 |  9    | Mon, Feb  7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
-| 10    | Wed, Feb  9 | [Lesson 7 - TBD] | Work on API project | - |
+| 10    | Wed, Feb  9 | [Lesson 7 - Lab] | Work on API project | - |
 | 11    | Fri, Feb 11 | Lab | - | - |
 | 12    | Mon, Feb 14 | [Lesson 8 - Continuous Integration] | [Continuous Integration] | [API Lib] |
 | 13    | Wed, Feb 16 | [Lesson 9 - Bundling Code] | [Bundling code for distribution] | - |
