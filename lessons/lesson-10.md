@@ -1,6 +1,8 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 - Writing in TypeScript
 
+<!-- > -->
+
 <small style="display:block;text-align:center">Writing in TypeScript</small>
 
 <!-- ([slides](https://docs.google.com/presentation/d/1ovt7YeAfqaiN8duWjwhYxldTwvca382QTHYyBUFZZ_8/edit)) -->
@@ -15,9 +17,13 @@ In this class, you will begin writing TypeScript code and learn how to adapt you
 
 ## Why Is This Important? 🤔
 
-TypeScript is becoming more popular, and is extremely useful in large codebases. Knowing how to refactor, write, and publish TypeScript code will allow you to decide whether TypeScript is right for a project.
+<!-- > -->
 
-Writing TypeScript will also force you to think about the types you use in the code you write which will make a you a stronger programmer.
+Type safe code is an industry best practice. It's often asked for in job applications. 
+
+<!-- > -->
+
+TypeScript will also force you to think about the types you use in the code you write which will make a you a stronger programmer.
 
 <!-- > -->
 
@@ -50,9 +56,10 @@ Examples of statically typed languages include Java, C, C++, and Swift.
 
 <!-- > -->
 
-**Q:** Can you use static typing in JS?
+- **Q:** Can you use static typing in JS?
+- **A:** Nope. 
 
-**A:** Nope. 
+<!-- > -->
 
 TypeScript is another language separate from JS and must be compiled into vanilla JS. **You can't use static typing in vanilla JS.**
 
@@ -62,12 +69,13 @@ You compile your TypeScript into vanilla JavaScript.
 
 ### What is dynamic typing?
 
+<!-- > -->
+
 In a dynamically typed language, a variable's type can change over the course of the program. Consider the following code:
 
 ```JavaScript
 let x = 10       // x starts as a Number
 x = 'hello'      // x becomes a String
-x = y.toFixed(2) // x becomes a string! 
 ```
 
 Usually you won't do this on purpose, **most often it will happen by accident.** 
@@ -124,7 +132,8 @@ function mystery(x) {
 
 Now, consider the following questions:
 - What is x?
-- What other fields, data, and behavior does x have? How else can I interact with x?
+- What other fields, data, and behavior does x have? 
+- How else can I interact with x?
 - How would I find this information?
 
 <!-- > -->
@@ -148,6 +157,8 @@ function mystery(x: Cat) { ... }
 
 ### Static typing can improve your workflow ⚒️
 
+<!-- > -->
+
 Since our types are set in stone at compile time, many code editors will use that information to give you smart autocomplete suggestions based on that particular data type. If you use VSCode, you can use Intellisense to browse available methods from a class while writing code. You can also Cmd+Click on a method name to go directly to its definition.
 
 <!-- > -->
@@ -156,7 +167,11 @@ Since our types are set in stone at compile time, many code editors will use tha
 
 <!-- > -->
 
-There isn't just one right answer that works in all scenarios; you will need to decide which style is right for your project. Here are some pros of dynamic typing to consider:
+There isn't just one right answer that works in all scenarios; you will need to decide which style is right for your project. 
+
+<!-- > -->
+
+Here are some pros of dynamic typing to consider:
 
 - It's faster to write, thus might be better for scripting
 - It's more succinct
@@ -202,7 +217,7 @@ Math.round(title) // Compile error
 
 Try these ideas out in example-2.ts 
 
-https://github.com/Make-School-Labs/few-2.1-typescript/
+https://github.com/Tech-at-DU/typescript-intro
 
 <!-- > -->
 
@@ -449,14 +464,6 @@ What do you think of typescript so far?
 <!-- > -->
 
 
-
-
-
-
-
-
-
-
 <!-- 
 ## Activity: TypeScript Exercises
 
@@ -587,10 +594,8 @@ Now we need to tell our library users where to find the TypeScript types. Go to 
 
 <!-- [Assignment 8 - Typescript](../assignments/assignment-08.md) -->
 
-Choose one: 
-
 - Update one of your libraries: Date lib or String Lib to TypeScript. 
-- Do the TypeScript Exercism: https://exercism.io/my/tracks/typescript
+- Do the TypeScript Exercism: https://exercism.org/tracks
 
 <!-- > -->
 

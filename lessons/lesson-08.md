@@ -41,11 +41,15 @@ Pair up and answer these questions:
 
 <!-- > -->
 
-## Why should you learn about Continuous Integration?
+## Why learn about Continuous Integration?
+
+<!-- > -->
 
 CI is a modern software development *best practice*. You should always be striving to follow best practices in your work and be familiar with what industry considers best practices if you plan to integrate yourself with the industry! 
 
-Using CI will provide automated feedback on the quality of a codebase as each new change is pushed. Feedback is good, automated feedback is even better since it saves you time and energy!
+<!-- > -->
+
+Using CI will provides feedback on the quality of a codebase as each new change is pushed. Feedback is good, automated feedback is even better since it saves you time and energy!
 
 <!-- > -->
 
@@ -70,7 +74,9 @@ Linting is an automated process that looks at your code and evaluates it for con
 - When working in a team it ensures that everyone on the team is coding with a **consistent style**. 
 - **Catches errors** and questionable coding structures before they get merged into a larger code base. 
 
-As a student **you should always be using the linter.** Think of every suggestion the linter makes as mentorship from a senior software engineer.
+<!-- > -->
+
+As a professional **you should always be using the linter.** Think of every suggestion the linter makes as mentorship from a senior software engineer.
 
 <!-- > -->
 
@@ -91,12 +97,16 @@ ESLint needs to be installed in two places:
 
 ### Install ESLint in Editor
 
+<!-- > -->
+
 You'll also need to add the ESLint plugin in your editor. The process for this is different for each editor but generally follows these steps: 
 
 1. Go to Settings Extensions/Plugins
 1. Add a new Extension/Plugin
 1. Search ESLint
 1. Install 
+
+<!-- > -->
 
 You may need to close and reopen your project in your editor before the Linter starts registering errors. 
 
@@ -112,9 +122,10 @@ https://eslint.org/docs/user-guide/getting-started
 
 tl;dr
 
-`npm install eslint --save-dev`
-
-`eslint --init`
+```
+npm install eslint --save-dev`
+eslint --init
+```
 
 <!-- > -->
 
@@ -134,6 +145,8 @@ Choose:
 
 ## Pair up and solve linting errors
 
+<!-- > -->
+
 Pair with a person _you haven't paired with_ before. 
 
 Using a **single computer** spend 10 mins solving linter errors person A's project. Switch computers after 10 mins and continue solving linter errors on person B's project. 
@@ -150,6 +163,8 @@ Using a **single computer** spend 10 mins solving linter errors person A's proje
 
 ## Travis CI 
 
+<!-- > -->
+
 [Travis CI](https://travis-ci.com) is a Continuous Integration platform. It automates building and testing your software projects. 
 
 Follow the instructions here: 
@@ -161,6 +176,8 @@ https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci
 <!-- > -->
 
 ### Setup Travis-CI 
+
+<!-- > -->
 
 Travis-CI connects to your GitHub repos and automatically process files when it sees you push to a master or a branch. To make this magic work you'll need to authorize Travis through GitHub.
 
