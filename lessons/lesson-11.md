@@ -51,12 +51,12 @@ class Person {
 
 <!-- > -->
 
-In type script the syntax for a class looks like this: 
+In typescript the syntax for a class looks like this: 
 
 ```JS
 class Person {
 	name: string // instance variables!
-	age: number
+	age: number  // set types here!
 
 	constructor(name: string, age: string) {
 		this.name = name 
@@ -189,6 +189,8 @@ These are the possible choices for units in the openweathermap API. Unlike the m
 
 In many situations you have a limited set of choices and your program should always choose from that set. An enum guarantees that you will always choose from the possible choices! 
 
+<!-- > -->
+
 Under the hood enums are just objects with keys. You could have done this but TypeScript does it for you and adds error checking! 
 
 <!-- > -->
@@ -207,45 +209,35 @@ enum Direction {
 An enum can be used as a value and a type. The function takes the `Direction` enum as the parameter and check it against possible cases in the switch block. 
 
 ```JS
-let x = 0
-let y = 0
-
 function move(direction: Direction) { // direction is enum type
 	switch(direction) {
 		case Direction.E:
-			x += 1
-			break
-
+			// Go East
 		case Direction.W:
-			x -= 1
-			break 
-		
+			// Go West
 		case Direction.N:
-			y -= 1
-			break
-		
+			// Go North
 		case Direction.S: 
-			y += 1
-			break
-
-		// Challenge: Add cases for the new directions: SE, SW, NE, NW
+			// Go South
 	}
 }
 ```
-
-In this case `direction` can only be North, South, East, or West.
 
 <!-- > -->
 
 So what's the value of an enum? 
 
-`console.log(Direction.N) // 0`
+```JS
+console.log(Direction.N) // 0
+```
 
 Under the hood an enum is an array and each of the cases is just the index of that case. 
 
 <!-- > -->
 
 Some times it's useful to assign a value to each case of an enum. For example maybe our program needs to print the direction.
+
+<!-- > -->
 
 With the current code this `printDirection` function is not very useful.
 
@@ -274,7 +266,7 @@ enum Direction {
 }
 ```
 
-With this change everything works the same as before but value of the enum is represented as the strings you defined: 
+With this change everything works the same as before but the value of the enum is represented as the strings you defined: 
 
 ```JS
 console.log(Direction.N) // 'North'
@@ -297,7 +289,11 @@ Read more about enums here:
 
 ## Functions as Types
 
-In Typescript functions are also expressed as types. A function that receives a function as a parameter or returns a function must describe that function as a type.
+<!-- > -->
+
+In Typescript functions are also expressed as types. 
+
+A function that receives a function as a parameter or returns a function must describe that function as a type.
 
 <!-- > -->
 
