@@ -186,7 +186,7 @@ Here are some pros of dynamic typing to consider:
 
 Follow the example with these files:
 
-https://github.com/Make-School-Labs/few-2.1-typescript/
+https://github.com/Tech-at-DU/typescript-intro
 
 Your source code will be the files named: .ts 
 
@@ -241,7 +241,7 @@ add('2', 7); // Compile Error
 
 Try these ideas out in example-3.ts 
 
-https://github.com/Make-School-Labs/few-2.1-typescript/
+https://github.com/Tech-at-DU/typescript-intro
 
 <!-- > -->
 
@@ -274,7 +274,7 @@ someValue = [1, 2, 3];
 
 Try these ideas out in example-4.ts 
 
-https://github.com/Make-School-Labs/few-2.1-typescript/
+https://github.com/Tech-at-DU/typescript-intro
 
 <!-- > -->
 
@@ -373,7 +373,7 @@ Use the fizz buzz code, you wrote test for this earlier. Let's convert it to Typ
 
 Get the code here at the link below or use your copy of the code from the previous assignment:
 
-https://github.com/Make-School-Labs/fizz-buzz-test
+https://github.com/Tech-at-DU/fizz-buzz-test
 
 <!-- > -->
 
@@ -467,7 +467,7 @@ What do you think of typescript so far?
 <!-- 
 ## Activity: TypeScript Exercises
 
-Go to [make.sc/typescript-activities](https://make.sc/typescript-activities) and complete the 8 activities there to help solidify how to use TypeScript. You can write in the same repl.it you were using before to check your work -->
+Go to https://github.com/Tech-at-DU/typescript-intro and complete the 8 activities there to help solidify how to use TypeScript. You can write in the same repl.it you were using before to check your work -->
 
 <!-- > -->
 
