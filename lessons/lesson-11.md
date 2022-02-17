@@ -24,7 +24,7 @@ In this class, you will begin learning to use Typescript to solve more advanced 
 
 # Review 
 
-Download the examples here: https://github.com/Make-School-Labs/few-2.1-typescript
+Download the examples here: https://github.com/Tech-at-DU/typescript-intro
 
 Take a look at `example-8.ts` and `example-9.ts` add the types and compile it. 
 
