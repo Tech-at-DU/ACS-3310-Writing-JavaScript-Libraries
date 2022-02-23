@@ -158,6 +158,12 @@ https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/addi
 
 <!-- > -->
 
+Follow this article for more information on setting up badges for GitHub Actions: 
+
+https://nklya.medium.com/useful-status-badges-for-github-actions-16e658d52ba2
+
+<!-- > -->
+
 ## Install ESLint and lint your work!
 
 Linting is not a CI but is related as a part of industry best practices and code quality. We've covered this in other classes but it's important so we will review it again here. 
