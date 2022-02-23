@@ -61,6 +61,103 @@ Using CI will provides feedback on the quality of a codebase as each new change 
 
 <!-- > -->
 
+## GitHub Actions
+
+<!-- > -->
+
+You're probably using GitHub to track changes, collaborate and backup your projects. GitHub actions are built into GitHub allowing you to automate tasks. 
+
+<!-- > -->
+
+In the next few steps you will use GitHub Actions to run unit tests on one of your repoistories. 
+
+<!-- > -->
+
+Choose a repoistory that has unit tests already implemented. You'll be adding GitHub actions to this repo. 
+
+<!-- > -->
+
+I used the example project here for testing: 
+
+https://github.com/Tech-at-DU/GitHub-Actions
+
+I followed the guides here: 
+
+- https://medium.com/swlh/jest-and-github-actions-eaf3eaf2427d
+- https://docs.github.com/en/actions/quickstart
+
+<!-- > -->
+
+GitHub Actions are added through the Actions option in your repo at GitHub.com. 
+
+- Click **Actions**
+- Search for the Node.js Workflow
+
+<!-- > -->
+
+Notice that you're adding a new .yml file at .github/workflows/
+
+This yml file contains instructions telling GitHub what to do when you push changes or accept a pull request.
+
+This is what I used: 
+
+```
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    # Install required deps for action
+    - name: Install Dependencies
+      run: npm install
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+```
+
+<!-- > -->
+
+Push your code. Chekc the Actions tab. In your github page. You'll see the actions running there. 
+
+<!-- > -->
+
+Add a status badge to your repo by following the instructions here: 
+
+https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge
+
+```
+![example workflow](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
+```
+
+- Change <OWNER> to your GitHub user name
+- Change <REPOSITORY> to your repo name
+- Change <WORKFLOW_FILE> to the name of your actions .yml for example node.js.yml
+
+<!-- > -->
+
 ## Install ESLint and lint your work!
 
 Linting is not a CI but is related as a part of industry best practices and code quality. We've covered this in other classes but it's important so we will review it again here. 
