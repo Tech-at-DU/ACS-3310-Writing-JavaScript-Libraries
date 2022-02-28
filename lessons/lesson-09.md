@@ -164,7 +164,7 @@ These modules might be further processed with babel before they are used.
 - There are several different module formats
   - CommonJS
   - UMD 
-  - ES
+  - ESM
 
 <!-- > -->
 
