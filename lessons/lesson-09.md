@@ -158,13 +158,23 @@ These modules might be further processed with babel before they are used.
 
 <!-- > -->
 
+Use ES Modules in the browser by adding `type="module"` to your script tag. 
+
+```HTML
+<script src="main.js" type="module"></script>
+```
+
+From here you can use use `import` and `export` in `main.js`. 
+
+<!-- > -->
+
 ## Recap: Modules
 
 - Modules are used to make code compatible across different environments. 
 - There are several different module formats
   - CommonJS
   - UMD 
-  - ES
+  - ESM
 
 <!-- > -->
 
