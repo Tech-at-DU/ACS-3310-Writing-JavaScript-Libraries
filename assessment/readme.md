@@ -1,6 +1,6 @@
-# FEW 2.4 Final Assessment
+# ACS 3310 Final Assessment
 
-This assessment will give you a chance to show your skills by creating a library of code including unit test from scratch. 
+This assessment will give you a chance to measure the skills you gained this term by solving some coding problems.
 
 ## Description 
 
@@ -30,7 +30,7 @@ The data includes the follow fields:
 
 Solve the problems below. Feel free to use the libraries you have written in class!
 
-Write your code with Typescript and compile it to JavaScript. 
+Write your code with Typescript and compile it to JavaScript.
 
 The goal is to load the JSON data from `data.json`. Process the information and print it out. It should read roughly as: 
 
@@ -52,7 +52,7 @@ Import than the data from `data.json`. You'll use this data to solve the problem
 
 If you're going to run your code in node.js you should print the output to the console. 
 
-If you're going to display the data in the browser you'll need to make an HTML and run your page in a local server to avoid CORS issues. 
+If you're going to display the data in the browser you'll need to make an HTML file and run your page in a local server to avoid CORS issues. 
 
 ### Challenge 1
 
@@ -116,3 +116,5 @@ Submit your work via GradeScope.
 | Quality      | code is sloppy and throws errors or shows linting errors | Well written no errors | Includes comments, and variable, parameter, and function names are self documenting  |
 | Comprehension | Can't explain the code written | Can explain the code | Could write the code again from scratch |
 | Tests        | < 100% test coverage | 100% Test coverage | Tests covers edge cases and well written descriptions |
+
+
