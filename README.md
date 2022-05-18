@@ -42,29 +42,32 @@ Students by the end of the course will be able to ...
 
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
-|  1    | Wed, Jan 19 | [Lesson 1 - Solving string problems] | - | - |
-|  2    | Fri, Jan 21 | Lab | - | - |
-|  3    | Mon, Jan 24 | [Lesson 2 - Unit testing] | - | - | 
-|  4    | Wed, Jan 26 | [Lesson 3 - Publishing to npm] | [Add Unit Tests] | - |
-|  5    | Fri, Jan 28 | Lab | - | [Fizz Buzz Unit Tests] |
-|  6    | Mon, Jan 31 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
-|  7    | Wed, Feb  2 | [Lesson 5 - Solving problems with Dates] |  |  |
-|  8    | Fri, Feb  4 | Lab | - | - |
-|  9    | Mon, Feb  7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
-| 10    | Wed, Feb  9 | [Lesson 7 - Lab] | Work on API project | - |
-| 11    | Fri, Feb 11 | Lab | - | - |
-| 12    | Mon, Feb 14 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
-| 13    | Wed, Feb 16 | [Lesson 11 - Typescript] |  | - |
-| 14    | Fri, Feb 18 | Lab | - | - |
-| 15    | Mon, Feb 21 | **President's Day** | - | - |
-| 16    | Wed, Feb 23 | [Lesson 8 - Continuous Integration] | [TypeScript Exercisms] | [Continuous Integration] |
-| 17    | Fri, Feb 25 | Lab | - | - |
-| 18    | Mon, Feb 28 | [Lesson 9 - Bundling Code] | - | - |
-| 19    | Wed, Mar  2 | Final Assesment | Final Assessment | - |
-| 20    | Fri, Mar  4 | Final Presentation | - | - |
+|  -    | Week 1 | JS Library 1 | String Library |  |
+|  1    | Mon, May 23 | [Lesson 1 - Solving string problems] | - | - |
+|  2    | Wed, May 25 | [Lesson 2 - Unit testing] | - | - |
+|  -    | Week 2 | - | - | - |
+|  3    | Mon, May 30 | Holiday - Memorial Day[Lesson 3 - Publishing to npm] | [Add Unit Tests] | - |
+|  4    | Wed, June 1 | Lab | - | [Fizz Buzz Unit Tests] |
+|  -    | Week 3 | JS Library 2 | Date Library | - |
+|  5    | Mon, June 6 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
+|  6    | Wed, June 8 | [Lesson 5 - Solving problems with Dates] |  |  |
+|  -    | Week 4 | - | - | - |
+|  7    | Mon, June 13 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
+|  8    | Wed, June 15 | [Lesson 7 - Lab] | Work on API project | - |
+|  -    | Week 5 | JS Library 3 | API Library | - |
+|  9    | Mon, June 20 | Juneteenth [Lesson 10 - Typescript Intro] |  | [API Lib] |
+| 10    | Wed, June 22 | [Lesson 11 - Typescript] |  | - |
+|  -    | Week 6 | - | - | - |
+| 11    | Mon, June 27 | **President's Day** | - | - |
+| 12    | Wed, June 29 | [Lesson 8 - Continuous Integration] | [TypeScript Exercisms] | [Continuous Integration] |
+|  -    | Week 7 | - | - | - |
+| 13    | Mon, July 4 | Holiday  [Lesson 9 - Bundling Code] | - | - |
+| 14    | Wed, July 6 | Final Assesment | Final Assessment | - |
+|  -    | Week 8 | - | - | - |
+| 15    | Mon, July 11 | Final Assessment | - | - |
+| 16    | Wed, July 13 | Final Presentation | - | - |
 
-<!-- | 14 | Tue, May 13 | [Lesson 14](./lessons/lesson-14.md) | [Present your work](./assignments/assignment-10.md) - Final Presentations | -->
-
+<!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
 [Lesson 2 - Unit testing]: ./lessons/lesson-02.md
 [Lesson 3 - Publishing to npm]: ./lessons/lesson-03.md
@@ -89,16 +92,6 @@ Students by the end of the course will be able to ...
 [Continuous Integration]: ./assignments/assignment-04.md
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
-
-<!-- 
-
-| 43 |  Tue, May 11               | [Lesson 1] |
-| 44 |  Wed, May 12               | Final Exam/Presentations |
-
-[Lesson 1]: Lessons/Lesson1.md
-[Lesson 2]: Lessons/Lesson2.md 
-
--->
 
 ## Projects
 
