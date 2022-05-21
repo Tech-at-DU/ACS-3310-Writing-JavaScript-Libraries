@@ -93,40 +93,13 @@ Students by the end of the course will be able to ...
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
 
-## Projects
+## Course Requirements 
 
-- String Library 
-- Date Library 
-- API Library 
-- Continuous Integration
+See the [Course Requirements page](course-requirements.md) for a full list of what is required from you this term. 
 
 ## Video Lectures
 
 You can follow video lectures for this class here: 
 
 https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
-
-## Evaluation
-
-To pass this course you must meet the following requirements:
-
-- Achieve a passing score according to the rubric on each of the [projects](#projects) listed above.
-
-##  Information Resources
-
-Any additional resources you may need (online books, etc.) can be found here. You can also find additional resources through the library linked below:
-
-- [make.sc/library](http://make.sc/library)
-
-## Make School Course Policies
-
-- [Program Learning Outcomes](https://make.sc/program-learning-outcomes) - What you will achieve after finishing Make School, all courses are designed around these outcomes.
-- [Grading System](https://make.sc/grading-system) - How grading is done at Make School
-- [Code of Conduct, Equity, and Inclusion](https://make.sc/code-of-conduct) - Learn about Diversity and Inclusion at Make School
-- [Academic Honesty](https://make.sc/academic-honesty-policy) - Our policies around plagerism, cheating, and other forms of academic misconduct
-- [Attendance Policy](https://make.sc/attendance-policy) - What we expect from you in terms of attendance for all classes at Make School
-- [Course Credit Policy](https://make.sc/course-credit-policy) - Our policy for how you obtain credit for your courses
-- [Disability Services (Academic Accommodations)](https://make.sc/disability-services) - Services and accommodations we provide for students
-- [Online Learning Tutorial](https://make.sc/online-learning-tutorial) - How to succeed in online learning at Make School
-- [Student Handbook](https://make.sc/student-handbook) - Guidelines, policies, and resources for all Make School students
 
