@@ -69,15 +69,15 @@ Students by the end of the course will be able to ...
 
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
-[Lesson 2 - Unit testing]: ./lessons/lesson-02.md
-[Lesson 3 - Publishing to npm]: ./lessons/lesson-03.md
-[Lesson 4 - Working with Dates]: ./lessons/lesson-04.md
+[Lesson 2 - Unit testing]: ./lessons/lesson-02-unit-testing.md
+[Lesson 3 - Publishing to npm]: ./lessons/lesson-03-publishing.md
+[Lesson 4 - Working with Dates]: ./lessons/lesson-04-dates.md
 [Lesson 5 - Solving problems with Dates]: ./lessons/lesson-05.md
 [Lesson 6 - Async JS]: ./lessons/lesson-06.md
 [Lesson 7 - Lab]: ./lessons/lesson-07.md
-[Lesson 8 - Continuous Integration]: ./lessons/lesson-08.md
-[Lesson 9 - Bundling Code]: ./lessons/lesson-09.md
-[Lesson 10 - Typescript Intro]: ./lessons/lesson-10.md
+[Lesson 8 - Continuous Integration]: ./lessons/lesson-08-continuous-integration.md
+[Lesson 9 - Bundling Code]: ./lessons/lesson-09-bundling.md
+[Lesson 10 - Typescript Intro]: ./lessons/lesson-10-typescript.md
 [Lesson 11 - Typescript]: ./lessons/lesson-11.md
 [Lesson 12]: ./lessons/lesson-12.md
 [Lesson 13]: ./lessons/lesson-13.md
