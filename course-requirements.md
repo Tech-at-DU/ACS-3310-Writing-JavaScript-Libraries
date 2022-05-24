@@ -79,6 +79,7 @@ Build any of all of these libraries. These are listed in order of difficulty.
 
 - [TypeScript Lesson](lessons/lesson-10-typescript.md)
 - [TypeScript Assignment](assignments/assignment-08-typescript.md)
+- [TypeScript Exercisms](https://exercism.org/tracks/typescript/exercises)
 
 ### Continuous Integration 
 

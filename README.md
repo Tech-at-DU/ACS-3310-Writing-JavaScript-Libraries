@@ -59,7 +59,7 @@ Students by the end of the course will be able to ...
 | 10    | Wed, June 22 | [Lesson 11 - Typescript] |  | - |
 |  -    | Week 6 | - | - | - |
 | 11    | Mon, June 27 | **President's Day** | - | - |
-| 12    | Wed, June 29 | [Lesson 8 - Continuous Integration] | [TypeScript Exercisms] | [Continuous Integration] |
+| 12    | Wed, June 29 | [Lesson 8 - Continuous Integration] | - | - |
 |  -    | Week 7 | - | - | - |
 | 13    | Mon, July 4 | Holiday  [Lesson 9 - Bundling Code] | - | - |
 | 14    | Wed, July 6 | Final Assesment | Final Assessment | - |
