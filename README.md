@@ -43,14 +43,14 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
-|  1    | Mon, May 23 | [Lesson 1 - Solving string problems] | - | - |
+|  1    | Mon, May 23 | [Lesson 1 - Solving string problems] | Start your first lib | - |
 |  2    | Wed, May 25 | [Lesson 2 - Unit testing] | - | - |
 |  -    | Week 2 | - | - | - |
-|  3    | Mon, May 30 | Holiday - Memorial Day[Lesson 3 - Publishing to npm] | [Add Unit Tests] | - |
-|  4    | Wed, June 1 | Lab | - | [Fizz Buzz Unit Tests] |
+|  3    | Mon, May 30 | Holiday - Memorial Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
+|  4    | Wed, June 1 | Lab | Publish to npm | - |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  5    | Mon, June 6 | [Lesson 4 - Working with Dates] | [Date Lib] | [String Lib] |
-|  6    | Wed, June 8 | [Lesson 5 - Solving problems with Dates] |  |  |
+|  5    | Mon, June 6 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
+|  6    | Wed, June 8 | [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
 |  7    | Mon, June 13 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
 |  8    | Wed, June 15 | [Lesson 7 - Lab] | Work on API project | - |
