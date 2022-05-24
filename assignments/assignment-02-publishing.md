@@ -31,18 +31,6 @@ You must code review with another student and apply their feedback to your work.
 
 - You have reviewed your String lib code with another student
 
-Move all functions to `String.prototype`
-
-### Deliverable
-
-- GitHub project is linked in the progress tracker
-- npm page is linked in the ReadMe of the GitHub repo
-- Put your name next to the student whom you code reviewed
-
-### Due date
-
-Class 3
-
 ## Assessing the assignment
 
 | Expectations | Does not meet              | Meets                 | Exceeds                          |

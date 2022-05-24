@@ -12,8 +12,8 @@ Large libraries, like React, incorporate other libraries. Why write all of that 
 
 Think about all of the packages that you use? Make a list of them? Here's a few to get your started: 
 
-- Axios
-- Moment.js
+- [Axios](https://axios-http.com/docs/intro)
+- [Moment.js](https://momentjs.com)
 - ...
 
 ### What kind of code goes into a library? 
@@ -60,28 +60,31 @@ This project will be scoped to the time available. It will include:
 
 Build any of all of these libraries. These are listed in order of difficulty. 
 
-- String Library - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-01.md
-- Math Library - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-05.md
-- Date Library - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-07.md
-- API Library - https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-09.md
+- [String Library](assignments/assignment-01-string-lib.md)
+- [Math Library](assignments/assignment-05-math-lib.md)
+- [Date Library](assignments/assignment-07-date-lib.md)
+- [API Library](assignments/assignment-09-api-lib.md)
 
 ### Publishing to npm
 
-- https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-02.md
+- [Publishing to npm](lessons/lesson-03-publishing.md)
+- [Publishing to npm assignment](assignments/assignment-02-publishing.md)
 
 ### Unit Testing 
 
-- https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-03.md
+- [Unit Testing Lesson](lessons/lesson-02-unit-testing.md)
+- [Unit Testing Assignment](assignments/assignment-03-unit-testing.md)
 
 ### TypeScript
 
-- https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-08.md
+- [TypeScript Lesson](lessons/lesson-10-typescript.md)
+- [TypeScript Assignment](assignments/assignment-08-typescript.md)
 
 ### Continuous Integration 
 
-- https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-04.md
+- [Continuous Integration Lesson](lessons/lesson-08-continuous-integration.md)
 
 ### Bundling Code 
 
-- https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-06.md
+- [Bundling Lesson](lessons/lesson-09-bundling.md)
 

@@ -1,25 +1,17 @@
 # ACS 3310 - Assignment 1 - String Lib
 
-
-<!--
-
-Add some challenges that build a markdown renderer? or code syntax highlighter? 
-
-- replace tabs with spaces
-- wrap words with tags
-- 
-- Code syntax highlighter https://www.w3schools.com/howto/tryit.asp?filename=tryhow_syntax_highlight
-- https://codepen.io/maxwell_alexius/pen/oeVxod
-- https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/
-- https://idiallo.com/blog/javascript-syntax-highlighter
-- https://stackoverflow.com/questions/809423/writing-a-syntax-highlighter
-
-Add challenge:
-- convert to html entities 
-
--->
-
 The goal of this assignment is to create a JavaScript Library of String functions. 
+
+## Video Lessons
+
+- https://youtu.be/jKx45OJSDO4
+- https://youtu.be/ZHg0iWJln8E
+- https://youtu.be/6MTbBMDWGmA
+- https://youtu.be/80y__y2OsHY
+- https://youtu.be/sK_a_u0kHvE
+- https://youtu.be/3Qnv_hc0rIc
+- https://youtu.be/ijB1b-Xet9c
+- https://youtu.be/MNDaSp3UUu8
 
 ## Writing your first library
 
@@ -40,7 +32,7 @@ In this assignment you'll create a library of resuable code that works with stri
 
 The goal of this first library is to make write utilities that work with Strings. Strings are one of the most common data types that you work with. There are very few programs that don't make use of Strings in one form or another.
 
-JavaScript has a built in String Object/Class that has many methods built into it. These do a lot but often you need to combine these together to do something that has practical use. Your job to write functions that solve the problems below. 
+JavaScript has a built in String Object that has many methods built into it. These do a lot but often you need to combine these together to do something that has practical use. Your job to write functions that solve the problems below.
 
 **Challenge 1** 
 
@@ -92,7 +84,7 @@ Strategies:
 
 1) Use [`string.trim()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim) to remove white space from the beginning and ending of a string. Then plit the string into an array with [`str.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) (split on the `' '` space.) Filter the empty strings and use [`array.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) with a ' ' to put them back together.
 
-**Challenge 5** 
+**Challenge 5**
 
 `kebobCase()` - Removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase. 
 
@@ -178,7 +170,7 @@ isEmpty(str) // true
 
 Strategies: 
 
-1) You can use string.trim() to remove spaces at the beginning and end of the string. What's left is either empty characters like returns, enter or tab, or other characters. Loop over the remaining characters, if you find a character that is not `\n`, `\r`, or `\t` return false. If you got to the end of the loop return true. 
+1) You can use `string.trim()` to remove spaces at the beginning and end of the string. What's left is either empty characters like returns, enter or tab, or other characters. Loop over the remaining characters, if you find a character that is not `\n`, `\r`, or `\t` return false. If you got to the end of the loop return true. 
 
 **Challenge 11** Adding documentation 
 
@@ -186,39 +178,30 @@ Add a readme.md to your GitHub Repo. In this file you will document your library
 
 Also include a link to your library on npm. You'll be publishing this npm in class 2. 
 
-## Video Lessons
+## Stretch Goals
 
-https://repl.it/@MitchellHudson/String-Study#index.js
-
-- https://youtu.be/jKx45OJSDO4
-- https://youtu.be/ZHg0iWJln8E
-- https://youtu.be/6MTbBMDWGmA
-- https://youtu.be/80y__y2OsHY
-- https://youtu.be/sK_a_u0kHvE
-- https://youtu.be/3Qnv_hc0rIc
-- https://youtu.be/ijB1b-Xet9c
-- https://youtu.be/MNDaSp3UUu8
+- Replace tabs with spaces - Write a function that replaces all of the tabs with spaces. This is a common option in code editors. A tab is represented by `\t`. Each tab should be replaced by 1, 2, 4, or more spaces. Make this a parameter. 
+- Wrap words with tags. This function should wrap each word in a string with a tag. For example: `"hello wordl"` > `"<span>hello</span> <span>world</span>"`. The tag should be a parameter. 
+- Code syntax highlighter https://www.w3schools.com/howto/tryit.asp?filename=tryhow_syntax_highlight
+	- https://codepen.io/maxwell_alexius/pen/oeVxod
+	- https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/
+	- https://idiallo.com/blog/javascript-syntax-highlighter
+	- https://stackoverflow.com/questions/809423/writing-a-syntax-highlighter
+<!-- - convert to html entities. Read up on HTML entities if you are not familiar.  -->
 
 ## Deliverable 
 
-Your completed work is your Github repo and the files in it. Post the link to your work in the progress tracker. 
+To complete your library you need to:
 
-You will use this project for future assignments that will include: 
-
-- Publishing to npm
-- Writing unit tests
-
-## Due
-
-Class 4 - April 8
-
-Mark your progress in the class [Progress Tracker](https://docs.google.com/spreadsheets/d/1AcrDA3QnL4Vet2XThzITj67MblcY9PQ9ZZWEbHru2f8/edit?usp=sharing) and post a link to your GitHub repo in the Repos tab. 
+- [Write unit tests](../lessons/lesson-02-unit-testing.md)
+- [Publish to npm](../lessons/lesson-03-publishing.md)
+- [Convert to TypeScript](../lessons/lesson-10-typescript.md)
 
 ## Assessment
 
 Your work will be assessed by a rubric. You can self assess your work by looking at the rubric. Wonder what is expected of your work check the rubric. 
 
-# FEW 2.1 - Assignment 1 - String Lib - Rubric
+# String Lib - Rubric
 
 | Expectations | Does not meet | Meets | Exceeds |
 |:-------------|:--------------|:------|:--------|
