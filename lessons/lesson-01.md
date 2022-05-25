@@ -249,7 +249,7 @@ Uppercase the first letter of each word in a string. For example:
 
 ## Homework
 
-- [String Lib](./assignments/assignment-01.md)
+- [String Lib](./assignments/assignment-01-string-lib.md)
 
 <!-- > -->
 
@@ -263,7 +263,7 @@ Uppercase the first letter of each word in a string. For example:
 
 ## After Class 
 
- - [String Lib](../assignments/assignment-01.md)
+ - [String Lib](../assignments/assignment-01-string-lib.md)
 
 <!-- > -->
 
