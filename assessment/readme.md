@@ -1,120 +1,51 @@
 # ACS 3310 Final Assessment
 
-This assessment will give you a chance to measure the skills you gained this term by solving some coding problems.
+This assessment is a tool you can use to measure what you have learned this term. 
 
-## Description 
+Solve the problems below to the best of your ability and check your work agains the rubric. 
 
-The mock up data in `data.json` contains information about 
-car purchases. Your job is to format and print the data. 
+## Challenge 1 
 
-You can print the data to the console with node or in the 
-browser with html. 
-
-The data includes the follow fields:
+The main problem here is to write a function that adds the ordinal suffix to the end of a date or number. The ordinal siffix is the two letters: st, nd, rd, and th. You need to write a function that takes a number and returns a string with the correct suffix: 
 
 ```JS
-{
-  "id": 1,
-  "first_name": "neel",
-  "last_name": "mclarty",
-  "purchased": "2018-04-03T18:13:55Z",
-  "lastpayment": "2020-08-22T11:10:41Z",
-  "phone": "1531589353",
-  "make": "saturn",
-  "model": "s-series",
-  "city": "sikeshu"
-}
+ordinalSuffix(1)    // 'st' -> 1st
+ordinalSuffix(2)    // 'nd' -> 2nd
+ordinalSuffix(3)    // 'rd' -> 3rd
+ordinalSuffix(4)    // 'th' -> 4th
+ordinalSuffix(11)   // 'th' -> 11th
+ordinalSuffix(502)  // 'nd' -> 502nd
+ordinalSuffix(1001) // 'st' -> 1001st
+ordinalSuffix(433)  // 'rd' -> 433rd
 ```
 
-## Challenges
+The [rules](https://en.wikipedia.org/wiki/Ordinal_indicator#English) are as follows:
 
-Solve the problems below. Feel free to use the libraries you have written in class!
+- st is used with numbers ending in 1 (e.g. 1st, pronounced first)
+- nd is used with numbers ending in 2 (e.g. 92nd, pronounced ninety-second)
+- rd is used with numbers ending in 3 (e.g. 33rd, pronounced thirty-third)
+- As an exception to the above rules, all the "teen" numbers ending with 11, 12 or 13 use -th (e.g. 11th, pronounced eleventh, 112th, pronounced one hundred [and] twelfth)
+- th is used for all other numbers (e.g. 9th, pronounced ninth).
 
-Write your code with Typescript and compile it to JavaScript.
+Write your solution with TypeScript. 
 
-The goal is to load the JSON data from `data.json`. Process the information and print it out. It should read roughly as: 
+Compile your code from TypeScript to JavaScript. 
 
-> Neel Mclarty
->
-> Saturn S-series
->
-> Purchased: April 3, 2018
->
-> Last Payment: 8 months ago
->
-> Phone: (153) 158-9353
->
-> City: Sikeshu
+## Challenge 2 
 
-### Challenge 0 
+Write unit tests for the function above. Incldue the unit test with your project. 
 
-Import than the data from `data.json`. You'll use this data to solve the problems that follow. 
+Run your unit tests to make sure they are working. 
 
-If you're going to run your code in node.js you should print the output to the console. 
+## Challenge 3 
 
-If you're going to display the data in the browser you'll need to make an HTML file and run your page in a local server to avoid CORS issues. 
+Publish your code to npm.	
 
-### Challenge 1
+## Challenge 4 
 
-You should print the first_name and last_name. 
+Create a test app that uses your library by downloading the package from npm. 
 
-Convert the first letter of each name to uppercase.
+You can use Node JS for this test app. Your test app should use npm and load your package from npm.
 
-### Challenge 2
-
-Print the purchased date to a a date and format it as: 
-Month date, Year for example:
-
-> Purchased: January 21, 2019
-
-`<full-month> <date>, <full-year>`
-
-### Challenge 3
-
-Print out last payment showing the date as "when". 
-For example: Last payment: 
-
-> Last Payment: 3 months ago
-
-You can use your library to do this! 
-
-Should read something like: 4 months ago
-
-### Challenge 4
-
-Format the phone number as: (xxx) xxx-xxxx. You'll need to 
-write a function to do the formatting. It should take a 10
-digit number/string: 4155448375, and return a string formatted as:
-
-> (415) 544-8375
-
-Write a function to handle this number formatting function. It should take a number/string as a parameter and return the formatted phone number as a string. 
-
-### Challenge 5
-
-Write a unit test for your phone number formatting function.
-
-Think of any edge cases that might effect your phone number formatter and include these in your test case. 
-
-### Challenge 6
-
-Lint your code with ESLint. Use the Airbnb style guide. 
-
-### Challenge 7 
-
-Compile your code from TypeScript to JS. 
-
-### Submit your work on GradeScope
-
-Submit your work via GradeScope. 
-
-## Assessing the assessment
-
-| Expectations | Does not meet | Meets | Exceeds |
-|:-------------|:--------------|:------|:--------|
-| Completion   | < 100% challenges | 100% of challenges | Solved stretch challenges |
-| Quality      | code is sloppy and throws errors or shows linting errors | Well written no errors | Includes comments, and variable, parameter, and function names are self documenting  |
-| Comprehension | Can't explain the code written | Can explain the code | Could write the code again from scratch |
-| Tests        | < 100% test coverage | 100% Test coverage | Tests covers edge cases and well written descriptions |
-
+The test app should print the numbers 1 to 100 using the ordinal suffix. 
 
