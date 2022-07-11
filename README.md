@@ -62,10 +62,10 @@ Students by the end of the course will be able to ...
 | 12    | Wed, June 29 | [Lesson 8 - Continuous Integration] | - | - |
 |  -    | Week 7 | - | - | - |
 | 13    | Mon, July 4 | Holiday  [Lesson 9 - Bundling Code] | - | - |
-| 14    | Wed, July 6 | Final Assesment | Final Assessment | - |
-|  -    | Week 8 | - | - | - |
+| 14    | Wed, July 6 | Review work | - | - |
+|  -    | Week 8 | Review work | - | - |
 | 15    | Mon, July 11 | Final Assessment | - | - |
-| 16    | Wed, July 13 | Final Presentation | - | - |
+| 16    | Wed, July 13 | Final Assesment | - | - |
 
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
