@@ -43,29 +43,29 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
-|  1    | Mon, May 23 | [Lesson 1 - Solving string problems] | Start your first lib | - |
-|  2    | Wed, May 25 | [Lesson 2 - Unit testing] | - | - |
+|  1    | Wed, Aug 17 | [Lesson 1 - Solving string problems] | Start your first lib | - |
+|  2    | Mon, Aug 22 | [Lesson 2 - Unit testing] | - | - |
 |  -    | Week 2 | - | - | - |
-|  3    | Mon, May 30 | Holiday - Memorial Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
-|  4    | Wed, June 1 | Lab | Publish to npm | - |
+|  3    | Wed, Aug 24 | Holiday - Memorial Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
+|  4    | Mon, Aug 29 | Lab | Publish to npm | - |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  5    | Mon, June 6 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
-|  6    | Wed, June 8 | [Lesson 5 - Solving problems with Dates] | - | - |
+|  5    | Wed, Aug 31 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
+|  6    | Mon, Sep 5 | Labor Day no class [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
-|  7    | Mon, June 13 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
-|  8    | Wed, June 15 | [Lesson 7 - Lab] | Work on API project | - |
+|  7    | Wed, Sep 7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
+|  8    | Mon, Sep 12 | [Lesson 7 - Lab] | Work on API project | - |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  9    | Mon, June 20 | Juneteenth [Lesson 10 - Typescript Intro] |  | [API Lib] |
-| 10    | Wed, June 22 | [Lesson 11 - Typescript] |  | - |
+|  9    | Wed, Sep 14 | Juneteenth [Lesson 10 - Typescript Intro] |  | [API Lib] |
+| 10    | Mon, Sep 19 | [Lesson 11 - Typescript] |  | - |
 |  -    | Week 6 | - | - | - |
-| 11    | Mon, June 27 | **President's Day** | - | - |
-| 12    | Wed, June 29 | [Lesson 8 - Continuous Integration] | - | - |
+| 11    | Wed, Sep 21 | **President's Day** | - | - |
+| 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | - |
 |  -    | Week 7 | - | - | - |
-| 13    | Mon, July 4 | Holiday  [Lesson 9 - Bundling Code] | - | - |
-| 14    | Wed, July 6 | Review work | - | - |
+| 13    | Wed, Sep 28 | Holiday  [Lesson 9 - Bundling Code] | - | - |
+| 14    | Mon, Oct 3 | Review work | - | - |
 |  -    | Week 8 | Review work | - | - |
-| 15    | Mon, July 11 | Final Assessment | - | - |
-| 16    | Wed, July 13 | Final Assesment | - | - |
+| 15    | Wed, Oct 5 | Final Assessment | - | - |
+<!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
