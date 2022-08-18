@@ -49,7 +49,7 @@ Video Lecture: https://youtu.be/TwaUOUPmeMM
 
 - Code that has a _specific use case_ - **probably not** 👎
 - Code that _has general uses_ - **probably!** 👍
-- Code you write _often_ - **write a library** 👍
+- Code you _share_ with others - **write a library** 👍
 
 <!-- > -->
 
@@ -84,9 +84,11 @@ Any time you find you are writing the same code in more than one project.
 
 <!-- > -->
 
-When you have code that you want to share.
+When you have code that you want to share .
 
 📦 ➡ 👩‍💻 🧑‍💻 👩‍💻
+
+<small>(Think about open source projects)</small>
 
 <!-- > -->
 
