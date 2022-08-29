@@ -76,7 +76,7 @@ By the end of this lesson you should be able to:
 - **Q:** What is a unit test?
 - **A:** A unit test is a test of a software system, _usually a single function._ 
 
-**Important!** A unit test is most often testing that the expected output of a function is correct for a given input.
+**Important!** A unit test is most often testing the expected output of a function is correct for a given input.
 
 🍏 ➡️ 🥧
 
@@ -92,7 +92,7 @@ In this class, we will use [Jest](https://jestjs.io).
 <!-- > -->
 
 - **Q:** What is Jest?
-- **A:** [Jest](https://jestjs.io) is a JavaScript testing framework that was written by Facebook.
+- **A:** [Jest](https://jestjs.io) is a JavaScript testing framework that was written at Facebook.
 
 🤡 📚
 
@@ -114,7 +114,7 @@ If you're building React apps Jest is a good choice.
 
 For example, you wrote a function that uppercases the first letter of a string. 
 
-Your unit test might expect the following input and output:
+Your unit test might expect the following:
 
 <div><code>widget -> Widget</code></div>
 

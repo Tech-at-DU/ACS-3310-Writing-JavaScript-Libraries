@@ -44,26 +44,26 @@ Students by the end of the course will be able to ...
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
 |  1    | Wed, Aug 17 | [Lesson 1 - Solving string problems] | Start your first lib | - |
-|  2    | Mon, Aug 22 | [Lesson 2 - Unit testing] | - | - |
 |  -    | Week 2 | - | - | - |
-|  3    | Wed, Aug 24 | Holiday - Memorial Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
-|  4    | Mon, Aug 29 | Lab | Publish to npm | - |
+|  2    | Mon, Aug 22 | [Lesson 2 - Unit testing] | - | - |
+|  3    | Wed, Aug 24 | Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  5    | Wed, Aug 31 | [Lesson 4 - Working with Dates] | [Date Lib] | - |
-|  6    | Mon, Sep 5 | Labor Day no class [Lesson 5 - Solving problems with Dates] | - | - |
+|  4    | Mon, Aug 29 | [Lesson 4 - Working with Dates] | [Date Lib] | Publish to npm |
+|  5    | Wed, Aug 31 | [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
+|  6    | Mon, Sep 5 | Labor Day no class | - | - |
 |  7    | Wed, Sep 7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
-|  8    | Mon, Sep 12 | [Lesson 7 - Lab] | Work on API project | - |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  9    | Wed, Sep 14 | Juneteenth [Lesson 10 - Typescript Intro] |  | [API Lib] |
-| 10    | Mon, Sep 19 | [Lesson 11 - Typescript] |  | - |
+|  8    | Mon, Sep 12 | [Lesson 7 - Lab] | - | - |
+|  9    | Wed, Sep 14 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
 |  -    | Week 6 | - | - | - |
-| 11    | Wed, Sep 21 | **President's Day** | - | - |
-| 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | - |
+| 10    | Mon, Sep 19 | [Lesson 11 - Typescript] | Typescript | - |
+| 11    | Wed, Sep 21 | - | - | - |
 |  -    | Week 7 | - | - | - |
+| 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | Typescript |
 | 13    | Wed, Sep 28 | Holiday  [Lesson 9 - Bundling Code] | - | - |
-| 14    | Mon, Oct 3 | Review work | - | - |
 |  -    | Week 8 | Review work | - | - |
+| 14    | Mon, Oct 3 | Review work | - | - |
 | 15    | Wed, Oct 5 | Final Assessment | - | - |
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 

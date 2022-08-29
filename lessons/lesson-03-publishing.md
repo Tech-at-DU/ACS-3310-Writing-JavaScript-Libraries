@@ -13,7 +13,7 @@
 
 1. 🤓 Describe, define, and use SEMVer
 1. 🛠 Create NPM Packages
-1. 🎬 Publish your NPM package
+1. 🎬 Publish your npm package
 1. 🥇 Use ESLint to apply best practices to coding.
 
 <!-- > -->
@@ -21,6 +21,8 @@
 ## Why? 🤔
 
 Get a deeper understanding of npm and it's ecosystem. Contribute to open source.
+
+Professional best practices.
 
 <!-- > -->
 
@@ -48,15 +50,15 @@ In this way, you can use these shared packages like **building blocks** to build
 
 <!-- > -->
 
-Packages can be written that work with **Node.js** on the server side, run on the **command line**, or can be used in a **web page**.
+Packages can be written to work with **Node.js**, run on the **command line**, or used in a **web applications**.
 
-You can publish your packages and use them with all of your projects and share them with other developers around the world. 🌏
+Packages can be shared publicly or used privately. 🌏
 
 <!-- > -->
 
 ## How does NPM work?
 
-<div>NPM is three things: a <strong>website</strong>, <strong>registry</strong>, and <strong>client</strong>.</div>
+<div>npm is three things: a <strong>website</strong>, <strong>registry</strong>, and <strong>client</strong>.</div>
 
 👩‍💻 📚 💻
 
@@ -72,7 +74,7 @@ You can publish your packages and use them with all of your projects and share t
 
 ### The registry 📚
 
-<div>is a database of all packages that have been shared via npm.</div>
+<div>is a database of all packages that have been published via npm.</div>
 
 <!-- > -->
 
@@ -81,8 +83,6 @@ You can publish your packages and use them with all of your projects and share t
 <div>is a command line tool used to publish and manage your npm packages.</div>
 
 <!-- > -->
-
-All of the packages you publish can be published from source code hosted on GitHub.com. 
 
 The published packages each get a page on npm.com with notes and documentation.
 
@@ -118,7 +118,7 @@ https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 ### Package.json
 
-When you run `npm init` in a directory, npm creates a new file called package.json. This is json file with information about your package.
+When you run `npm init` in a directory, npm creates a new file called package.json. 
 
 The data describes:
 
@@ -152,7 +152,9 @@ npm init
 
 <!-- > -->
 
-Answer all the questions to the best of your ability. You can edit these later. Everything you enter here is metadata that describes the package that will eventually be hosted on npm.com. This includes:
+Answer all the questions to the best of your ability. You can edit these later. 
+
+Everything you enter here is metadata that describes the package that will eventually be hosted on npm.com. This includes:
 
 - name
 - description
@@ -208,7 +210,7 @@ npm ERR! 403 Forbidden - PUT https://registry.npmjs.org/test-error - You do not 
 
 <!-- > -->
 
-Another option is to publish to a scope. This puts all of the packages under the scope of your username and you can use any name.
+Another option is to publish to a scope. This puts the package under the scope of your username.
 
 ```
 @soggybag/really-cool-package
@@ -222,9 +224,11 @@ To publish under a scope prefix your package name with `@` and your npm user nam
 
 <!-- > -->
 
-To publish to a scope, you can either:
+To publish to a scope:
 
 Change the name to `@username/package-name` manually in package.json
+
+or
 
 Run `npm init --scope=username` instead of `npm init`
 
@@ -244,7 +248,13 @@ Your package should appear on the list, **pat yourself on the back!**
 
 Click the name of your package on the list and view it on npm. Notice a few things.
 
-The npm page for a package shows the **text from the README.md** file in the GitHub repo for the package. Your readme should look good and document what your library. This will encourage other developers to use your library.
+<!-- > -->
+
+The npm page for a package shows the **text from the README.md** file. Your readme should look good and document what your library. 
+
+This will encourage other developers to use your library.
+
+<!-- > -->
 
 The version number, last update date, weekly downloads, GitHub repo and more are shown here.
 
@@ -302,7 +312,7 @@ The second digit is the **MINOR** version. You'll change this when you add **mor
   16.10.<strong>2</strong>
 </div>
 
-The last digit is a **PATCH** version. You'll change this when you make **bug fixes and improvements** that are backward compatible but do not add new features.
+The last digit is a **PATCH**. You'll change this when you make **bug fixes and improvements** that are backward compatible but do not add new features.
 
 <div style="font-size: 2em; text-align: center"><small>MAJOR.MINOR.</small><strong>PATCH</strong></div>
 
@@ -357,15 +367,27 @@ Here I tried to publish but the currently published version is: 1.0.2 and the ve
 
 **To publish a new version you need to update the version number in package.json.**
 
+<small>Change the version number and you should be able to publish: 1.1.0</small>
+
 <!-- > -->
 
 ## Install ESLint 🧼
 
 <!-- > -->
 
+A linter finds errors and enforces coding style. 
+
+Using a linter is professional best practice!
+
+🏆
+
+<!-- > -->
+
 Install and use ESLint. Use the Airbnb style guide. 
 
 Lint your code and publish and update to your npm package. 
+
+<small>Linting your code is probably equivallent to a bug fix or a patch.</small>
 
 <!-- > -->
 
