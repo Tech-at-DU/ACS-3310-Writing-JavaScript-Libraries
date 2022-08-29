@@ -61,7 +61,7 @@ Working with dates will expand your knowledge of JS. You might work with dates i
 
 ## Learning Objectives
 
-1. Define the Date Object and its important methods
+1. Describe the Date Object and its important methods
 1. Use the Date Object to generate dates and times, and format dates and times. 
 1. Construct methods that build and expand the core functionality of the Date object
 
@@ -81,7 +81,7 @@ What's a Date? 🤔
 
 A date is the day of the month and year specified as a number. 
 
-📆 ➡️ 3️⃣
+📆  ➡️  3️⃣
 
 <!-- > -->
 
@@ -93,11 +93,11 @@ In JS this will also include the hours, minutes, seconds, and milliseconds.
 
 Dates in JS are represented as the number of milliseconds since 1970
 
-0️⃣
+12:00 AM Jan 1, 1970 === 0️⃣ 🎉
 
 <!-- > -->
 
-**UNIX Epoch**
+This is the **UNIX Epoch**
 
 <!-- > -->
 
@@ -113,19 +113,19 @@ The premise is that each day takes 86,400 seconds.
 
 Dates before the epoch can be expressed as a negative number.
 
-🌍 🦖
+🌍  🦖
 
 <!-- > -->
 
 Are there any weird things about dates in JS?
 
-📆 🤔
+📆  🤔
 
 <!-- > -->
 
 Plenty, just think of leap years...
 
-📆 🏃
+📆  🏃
 
 <!-- > -->
 
@@ -137,17 +137,25 @@ Can you do Math with dates?
 
 Yes! The Date Object, like the Number Object, is a wrapper around a primitive value. 
 
-⏰
+⏰ === 1661736857699
 
 JS will convert a date to a number when needed. 
 
-So `date_1 - date_2` would return the difference in the two dates. 
+<!-- > -->
+
+```
+const dif = date_1 - date_2 // 8137
+``` 
+
+Would return the difference in the two dates. 
 
 <!-- > -->
 
-Try these exercises on your own. You can run all of the code here in the console, execute it with node in the commandline, run it in a Repl or any place you can run JavaScript. 
+Try these exercises on your own. 
 
-I Highly encourage you to write and run the code in each example on your own!
+You can run all of the code here in the console, execute it with node in the commandline, run it in a Repl or any place you can run JavaScript. 
+
+<small><em>I highly encourage you to write and run the code in each example on your own!</em></small>
 
 <!-- > -->
 
@@ -157,7 +165,8 @@ Make a new date with `new Date()` this returns a new date which represents the m
 const a = new Date()
 ```
 
-Try this in the console: 
+<!-- > -->
+Try this: 
 
 ```JS
 // Make a date object
@@ -169,8 +178,9 @@ const b = new Date()
 
 // Subtract one from the other
 b - a // 5009 ms between dates
-
 ```
+
+<small>If you made these two dates in the same execution of code you might get 0.</small>
 
 <!-- > -->
 
