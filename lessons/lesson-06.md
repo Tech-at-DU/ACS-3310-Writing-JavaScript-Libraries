@@ -3,11 +3,21 @@
 
 <!-- > -->
 
-This project will create a library that works with an API. ⚙️
+This project will create a library that works with an API.
 
-APIs are used everywhere and are an important part of the web ecosystem. 🌍
+⚙️
 
-Libraries make working with APIs easier. 🧰
+<!-- > -->
+
+APIs are used everywhere and are an important part of the web ecosystem. 
+
+🌍
+
+<!-- > -->
+
+Libraries make working with APIs easier. 
+
+🧰
 
 <!-- Put a link to the slides so that students can find them -->
 
@@ -58,7 +68,7 @@ function hello() {
   console.log('Hello World')
 }
 
-setTimeout(hello, 3000)
+setTimeout(hello, 3000) // hello callback runs 3 secs later
 ```
 
 <!-- > -->
@@ -73,10 +83,38 @@ function doStuff(n) {
 
 // doStuff can be assigned to variables: 
 const doingThings = doStuff
-doingThings(11, 44)
+doingThings(11) // returns 22
 
 // Passed as a parameter (it's a callback here)
-[1,2,3,4].map(doStuff)
+[1,2,3,4].map(doStuff) // returns [2, 4, 3, 8]
+```
+
+<!-- > -->
+
+A callback is the function you pass to a parameter as an argument. 
+
+**Important: Arrow functions work best for callbacks!**
+
+<!-- > -->
+
+Q: What's a parameter? 
+
+A: A variable that stores a value received by a function
+
+```JS
+function doStuff(n) {  // n is the parameter
+  return n * 2
+}
+```
+
+<!-- > -->
+
+Q: What's an argument? 
+
+A: An argument is the value passed to a function. 
+
+```JS
+doStuff(2) // 2 is the argument! 
 ```
 
 <!-- > -->
@@ -85,12 +123,21 @@ doingThings(11, 44)
 
 <!-- > -->
 
-Imagine you have worked with the OpenWeatherMap API. The next step is to take the code that fetches the weather and put it into a form that can be used anywhere in ann application.
+You have probably used the OpenWeatherMap API before. 
+
+Imagine you want take your code to the next level. 
+
+Do this using callbacks!
+
+<!-- > -->
+
+Start with a function that takes a callback as a parameter! 
 
 ```JS 
 function getWeather(callBack) {
   // gets the weather data...
   // Then executes the callback function
+
   callback()
 }
 ```
@@ -105,14 +152,15 @@ How would you use this?
 function getWeather(callBack) {
   // gets the weather data...
   // Then executes the callback function
-  callback()
+
+  callback() // handleWeather is executed here! 
 }
 
 function handleWeather() {
   // Something happens here after the weather data is loaded. 
 }
 
-getWeather(handleWeather)
+getWeather(handleWeather) // call getWeather and pass the callback
 ```
 
 Here `handleWeather` is a function that is passed to `getWeather` and is executed as `callback` there. 
@@ -125,14 +173,11 @@ Or use an inline/anonymous function.
 function getWeather(callBack) {
   // gets the weather data...
   // Then executes the callback function
-  callback()
+
+  callback() // The anonymous function runs here!
 }
 
-getWeather(function() {
-  // something happens here after the weather data is loaded
-})
-
-// Do the same thing with an arrow function
+// Arrow functions are best for callbacks!
 getWeather(() => {
   // something happens here after the weather data is loaded
 })
@@ -141,7 +186,7 @@ getWeather(() => {
 
 <!-- > -->
 
-Make the callback more useful by adding parameters. 
+Make your callback more useful by adding parameters. 
 
 ```JS 
 function getWeather(callBack, apikey, units) {
@@ -154,30 +199,33 @@ function getWeather(callBack, apikey, units) {
 
 <!-- > -->
 
-How do we get data from a callback? Pass it as a parameter!
+Q: How do you get data from a callback? 
+
+A: Pass it as a parameter!
 
 ```JS 
 function getWeather(callBack, apikey, units) {
   // loads json with apikey and units
   const json = ...
+
   callback(json) // passes JSON to callback
 }
 
-// Our callback receives JSON
-getWeather( (data) => { // receives json here!
-  // do stuff with data received from callback
+// Our callback receives JSON in data
+getWeather( (data) => { 
+  // do stuff with data/json received from callback
 })
 ```
 
 <!-- > -->
 
-What if there is an error? 🤔
+Q: What if there is an error? 🤔
 
-Add an error callback! 😮
+A: Add an error callback! 😮
+
+<small>This is how most JS methods handled errors before promises. Many systems still use this arranegment.</small>
 
 <!-- > -->
-
-This is how most JS methods handled errors before promises. Many systems still use this arranegment. 
 
 ```JS 
 function getWeather(apikey, units, onSuccess, onError) {
@@ -196,6 +244,8 @@ getWeather('myapikey', 'metric', (data) => {
   // onError callback receives an error
 })
 ```
+
+<small>onSuccess, and onError are the two callbacks!</small>
 
 <!-- > -->
 
@@ -217,9 +267,13 @@ function handleError(err) {
 }
 ```
 
+<small>Notice both callbacks receive an argument!</small>
+
 <!-- > -->
 
-The core idea presented above is that of passing a function to another function like you would pass other values like strings and numbers and executing that function inside the receiving function. 
+This is starting to get complicated. 
+
+You can simplify this by using a Promise 
 
 <!-- > -->
 
@@ -227,7 +281,9 @@ The core idea presented above is that of passing a function to another function 
 
 <!-- > -->
 
-Promise is an object in JavaScript that is used to handle asynchronous actions. A Promise works with callbacks you can think of Promise as managing the success and error callbacks. 
+Promise is an object that is used to handle asynchronous actions. 
+
+A Promise works with callbacks you can think of Promise as managing both the success 🙌 and error callbacks 👎. 
 
 <!-- > -->
 
@@ -250,7 +306,9 @@ function handleData(data) { ... }
 function handleError(err) { ... }
 ```
 
-The `Promise.then()` and `Promise.catch()` methods take the callbacks you used earlier and the Promise decides which to execute.
+The `Promise.then()` and `Promise.catch()` methods take the callbacks you used earlier. 
+
+Promise decides which to execute.
 
 <!-- > -->
 

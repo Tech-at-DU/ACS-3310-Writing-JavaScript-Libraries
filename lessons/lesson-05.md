@@ -43,11 +43,13 @@ Dates are important they appear in one form or another in almost every applicati
 
 ## Getters and setters
 
-Getters and Setters are class methods that act like properties. Using a getter/setter outside of a class it looks like a property. Using a getter/setter inside the class it looks like a method. 
+Getters and Setters are class methods that act like properties. 
+
+https://javascript.info/property-accessors
 
 <!-- > -->
 
-Precede the method definition with the keyword `get` or `set`.
+An accessor method is preceded with the keyword `get` or `set`.
 
 <!-- > -->
 
@@ -74,7 +76,7 @@ get year() {
 }
 ```
 
-You need a short year also. Create a getter for `yr`. This should return the two-digit year. Use `%` to get this: 
+Create a getter for `yr`. This should return the two-digit year. Use `%` to get this: 
 
 ```js
 1983 % 100 = 83
@@ -98,7 +100,7 @@ class D {
 
 const date = new D() 
 console.log( date.year ) // call the getter
-console.log( date.yr ) // call the getter
+console.log( date.yr )  // call the getter
 ```
 
 <!-- > -->
@@ -124,11 +126,13 @@ console.log(date.year) // 1975
 
 <!-- > -->
 
-Now make a getter for `month` and `mon`. The first should return the full month for example: `January` the other should return the short month: `Jan`
+Now make a getter for `month` and `mon`. 
+
+The first should return the full month for example: `January` the other should return the short month: `Jan`.
 
 <!-- > -->
 
-Since `getMonth()` returns the index of the month you'll need an array of month strings long and short:
+Since `Date.getMonth()` returns the index of the month you'll need an array of month strings long and short:
 
 ```JS
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -143,17 +147,50 @@ const daysShort = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 <!-- > -->
 
-You're date lib needs a good formatter. The format function will use the idea of a 'mask'. The mask is a string that describes components. 
+Your date lib needs a good formatter. 
 
-Your format function will replace special characters with components of the date. See the homework description for more details. 
+The mask is a string that describes components of the date and where they should fall in a string.
+
+```
+d.format('M d, Y') // August 31, 2022
+```
+
+<small>Here the mask string is 'M d, Y'. The format method replaces 'M' with the full month, 'd' with the day, and 'Y' with the year.</small>
 
 <!-- > -->
 
-The general solution is to create a string by looping over each character in the mask string. With each iteration look at the current character or the mask string if it matches one of the special characters append the date component otherwise append the character. 
+How would you solve this problem? 
 
 <!-- > -->
 
-For example, image the mask string is: 'y/m/d'
+Identify the steps needed to come up with a solution?
+
+<!-- > -->
+
+1. You are building a method. Identify the input and output. 
+
+```js
+class D {
+  ...
+  format(str) {
+    const outStr = '' // define the output
+    // ...
+    return outStr
+  }
+}
+```
+
+<!-- > -->
+
+2. Now what happens? 
+
+<!-- > -->
+
+Loop over each character in the mask string. With each iteration look at the current character or the mask string if it matches one of the special characters append the date component otherwise append the character. 
+
+<!-- > -->
+
+For example, imagine the mask string is: 'y/m/d'
 
 ```JS
 const d = new D()
@@ -165,31 +202,24 @@ d.format('M d, Y') // January 10, 2021
 2. '/' -> not special append it '20/'
 3. 'm' -> replace with the short month '20/Nov'
 4. '/' -> not special append it '20/Nov/'
-5. 'd' -> replace with the date '20/Nov/10'
+5. 'd' -> replace with the date '20/Nov/10' 
 
 <!-- > -->
 
-Use the helper methods you created earlier rather than reproducing code that generates the short year etc. 
-
-Your function should take in a formatting string. 
-
-```JS
-class D {
-  ...
-  format(str) {
-    ...
-  }
-}
-```
+3. Write psuedo code
 
 <!-- > -->
 
-Psuedo code: 
+3. Psuedo code: 
 
 - Define a variable to hold the output string. This should start as an empty string.
 - Loop over each character in your format string.
 - If the character matches one of the formatting characters: `y, Y, m, M, d, D, ...` append the date element to the output string. If there's no match append that character to the output string. `if else` or `switch case` will work here. 
 - Return the output string.
+
+<!-- > -->
+
+Reuse the other methods you already have to generate the date components. 
 
 <!-- > -->
 
@@ -205,7 +235,7 @@ format(mask = '') {
 
 <!-- > -->
 
-Loop over each character inb the format string: 
+Loop over each character in the format string: 
 
 ```JS
 format(mask = '') {
@@ -239,7 +269,7 @@ special['?'] // undefined
 
 <!-- > -->
 
-Use a conditional statement to get a date valeu or use the character: 
+Use a conditional statement to get a date value or use the character: 
 
 ```JS
 if (special[mask[i]] !== undefined) {
@@ -255,15 +285,64 @@ if (special[mask[i]] !== undefined) {
 
 <!-- > -->
 
-The when() method will require you to look at a date and provide a human-readable string describing relative time between dates. It should return something like: '1 year ago' or 'three weeks from now'. 
+The `when()` method will require you to look at a date and provide a human-readable string describing relative time between dates. 
+
+It should return something like: 
+
+'1 year ago' 
+
+or 
+
+'three weeks from now'. 
 
 <!-- > -->
 
-To do this you'll need to calculate the difference between the two dates. You need the difference in years, months, and days. This way you can ask:
+Think of your strategy.  
 
-- Is the difference in months greater than 11 if so this date is years ago.
-- Is the difference in days more than 30 if so the date is months ago.
+<!-- > -->
+
+To do this you'll need to calculate the difference between two dates. You need the difference in years, months, and days. This way you can ask:
+
+- Is the difference in months greater than 11? If so this date is years ago.
+- Is the difference in days more than 30? If so the date is months ago.
 - Is the difference in days more than 1 than the date is days ago.
+
+<!-- > -->
+
+Write some pseudo code.
+
+<!-- > -->
+
+How will you calculate the number of years, months, and days difference? 
+
+<!-- > -->
+
+Here are some thoughts on the process. 
+
+<!-- > -->
+
+Use your maths!
+
+```JS
+const bday = new Date('09/26/1965')
+const today = new Date()
+const diff = today - bday // should be the difference in ms
+```
+
+<!-- > -->
+
+Use your methods!
+
+```JS
+const bday = new Date('09/26/1965')
+const today = new Date()
+// diff in years
+const yearsDiff = today.getFullYear() - bday.getFullYear() 
+// diff is months
+const monthsDiff = today.getMonth() - bday.getMonth() 
+```
+
+The numbers here might be negative! 
 
 <!-- > -->
 
@@ -274,6 +353,9 @@ Psuedo code:
   - years
   - months
   - days
+
+<!-- > -->
+
 - Check the differences: 
   - diff months > 11 the date was years ago
   - diff months < -11 is years from now
@@ -286,7 +368,9 @@ Psuedo code:
 
 Here are a few things to think about: 
 
-Consider: Dec 23, 2020, and Jan 1, 2021, are these dates 1 year apart? One month apart? Or just 9 days? It doesn't like a year, it could be a month, 9 days does feel pretty accurate. The correct answer may depend on your industry or business. You should decide which is correct and keep the answer in mind as you work. The potential output might be: 
+Consider: Dec 23, 2020, and Jan 1, 2021, are these dates 1 year apart? One month apart? Or just 9 days? It could be a year, but 9 days is also accurate. 
+
+The correct answer may depend on your industry or business. You should decide which is correct and keep the answer in mind as you work. The potential output might be: 
 
 - 1 year ago
 - 1 month ago
@@ -296,9 +380,9 @@ Consider: Dec 23, 2020, and Jan 1, 2021, are these dates 1 year apart? One month
 
 Considering the output above, when the number of years, months, days, difference is 1 the output should read: 
 
-- n year ago
-- n month ago
-- n day ago
+- 1 year ago
+- 1 month ago
+- 1 day ago
 
 <!-- > -->
 
@@ -307,6 +391,8 @@ When the difference is greater than 1 the output should read:
 - n years ago
 - n months ago
 - n days ago
+
+<small>Note that the unit is plural!</small>
 
 <!-- > -->
 
