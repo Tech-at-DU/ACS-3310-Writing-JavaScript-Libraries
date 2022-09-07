@@ -3,11 +3,15 @@
 
 <!-- > -->
 
-This project will create a library that works with an API.
+What?
+
+With this project you will create a library that works with an API.
 
 ⚙️
 
 <!-- > -->
+
+Why?
 
 APIs are used everywhere and are an important part of the web ecosystem. 
 
@@ -49,11 +53,13 @@ Follow these lessons in these videos:
 
 <!-- > -->
 
-A callback is a function that invoked by another function. A callback is often used with asynchronous actions like handling network requests. 
+A callback is a function invoked by another function. 🦾
+
+A callback is often used with asynchronous actions like handling network requests. 🌏 
 
 <!-- > -->
 
-Some examples of callbacks: 
+Examples of callbacks: 
 
 - `setInterval()` and `setTimeOut()` use a callback to run code after time period is over. 
 - `map()`, `filter()`, and `reduce()` use a callback to execute code with each iteration. 
@@ -91,7 +97,7 @@ doingThings(11) // returns 22
 
 <!-- > -->
 
-A callback is the function you pass to a parameter as an argument. 
+A callback is the function you pass as an argument that is assigned to a parameter. 
 
 **Important: Arrow functions work best for callbacks!**
 
@@ -116,6 +122,14 @@ A: An argument is the value passed to a function.
 ```JS
 doStuff(2) // 2 is the argument! 
 ```
+
+<!-- > -->
+
+Download these arrow function practice problems: 
+
+https://github.com/Tech-at-DU/arrow-functions-and-callback-challenges
+
+Do: 01-arrow-function-practice.js
 
 <!-- > -->
 
@@ -144,16 +158,26 @@ function getWeather(callBack) {
 
 Notice `callback` is the name of a parameter variable and this function is invoked on the last line. 
 
+So `callBack` is the the callback!
+
 <!-- > -->
 
-How would you use this? 
+Often we prefix the name of a parameter that holds a callback with `on`:
+
+- `onComplete`
+- `onSuccess`
+- `onError`
+
+<!-- > -->
+
+What is happening here? 
 
 ```JS 
-function getWeather(callBack) {
+function getWeather(onComplete) {
   // gets the weather data...
   // Then executes the callback function
 
-  callback() // handleWeather is executed here! 
+  onComplete() // handleWeather is executed here! 
 }
 
 function handleWeather() {
@@ -163,7 +187,9 @@ function handleWeather() {
 getWeather(handleWeather) // call getWeather and pass the callback
 ```
 
-Here `handleWeather` is a function that is passed to `getWeather` and is executed as `callback` there. 
+<!-- > -->
+
+Here `handleWeather` is a function that is passed to `getWeather` and is executed as `callback` there.
 
 <!-- > -->
 
@@ -178,23 +204,72 @@ function getWeather(callBack) {
 }
 
 // Arrow functions are best for callbacks!
-getWeather(() => {
+getWeather( () => {
   // something happens here after the weather data is loaded
-})
+} )
+```
 
+<small>Often callbacks are passed as anonymous functions</small>
+
+<!-- > -->
+
+Get weather needs some information to do it's work: apikey and units.
+
+```JS 
+function getWeather(onComplete) {
+  const apikey = '1234'
+  const units = 'imperial'
+  // Fetch the weather data...
+
+  onComplete()
+}
 ```
 
 <!-- > -->
 
-Make your callback more useful by adding parameters. 
+This isn't practical. For every use the apikey and units might change!
+
+
+Q: What's the problem here? 
+
+Q: How can we solve this problem? 
+
+<!-- > -->
+
+Solution, add some parameters!
 
 ```JS 
-function getWeather(callBack, apikey, units) {
-  // Gets the weather with apikey and units...
-  // Calls the callback
+function getWeather(onComplete, apikey, units) {
+  // Fetch the weather data...
 
-  callback()
+  onComplete()
 }
+
+getWeather(onComplete, '1234', 'imperial')
+```
+
+<!-- > -->
+
+Q: how do you get your data from `getWeather` into your callback? 
+
+A: Pass the data as an argument to the callback.
+
+<!-- > -->
+
+We have a problem!
+
+```JS 
+function getWeather(onComplete, apikey, units) {
+  // Fetch the weather generates...
+  const json = ... // The data generated here needs 
+  console.log(json) // to be used outside of this function
+
+  onComplete()
+}
+
+getWeather(() => {
+  // json is not accessible here! 
+}, '1234', 'imperial')
 ```
 
 <!-- > -->
@@ -204,18 +279,26 @@ Q: How do you get data from a callback?
 A: Pass it as a parameter!
 
 ```JS 
-function getWeather(callBack, apikey, units) {
+function getWeather(onComplete, apikey, units) {
   // loads json with apikey and units
   const json = ...
 
-  callback(json) // passes JSON to callback
+  onComplete(json) // passes JSON to callback
 }
 
-// Our callback receives JSON in data
-getWeather( (data) => { 
+// This callback receives JSON in data
+const handleWeather = (data) => { 
   // do stuff with data/json received from callback
-})
+}
+
+getWeather(handleWeathewr, '1234', 'metric')
 ```
+
+<!-- > -->
+
+Apply these ideas here: 
+
+https://github.com/Tech-at-DU/weather-api
 
 <!-- > -->
 
