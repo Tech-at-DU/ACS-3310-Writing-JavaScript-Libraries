@@ -6,14 +6,15 @@ Your goal with this assignment is to write a JavaScript library. Think of a prog
 
 ### Why this assignment?
 
-This is a great practice writing JavaScript code. 
+This is a great practice writing JavaScript code. Yyou might use the code you write here. Someone else might use the code you write! 
 
 ## Project requirements
 
-You will write a library of code that solves a problem. Here are a few suggestions: 
+You will write a library of code that solves a problem. 
 
 - Write library that works with an API to make that API easier to use. See the ideas below. 
-- 
+- If you're not sure what to write you can [solve the OpenWeatherApi problems](https://github.com/Tech-at-DU/weather-api). 
+- You can also choose to create a library for one of the existing JS Browser APIs. 
 
 Here is a list of APIs that you could build a library around: 
 
@@ -34,6 +35,8 @@ Explore these sites to find other APIs
 - https://www.programmableweb.com/
 
 Your goal is to simplify using your chosen API. This can be done in a few ways. Use any or all of the ideas below, or come up with your own ideas.
+
+The Browser has many built in APIs. You have probably use a few these already. You can write a library for one of these if you like: https://developer.mozilla.org/en-US/docs/Web/API
 
 ### Follow these steps
 
