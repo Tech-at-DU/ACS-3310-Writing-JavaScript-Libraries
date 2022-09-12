@@ -88,7 +88,7 @@ Students by the end of the course will be able to ...
 [Publish to npm]: ./assignments/assignment-02.md
 [Add Unit Tests]: ./assignments/assignment-03.md
 [Date Lib]: assignments/assignment-07-date-lib.md
-[API Lib]: https://github.com/Make-School-Labs/weather-api
+[API Lib]: ./assignments/assignment-09-api-lib.md
 [Continuous Integration]: ./assignments/assignment-04.md
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
