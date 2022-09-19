@@ -317,7 +317,7 @@ Challenge modify the function above to take a string: Name as input and combine 
 Let's try that again. Write a function that takes a number as input and returns a function. The returned function should return value multiplied by the input number. 
 
 ```JS 
-function mathematizer(n: ?): () => ? {
+function mathematizer(n: number): (number) => number {
 	let sum = n
 	return (x) => x * n
 }
