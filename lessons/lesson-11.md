@@ -135,13 +135,14 @@ What could go wrong?
 const METRIC = 'metric'
 const IMPERIAL = 'imperial'
 const STANDARD = 'standard'
+const KEY = '123456'
 
 function getWeather(zip, apikey, unit = METRIC) {
   // ...
 }
 ```
 
-Better, but what is STANDARD?
+Better, but what is STANDARD? What is KEY could it be a unit? 
 
 <!-- > -->
 
@@ -167,7 +168,7 @@ Units.millimeters = 'mm'
 
 <!-- > -->
 
-With typescript you could define an enum! 
+With typescript you can define an enum! 
 
 ```TS
 enum Unit {
@@ -366,20 +367,42 @@ console.log(sendItBack(a))
 console.log(sendItBack(b))
 console.log(sendItBack(c))
 ```
+How can you make this type safe?
+
 
 <!-- > -->
 
 There is something subtle going on here. The function above takes any type as an input and returns any type as an ouput. 
 
-So what's the problem? There is not guarantee that the input will match the output! If we are going to return the input object it should be the same type and we should be able to check it! 
+🔬
 
 <!-- > -->
 
-Using `any` here works but it's not type safe since the return type could be anything. What if the function transformed the input into another type? 
+So what's the problem? There is no guarantee that the input will match the output! 
+
+🍎 ➡️ 🍎
+
+🍊 ➡️ 🍊
+
+🍐 ➡️ 🍓 😱
 
 <!-- > -->
 
-While this example seems contrived, because it is, it is more common than you might think! The `sendItBack()` function can take any type and return the same type. You couldn't make a function like this for every single type since Object types are infinite! 
+Using `any` here works but it's not type safe. What if the function transformed the input into another type? 
+
+<!-- > -->
+
+While this example seems contrived, because it is, it is more common than you might think! 
+
+Think of some examples where this might occur?
+
+<!-- > -->
+
+Where generics come into play often is Arrays. 
+
+Think about functions like: `push`, `slice`, `splice` and `reverse`.
+
+<!-- > -->
 
 ```JS
 function sendItBackString(thing: string): string {...}
@@ -387,6 +410,8 @@ function sendItBackNumber(thing: number): number {...}
 function sendItBackBoolean(thing: boolean): boolean {...}
 // ... this tedious and impossible
 ```
+
+Thisa is not a scalable solution! 
 
 <!-- > -->
 
@@ -400,13 +425,7 @@ function sendItBack<T>(thing: T): T {
 }
 ```
 
-The generic type is expressed as `<T>` and you'll use `T` where that type is needed. Here the `thing` is type `T` and the return value of the function is type `T`.
-
-<!-- > -->
-
-Let's make a practical example!
-
-Where generics come into play often is Arrays. Since an array must be typed we need a generic type to represent the type of the Array for functions that can work with any type of Array. Think about functions like: `push`, `slice`, `splice` and `reverse`. 
+The generic type is expressed as `<T>` and you'll use `T` where that type is needed. Here `thing` is type `T` and the function returns something of type `T`. 
 
 <!-- > -->
 
@@ -509,3 +528,4 @@ Continue working your final project.
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         | -->
+

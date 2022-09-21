@@ -58,7 +58,7 @@ Students by the end of the course will be able to ...
 |  9    | Wed, Sep 14 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
 |  -    | Week 6 | - | - | - |
 | 10    | Mon, Sep 19 | [Lesson 11 - Typescript] | Typescript | - |
-| 11    | Wed, Sep 21 | - | - | - |
+| 11    | Wed, Sep 21 | TypeScript Lab | - | - |
 |  -    | Week 7 | - | - | - |
 | 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | Typescript |
 | 13    | Wed, Sep 28 | Holiday  [Lesson 9 - Bundling Code] | - | - |
