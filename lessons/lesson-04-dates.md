@@ -599,7 +599,7 @@ Your group shows their solutions for the problems.
 
 ### Homework
 
-[Assignment 7 - Date Lib](../assignments/assignment-07.md)
+[Assignment 7 - Date Lib](../assignments/assignment-07-date-lib.md)
 
 <!-- > -->
 
