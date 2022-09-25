@@ -21,10 +21,6 @@ A big piece of CI is automatically running tests and providing feedback on the c
 
 <!-- > -->
 
-Another use of CI is running tests and providing other feedback as each new addition is integrated into the codebase.
-
-<!-- > -->
-
 In this lesson, you will apply some of these ideas to your code base. 
 
 <!-- > -->
@@ -45,17 +41,18 @@ Pair up and answer these questions:
 
 <!-- > -->
 
-CI is a modern software development *best practice*. You should always be striving to follow best practices in your work and be familiar with what industry considers best practices if you plan to integrate yourself with the industry! 
+CI is a modern software development *best practice*. You should become familiar with industry best practices if you plan to integrate yourself with industry! 
 
 <!-- > -->
 
-Using CI will provides feedback on the quality of a codebase as each new change is pushed. Feedback is good, automated feedback is even better since it saves you time and energy!
+CI provides feedback on the quality of a codebase as each new change is pushed. 
+
+Feedback is good, automated feedback is even better since it saves you time and energy!
 
 <!-- > -->
 
 ## Learning Objectives
 
-1. Use Linting to improve code quality and catch bugs
 1. Use Continuous Integration to automate testing
 1. Implement industry best practices
 
@@ -73,7 +70,7 @@ In the next few steps you will use GitHub Actions to run unit tests on one of yo
 
 <!-- > -->
 
-Choose a repoistory that has unit tests already implemented. You'll be adding GitHub actions to this repo. 
+Choose a repoistory that has unit tests. You'll be adding GitHub actions to this repo. 
 
 <!-- > -->
 
@@ -140,7 +137,9 @@ jobs:
 
 <!-- > -->
 
-Push your code. Chekc the Actions tab. In your github page. You'll see the actions running there. 
+Commit this new file. 
+
+Push your code. Check the Actions tab. In your github page. You'll see the actions running there. 
 
 <!-- > -->
 
@@ -264,149 +263,7 @@ Using a **single computer** spend 10 mins solving linter errors person A's proje
 
 <!-- > -->
 
-## Travis CI 
-
-<!-- > -->
-
-[Travis CI](https://travis-ci.com) is a Continuous Integration platform. It automates building and testing your software projects. 
-
-Follow the instructions here: 
-
-https://docs.travis-ci.com/user/for-beginners/
-
-https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci
-
-<!-- > -->
-
-### Setup Travis-CI 
-
-<!-- > -->
-
-Travis-CI connects to your GitHub repos and automatically process files when it sees you push to a master or a branch. To make this magic work you'll need to authorize Travis through GitHub.
-
-[Sign up for Travis](https://travis-ci.com) with GitHub.
-
-Authorize Travis with your GitHub account.
-
-<!-- > -->
-
-#### Add .travis.yml
-
-Travis uses a config file to describe how it should work with the files in your repos. 
-
-Add a new file to the root directory of your String Lib project. Name this file:
-
-`.travis.yml`
-
-<!-- > -->
-
-Add the following to this file: 
-
-```yml
-sudo: false
-language: node_js
-node_js:
-- stable
-branches:
-  only:
-  - master
-cache:
-  directories:
-  - node_modules
-before_install:
-- npm update
-install:
-- npm install
-script:
-- npm test
-- npm run coveralls
-```
-
-<!-- > -->
-
-This config script uses the latest stable version of node, builds your project from the master branch, install node modules, and then runs your npm test script followed by the coveralls script. 
-
-The `coverall` script you haven't added yet! Coveralls is another service that provides more information about your builds. You'll set this up this in the next step. 
-
-https://docs.travis-ci.com/user/tutorial/
-
-<!-- > -->
-
-### Coveralls 
-
-Coveralls is a service that helps you track code coverage. Code coverage answers the question: how much of my code is covered by the testing? Essentially it will give you a score telling you how much of your code is covered by the unit tests that exist. 
-
-Go to [Coveralls.io](https://coveralls.io)
-
-<!-- > -->
-
-Create an account and login.
-
-Click your account and link your GitHub.
-
-Click Add Repo and add your String Lib Repo to Coveralls.
-
-Click Repos then click the Name of string repo.
-
-<!-- > -->
-
-Add the Coveralls package to your project. 
-
-`npm install coveralls --save-dev`
-
-Add this line to your `package.json`:
-
-```JSON
-"scripts": {
-  ...
-  "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-  ...
-},
-```
-
-<!-- > -->
-
-Find the "Coverage" badge. Click the embed button to the upper right. Copy the Markdown text. You can paste this into the README.md in the GitHub Repo of your library. 
-
-https://coveralls.io
-
-https://medium.com/@ollelauribostr/start-measuring-coverage-with-jest-travis-ci-and-coveralls-1867928aca42
-
-<!-- > -->
-
-### Give yourself a badge! 
-
-Give yourself a badge or two, you've earned them! Both Travis and Coveralls provide dynamic badges that show the state of a project in a repo. You should attach these badges to your repo. 
-
-**Q:** Why add these badges? 
-
-**A:** It will show the status of your software project at a glance. It increases the credibility of your repositories.
-
-<!-- > -->
-
-#### Travis badge 
-
-Go to your repo on Travis. You should see a badge to the left of the GitHub repo name. 
-
-Click this and choose "Markdown" from the menu.  
-
-Copy the Markdown code from the text box and paste it into your README. 
-
-<!-- > -->
-
-#### Coveralls Badge
-
-Go to Coveralls. Visit the page for the repo you were working on. 
-
-It should display a coverage badge near the right side. Click the tiny embed button up and to the right of the badge. 
-
-Copy the Markdown code in the text box. 
-
-Paste the markdown code into your repo. 
-
-<!-- > -->
-
-## Stretch goals
+<!-- ## Stretch goals
 
 **Stretch Goal** - 
 
@@ -427,12 +284,12 @@ Version 2 of your library should add some new features. Your goal is to identify
 
 Use CodeClimate to analyze and give your code a report card: https://codeclimate.com/dashboard 
 
-Note! Code Climate is free for open source projects! 
+Note! Code Climate is free for open source projects!  -->
 
 
 ### Homework
 
-[Continuous Integration](./assignments/assignment-04.md)
+Add continuous integration to your projects with GitHub actions. 
 
 <!-- > -->
 
