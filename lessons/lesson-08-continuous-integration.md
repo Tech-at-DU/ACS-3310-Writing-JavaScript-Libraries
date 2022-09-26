@@ -163,6 +163,107 @@ https://nklya.medium.com/useful-status-badges-for-github-actions-16e658d52ba2
 
 <!-- > -->
 
+## Compiling TypeScript as part of the build process
+
+Take a look at the `GitHub-Action/.github/workflows/node.js.yml`. 
+
+This file has the instructions GitHub will execute when the action is triggered. 
+
+<!-- > -->
+
+At the top it lists the action trigger: 
+
+```
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+...
+```
+
+On a push or pull_request ont he master branch. 
+
+<!-- > -->
+
+At the bottom are listed the steps: 
+
+```
+steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+```
+
+The second to the last line says: 
+
+```
+npm run build --if-present
+```
+
+<!-- > -->
+
+In your package,json file add a build script:
+
+```
+"build": "tsc"
+```
+
+The command above is run from the terminal with: 
+
+```
+npm run build
+```
+
+<!-- > -->
+
+You can expand this `tsc` command to fit your needs and include a TypeScript config file if needed. 
+
+Check out the guides here: 
+
+- https://www.educative.io/answers/how-to-execute-the-typescript-file-using-the-command-line
+- https://www.thisdot.co/blog/creating-your-own-github-action-with-typescript
+
+<!-- > -->
+
+## Check your code coverage
+
+code coverage measures how much of your codebase is covered by units tests. 
+
+Jest has a coverage reporter built in. 
+
+<!-- > -->
+
+Try it out: 
+
+```
+npx jest --collect-coverage
+```
+
+This should output something like: 
+
+```JSON
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |    92.5 |       60 |      70 |    92.5 |                   
+ index.js |    92.5 |       60 |      70 |    92.5 | 80,88,98          
+----------|---------|----------|---------|---------|-------------------
+```
+
+<!-- > -->
+
+Stretch Challenge: Add code covereage to your GitHub Actions. Follow the guide here: https://about.codecov.io/blog/javascript-code-coverage-using-github-actions-and-codecov/
+
+<!-- > -->
+
 ## Install ESLint and lint your work!
 
 Linting is not a CI but is related as a part of industry best practices and code quality. We've covered this in other classes but it's important so we will review it again here. 
