@@ -3,6 +3,8 @@
 
 <small style="display:block;text-align:center">Bundling Libraries for distribution</small>
 
+<!-- > -->
+
 This class session covers the concept of bundling. This is the process of combining files and processing them for use and distribution. 
 
 <!-- Put a link to the slides so that students can find them -->
@@ -11,9 +13,7 @@ This class session covers the concept of bundling. This is the process of combin
 
 <!-- > -->
 
-## Review: Callbacks!
-
-
+<!-- ## Review: Callbacks! -->
 
 <!-- > -->
 
@@ -31,13 +31,21 @@ Solve this problem with Primsies and Callbacks. The sample code shows hoe to use
 
 - https://replit.com/@MakeSchoolFEW/GeoLocation#script.js
 
+<!-- > -->
+
 ## Why learn how to bundle files? 
 
-All of the files you have been using that you imported from another source were bundled. Understanding the process gives you a better understanding of the JavaScript and web application ecosystem. 
+<!-- > -->
+
+Bundling is used in professional environments. Bundling code yourself will help you understand how these projects work. 
+
+<!-- > -->
 
 Bundling your files allows them to be distributed so they can be used anywhere without extra work. 
 
-Bundling files also processes your files for different environments. Your files need to be handled differently if they are used in the browser, or in NodeJS, or in a React project. 
+<!-- > -->
+
+Your files need to be handled differently if they are used in the browser, or in NodeJS, or in a React project. Bundling files allows them to be used all these. 
 
 <!-- > -->
 
@@ -47,483 +55,267 @@ Bundling files also processes your files for different environments. Your files 
 1. Define UMD and ESM bundles 
 1. Use Rollup to bundle your library for distribution
 
-## Bundling code with Rollup
+<!-- > -->
 
-Bundling is the process of processing and combining files together into a single file. For this section you'll use Rollup.js. Here is how Rollup describes itself: 
 
-> Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application. It uses the new standardized format for code modules included in the ES6 revision of JavaScript, instead of previous idiosyncratic solutions such as CommonJS and AMD.   
-
-Rollup describes itself as a "module bundler for JavaScript". Sounds like what we need! 
-
-What types of different environements will your code be run in? 
-
-- Browser
-- Node
-
-The Browser has an engine that runs your JS code. Node is an environment that runs your JS code. While they they both use JS they are different. 
+## Bundling with Webpack
 
 <!-- > -->
 
-**What's the difference?**
+Reference:
 
-With node you're scripting the server. Imagine a single computer where you have control over the configuration. 
-
-With browser imagine millions of mysterious computers where you have no control over configuration. 
+- https://webpack.js.org/guides/typescript/
+- https://tobias-barth.net/blog/Bundling-your-library-with-Webpack
 
 <!-- > -->
 
-The **browser** uses the script tag:
+Install webpack:
 
-```HTML
-<!-- Browser -->
-<script src="somefile.js"></script>
 ```
-
-Newer ES6 JS syntax uses **ES Modules** Syntax:
-
-```JS
-// ES6/ES2015 modules (React)
-import package from 'module-name'
-```
-
-Node.js uses **CommonJS**:
-
-```JS
-// NodeJS (Express JS)
-const package = require('module-name')
+npm install webpack webpack-cli --save-dev
 ```
 
 <!-- > -->
 
-**That's too many options what should I do?** 😱
+Install TypeScript and TypeScript Loader:
 
-If you're working in Node.js use Common JS with `require()`
-
-If you're writing code for the browser you'll need to support older browsers that don't support the ES Modules. This means you need to support both the script tag and ES Modules.
-
-<!-- > -->
-
-**But what if my library could be used in both Node and the Browser?**
-
-You need to support both all three: CommonJS, ES, Modules, and Script tag. 
-
-<!-- > -->
-
-**There's a tool for that!**
-
-UMD (Universal Module Definition) supports both `<script>` tag and `require()`
-
-There are several tools that will bundle your JS files into compatiple formats. 
-
-<!-- > -->
-
-### Common JS 
-
-**CommonJS is the pattern used with Node JS projects.** To use the code in a library you've written for Node.js and Expres.js projects by extension you'll need to bundle your code as a CommonJS Module. This will allow your code to be used like this: 
-
-```JavaScript
-const yourCode = require('your-code')
-...
-yourCode.yourMethod()
+```
+npm install --save-dev typescript ts-loader
 ```
 
 <!-- > -->
 
-### UMD (Universal Module Definition) 
+Add a tsconfig.json file. Make a new file: `tsconfig.json`
 
-**UMD is used for code used in a script tag in the browser.** A UMD module be imported via the script tag _and can be imported with `require()` in a Node JS environment._ 
+Add the following:
 
-```JavaScript
-<script src="your-code.js"></script>
-<script>
-  ...
-  yourCode.method()
-  ...
-</script>
-```
-
-<!-- > -->
-
-### ES Modules 
-
-**ES Modules are used with ES6 Import from syntax.** ES Modules are the modules used with React and modern JS. These use the `import` and `export` directives. 
-
-```JavaScript
-import { yourMethod } from 'your-code'
-...
-yourMethod()
-```
-
-These modules might be further processed with babel before they are used. 
-
-<!-- > -->
-
-Use ES Modules in the browser by adding `type="module"` to your script tag. 
-
-```HTML
-<script src="main.js" type="module"></script>
-```
-
-From here you can use use `import` and `export` in `main.js`. 
-
-<!-- > -->
-
-## Recap: Modules
-
-- Modules are used to make code compatible across different environments. 
-- There are several different module formats
-  - CommonJS
-  - UMD 
-  - ESM
-
-<!-- > -->
-
-## Bundling files with rollup
-
-- https://thedrearlight.com/blog/delivering-js-modules.html
-
-Follow the instructions below to bundle your project with rollup.js.
-
-Install rollup.js 
-
-`npm install --save-dev rollup`
-
-<!-- > -->
-
-Create a config file for rollup. Make a new file named `rollup.config.js`. 
-
-```JavaScript
-export default {
-  input: 'src/index.js',
-  output: {
-    file: 'umd/your-module.js',
-    format: 'umd',
-    name: 'yourModule'
+```JSON
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node"
   }
+}
+```
+
+<!-- > -->
+
+Add webpack.config.js. Create a new file: `webpack.config.js`
+
+Add the following: 
+
+```JS
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+		library: 'lib',
+		libraryTarget: 'umd',
+		globalObject: 'this',
+  },
 };
 ```
 
-**Change the name of the input file to point to your source code.**
+<!-- > -->
 
-**Change the output file name to the name of your library.**
+You may need to edit the values here: 
 
-**Chaneg the name in the output to the name of the variable your code will be stored in.**
-
-This base config takes an input file from: `src/index.js` and outputs a UMD file `umd/your-module.js`. 
+- `entry` points to your source file
+- `filename` names the output file
+- `path` sets the output directory
+- `library` sets the name of the global variable created in a browser environment
 
 <!-- > -->
 
-When loaded this file will create a global variable named `yourModule`. Remember UMD format is meant to be loaded in the browser. The code is also wrapped in a function following the CommonJS module pattern for use with Node JS. 
+## What is a bundle and why do we have them? 
 
-Move your source files into a folder named `src` create this folder if you haven't yet. 
+<!-- > -->
 
-In your source code change the import and export syntax. Rollup will recognize the `import from` syntax. So we will use that:
+In the old days you could write code and run it in a browser. 
 
+That was it. There wwere not more options. 
+
+<!-- > -->
+
+Until recently code run in browser was global. That is any variables that were created were accessible from anywhere. 
+
+<!-- > -->
+
+What could go wrong? 
+
+<!-- > -->
+
+Imagine importing a couple libraries only to find out that they don't work because the code on one is redefining a variable used in the other. 
+
+<!-- > -->
+
+script-1.js
 ```JS
-// Change
-module.exports = SomeThing
-// To
-export default SomeThing
+var counter = 0
+```
+
+script-2.js
+```JS
+function counter() {
+  return ...something really important...
+}
 ```
 
 <!-- > -->
 
-Test your work so far. 
+This is was really happening. There was not system of modules. 
 
-`npx rollup --config`
+To solve this problem CommonJS was created. 
 
-This should build the UMD module from your source files and save these a folder named `umd`. 
-
-Rollup should have created `umd/your-module.js`. Take a look at this file. it contains the boiler plate code that manages your module/bundle. 
+- https://en.wikipedia.org/wiki/CommonJS
 
 <!-- > -->
 
-If you saw a warning: `(!) Generated an empty bundle` you may need to export code from  `src/index.js`. For example 
+CommonJS is a JavaScript code that wraps your JS code. It allows you to create modules. 
 
-```JS 
-function getWeather() {
-  ...
+<!-- > -->
+
+What's a module? Don't we have these? 
+
+A module is a block of code that contains all of it's variables. Usually a module is a file. 
+
+<!-- > -->
+
+script-1.js
+```JS
+let counter = 0
+```
+
+script-2.js
+```JS
+function counter() {
+  return ...something really important...
 }
 
-export { getWeather }
-// or 
-export default getWeather
+export default counter
 ```
+
+In script-1 counter is not exposed. Script-2 exports counter, it can be imported where it is needed. 
+
+Using modules these identifiers do not clash! 
 
 <!-- > -->
 
-**Test your module.** 
+Wait! Can't we do this today? 
 
-Make a test file: `example.html`. Import your script with the script tag: 
+Yes! But only with the latest version of JS. Earlier versions don't support modules. Many older browsers don't support this! 
 
-```HTML
-<script src="./umd/just-in-case.js"></script>
-```
+<!-- > -->
 
-Notice the path to your library, it points to the `umd` folder at the file named in your config file.
+Ahh, this is so confusing! 
 
-Write some test code in your test file. Load the text file in the browser. 
+You're right, but it's how things work! You've been using this all along and havn't known about it! 
 
-The module should also work with Node.js. Try creating `server.js`. Use this to import your module: 
+<!-- > -->
+
+Then there's NodeJS. Node is a server environment that uses the JS language. 
+
+It doesn't support the API used by the borwser. Ever notice `fetch()` is missing?
+
+<!-- > -->
+
+Ever notice that the browser doesn't support `require()`?
+
+Require is another code wrapper that works with CommonJS. You can use it in the browser if you import it. 
+
+- https://requirejs.org/docs/commonjs.html
+
+<!-- > -->
+
+Let's review:
+
+- In JS land everything is global (variables and stuff)
+- CommonJS was invented to create a module system
+  - Modules allow variables with the same name to live in their own module
+- RequireJS was invented to allow things to be shared between modules
+
+<!-- > -->
+
+Universal Module Definition UMD is a format combines CommonJS and RequireJS. It takes into account whether your code is running in a browser or in a node environment. 
+
+<!-- > -->
+
+What does UMD for me? 
+
+Allows your libraries run in the browser or in Node.
+
+<!-- > -->
+
+Why is that important? 
+
+<!-- > -->
+
+If you are going to write code that runs in the browser you should understand all of the tooling that makes it work. 
+
+<!-- > -->
+
+If you are going to use modern libraries like React, they all use these ideas, you should understand what is happening behind the scenes. 
+
+<!-- > -->
+
+How can prove that all of this is doing what was described here? 
+
+<!-- > -->
+
+Make two files: 
+
+1. `example-node.js`
+2. `example-borwser.html`
+
+Imagine these are two separate projects. One is a browser project the other is a NodeJS project. 
+
+<!-- > -->
+
+After building your code following steps above take note of the file name and location of your bundled code. This file named in ouput section of the webpack config. 
+
+<!-- > -->
+
+In `example-node.js` import your code by adding: 
 
 ```JS
-const yourModule = require('./your-module')
-console.log(yourModule.method())
+const lib = require('./path/to/bundle.js')
+// add some code here to test your lib
 ```
 
-### Configure Rollup
-
-The source code has not been minified. You can minify using Terser.js plugin for Rollup. 
-
-Import `Terser.js` plugin for RollUp. 
-
-`npm install --save-dev rollup-plugin-terser`
+Run this in your terminal.
 
 <!-- > -->
-
-Modify `rollup.config.js`: 
-
-```JavaScript
-import { terser } from 'rollup-plugin-terser';
-
-export default [
-  {
-    input: 'src/index.js',
-    plugins: [terser()],
-    output: {
-        file: 'umd/your-module.js',
-        format: 'umd',
-        name: 'yourModule',
-        esModule: false
-    }
-  },
-  {
-    input: 'src/index.js',
-    output: {
-      file: 'esm/index.js',
-      format: 'esm'
-    }
-  }
-];
-```
-
-Notice there are two outputs. The second 'esm' is for ES Modules. These don't need to be minified since they are consumed by other bundlers and won't benefit from minification. 
-
-Modify `package.json`. We need to make sure that importers of the library get the right file. Set "main" for Node JS environments.
-
-```JSON
-  ...
-  "main": "umd/your-module-name-here.js",
-  ...
-```
-
-Use "module" to designate ES Module.
-
-```JSON
-  ...
-  "module": "esm/index.js",
-  ...
-```
-
-<!-- > -->
-
-Use "files" to designate which files should be distributed by npm. 
-
-```JSON
-  ...
-  "files": [
-    "esm/*",
-    "umd/*"
-  ]
-  ...
-```
-
-<!-- > -->
-
-Add "prepare" script. This script is run by npm each time you install or publish. 
-
-```jSON
-  ...
-  "scripts: {
-    ...
-    "prepare": "rollup --config",
-    ...
-  }
-  ...
-```
-
-<!-- > -->
-
-### Testing your work
-
-Pair up with someone you haven't paired with before. The goal will be to test the build system. You'll do this by following the instructions below. 
-
-Start here: 
-
-`npm pack`
-
-This command is like `npm publish` it prepares your files but doesn't send them to the server. Use `pack` to test your work locally. When you're satisfied use `publish` to upload to npm. 
-
-Run your tests
-
-`npm test`
-
-You may need to point your tests to the UMD folder since the tests are run with Node JS. 
-
-```js
-// in your test.js
-const yourModule = require('../umd/your-module')
-```
-
-If everything is good commit and push to GitHub. 
-
-Check your Status on Travis. 
-
-Check your Coverage on Coveralls.
-
-<!-- > -->
-
-Take a look at your package on npm. Check the version number. 
-
-You can test the Node JS version of the package using the "RunKit" link.
-
-(I had a problem with this showing an outdated version.)
-
-Create a test project for your package. 
-
-<!-- > -->
-
-Create a new folder and initialize a new npm project. 
-
-`npm init -y`
-
-Import your package. 
-
-`npm i your-module`
-
-Make an HTML file to test in browser 'example.html'.
-
-Add the script tag. 
+ 
+In `example-borwser.html` add a script tag:
 
 ```HTML
-<script src="./node_modules/your-module/umd/your-module.js"></script>
+<script src="./path/to/bundle.js"></script>
 <script>
- console.log(yourModule)
- console.log(yourModule.method())
+  // Add some code here to test your lib
 </script>
 ```
 
-<!-- > -->
-
-Note the path is pointing to the file in node_modules. You'll need to customize the second script to work with your code. 
-
-Test your work in Node JS. Make a new file `server.js`. 
-
-```JavaScript
-const yourModule = require('your-module')
-
-console.log(yourModule)
-console.log(yourModule.method())
-```
-
-<!-- > -->
-
-Again, modify the code here to test your library code. 
-
-Test your code in a React project. 
-
-Create a new React app. 
-
-`npx create-react-app your-module-react-test`
-
-<!-- > -->
-
-Import your module. 
-
-`npm i your-module`
-
-Write some test code in `App.js`
-
-```JavaScript
-import { yourMethod } from 'your-module'
-
-console.log(yourMethod())
-```
-
-<!-- > -->
-
-Wow, that's some pretty thorough testing! If you did everything here you've done everything that all of the professional developers are doing when they publish to npm. 
-
-<!-- > -->
-
-### Code Coverage
-
-Code coverage is a term that talks about what percentage of your code is covered by testing. You should strive for 100%. This is not always possible due to the nature of some code. As part of continuous integration, code coverage is a metric that gives another way to look at the quality and reliability of our code. 
-
-<!-- > -->
-
-**Run Coverage**
-
-`npx jest --coverage`
-
-You should see something like this: 
-
-```
-...
-  console.log lib/index.js:14
-    index.js
-
-----------|----------|----------|----------|----------|-------------------|
-File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-----------|----------|----------|----------|----------|-------------------|
-All files |    73.33 |    36.36 |    61.54 |     69.7 |                   |
- index.js |    73.33 |    36.36 |    61.54 |     69.7 |... 26,34,51,56,61 |
-----------|----------|----------|----------|----------|-------------------|
-Test Suites: 1 passed, 1 total
-Tests:       4 passed, 4 total
-Snapshots:   0 total
-Time:        1.583s
-Ran all test suites.
-...
-```
-
-<!-- > -->
-
-Let's read the coverage summary closely. 
-
-- File - Which files were tested? 
-- % Stmts - What percentage of statements in the program have been executed? 
-- % Branch - Has each branch in a control structure been executed? 
-- % Func - What percentage of functions have been executed? 
-- % Lines - What percentage of executable lines of code have been executed? 
-- Uncovered Line #s - Which lines have not been covered by testing?
-  - The line numbers refer to code in the lib folder! This is the compiled code not the source code in the 'src' folder. In the example test.js imports from './lib'.
-
-<!-- > -->
-
-Take a look at your code and figure out: 
-
-- What hasn't been tested
-- Which branches haven't been executed
-- Functions that have been tested
-
-https://medium.com/@krishankantsinghal/how-to-read-test-coverage-report-generated-using-jest-c2d1cb70da8b
-
-<!-- > -->
-
-### Pair programming 
-
-Take some time to pair program and solve issues with your code. You'll split the time half focussed on one project and half focussed on the other. 
-
-The goal of this session is to 
-
-Pair up with someone you haven't paired with before. 
-
-<!-- > -->
-
-## Homework
-
-[Math Lib](./assignments/assignment-05.md)
+In this example the code will added the variable with the name used in: `library: 'lib'` the name here is lib. You can change it but will need to run webpack and bundle again!  
 
 <!-- > -->
 
