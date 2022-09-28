@@ -97,7 +97,7 @@ npm install webpack webpack-cli --save-dev
 Install TypeScript and TypeScript Loader:
 
 ```
-npm install --save-dev typescript ts-loader
+npm install typescript ts-loader --save-dev
 ```
 
 <!-- > -->
