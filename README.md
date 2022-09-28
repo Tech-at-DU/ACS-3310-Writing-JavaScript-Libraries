@@ -61,7 +61,7 @@ Students by the end of the course will be able to ...
 | 11    | Wed, Sep 21 | TypeScript Lab | - | - |
 |  -    | Week 7 | - | - | - |
 | 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | Typescript |
-| 13    | Wed, Sep 28 | Holiday  [Lesson 9 - Bundling Code] | - | - |
+| 13    | Wed, Sep 28 | [Lesson 9 - Bundling Code] | - | - |
 |  -    | Week 8 | Review work | - | - |
 | 14    | Mon, Oct 3 | Review work | - | - |
 | 15    | Wed, Oct 5 | Final Assessment | - | - |
