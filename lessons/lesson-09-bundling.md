@@ -434,6 +434,18 @@ In this example the code will added the variable with the name used in: `library
 
 <!-- > -->
 
+We just did something with code that makes it run in the browser and Node? 
+
+<!-- > -->
+
+Your code would not run in both places without this!
+
+<!-- > -->
+
+It's why you can use jQuery, Underscore, and many other libraries!
+
+<!-- > -->
+
 Let's Review: 
 
 - Once upon time there was JavaScript
