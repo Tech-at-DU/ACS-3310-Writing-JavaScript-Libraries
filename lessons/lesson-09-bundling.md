@@ -17,7 +17,7 @@ This class session covers the concept of bundling. This is the process of combin
 
 <!-- > -->
 
-## Promises
+<!-- ## Promises
 
 Let's study Promise! try these Replits! The first three review Promise and the last provides a practical use case and challenge!
 
@@ -29,7 +29,7 @@ Let's study Promise! try these Replits! The first three review Promise and the l
 
 Solve this problem with Primsies and Callbacks. The sample code shows hoe to use the browsers geolocation API. It uses two callbacks. Your goal is to make it work with a Promise! 
 
-- https://replit.com/@MakeSchoolFEW/GeoLocation#script.js
+- https://replit.com/@MakeSchoolFEW/GeoLocation#script.js -->
 
 <!-- > -->
 
@@ -37,35 +37,52 @@ Solve this problem with Primsies and Callbacks. The sample code shows hoe to use
 
 <!-- > -->
 
-Bundling is used in professional environments. Bundling code yourself will help you understand how these projects work. 
+🎁
+
+Bundling is used in professional environments. Bundling code yourself will help you understand how modern web projects work. 
+
+🧐
 
 <!-- > -->
+
+🎁 ➡️ 🌍
 
 Bundling your files allows them to be distributed so they can be used anywhere without extra work. 
 
 <!-- > -->
 
-Your files need to be handled differently if they are used in the browser, or in NodeJS, or in a React project. Bundling files allows them to be used all these. 
+Your files need to be handled differently if they are used in the browser, NodeJS, or in a React project. 
+
+Bundling files allows them to be used in all these. 
+
+🍎 🍊 🍐
 
 <!-- > -->
 
 ## Learning Objectives 
 
 1. Describe reasons for bundling files
-1. Define UMD and ESM bundles 
-1. Use Rollup to bundle your library for distribution
+1. Describe modules 
+1. Use Webpack to bundle code
 
 <!-- > -->
-
 
 ## Bundling with Webpack
 
 <!-- > -->
 
-Reference:
+References:
 
 - https://webpack.js.org/guides/typescript/
 - https://tobias-barth.net/blog/Bundling-your-library-with-Webpack
+
+<!-- > -->
+
+Follow these steps to bundle your code with webpack. 
+
+<!-- > -->
+
+Choose one of your library projects to work with. 
 
 <!-- > -->
 
@@ -85,7 +102,7 @@ npm install --save-dev typescript ts-loader
 
 <!-- > -->
 
-Add a tsconfig.json file. Make a new file: `tsconfig.json`
+Make a new file: `tsconfig.json`
 
 Add the following:
 
@@ -105,7 +122,7 @@ Add the following:
 
 <!-- > -->
 
-Add webpack.config.js. Create a new file: `webpack.config.js`
+Create a new file: `webpack.config.js`
 
 Add the following: 
 
@@ -147,17 +164,35 @@ You may need to edit the values here:
 
 <!-- > -->
 
+Edit package.json
+
+Add this to scripts: 
+
+```JSON
+"build": "webpack --config webpack.config.js"
+```
+
+<!-- > -->
+
+In these steps you added webpack to your project and added a script to run webpack and have it bundle your code. 
+
+🍎 🍊 🍐 ➡️ 🎁
+
+<!-- > -->
+
 ## What is a bundle and why do we have them? 
+
+🤔
 
 <!-- > -->
 
 In the old days you could write code and run it in a browser. 
 
-That was it. There wwere not more options. 
+That was it. 
 
 <!-- > -->
 
-Until recently code run in browser was global. That is any variables that were created were accessible from anywhere. 
+Until recently, code run in browser was global. Any variables that were created were accessible from anywhere. 
 
 <!-- > -->
 
@@ -171,19 +206,25 @@ Imagine importing a couple libraries only to find out that they don't work becau
 
 script-1.js
 ```JS
-var counter = 0
+function counter() {
+  // does something really important
+}
 ```
 
 script-2.js
 ```JS
-function counter() {
-  return ...something really important...
-}
+var counter = 0
+```
+
+Run your code
+```JS
+counter() // calls function
+TypeError: counter is not a function.
 ```
 
 <!-- > -->
 
-This is was really happening. There was not system of modules. 
+This is was really happening, there was no module system. 
 
 To solve this problem CommonJS was created. 
 
@@ -191,13 +232,45 @@ To solve this problem CommonJS was created.
 
 <!-- > -->
 
-CommonJS is a JavaScript code that wraps your JS code. It allows you to create modules. 
+CommonJS is JavaScript code that wraps your JS code. It allows you to create modules. 
 
 <!-- > -->
 
 What's a module? Don't we have these? 
 
 A module is a block of code that contains all of it's variables. Usually a module is a file. 
+
+- [What's a module](https://softwareengineering.stackexchange.com/questions/167859/what-actually-is-a-module-in-software-engineering)
+- [Where JS modules come from](https://medium.com/sungthecoder/javascript-module-module-loader-module-bundler-es6-module-confused-yet-6343510e7bde)
+- [History of JS modules](https://objectpartners.com/2019/05/24/javascript-modules-a-brief-history/)
+
+<!-- > -->
+
+Modules in a nutshell.
+
+- A file defines a module. 
+- All variables and functions are scoped to that file. 
+- A module may export values it wants to share.
+
+<!-- > -->
+
+ES Modules was added to the JavaScript spec in 2015, and by 2020 had broad support in most web browsers and JavaScript runtimes.
+
+<!-- > -->
+
+Wow, that was like last week! Are ES modules that new? 
+
+Yes! 
+
+<!-- > -->
+
+They probably don't work in older browsers!
+
+What are going to do? 
+
+<!-- > -->
+
+Bundle our code!
 
 <!-- > -->
 
@@ -235,7 +308,7 @@ You're right, but it's how things work! You've been using this all along and hav
 
 Then there's NodeJS. Node is a server environment that uses the JS language. 
 
-It doesn't support the API used by the borwser. Ever notice `fetch()` is missing?
+It doesn't support the API used by the browser. Ever notice `fetch()` is missing?
 
 <!-- > -->
 
@@ -285,7 +358,7 @@ How can prove that all of this is doing what was described here?
 Make two files: 
 
 1. `example-node.js`
-2. `example-borwser.html`
+2. `example-browser.html`
 
 Imagine these are two separate projects. One is a browser project the other is a NodeJS project. 
 
@@ -306,7 +379,7 @@ Run this in your terminal.
 
 <!-- > -->
  
-In `example-borwser.html` add a script tag:
+In `example-browser.html` add a script tag:
 
 ```HTML
 <script src="./path/to/bundle.js"></script>
