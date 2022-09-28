@@ -174,6 +174,14 @@ Add this to scripts:
 
 <!-- > -->
 
+Bundle your files by running: 
+
+```
+npm run build
+```
+
+<!-- > -->
+
 In these steps you added webpack to your project and added a script to run webpack and have it bundle your code. 
 
 👠 👑 🎧 ➡️ 🎁
