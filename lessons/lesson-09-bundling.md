@@ -157,10 +157,10 @@ module.exports = {
 
 You may need to edit the values here: 
 
-- `entry` points to your source file
-- `filename` names the output file
-- `path` sets the output directory
-- `library` sets the name of the global variable created in a browser environment
+- `entry`: points to your source file
+- `filename`: names the output file
+- `path`: sets the output directory
+- `library`: sets the name of the global variable created in a browser environment
 
 <!-- > -->
 
@@ -176,7 +176,7 @@ Add this to scripts:
 
 In these steps you added webpack to your project and added a script to run webpack and have it bundle your code. 
 
-🍎 🍊 🍐 ➡️ 🎁
+👠 👑 🎧 ➡️ 🎁
 
 <!-- > -->
 
@@ -224,11 +224,16 @@ TypeError: counter is not a function.
 
 <!-- > -->
 
-This is was really happening, there was no module system. 
+This is was really happening. 
 
-To solve this problem CommonJS was created. 
+So clever people invented a module system. 
 
-- https://en.wikipedia.org/wiki/CommonJS
+<!-- > -->
+
+The two popular module systems were:
+
+- [CommonJS](https://www.commonjs.org)
+- [RequireJS](https://requirejs.org)
 
 <!-- > -->
 
@@ -236,7 +241,17 @@ CommonJS is JavaScript code that wraps your JS code. It allows you to create mod
 
 <!-- > -->
 
-What's a module? Don't we have these? 
+If you've ever used: 
+
+```JS
+const duckPond = require('pond')
+```
+
+You've been using RequireJS!
+
+<!-- > -->
+
+What's a module?
 
 A module is a block of code that contains all of it's variables. Usually a module is a file. 
 
@@ -254,29 +269,36 @@ Modules in a nutshell.
 
 <!-- > -->
 
+Hey, don't we have these already...
+
+<!-- > -->
+
 ES Modules was added to the JavaScript spec in 2015, and by 2020 had broad support in most web browsers and JavaScript runtimes.
 
 <!-- > -->
 
-Wow, that was like last week! Are ES modules that new? 
+Wow! That was like last week! 
 
-Yes! 
+Are ES modules that new? 
 
-<!-- > -->
-
-They probably don't work in older browsers!
-
-What are going to do? 
+Yes, they are! 
 
 <!-- > -->
 
-Bundle our code!
+ES Modules are where we get `import from`: 
+
+```JS
+import Amazing, { things } from 'some-lib'
+...
+export default SomethingUseful
+```
 
 <!-- > -->
 
 script-1.js
 ```JS
 let counter = 0
+...
 ```
 
 script-2.js
@@ -290,29 +312,33 @@ export default counter
 
 In script-1 counter is not exposed. Script-2 exports counter, it can be imported where it is needed. 
 
-Using modules these identifiers do not clash! 
+Using modules these identifiers do not clash!
 
 <!-- > -->
 
-Wait! Can't we do this today? 
+They probably don't work in older browsers!
 
-Yes! But only with the latest version of JS. Earlier versions don't support modules. Many older browsers don't support this! 
-
-<!-- > -->
-
-Ahh, this is so confusing! 
-
-You're right, but it's how things work! You've been using this all along and havn't known about it! 
+What are going to do? 😱
 
 <!-- > -->
 
-Then there's NodeJS. Node is a server environment that uses the JS language. 
-
-It doesn't support the API used by the browser. Ever notice `fetch()` is missing?
+Bundle our code! (using CommonJS and RequireJS) 
 
 <!-- > -->
 
-Ever notice that the browser doesn't support `require()`?
+Bundling also makes our code compatible with different environments. 
+
+<!-- > -->
+
+What types of environments are there? 
+
+- Browser
+- NodeJS
+- ...
+
+<!-- > -->
+
+Ever notice that the browser doesn't support `require()` but NodeJS uses it a lot!  
 
 Require is another code wrapper that works with CommonJS. You can use it in the browser if you import it. 
 
@@ -333,7 +359,23 @@ Universal Module Definition UMD is a format combines CommonJS and RequireJS. It 
 
 <!-- > -->
 
-What does UMD for me? 
+Wait, where did UMD come from? 
+
+Remember the webpack.config?
+
+```JS
+output: {
+  filename: 'index.js',
+  path: path.resolve(__dirname, 'dist'),
+  library: 'reallyRandom',
+  libraryTarget: 'umd', <--
+  globalObject: 'this',
+},
+```
+
+<!-- > -->
+
+What does UMD do for me? 
 
 Allows your libraries run in the browser or in Node.
 
@@ -351,7 +393,7 @@ If you are going to use modern libraries like React, they all use these ideas, y
 
 <!-- > -->
 
-How can prove that all of this is doing what was described here? 
+How can I prove that all of this is doing what was described here? 
 
 <!-- > -->
 
@@ -392,12 +434,24 @@ In this example the code will added the variable with the name used in: `library
 
 <!-- > -->
 
+Let's Review: 
+
+- Once upon time there was JavaScript
+- JS had some problems with global variables
+- Wizards fixed this with some magic spells they called CommonJS and RequireJS
+- JS was improved but not everyone can use those improvements.
+- So we make our JS work everywhere with UMD
+
+<!-- > -->
+
 ## Additional Resources
 
 Set up Jest with babel to use ES6 import from with your tests
 
 - https://jestjs.io/docs/en/22.x/getting-started.html#using-babel
 - https://medium.com/@saplos123456/using-es6-import-and-export-statements-for-jest-testing-in-node-js-b20c8bd9041c
+
+<!-- > -->
 
 More info on bundling
 
