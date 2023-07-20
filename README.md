@@ -43,28 +43,28 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
-|  1    | Wed, Aug 17 | [Lesson 1 - Solving string problems] | Start your first lib | - |
+|  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | Start your first lib | - |
 |  -    | Week 2 | - | - | - |
-|  2    | Mon, Aug 22 | [Lesson 2 - Unit testing] | - | - |
-|  3    | Wed, Aug 24 | Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
+|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | - | - |
+|  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  4    | Mon, Aug 29 | [Lesson 4 - Working with Dates] | [Date Lib] | Publish to npm |
-|  5    | Wed, Aug 31 | [Lesson 5 - Solving problems with Dates] | - | - |
+|  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib] | Publish to npm |
+|  5    | Wed, Aug 30 | [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
-|  6    | Mon, Sep 5 | Labor Day no class | - | - |
-|  7    | Wed, Sep 7 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
+|  6    | Mon, Sep 4 | Labor Day no class | - | - |
+|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  8    | Mon, Sep 12 | [Lesson 7 - Lab] | - | - |
-|  9    | Wed, Sep 14 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
+|  8    | Mon, Sep 11 | [Lesson 7 - Lab] | - | - |
+|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
 |  -    | Week 6 | - | - | - |
-| 10    | Mon, Sep 19 | [Lesson 11 - Typescript] | Typescript | - |
-| 11    | Wed, Sep 21 | TypeScript Lab | - | - |
+| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | Typescript | - |
+| 11    | Wed, Sep 20 | TypeScript Lab | - | - |
 |  -    | Week 7 | - | - | - |
-| 12    | Mon, Sep 26 | [Lesson 8 - Continuous Integration] | - | Typescript |
-| 13    | Wed, Sep 28 | [Lesson 9 - Bundling Code] | - | - |
+| 12    | Mon, Sep 25 | [Lesson 8 - Continuous Integration] | - | Typescript |
+| 13    | Wed, Sep 27 | [Lesson 9 - Bundling Code] | - | - |
 |  -    | Week 8 | Review work | - | - |
-| 14    | Mon, Oct 3 | Review work | - | - |
-| 15    | Wed, Oct 5 | Final Assessment | - | - |
+| 14    | Mon, Oct 2 | Review work | - | - |
+| 15    | Wed, Oct 4 | Final Assessment | - | - |
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
 <!--  -->
