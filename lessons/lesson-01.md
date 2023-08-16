@@ -21,6 +21,9 @@ Video Lecture: https://youtu.be/TwaUOUPmeMM
 
 ## JavaScript Libraries 📚
 
+Read this: 
+https://codeinstitute.net/global/blog/what-is-a-javascript-library/
+
 <!-- > -->
 
 ### Q: What are libraries? 📚
