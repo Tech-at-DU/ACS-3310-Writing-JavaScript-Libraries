@@ -104,7 +104,9 @@ When you have code that you want to share .
 
 <!-- > -->
 
-### Q: What will I make in this class? 🤔
+### Q: What will I make in this class? 🤔 
+
+https://bugfender.com/blog/how-to-create-a-javascript-library/
 
 <!-- > -->
 
@@ -167,7 +169,7 @@ Answer these questions as you explore the repos below.
 **Repos**
 
 - [has-values](https://github.com/jonschlinkert/has-values)
-- [fill-range](https://github.com/jonschlinkert/fill-range/blob/master/index.js)
+- [fill-range](https://github.com/jonschlinkert/fill-range/tree/master)
 - [Lodash](https://github.com/lodash/lodash) (the most popular package on npm)
 
 <!-- > -->
