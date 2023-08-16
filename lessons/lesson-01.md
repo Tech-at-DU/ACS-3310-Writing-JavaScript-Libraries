@@ -22,6 +22,7 @@ Video Lecture: https://youtu.be/TwaUOUPmeMM
 ## JavaScript Libraries 📚
 
 Read this: 
+
 https://codeinstitute.net/global/blog/what-is-a-javascript-library/
 
 <!-- > -->
@@ -58,6 +59,10 @@ https://codeinstitute.net/global/blog/what-is-a-javascript-library/
 
 ### Q: Why make a library? 🤔
 
+Read this: 
+
+https://hackernoon.com/cool-javascript-libraries-to-consider-using-in-2023
+
 <!-- > -->
 
 By putting code in a library you are making it **portable** 
@@ -78,6 +83,10 @@ The code in a library can be **shared across multiple projects**, changes and bu
 <!-- > -->
 
 ### Q: When to make a library? 🤔
+
+Read this: 
+
+https://dev.to/101arrowz/creating-a-modern-js-library-writing-good-code-170a
 
 <!-- > -->
 
