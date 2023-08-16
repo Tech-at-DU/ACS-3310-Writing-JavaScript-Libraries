@@ -158,6 +158,8 @@ Take a look at a couple of libraries below and look at the code. With your pair 
 
 Just skim the repos and look at a couple of files. Usually, the code will be in `index.js` or in `src` folder.
 
+Imagine its your first day on the job and you have been pointed to these directories and need to use these libraries...
+
 <!-- > -->
 
 Answer these questions as you explore the repos below.
