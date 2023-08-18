@@ -137,7 +137,7 @@ If you haven't heard of FizzBuzz take a quick read.
 
 Pair with someone **you haven't paired with before**.
 
-The goal of this exercise is to write some tests with Jest that test the functions in the [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test).
+The goal of this exercise is to write some tests with Jest that test the functions in the [Fizz Buzz sample code](https://github.com/Tech-at-DU/fizz-buzz-test).
 
 **Download this repo now.** Download the repo as a zip file and unzip it.
 
