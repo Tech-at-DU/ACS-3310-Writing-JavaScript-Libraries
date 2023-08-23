@@ -11,7 +11,7 @@
 
 ## Learning Objectives
 
-1. 🤓 Describe, define, and use SEMVer
+1. 🤓 Describe, define, and use SEMVer (Semantic Versioning)
 1. 🛠 Create NPM Packages
 1. 🎬 Publish your npm package
 1. 🥇 Use ESLint to apply best practices to coding.
