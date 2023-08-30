@@ -151,6 +151,8 @@ List of formatting characters:
 - `'m'` -> `Jul` (Month short)
 - `'D'` -> `01` (date padded)
 - `'d'` -> `1` (date)
+- `'L'` -> `Monday`
+- `'l'` -> `Mon`
 - `'#'` -> `1st` (date with ordinal suffix: st, nd, rd or th)
 - `'H'` -> `05` (Hours padded)
 - `'h'` -> `5` (Hours)
