@@ -33,7 +33,7 @@ Dates are important they appear in one form or another in almost every applicati
   - `new Date()`
   - `new Date(0)`
   - `new Date('9/26/65')`
-  - `new Date(1983, 09, 31)`
+  - `new Date(1983, 4, 31)`
 
 <!-- > -->
 
