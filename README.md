@@ -45,8 +45,8 @@ Students by the end of the course will be able to ...
 |  -    | Week 1 | JS Library 1 | String Library |  |
 |  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | Start your first lib | - |
 |  -    | Week 2 | - | - | - |
-|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | - | - |
-|  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | Add Unit Tests | - |
+|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | Add Unit Tests | - |
+|  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
 |  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib] | Publish to npm |
 |  5    | Wed, Aug 30 | [Lesson 5 - Solving problems with Dates] | - | - |

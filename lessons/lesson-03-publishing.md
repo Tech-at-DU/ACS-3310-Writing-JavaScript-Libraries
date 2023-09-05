@@ -11,7 +11,7 @@
 
 ## Learning Objectives
 
-1. 🤓 Describe, define, and use SEMVer
+1. 🤓 Describe, define, and use SEMVer (Semantic Versioning)
 1. 🛠 Create NPM Packages
 1. 🎬 Publish your npm package
 1. 🥇 Use ESLint to apply best practices to coding.
@@ -573,6 +573,13 @@ Q: What was covered today?
 <!-- > -->
 
 ### Homework
+
+Wrap up your string lib by: 
+- Completing all of the challenge problems
+- Adding unit tests
+- Lint your code using ESLint and the Airbnb style guide
+- Publish your code to npm
+- Inlcude a link to your npm package in your readme
 
 - [String Lib](./assignments/assignment-01.md)
 - [Publish to npm](./assignments/assignment-02.md)
