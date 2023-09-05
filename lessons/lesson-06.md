@@ -244,8 +244,9 @@ function getWeather(onComplete, apikey, units) {
 
   onComplete()
 }
-
-getWeather(onComplete, '1234', 'imperial')
+// Call getWeather with different arguments
+getWeather(() => { ... }, '1234', 'imperial') 
+getWeather(() => { ... }), '4321', 'metric')
 ```
 
 <!-- > -->
@@ -291,7 +292,7 @@ const handleWeather = (data) => {
   // do stuff with data/json received from callback
 }
 
-getWeather(handleWeathewr, '1234', 'metric')
+getWeather(handleWeather, '1234', 'metric')
 ```
 
 <!-- > -->
@@ -339,8 +340,6 @@ function getWeather(apikey, units, onSuccess, onError) {
   ...
 }
 
-getWeather('myapikey', 'metric', handleData, handleError)
-
 function handleData(data) { // receives json here!
   // do stuff with data received from callback
 }
@@ -348,6 +347,8 @@ function handleData(data) { // receives json here!
 function handleError(err) {
   // something went wrong
 }
+
+getWeather('myapikey', 'metric', handleData, handleError)
 ```
 
 <small>Notice both callbacks receive an argument!</small>
@@ -366,7 +367,7 @@ You can simplify this by using a Promise
 
 Promise is an object that is used to handle asynchronous actions. 
 
-A Promise works with callbacks you can think of Promise as managing both the success 🙌 and error callbacks 👎. 
+A Promise works with callbacks you can think of Promise as managing both the success 🙌 and error 👎 callbacks . 
 
 <!-- > -->
 
@@ -376,6 +377,9 @@ function getWeather() {
   return fetch(...) // Return the Promise
 }
 
+function handleData(data) { ... }
+function handleError(err) { ... }
+
 getWeather() // Call then() and catch() on the Promise 
   .then((data) => {
     onSuccess(data)
@@ -383,10 +387,6 @@ getWeather() // Call then() and catch() on the Promise
   .catch((error) => {
     onError(error)
   })
-
-function handleData(data) { ... }
-
-function handleError(err) { ... }
 ```
 
 The `Promise.then()` and `Promise.catch()` methods take the callbacks you used earlier. 
@@ -412,6 +412,16 @@ async function something() {
 
 something().then().catch()
 ```
+or 
+
+```JS
+async function something() {
+ // Nothing is returned here... 
+}
+
+const p = something() // Always returns a promise
+p.then().catch()
+```
 
 <!-- > -->
 
@@ -419,9 +429,12 @@ The `await` key word can only be used inside of an `async` function. Use it to r
 
 ```JS 
 async function getWeather() {
-  const res = await fetch() // code stops here and waits for promise to resolve
-  const json = await res.json() // waits here for promise to resolve
-  return json // Returns json wrapped in a promise!
+  // code stops here and waits for promise to resolve
+  const res = await fetch() 
+  // waits here for promise to resolve
+  const json = await res.json() 
+  // Returns json wrapped in a promise!
+  return json 
 }
 
 getWeather().then(json => ...)
@@ -473,11 +486,9 @@ function getWeather(zip, apiKey, success, error) {
 Externally you would use the function above like this: 
 
 ```JS 
-getWeather('94010', 'mykey', onSuccess, onError)
-
 function onSuccess(json) { ... }
-
 function onError(err) { ... }
+getWeather('94010', 'mykey', onSuccess, onError)
 ```
 
 <!-- > -->
@@ -532,7 +543,7 @@ async function getWeatherAsync(zip, apiKey) {
 This works exactly the same as the previous example and would be called the same from outside. 
 
 ```JS 
-getWeatherPromise('94102', 'mykey') // async function returns a Promise!
+getWeatherAsync('94102', 'mykey') // async function returns a Promise!
   .then(onSuccess)
   .catch(onError)
 
@@ -621,7 +632,8 @@ async function getWeatherAsync(zip, apiKey) {
 
 ## Homework
 
-[API Lib](../assignments/assignment-09.md)
+- Complete and submit the [API Lab](https://github.com/Tech-at-DU/weather-api)
+- Complete the homework assignment [API Lib](https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-09-api-lib.md)
 
 <!-- > -->
 

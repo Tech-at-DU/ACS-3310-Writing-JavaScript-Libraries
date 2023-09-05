@@ -6,6 +6,8 @@ Run Slides with:
 
 ```bash
 reveal-md Lessons/ --css makeschool.css
+reveal-md Lessons/ --static Slides
+reveal-md Lessons/ --static Slides --css makeschool.css
 ```
 
 ## Installation:

@@ -5,20 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Syllabus Template Slides</title>
-    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/reveal.css" />
-    <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
-    <link rel="stylesheet" href="./css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./assets/Reveal/makeschool.css" />
 
+
     <script>
-      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+      document.write(
+        '<script src="http://' +
+          (location.host || 'localhost').split(':')[0] +
+          ':35729/livereload.js?snipver=1"></' +
+          'script>'
+      );
     </script>
   </head>
   <body>
     <div class="reveal">
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# FEW 2.1 - API challenge steps 
+# ACS 3310 - API challenge steps 
 
 Today will be a lab day dedicated to working on the API lib assignment. 
 
@@ -66,6 +74,7 @@ https://github.com/Make-School-Labs/weather-api#weather-lib
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,

@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Syllabus Template Slides</title>
-    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/reveal.css" />
-    <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
-    <link rel="stylesheet" href="./css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./assets/Reveal/makeschool.css" />
 
+
     <script>
-      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+      document.write(
+        '<script src="http://' +
+          (location.host || 'localhost').split(':')[0] +
+          ':35729/livereload.js?snipver=1"></' +
+          'script>'
+      );
     </script>
   </head>
   <body>
     <div class="reveal">
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# FEW 2.1 - Lesson 11
+# ACS 3310 - Lesson 11
 
 <small style="display:block;text-align:center">Writing in TypeScript</small>
 
 <!-- ([slides](https://docs.google.com/presentation/d/1ovt7YeAfqaiN8duWjwhYxldTwvca382QTHYyBUFZZ_8/edit)) -->
 
-In this class, you will begin writing TypeScript code and learn how to adapt your existing JS code to TypeScript.
+In this class, you will begin learning to use Typescript to solve more advanced problems.
 
 <!-- Put a link to the slides so that students can find them -->
 
@@ -32,420 +40,406 @@ In this class, you will begin writing TypeScript code and learn how to adapt you
 </script></section><section  data-markdown><script type="text/template">
 ## Learning Objectives
 
-1. Define static & dynamic typing
-2. Explain the pros & cons of static vs. dynamic typing
-3. Implement functions, classes, & interfaces using TypeScript
-4. Convert existing JS code to TypeScript
+1. Define instance properties and their types
+1. Use enums
+1. Use generics
+1. Write types for functions
 </script></section><section  data-markdown><script type="text/template">
-## Static vs. Dynamic Typing
+# Review 
+
+Download the examples here: https://github.com/Tech-at-DU/typescript-intro
+
+Take a look at `example-8.ts` and `example-9.ts` add the types and compile it. 
 </script></section><section  data-markdown><script type="text/template">
-### Q: What is a type?
-
-Data types describe the *shape* of the data that we're expecting.
-
-Examples: `string`, `number`, `boolean`
+# Classes 
 </script></section><section  data-markdown><script type="text/template">
-### Q: What is static typing?
-
-In a statically typed language, variables' types are *static*, meaning that once a variable is set to a type, it cannot be changed. Statically typed languages generally check *at compile time* that a variable is being assigned the correct type of data. 
-
-Examples of statically typed languages include Java, C, C++, and Swift.
+Classes are used to create instances of objects. Objects store values as properties. These properties have types!
 </script></section><section  data-markdown><script type="text/template">
-**Q:** Can you use static typing in JS?
+Consider the Person class below. It needs some types. 
 
-**A:** Nope. TypeScript is another language separate from JS and must be compiled into vanilla JS. So, you can't use static typing in JS but you can use static typing in TypeScript and compile TypeScript to JS. 
-</script></section><section  data-markdown><script type="text/template">
-### Q: What is dynamic typing?
-
-In a dynamically typed language, a variable's type can change over the course of the program. Consider the following code:
-
-```JavaScript
-let x = 10;  // x starts as a Number
-x = 'hello'; // x becomes a String
-```
-
-Usually you won't do this on purpose, most often it will happen by accident. 
-</script></section><section  data-markdown><script type="text/template">
-In a dynamically typed language, we do not know *until runtime* what type of data a particular variable holds.
-
-Examples of dynamically typed languages include Python, **JavaScript**, PHP, and Ruby.
-</script></section><section  data-markdown><script type="text/template">
-## Why use one or the other?
-
-**Discussion:** Write down 3 reasons each for using either a statically typed or dynamically typed language.
-</script></section><section  data-markdown><script type="text/template">
-### Static typing catches errors earlier in program development.
-
-**Q:** What is happening on each line of code below?
-
-```JavaScript
-function getPriceWithTax(amount, rate) {
- const price = amount.toFixed(2)
- const tax = price * rate
- return price + tax
-}
-```
-
-What could possibly go wrong?
-</script></section><section  data-markdown><script type="text/template">
-### Static typing improves readability
-
-Consider this code:
-
-```JavaScript
-function mystery(x) {
-  if (x.powerLevel <= 100) {
-    x.leave();
-  } else {
-    x.display();
-  }
+```JS
+class Person {
+	constructor(name, age) {
+		this.name = name 
+		this.age = age
+	}
 }
 ```
 </script></section><section  data-markdown><script type="text/template">
-Now, consider the following questions:
-- What is x?
-- What other fields, data, and behavior does x have? How else can I interact with x?
-- How would I find this information?
-</script></section><section  data-markdown><script type="text/template">
-Now, let's take a look at this code with some types added.
+In typescript the syntax for a class looks like this: 
 
-```TypeScript
-class Cat {
-  powerLevel: number;
-  personality: string;
-  appearance: string;
-  photo: Image;
-  leave(): void {...}
-  display(): void {...}
-}
+```JS
+class Person {
+	name: string // instance variables!
+	age: number  // set types here!
 
-function mystery(x: Cat) {
-  ...
+	constructor(name: string, age: string) {
+		this.name = name 
+		this.age = age
+	}
 }
 ```
+
+<small>Person stores `name` a string, and `age` a number.</small>
 </script></section><section  data-markdown><script type="text/template">
-### Static typing can improve your workflow
+Class methods are defined like functions: 
 
-Since our types are set in stone at compile time, many code editors will use that information to give you smart autocomplete suggestions based on that particular data type. If you use VSCode, you can use Intellisense to browse available methods from a class while writing code. You can also Cmd+Click on a method name to go directly to its definition.
-</script></section><section  data-markdown><script type="text/template">
-### Advantages of dynamic typing
-
-There isn't just one right answer that works in all scenarios; you will need to decide which style is right for your project. Here are some pros of dynamic typing to consider:
-
-- It's faster to write, thus might be better for scripting
-- It's more succinct
-- It's more tolerant to change: a code refactor will have a smaller area of effect
-- Doesn't require extra compilation step
-</script></section><section  data-markdown><script type="text/template">
-## Features of TypeScript
-</script></section><section  data-markdown><script type="text/template">
-### Variables
-
-The most basic types are `string`, `number`, and `boolean`, and we can use them in the same way as in regular JavaScript; we just can't reassign a variable to a different type.
-
-```TypeScript
-let y = 88;
-let sum: number = 10;
-const title: string = 'hello';
-let done: boolean = false;
-
-sum = undefined; // OK
-sum = null; // OK
-sum = '100'; // Not OK - will result in a compile error
-Math.round(title) // Compile error
+```JS
+class Person {
+	...
+	describe(): string {
+		return `${this.name} is ${this.age}`
+	}
+}
 ```
 </script></section><section  data-markdown><script type="text/template">
-There are two ways to declare an array, which are completely equivalent (if you've used Java before, these should look familiar):
+Try `example-10.ts` and `example-11.ts`
+</script></section><section  data-markdown><script type="text/template">
+# Enumerations 
+</script></section><section  data-markdown><script type="text/template">
+An enumeration is a named set values. These act like constants you might define to describe all of the possible choices that are be avaiable. 
+</script></section><section  data-markdown><script type="text/template">
+Use enumerations, enum for short, to name the possible choices. 
 
-```TypeScript
-let list1: number[] = [1, 2, 3];
-let list1: Array<number> = [1, 2, 3];
+For example: 
+
+- Units - Metric, Standard, Imperial
+- Direction - North, South, East, West
+</script></section><section  data-markdown><script type="text/template">
+Why use an enum? 
+
+- More reliable than strings 
+- Descriptive choices
+- Prevents erroneous values
+</script></section><section  data-markdown><script type="text/template">
+Consider this typical scenario: 
+
+```JS
+function getWeather(zip, apikey, unit = 'metric') {
+  // ...
+}
 ```
-</script></section><section  data-markdown><script type="text/template">
-What if we want an array with mixed values of different types? In that case, we can use the 'tuple' type:
 
-```TypeScript
-let person1: [string, number] = ['Jane', 20];
+Using a string to represent a range of possible values for unit.
+
+```JS
+getWeather(zip, apikey, 'millimeters') 
 ```
+
+What could go wrong? 
 </script></section><section  data-markdown><script type="text/template">
-You can also easily make your own enum type. If you try to print the value of an enum, you'll see that it's actually a number, with the first value defaulting to 0.
+**Constants**: Defining contants is good but doesn't show that these values work together. Your constants are in a pool of other variables. 
 
-```TypeScript
-enum Fruit { Apple, Orange, Pear };
+```JS
+const METRIC = 'metric'
+const IMPERIAL = 'imperial'
+const STANDARD = 'standard'
+const KEY = '123456'
 
-let f: Fruit = Fruit.Pear;
-
-console.log(Fruit.Apple);  // 0
-console.log(Fruit.Orange); // 1
-console.log(Fruit.Pear);   // 2
+function getWeather(zip, apikey, unit = METRIC) {
+  // ...
+}
 ```
-</script></section><section  data-markdown><script type="text/template">
-Finally, if you don't know what type a piece of data will be, e.g. if you're receiving it from an API, you can always use the `any` type:
 
-```TypeScript
-let someValue: any = 10;
-someValue = [1, 2, 3];
-```
+Better, but what is STANDARD? What is KEY could it be a unit? 
 </script></section><section  data-markdown><script type="text/template">
-### Functions & Function Variables
-</script></section><section  data-markdown><script type="text/template">
-We can add types to the parameters and return values of functions:
+Another possible choice might be an **object**: 
 
-```TypeScript
-// Add types to each parameter, and a type for the return value
-function add(num1: number, num2: number): number {
-  return num1 + num2;
+```JS
+const Units = {
+  metric: 'metric',
+  imperial: 'imperial',
+  standard: 'standard'
 }
 
-add(4, 6);
-add('2', 7); // Compile Error
-```
-</script></section><section  data-markdown><script type="text/template">
-We can also use default and optional parameters. If you want to skip one, just pass in `undefined`:
-
-```TypeScript
-function greet(greeting = 'Hello', person?: string) {
-  if (person) {
-    console.log(`${greeting}, ${person}!`);
-  } else {
-    console.log(`${greeting}!`);
-  }
+function getWeather(zip, apikey, unit = Units.metric) {
+  // ...
 }
-
-greet(); // prints 'Hello!'
-greet('Hola'); // prints 'Hola!'
-greet(undefined, 'Jane'); // prints 'Hello, Jane!'
 ```
 
-## Try it out
+This is getting better but not perfect. 
 
-Take a look at this Repl. The code is written in JS. There are no types. 
-
-https://repl.it/join/shempbkq-mitchellhudson
-
-Take a look at the same code but with TypeScript. 
-
-https://repl.it/join/joizyrwv-mitchellhudson
-</script></section><section  data-markdown><script type="text/template">
-### Classes & Interfaces
-</script></section><section  data-markdown><script type="text/template">
-In addition to primitive types, we can denote the shape of a JavaScript object using type annotations:
-
-```TypeScript
-let person: { name: string, age: number } = { name: 'Jane', age: 22 };
-```
-
-We can also define the type ahead of time using an interface:
-
-```TypeScript
-interface Person {
-  name: string;
-  age: number;
-  greet(message: string): string;
-}
-
-let person: Person = {name: 'Jane', age: 22}
+```JS
+Units.millimeters = 'mm'
 ```
 </script></section><section  data-markdown><script type="text/template">
-## Activity: Getting started with Typescript
-
-Take a look at this 5 min tutorial from the source. Take 5 mins and do the tutorial. 
-
-https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
-</script></section><section  data-markdown><script type="text/template">
-- What did you see in the tutorial? 
-- What was different about using typescript than using?
-- Did you see anything new? 
-
-## Fizz Buzz 
-
-Use the fizz buzz code, you wrote test for this earlier. Let's convert it to TypeScript. 
-
-**Step 1**
-
-Get the code here at the link below or use your copy of the code from the previous assignment:
-
-https://github.com/Make-School-Labs/fizz-buzz-test
-
-**Step 2**
-
-All of the code here is in `fizzbuzz.js`. Change the name of this file to `fizzbuzz.ts`. The .ts file extension denotes a TypeScript file. 
-
-**Step 3**
-
-VSCode will provide hints in the form of three small dots under the names of variables, function, parameters, and more to tell you where types are missing. You can hover over this to get a hint as to what is missing. 
-
-Set the types for the vairables at the top: 
+With typescript you can define an enum! 
 
 ```TS
-const FIZZ = 'fizz'
-// FIZZ is type string change to:
-const FIZZ: string = 'fizz'
-```
-
-Not you're not getting a code hint since TypeScript is inferring the type. 
-
-Do the other variables. 
-
-**Step 4**
-
-Functions take parameters as input and provide a return value as output. These should define a type. Look at the comments for a clue about the parameters and return values: 
-
-```ts
-function isFizzy(n) {
-  return n % 3 === 0
+enum Unit {
+  metric,
+  imperial,
+  standard
 }
-// Takes a number returns a boolean change to:
-function isFizzy(n: number): boolean {
-  return n % 3 === 0
-}
-```
 
-Do the other functions: 
-
-- isFizzy
-- isBuzzy
-- isFizzyBuzzy
-- fizzyBuzzy
-
-**Step 5**
-
-The last function is more complicated. Here the input is just a number but the output is an object. You can see the "shape" of the object here:
-
-`const result = { count, fizz: 0, buzz: 0, fizzBuzz: 0 }`
-
-To define this you should create an interface. An interface defines all of the properties an object might have and their types. This interface becomes the type.
-
-Read more about interfaces here: 
-
-https://www.typescriptlang.org/docs/handbook/interfaces.html
-
-After reading the docs above, write an interface for the fizzbuzz results. Use it to complete the types for this function. 
-
-**Step 6**
-
-Run the TypeScript compiler.
-
-There's one last step, convert your .ts files into .js files. Follow the guide here: 
-
-https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html
-
-tl;dr
-
-- `npm install -g typescript`
-- `tsc fizzbuzz.ts`
-
-This should compile your TypeScript code into standard js, or provide helpful error messages where types are mismatched. 
-</script></section><section  data-markdown><script type="text/template">
-## Activity: Get Your Project Up and Running with TypeScript
-
-Let's try out what we learned by modifying an existing project with TypeScript. Add TypeScript to your String library.
-
-Now, we just need to make a few small changes to get it working again!
-</script></section><section  data-markdown><script type="text/template">
-### Add Types
-
-Rename the files to use a TypeScript extension (e.g. `index.js` to `index.ts`), and modify the functions to use types.
-
-To get the string prototype functions to compile, you will need to add the following interface definition to `index.js`:
-
-```TypeScript
-declare global {
-  interface String {
-    capitalize(): string;
-    capitalizeAll(): string;
-    allCaps(): string;
-    oddCaps(): string;
-    evenCaps(): string;
-    kabobCase(): string;
-    snakeCase(): string;
-    stripSpaces(): string;
-    stripExtraSpaces(): string;
-  }
+function getWeather(zip: string, apikey: string, unit: Unit = Unit.metric) {
+  // ...
 }
 ```
 </script></section><section  data-markdown><script type="text/template">
-To check your work so far, try running `tsc src/index.ts` and take a look at the output file produced. It should look like regular JavaScript, including some changes like using `var` instead of `let`. Nifty!
+These are the possible choices for units in the openweathermap API. Unlike the methods above TypeScript would check against the enum and would show an error if we used a value not on the list! 
 </script></section><section  data-markdown><script type="text/template">
-### Modify rollup.config.js
+In many situations you have a limited set of choices and your program should always choose from that set. An enum guarantees that you will always choose from the possible choices! 
+</script></section><section  data-markdown><script type="text/template">
+Under the hood enums are just objects with keys. You could have done this but TypeScript does it for you and adds error checking! 
+</script></section><section  data-markdown><script type="text/template">
+Imagine you are making a game or mapping app. It needs to work with the compass directions.
 
-Install the following in order to use TypeScript and the TypeScript Rollup plugin:
-
-```bash
-npm install --save-dev rollup typescript rollup-plugin-typescript2
+```JS
+// Define an enum that represents the possible directions 
+enum Direction {
+	North, South, East, West
+}
 ```
 </script></section><section  data-markdown><script type="text/template">
-Go to `rollup.config.js`. Change the `input` files to `src/index.ts`. This now points to the 'new' typescript file.
+An enum can be used as a value and a type. The function takes the `Direction` enum as the parameter and check it against possible cases in the switch block. 
 
-
-Import the TypeScript plugin at the top of the file:
-
-```
-import typescript from 'rollup-plugin-typescript2';
+```JS
+function move(direction: Direction) { // direction is enum type
+	switch(direction) {
+		case Direction.E:
+			// Go East
+		case Direction.W:
+			// Go West
+		case Direction.N:
+			// Go North
+		case Direction.S: 
+			// Go South
+	}
+}
 ```
 </script></section><section  data-markdown><script type="text/template">
-Then enter the following into your plugins for both output files:
+So what's the value of an enum? 
 
-```JavaScript
-input: {
-  ...
-},
-plugins: [
-  typescript({
-    typescript: require('typescript'),
-  }),
-],
-output: {
-  ...
+```JS
+console.log(Direction.N) // 0
+```
+
+Under the hood an enum is an array and each of the cases is just the index of that case. 
+</script></section><section  data-markdown><script type="text/template">
+Some times it's useful to assign a value to each case of an enum. For example maybe our program needs to print the direction.
+</script></section><section  data-markdown><script type="text/template">
+With the current code this `printDirection` function is not very useful.
+
+```JS
+let currentDirection = Direction.N
+
+function printDirection() {
+	console.log(`You are travelling ${currentDirection}`)
+}
+
+printDirection()
+```
+
+The output here is: `You are travelling 0` which isn't very useful. 
+</script></section><section  data-markdown><script type="text/template">
+Each case for an enum can also be a value.
+
+```JS
+enum Direction {
+	N = 'North', // Set each case to a string
+	S = 'South',
+	E = 'East',
+	W = 'West',
 }
 ```
 
-Try it out! The `rollup --config` command should work and give us the JS output files. Now we just need to configure tsc.
-</script></section><section  data-markdown><script type="text/template">
-### Add tsconfig.json
+With this change everything works the same as before but the value of the enum is represented as the strings you defined: 
 
-Add a new file `tsconfig.json` with the following content:
-
+```JS
+console.log(Direction.N) // 'North'
+printDirection() // You are travelling North
 ```
-{
-  "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./esm",
-    "outDir": "./esm",
-    "module": "es6",
-    "target": "es5",
-    "noImplicitAny": true,
-    "moduleResolution": "node"
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+</script></section><section  data-markdown><script type="text/template">
+Try the challenges in `example-12.ts`
+</script></section><section  data-markdown><script type="text/template">
+Read more about enums here: 
+
+- https://www.typescriptlang.org/docs/handbook/enums.html
+- https://2ality.com/2020/01/typescript-enums.html
+- https://en.wikipedia.org/wiki/Enumerated_type
+</script></section><section  data-markdown><script type="text/template">
+## Functions as Types
+</script></section><section  data-markdown><script type="text/template">
+In Typescript functions are also expressed as types. 
+
+A function that receives a function as a parameter or returns a function must describe that function as a type.
+</script></section><section  data-markdown><script type="text/template">
+For example: 
+
+```JS
+// This function returns a function that returns a string
+function sayHello(): () => string {
+	return () => 'Hello'
+}
+// This variable contains a function that returns a string
+const hello = sayHello()
+// Calling the function returns the string
+console.log(hello())
+```
+
+Challenge modify the function above to take a string: Name as input and combine that with the output. The output of the returned function should read: `Hello ${name}`.
+</script></section><section  data-markdown><script type="text/template">
+Let's try that again. Write a function that takes a number as input and returns a function. The returned function should return value multiplied by the input number. 
+
+```JS 
+function mathematizer(n: number): (number) => number {
+	let sum = n
+	return (x) => x * n
+}
+
+const m = mathematizer(3)
+console.log(m(3))   // 9
+console.log(m(2))   // 6
+console.log(m(10))  // 30
+console.log(m(111)) // 333
+
+// Challenge - Write a function that takes a function doLater(). It should
+// take a callback and a time in milliseconds. It should run the callback 
+// after the time.
+
+function doLater() {
+
+}
+
+doLater(() => {}, 2000) // executes the callback in 2 secs.
+```
+</script></section><section  data-markdown><script type="text/template">
+Try the challenges in `example-13.ts` and `example-14.ts`
+</script></section><section  data-markdown><script type="text/template">
+## Generic types 
+
+Generic types solve the situation where you have a function that defines a parameter that can take an argument of different types.
+</script></section><section  data-markdown><script type="text/template">
+Imagine the following: 
+
+```JS
+const a = 22
+const b = 'Zen'
+const c = { name: 'Yin', age: 44 }
+
+function sendItBack(thing: any): any {
+	return thing
+}
+
+console.log(sendItBack(a))
+console.log(sendItBack(b))
+console.log(sendItBack(c))
+```
+How can you make this type safe?
+
+</script></section><section  data-markdown><script type="text/template">
+There is something subtle going on here. The function above takes any type as an input and returns any type as an ouput. 
+
+🔬
+</script></section><section  data-markdown><script type="text/template">
+So what's the problem? There is no guarantee that the input will match the output! 
+
+🍎 ➡️ 🍎
+
+🍊 ➡️ 🍊
+
+🍐 ➡️ 🍓 😱
+</script></section><section  data-markdown><script type="text/template">
+Using `any` here works but it's not type safe. What if the function transformed the input into another type? 
+</script></section><section  data-markdown><script type="text/template">
+While this example seems contrived, because it is, it is more common than you might think! 
+
+Think of some examples where this might occur?
+</script></section><section  data-markdown><script type="text/template">
+Where generics come into play often is Arrays. 
+
+Think about functions like: `push`, `slice`, `splice` and `reverse`.
+</script></section><section  data-markdown><script type="text/template">
+```JS
+function sendItBackString(thing: string): string {...}
+function sendItBackNumber(thing: number): number {...}
+function sendItBackBoolean(thing: boolean): boolean {...}
+// ... this tedious and impossible
+```
+
+Thisa is not a scalable solution! 
+</script></section><section  data-markdown><script type="text/template">
+Solve this problem with a generic:
+
+```JS
+// Solve sendItBack with a generic type <T>
+// Challenge - replace any with a generic type T
+function sendItBack<T>(thing: T): T {
+	return thing
 }
 ```
 
-For a more thorough explanation of each of these lines, see [here](https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396).
+The generic type is expressed as `<T>` and you'll use `T` where that type is needed. Here `thing` is type `T` and the function returns something of type `T`. 
 </script></section><section  data-markdown><script type="text/template">
-### Modify package.json
+Imagine you have a function that takes in an array, of any type, and it prints the type of each item in the array: 
 
-Now we need to tell our library users where to find the TypeScript types. Go to `package.json` and add the following line after the main and module:
+```JS
+const numbers = [1, 43, 6, 71, 8]
+const names = ['Ann', 'Bob', 'Cen', 'Dan']
+const objs = [{ name: 'Eun', age: 23 }, { name: 'Fin', age: 32 }]
 
-```JSON
-"types": "esm/index.d.ts",
+function getTypes<T>(arr: T[]) {
+	arr.forEach(thing => console.log(typeof thing))
+}
+
+// One function can handle an array of any type! 
+getTypes(numbers) // number, number, number, number, number
+getTypes(names)   // string, string, string, string
+getTypes(objs)    // object, object
+```
+
+Again this is a contrived example but it does something that is not possible without generics.
+</script></section><section  data-markdown><script type="text/template">
+Consider this example. The function here reverses an array, nevermind that Array.reverse() is a thing! For the function below to work it needs to know the type of the input array and the type of the output array. 
+
+```JS
+const numbers = [1,2,3,4]
+
+function reverse<T>(arr: T[]): T[] {
+	const rra: T[] = [] // new array of type T
+	arr.forEach(item => rra.unshift(item))
+	return rra
+}
+
+console.log(reverse(numbers)) // 4,3,2,1 
 ```
 </script></section><section  data-markdown><script type="text/template">
-Now running `npm run prepare` should do everything you need to get your files ready. To verify, try going through the steps in Lesson 6 to test out your module.
+What's going on there? The function takes an array of type `T` and returns an Array of type `T`. Inside the function we declare an array `rra` of type `T` and return this. 
+</script></section><section  data-markdown><script type="text/template">
+Consider this idea. You need to create a function that returns the next item from an array. The function needs to take in an array of any type, and return a function that returns a value that matches the type of the input array. 
+
+```JS
+function iterate<T>(arr: T[]): () => T {
+	let i = -1
+	return () => {
+		i += 1
+		return arr[i]
+	}
+}
+
+const nextNumber = iterate([3,6,4,1,7,9])
+const nextName = iterate(['An', 'Bo', 'Cy', 'De'])
+
+console.log(nextNumber()) // 3
+console.log(nextNumber()) // 6
+console.log(nextName())   // An
+console.log(nextName())   // Bo
+```
+
+Here the type of the input array needs to be known and the type of the the return value for the function that is returned. 
+
+- https://www.typescriptlang.org/docs/handbook/generics.html
+</script></section><section  data-markdown><script type="text/template">
+## Typescript Lab
+
+Continue solving the Typescript Exercisms. 
 </script></section><section  data-markdown><script type="text/template">
 ### Homework
 
 <!-- [Assignment 8 - Typescript](../assignments/assignment-08.md) -->
 
-Choose one: 
-
-- Update one of your libraries: Date lib or String Lib to TypeScript. 
-- Do the TypeScript Exercism: https://exercism.io/my/tracks/typescript
+Continue working your final project. 
 </script></section><section  data-markdown><script type="text/template">
 ## Additional Resources
 
@@ -463,6 +457,7 @@ Choose one:
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         | -->
+
 </script></section></div>
     </div>
 
@@ -494,6 +489,7 @@ Choose one:
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,
