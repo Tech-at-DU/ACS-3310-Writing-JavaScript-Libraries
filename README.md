@@ -54,7 +54,7 @@ Students by the end of the course will be able to ...
 |  6    | Mon, Sep 4 | Labor Day no class | - | - |
 |  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  8    | Mon, Sep 11 | [Lesson 7 - Lab] | - | - |
+|  8    | Mon, Sep 11 | [Lesson 7 - Lab] - [Callback Promise Lab] | - | - |
 |  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
 |  -    | Week 6 | - | - | - |
 | 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | Typescript | - |
@@ -92,6 +92,8 @@ Students by the end of the course will be able to ...
 [Continuous Integration]: ./assignments/assignment-04.md
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
+
+[Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
 ## Course Requirements 
 
