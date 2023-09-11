@@ -1,6 +1,12 @@
-#  ACS 3310 - API Lib
+#  ACS 3310 - Final Assignment!
 
 ## Description 
+
+Your goal for this assignment is create your own library from scratch. Your library must have unit tests, use Typescript, be bundled, published to npm, and include continuous integration. 
+
+The subject for this project can be anything you like. If you're not sure what to do consider making a library that works with an existing web API, see the notes below. 
+
+This assignmen is due the last day of class. 
 
 Your goal with this assignment is to write a JavaScript library. Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code. 
 
@@ -61,15 +67,14 @@ A GitHub link to your API project source code.
 
 Your code should be built and published to npm. 
 
-### Due date
+### Due Date 
 
-Class 12 - Tues Mar. 12
+Last day of class. 
 
 ## Assessing the assignment
 
 | Expectations | Does not meet              | Meets                 | Exceeds                          |
 |:-------------|:---------------------------|:----------------------|:---------------------------------|
-| Completion   | Your API Lib is not complete, doesn't function, is not published | Your API project is complete, published to npm and functional | Your API project goes beyond the homework description, you have explored all possible edge cases |
-| Quality      | The code poorly written, lacks conssitent formatting, lacks documentation | The code functions well, is formatted well (linted), and includes documentation | Your code includes test |
-| Comprehension| Can't explain bundling | Can explain your source code | Could easily reproduce this type of work in another project using another API |
-| Work ethic   | few massive commits | Commits outline progress | Clearly show progression of the work |
+| Completion   | Your Lib is not complete, doesn't function, is not published | Your  project is complete, published to npm and functional | Your project goes beyond the homework description, you have explored all possible edge cases |
+| Quality      | The code poorly written, lacks conssitent formatting, lacks documentation | The code functions well, is formatted well (linted), and includes documentation | Your code includes unit tests |
+| Comprehension | Can't explain the code you have written | Can explain your source code | Could easily reproduce this type of work in another project |
