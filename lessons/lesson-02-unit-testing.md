@@ -492,7 +492,7 @@ Use the coverage command with Jest to test the coverage of your tests.
 
 ## Additional Resources
 
-1. https://github.com/Make-School-Labs/fizz-buzz-test
+1. [Fizz Buzz Unit Tests](https://github.com/Tech-at-DU/fizz-buzz-test)
 1. https://jestjs.io
 
 <!-- > -->
