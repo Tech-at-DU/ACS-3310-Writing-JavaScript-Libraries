@@ -103,7 +103,7 @@ Students by the end of the course will be able to ...
 [Final Project]: assignments/assignment-09.md
 [Fizz Buzz Unit Tests]: https://github.com/Tech-at-DU/fizz-buzz-test
 [Date Lab Problems]: https://github.com/Tech-at-DU/JavaScript-Dates-lab
-[API Lab Weather Project]: https://github.com/Tech-at-DU/weather-api
+[API Lab]: https://github.com/Tech-at-DU/weather-api
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
