@@ -67,6 +67,15 @@ Students by the end of the course will be able to ...
 | 15    | Wed, Oct 4 | Final Assessment | - | - |
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
+## Assignments
+- String Lib
+- Fizzbuzz unit tests
+- Date Lab problems
+- Date Lib
+- API Lab Weather Project
+- Promise Lab
+- Final Project
+
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
 [Lesson 2 - Unit testing]: ./lessons/lesson-02-unit-testing.md
