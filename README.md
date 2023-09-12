@@ -43,18 +43,18 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
-|  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | Start your first lib | - |
+|  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | [String Lib] | - |
 |  -    | Week 2 | - | - | - |
 |  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | [Fizz Buzz Unit Tests] | - |
 |  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib] [Date Lab Problems] | Publish to npm |
+|  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib], [Date Lab Problems] | Publish to npm |
 |  5    | Wed, Aug 30 | [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
 |  6    | Mon, Sep 4 | Labor Day no class | - | - |
-|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [API Lib] | [Date Lib] |
+|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  8    | Mon, Sep 11 | [Lesson 7 - Lab] - [Callback Promise Lab] | - | - |
+|  8    | Mon, Sep 11 | [Lesson 7 - Lab] - [Callback Promise Lab], [API Lab Weather Project] | - | - |
 |  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
 |  -    | Week 6 | - | - | - |
 | 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | Typescript | - |
@@ -71,8 +71,8 @@ Students by the end of the course will be able to ...
 - [String Lib]
 - [Fizz Buzz Unit Tests]
 - [Date Lab Problems]
-- Date Lib
-- API Lab Weather Project
+- [Date Lib]
+- [API Lab]
 - Promise Lab
 - Final Project
 
@@ -97,12 +97,13 @@ Students by the end of the course will be able to ...
 [Publish to npm]: ./assignments/assignment-02.md
 [Add Unit Tests]: ./assignments/assignment-03.md
 [Date Lib]: assignments/assignment-07-date-lib.md
-[API Lib]: ./assignments/assignment-09-api-lib.md
+[Final Project]: ./assignments/assignment-09-api-lib.md
 [Continuous Integration]: ./assignments/assignment-04.md
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
 [Fizz Buzz Unit Tests]: https://github.com/Tech-at-DU/fizz-buzz-test
 [Date Lab Problems]: https://github.com/Tech-at-DU/JavaScript-Dates-lab
+[API Lab Weather Project]: https://github.com/Tech-at-DU/weather-api
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
