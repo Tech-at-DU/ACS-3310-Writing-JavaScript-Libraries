@@ -54,8 +54,8 @@ Students by the end of the course will be able to ...
 |  6    | Mon, Sep 4 | Labor Day no class | - | - |
 |  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  8    | Mon, Sep 11 | [Lesson 7 - Lab] - [Callback Promise Lab], [API Lab Weather Project] | - | - |
-|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
+|  8    | Mon, Sep 11 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab Weather Project] | - |
+|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [Final Project] |
 |  -    | Week 6 | - | - | - |
 | 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | Typescript | - |
 | 11    | Wed, Sep 20 | TypeScript Lab | - | - |
@@ -73,8 +73,8 @@ Students by the end of the course will be able to ...
 - [Date Lab Problems]
 - [Date Lib]
 - [API Lab]
-- Promise Lab
-- Final Project
+- [Callback Promise Lab]
+- [Final Project]
 
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
