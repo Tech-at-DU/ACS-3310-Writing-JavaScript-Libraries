@@ -52,7 +52,7 @@ Students by the end of the course will be able to ...
 |  5    | Wed, Aug 30 | [Lesson 5 - Solving problems with Dates] | - | - |
 |  -    | Week 4 | - | - | - |
 |  6    | Mon, Sep 4 | Labor Day no class | - | - |
-|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project] | [Date Lib] |
+|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
 |  8    | Mon, Sep 11 | [Lesson 7 - Lab] - [Callback Promise Lab], [API Lab Weather Project] | - | - |
 |  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] |  | [API Lib] |
