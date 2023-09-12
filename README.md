@@ -68,7 +68,7 @@ Students by the end of the course will be able to ...
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
 ## Assignments
-- String Lib
+- [String Lib]
 - Fizzbuzz unit tests
 - Date Lab problems
 - Date Lib
