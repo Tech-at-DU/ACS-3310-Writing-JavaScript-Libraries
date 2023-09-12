@@ -45,7 +45,7 @@ Students by the end of the course will be able to ...
 |  -    | Week 1 | JS Library 1 | String Library |  |
 |  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | Start your first lib | - |
 |  -    | Week 2 | - | - | - |
-|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | Add Unit Tests | - |
+|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | [Fizz Buzz Unit Tests] | - |
 |  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
 |  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib] | Publish to npm |
@@ -69,7 +69,7 @@ Students by the end of the course will be able to ...
 
 ## Assignments
 - [String Lib]
-- Fizzbuzz unit tests
+- [Fizz Buzz Unit Tests]
 - Date Lab problems
 - Date Lib
 - API Lab Weather Project
@@ -101,6 +101,7 @@ Students by the end of the course will be able to ...
 [Continuous Integration]: ./assignments/assignment-04.md
 [Bundling code for distribution]: ./assignments/assignment-06.md
 [Final Project]: assignments/assignment-09.md
+[Fizz Buzz Unit Tests]: https://github.com/Tech-at-DU/fizz-buzz-test
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
