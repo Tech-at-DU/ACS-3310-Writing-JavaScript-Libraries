@@ -57,7 +57,7 @@ Students by the end of the course will be able to ...
 |  8    | Mon, Sep 11 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab] | - |
 |  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] | [Final Project] |  |
 |  -    | Week 6 | - | - | - |
-| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | Typescript | - |
+| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | [Typescript Lab] | - |
 | 11    | Wed, Sep 20 | TypeScript Lab | - | - |
 |  -    | Week 7 | - | - | - |
 | 12    | Mon, Sep 25 | [Lesson 8 - Continuous Integration] | - | Typescript |
@@ -104,6 +104,7 @@ Students by the end of the course will be able to ...
 [Fizz Buzz Unit Tests]: https://github.com/Tech-at-DU/fizz-buzz-test
 [Date Lab Problems]: https://github.com/Tech-at-DU/JavaScript-Dates-lab
 [API Lab]: https://github.com/Tech-at-DU/weather-api
+[Typescript Lab]: https://github.com/Tech-at-DU/typescript-intro
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
