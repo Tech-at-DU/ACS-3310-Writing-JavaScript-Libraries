@@ -55,9 +55,9 @@ Students by the end of the course will be able to ...
 |  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
 |  8    | Mon, Sep 11 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab] | - |
-|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] | [Final Project] |  |
+|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
 |  -    | Week 6 | - | - | - |
-| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] | [Typescript Lab] | - |
+| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] |  | - |
 | 11    | Wed, Sep 20 | - | - | [Typescript Lab] |
 |  -    | Week 7 | - | - | - |
 | 12    | Mon, Sep 25 | [Lesson 8 - Continuous Integration] | - | Typescript |
