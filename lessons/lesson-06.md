@@ -407,9 +407,9 @@ Any function that that begins with `async` will return a Promise, even if you do
 
 ```JS
 async function something() {
-
+  // Doesn't return anything! 
 }
-
+// Async functions always return a Promise!
 something().then().catch()
 ```
 or 
@@ -439,6 +439,12 @@ async function getWeather() {
 
 getWeather().then(json => ...)
 ```
+
+<!-- > -->
+
+Want to understand Promise better? Work through these practice problems: 
+
+https://github.com/Tech-at-DU/callbacks-and-promise/
 
 <!-- > -->
 

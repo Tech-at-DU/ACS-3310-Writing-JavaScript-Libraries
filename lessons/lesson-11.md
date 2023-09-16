@@ -472,6 +472,8 @@ What's going on there? The function takes an array of type `T` and returns an Ar
 
 Consider this idea. You need to create a function that returns the next item from an array. The function needs to take in an array of any type, and return a function that returns a value that matches the type of the input array. 
 
+<!-- > -->
+
 ```JS
 function iterate<T>(arr: T[]): () => T {
 	let i = -1
@@ -491,6 +493,24 @@ console.log(nextName())   // Bo
 ```
 
 Here the type of the input array needs to be known and the type of the the return value for the function that is returned. 
+
+<!-- > -->
+
+What if you need more than one generic type? 
+
+<!-- > -->
+
+Consider this: 
+
+```TypeScript
+function thing<T, U>(it: T, other: U): { a: T, b: U } {
+	return { a: it, b: other }
+}
+```
+
+Here there are two generic types T and U. 
+
+<!-- > -->
 
 - https://www.typescriptlang.org/docs/handbook/generics.html
 

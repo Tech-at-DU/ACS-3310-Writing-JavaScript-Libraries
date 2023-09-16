@@ -77,7 +77,7 @@ TypeScript is another language separate from JS and must be compiled into vanill
 
 🍎 ➡️ 🥧
 
-**You can't use TypeScript in environments that expect JavaScript like the browser.**
+**You can't use TypeScript in environments that expect JavaScript, for example the browser.**
 
 You compile your TypeScript into vanilla JavaScript. 
 
@@ -225,6 +225,36 @@ https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
 <!-- > -->
 
+Install typescript: 
+
+https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html
+
+<!-- > -->
+
+Tl;dr
+
+Install TypeScript
+
+```
+npm install -g typescript 
+```
+
+Compile your TypeScript code
+
+```
+tsc src/index.ts
+```
+
+Creates: index.js from index.ts
+
+<!-- > -->
+
+TypeScript files use the `.ts` file extension. Convert any JS file to TypeScript by changing the name to `.ts`.
+
+📄.js ➡️ 📄.ts
+
+<!-- > -->
+
 ## Features of TypeScript 
 
 <!-- > -->
@@ -280,8 +310,10 @@ function add(num1: number, num2: number): number {
   return num1 + num2;
 }
 
-add(4, 6);
-add('2', 7); // Compile Error
+const x = add(4, 6); // x is type number implcitly
+const y: number = add(2, 7); // explicit type
+const z = add('2', 7); // Compile Error
+const w: string = add(6, 1); // Compile Error
 ```
 
 <!-- > -->
@@ -363,21 +395,25 @@ An enumeration is a list of all possible choices:
 Use an enum when your program will:
 
 - Make a choice from a fixed list 
+  - zip, city, geo
 - Has a fixed list of values or responses
+  - North, South, East, West
 
 <!-- > -->
 
 Define an enum like this:
 
 ```TypeScript
-enum Fruit { Apple, Orange, Pear };
+enum Fruit { 
+  Apple, 
+  Orange, 
+  Pear 
+};
 ```
 
 <!-- > -->
 
 Use an enum like this: 
-
-Define an enum like this:
 
 ```TypeScript
 enum Fruit { Apple, Orange, Pear };
@@ -391,7 +427,9 @@ Why did we use an enum? 🤔
 
 ```TypeScript
 enum Fruit { Apple, Orange, Pear };
+
 let f: Fruit = Fruit.Pear;
+
 switch(f) {
   case Fruit.Apple:
     ...
@@ -402,7 +440,7 @@ switch(f) {
 }
 ```
 
-Notice you didn't use any strings!
+Notice you didn't use any strings! Enum is more reliable than a string!
 
 <!-- > -->
 
@@ -434,7 +472,25 @@ let user: { first: string, last: string, count: number } = {
 };
 ```
 
-Here we define `user` as an object with first, last, and count.
+Here we define `user` as an object with first: string, last: string, and count: number.
+
+<!-- > -->
+
+Define a class like this: 
+
+```TypeScript
+class Person {
+  first: string
+  last: string
+  age: number
+
+  constructor() {
+    ...
+  }
+}
+```
+
+Note: properties and types are inside the class but outside the constructor!
 
 <!-- > -->
 
@@ -447,7 +503,7 @@ interface Person {
   greet(message: string): string;
 }
 
-let person: Person = {
+let user: Person = {
   name: 'Jane', 
   age: 22, 
   greet(message) { return this.name + message }
@@ -455,6 +511,28 @@ let person: Person = {
 ```
 
 Any Person will have: name, age, and greet. 
+
+<!-- > -->
+
+What's important about interfaces is that they allow you to mix compatible types! 
+
+```TypeScript
+class Student {
+  name: string
+  age: number
+  units: number
+  greet() {}
+}
+
+class Instructor {
+  name: string
+  age: number
+  vacationDays: number
+  greet() {}
+}
+
+const persons: Person = [new Instructor(), new Student()]
+```
 
 <!-- > -->
 
@@ -472,7 +550,7 @@ What do you think of typescript so far?
 
 ### Homework
 
-- Update one of your libraries: Date lib or String Lib to TypeScript. 
+- You must use Typescript for your final assignment!  
 
 <!-- > -->
 
