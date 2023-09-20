@@ -6,13 +6,13 @@ Your goal for this assignment is create your own library from scratch. Your libr
 
 The subject for this project can be anything you like. If you're not sure what to do consider making a library that works with an existing web API, see the notes below. 
 
-This assignmen is due the last day of class. 
+This assignment is due the last day of class. 
 
 Your goal with this assignment is to write a JavaScript library. Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code. 
 
 ### Why this assignment?
 
-This is a great practice writing JavaScript code. Yyou might use the code you write here. Someone else might use the code you write! 
+This is a great practice writing JavaScript code. You might use the code you write here. Someone else might use the code you write! 
 
 ## Project requirements
 
