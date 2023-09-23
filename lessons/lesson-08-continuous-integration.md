@@ -80,7 +80,7 @@ https://github.com/Tech-at-DU/GitHub-Actions
 
 I followed the guides here: 
 
-- https://medium.com/swlh/jest-and-github-actions-eaf3eaf2427d
+- https://www.youtube.com/watch?v=9KVCxMrshIk
 - https://docs.github.com/en/actions/quickstart
 
 <!-- > -->
