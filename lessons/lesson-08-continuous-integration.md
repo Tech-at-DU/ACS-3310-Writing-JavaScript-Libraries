@@ -82,7 +82,8 @@ I followed the guides here:
 
 - https://www.youtube.com/watch?v=9KVCxMrshIk
 - https://docs.github.com/en/actions/quickstart
-- https://duncanlew.medium.com/unit-testing-typescript-with-jest-part-two-ci-cd-pipeline-setup-with-github-actions-750193931405
+- Follow this guide to create an action that runs when a branch is updated
+  - https://duncanlew.medium.com/unit-testing-typescript-with-jest-part-two-ci-cd-pipeline-setup-with-github-actions-750193931405
 
 <!-- > -->
 
