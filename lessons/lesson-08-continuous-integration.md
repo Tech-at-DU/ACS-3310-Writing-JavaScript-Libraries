@@ -134,6 +134,12 @@ jobs:
     - run: npm test
 ```
 
+## Adding TypeScript 
+
+Follow the guide here to add TypeScript Support to your project: 
+
+https://learn.microsoft.com/en-us/visualstudio/javascript/compile-typescript-code-npm?view=vs-2022
+
 <!-- > -->
 
 Commit this new file. 
