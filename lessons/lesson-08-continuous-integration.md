@@ -246,10 +246,10 @@ Jest has a coverage reporter built in.
 
 <!-- > -->
 
-Try it out: 
+Use the following in your test script to get a coverage report with your test results. 
 
 ```
-npx jest --collect-coverage
+jest --coverage
 ```
 
 This should output something like: 
