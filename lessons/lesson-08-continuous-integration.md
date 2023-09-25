@@ -103,9 +103,9 @@ Notice that you're adding a new .yml file at .github/workflows/
 
 This yml file contains instructions telling GitHub what to do when you push changes or accept a pull request.
 
-This is what I used: 
+This is what I used. This file is written in the yml language! Look it up: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
 
-```
+```yml
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
