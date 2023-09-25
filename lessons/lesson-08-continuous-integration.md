@@ -78,16 +78,21 @@ I used the example project here for testing:
 
 https://github.com/Tech-at-DU/GitHub-Actions
 
-I followed the guides here: 
+Watch at least the first video here for a detailed overview of using GitHub actions to create an automated workflow.  
 
-- https://www.youtube.com/watch?v=9KVCxMrshIk
+- https://www.youtube.com/watch?v=UEOtZvTCmDo
+- https://www.youtube.com/watch?v=R8_veQiYBjI&t=954s
 - https://docs.github.com/en/actions/quickstart
 - Follow this guide to create an action that runs when a branch is updated
   - https://duncanlew.medium.com/unit-testing-typescript-with-jest-part-two-ci-cd-pipeline-setup-with-github-actions-750193931405
 
 <!-- > -->
 
-GitHub Actions are added through the Actions option in your repo at GitHub.com. 
+## Homework!
+
+You will implement at automated testing on your final project repo. I encourage you to try implementing this on an existing repo to test it now and see how it works. 
+
+The steps below describe how to implement automated testing using GitHub actions. This might be part of a larger suite of actions as part of continuous integration. 
 
 - Click **Actions**
 - Search for the Node.js Workflow
