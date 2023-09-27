@@ -78,14 +78,21 @@ I used the example project here for testing:
 
 https://github.com/Tech-at-DU/GitHub-Actions
 
-I followed the guides here: 
+Watch at least the first video here for a detailed overview of using GitHub actions to create an automated workflow.  
 
-- https://medium.com/swlh/jest-and-github-actions-eaf3eaf2427d
+- https://www.youtube.com/watch?v=UEOtZvTCmDo
+- https://www.youtube.com/watch?v=R8_veQiYBjI&t=954s
 - https://docs.github.com/en/actions/quickstart
+- Follow this guide to create an action that runs when a branch is updated
+  - https://duncanlew.medium.com/unit-testing-typescript-with-jest-part-two-ci-cd-pipeline-setup-with-github-actions-750193931405
 
 <!-- > -->
 
-GitHub Actions are added through the Actions option in your repo at GitHub.com. 
+## Homework!
+
+You will implement at automated testing on your final project repo. I encourage you to try implementing this on an existing repo to test it now and see how it works. 
+
+The steps below describe how to implement automated testing using GitHub actions. This might be part of a larger suite of actions as part of continuous integration. 
 
 - Click **Actions**
 - Search for the Node.js Workflow
@@ -96,19 +103,19 @@ Notice that you're adding a new .yml file at .github/workflows/
 
 This yml file contains instructions telling GitHub what to do when you push changes or accept a pull request.
 
-This is what I used: 
+This is what I used. This file is written in the yml language! Look it up: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
 
-```
+```yml
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -117,23 +124,26 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    # Install required deps for action
-    - name: Install Dependencies
-      run: npm install
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
 ```
+
+## Adding TypeScript 
+
+Follow the guide here to add TypeScript Support to your project: 
+
+https://learn.microsoft.com/en-us/visualstudio/javascript/compile-typescript-code-npm?view=vs-2022
 
 <!-- > -->
 
@@ -241,10 +251,10 @@ Jest has a coverage reporter built in.
 
 <!-- > -->
 
-Try it out: 
+Use the following in your test script to get a coverage report with your test results. 
 
 ```
-npx jest --collect-coverage
+jest --coverage
 ```
 
 This should output something like: 
