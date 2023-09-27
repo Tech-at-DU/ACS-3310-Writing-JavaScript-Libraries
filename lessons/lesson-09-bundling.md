@@ -7,6 +7,12 @@
 
 This class session covers the concept of bundling. This is the process of combining files and processing them for use and distribution. 
 
+Why do we need to bundle code? To understand this you need to understand the problem that bundling solves. Before 2015 JS didn't have the concept of a module built in. Read this article: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+
+Newer browsers can use esmodules, but there are still many older browsers out in the world that don't support this. For these we might want to bundle code using the commonJS system. NodeJS has recently added support for esmodules but much of the existing code still uses the commonjs (require) system. 
+
+https://snipcart.com/blog/javascript-module-bundler
+
 <!-- Put a link to the slides so that students can find them -->
 
 <!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
@@ -463,6 +469,83 @@ Let's Review:
 - So we make our JS work everywhere with UMD
 
 <!-- > -->
+
+## How to make a umd module with webpack
+
+Use webpack like this: 
+
+```JS
+// umd 
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+		library: 'lib',
+		libraryTarget: 'umd',
+		globalObject: 'this',
+  },
+};
+```
+
+This creates a module that will work in the borwser with all code attached to the variable: `lib`. This module will also work with NodeJS and `require()`.
+
+## How to make an es module with webpack
+
+The following will create a module that will work with the `import from` syntax. 
+
+```JS
+// esm
+module.exports = {
+  entry: './src/index.js',
+	experiments: {
+    outputModule: true,
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+		library: {
+			type: "module"
+		},
+  },
+};
+```
+
+This module will be output as index.js. 
+
+## How to create both an esm and umd module
+
+Webpack will create multiple module modules if you supply an array of configurations. 
+
+```JS
+// esm+umd
+module.exports = [{
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+		library: 'lib',
+		libraryTarget: 'umd',
+		globalObject: 'this',
+  }
+},
+	{
+  entry: './src/index.js',
+	experiments: {
+    outputModule: true,
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+		library: {
+			type: "module"
+		},
+  },
+}
+];
+```
+
+This will output a umd module as `dist/bundle.js` and an esm module as `dist/index.js`. 
 
 ## Additional Resources
 

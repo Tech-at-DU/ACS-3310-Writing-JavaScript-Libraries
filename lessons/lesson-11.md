@@ -77,6 +77,10 @@ class Person {
 	describe(): string {
 		return `${this.name} is ${this.age}`
 	}
+
+	setAge(newAge: number) {
+		this.age = newAge
+	}
 }
 ```
 
@@ -177,7 +181,8 @@ enum Unit {
   standard
 }
 
-function getWeather(zip: string, apikey: string, unit: Unit = Unit.metric) {
+function getWeather(
+	zip: string, apikey: string, unit: Unit = Unit.metric) {
   // ...
 }
 ```
@@ -198,7 +203,7 @@ Under the hood enums are just objects with keys. You could have done this but Ty
 
 Imagine you are making a game or mapping app. It needs to work with the compass directions.
 
-```JS
+```TS
 // Define an enum that represents the possible directions 
 enum Direction {
 	North, South, East, West
@@ -209,7 +214,7 @@ enum Direction {
 
 An enum can be used as a value and a type. The function takes the `Direction` enum as the parameter and check it against possible cases in the switch block. 
 
-```JS
+```TS
 function move(direction: Direction) { // direction is enum type
 	switch(direction) {
 		case Direction.E:
@@ -228,7 +233,7 @@ function move(direction: Direction) { // direction is enum type
 
 So what's the value of an enum? 
 
-```JS
+```TS
 console.log(Direction.N) // 0
 ```
 
@@ -242,7 +247,7 @@ Some times it's useful to assign a value to each case of an enum. For example ma
 
 With the current code this `printDirection` function is not very useful.
 
-```JS
+```TS
 let currentDirection = Direction.N
 
 function printDirection() {
@@ -258,7 +263,7 @@ The output here is: `You are travelling 0` which isn't very useful.
 
 Each case for an enum can also be a value.
 
-```JS
+```TS
 enum Direction {
 	N = 'North', // Set each case to a string
 	S = 'South',
@@ -269,7 +274,7 @@ enum Direction {
 
 With this change everything works the same as before but the value of the enum is represented as the strings you defined: 
 
-```JS
+```TS
 console.log(Direction.N) // 'North'
 printDirection() // You are travelling North
 ```
@@ -295,6 +300,14 @@ Read more about enums here:
 In Typescript functions are also expressed as types. 
 
 A function that receives a function as a parameter or returns a function must describe that function as a type.
+
+<!-- > -->
+
+```TS
+const add: (number, number) => number = (a: number, b: number ) => {
+	return a + b
+} 
+```
 
 <!-- > -->
 
