@@ -16,6 +16,8 @@ From the article we get the following concepts:
 - Modules compartmentalize code to solve these problems
 - esmodules were introduced in 2015
 
+Info on esmodules: https://javascript.info/import-export
+
 Newer browsers can use esmodules, but there are still many older browsers out in the world that don't support this. For these we might want to bundle code using the commonJS system. NodeJS has recently added support for esmodules but much of the existing code still uses the commonjs (require) system. 
 
 https://snipcart.com/blog/javascript-module-bundler
