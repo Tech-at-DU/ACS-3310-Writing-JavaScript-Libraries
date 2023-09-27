@@ -9,6 +9,13 @@ This class session covers the concept of bundling. This is the process of combin
 
 Why do we need to bundle code? To understand this you need to understand the problem that bundling solves. Before 2015 JS didn't have the concept of a module built in. Read this article: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
 
+From the article we get the following concepts: 
+
+- JS variables are global which is a problem
+- All code is global which is a problem
+- Modules compartmentalize code to solve these problems
+- esmodules were introduced in 2015
+
 Newer browsers can use esmodules, but there are still many older browsers out in the world that don't support this. For these we might want to bundle code using the commonJS system. NodeJS has recently added support for esmodules but much of the existing code still uses the commonjs (require) system. 
 
 https://snipcart.com/blog/javascript-module-bundler
@@ -97,6 +104,34 @@ Install webpack:
 ```
 npm install webpack webpack-cli --save-dev
 ```
+
+From here you are ready to bundle code.
+
+Create `webpack.config.js`. This file tells webpack how to bundle. You can use webpack without a config file and will will create `./dist/bundle.js` using it's default settings. 
+
+Add the following to `webpack.config.js`: 
+
+```JS
+// umd 
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+		library: 'lib',
+		libraryTarget: 'umd',
+		globalObject: 'this',
+  },
+};
+```
+
+Here you have configured webpack by: 
+- setting the entry point. This tells webpack which file contains the code it should bundle. 
+- Set the output path and folder name `dist`, and file name `bundle.js`
+- You also set the name of the lib. This creates a global variable for non-esmodule platforms. 
+- You set the to type of module to umd, which is compatible with NodeJS. 
+
+If you are using TypeScript you can follow the instructions below to add TypeScript to your bundling pipeline. 
 
 <!-- > -->
 
