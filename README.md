@@ -36,35 +36,35 @@ Students by the end of the course will be able to ...
 
 ## Schedule
 
-**Course Dates:** January 18, 2022 to March 4, 2022
+**Course Dates:** May 20, 2024 to July 10, 2024
 
-**Class Times:** Monday, Wednesday, and Friday 4:30 PM to 5:20 PM
+**Class Times:** Tuesday, Thursday 1:00 PM to 3:45 PM Virtual online.
 
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | Week 1 | JS Library 1 | String Library |  |
-|  1    | Wed, Aug 16 | [Lesson 1 - Solving string problems] | [String Lib] | - |
+|  1    | Tue, May 21 | [Lesson 1 - Solving string problems] | [String Lib] | - |
+|  2    | Thr, May 23 | [Lesson 2 - Unit testing] | [Fizz Buzz Unit Tests] | - |
 |  -    | Week 2 | - | - | - |
-|  2    | Mon, Aug 21 | [Lesson 2 - Unit testing] | [Fizz Buzz Unit Tests] | - |
-|  3    | Wed, Aug 23 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
+|  3    | Tue, May 28 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
+|  4    | Thr, May 30 | [Lesson 4 - Working with Dates] | [Date Lib], [Date Lab Problems] | Publish to npm |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
-|  4    | Mon, Aug 28 | [Lesson 4 - Working with Dates] | [Date Lib], [Date Lab Problems] | Publish to npm |
-|  5    | Wed, Aug 30 | [Lesson 5 - Solving problems with Dates] | - | - |
+|  5    | Tue, Jun 4 | [Lesson 5 - Solving problems with Dates] | - | - |
+|  6    | Thr, Jun 6 | Labor Day no class | - | - |
 |  -    | Week 4 | - | - | - |
-|  6    | Mon, Sep 4 | Labor Day no class | - | - |
-|  7    | Wed, Sep 6 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
+|  7    | Tue, Jun 11 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
+|  8    | Thr, Jun 13 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab] | - |
 |  -    | Week 5 | JS Library 3 | API Library | - |
-|  8    | Mon, Sep 11 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab] | - |
-|  9    | Wed, Sep 13 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
+|  9    | Tue, Jun 18 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
+| 10    | Thr, Jun 20 | [Lesson 11 - Typescript] |  | - |
 |  -    | Week 6 | - | - | - |
-| 10    | Mon, Sep 18 | [Lesson 11 - Typescript] |  | - |
-| 11    | Wed, Sep 20 | - | - | [Typescript Lab] |
+| 11    | Tue, Jun 25 | - | - | [Typescript Lab] |
+| 12    | Thr, Jun 27 | [Lesson 8 - Continuous Integration] | - | Typescript |
 |  -    | Week 7 | - | - | - |
-| 12    | Mon, Sep 25 | [Lesson 8 - Continuous Integration] | - | Typescript |
-| 13    | Wed, Sep 27 | [Lesson 9 - Bundling Code] | - | - |
+| 13    | Tue, Jul 2 | [Lesson 9 - Bundling Code] | - | - |
+| 14    | Thr, Jul 4 | Holiday (no class) | - | - |
 |  -    | Week 8 | Review work | - | - |
-| 14    | Mon, Oct 2 | Review work | - | - |
-| 15    | Wed, Oct 4 | Final Assessment | - | [Final Project] |
+| 15    | Tue, Jul 9 | Final Assessment | - | [Final Project] |
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
 ## Assignments
