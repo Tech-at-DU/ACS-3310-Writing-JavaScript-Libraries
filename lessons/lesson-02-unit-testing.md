@@ -497,6 +497,7 @@ Use the coverage command with Jest to test the coverage of your tests.
 
 <!-- > -->
 
+<!--
 ## Minute-by-Minute 
 
 | **Elapsed** | **Time** | **Activity** |
@@ -510,3 +511,4 @@ Use the coverage command with Jest to test the coverage of your tests.
 | 0:15 | 2:05 | Discuss Testing |
 | 0:30 | 2:35 | Start Homework |
 | 0:10 | 2:45 | Wrap up |
+-->
