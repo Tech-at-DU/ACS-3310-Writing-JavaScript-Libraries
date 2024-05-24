@@ -554,6 +554,15 @@ The functions you wrote might take a String as a parameter and return a String. 
 
 An alternative might be to add your methods to the String class through the prototype chain. This is how the built-in String functions work!
 
+<!-- > --> 
+
+Note! Adding methods to the prototype of built in object types is NOT best practice! Since this is a global space, if everyone did this there would be chaos! 🙀
+
+So why am I showing this? 
+- You might see legacy code that uses this idea
+- You might want to use this for code that you write in a controlled environment
+- This illustrates how JavaScript works! 
+
 <!-- > -->
 
 Q: What is prototype?
