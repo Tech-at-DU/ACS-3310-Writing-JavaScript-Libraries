@@ -561,7 +561,9 @@ Note! Adding methods to the prototype of built in object types is NOT best pract
 So why am I showing this? 
 - You might see legacy code that uses this idea
 - You might want to use this for code that you write in a controlled environment
-- This illustrates how JavaScript works! 
+- This illustrates how JavaScript works!
+
+Read more: https://www.audero.it/blog/2016/12/05/monkey-patching-javascript/
 
 <!-- > -->
 
