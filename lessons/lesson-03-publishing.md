@@ -185,6 +185,18 @@ The `package.json` might look like this:
 }
 ```
 
+<!-- > -->
+
+Add an entry point. This is important because it tells the world where your code begins. The entry point is where to start running the code you have created. 
+
+Add the entry to the root of your `package.json`:
+
+```JSON
+"main": "src/index.js"
+```
+
+Adjust `"src/index.hjs"` so this path points to the file that begins your program. 
+
 <!-- > --> 
 
 ### Login into npm 👩‍💻
