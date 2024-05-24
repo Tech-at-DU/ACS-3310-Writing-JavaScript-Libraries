@@ -608,6 +608,13 @@ String.prototype.capitalize = function() {
 }
 ```
 
+The method above can now be called from any string like this: 
+
+```JS
+let name = 'george'
+name.capitalize() // George
+```
+
 <!-- > -->
 
 ## Review Objective
