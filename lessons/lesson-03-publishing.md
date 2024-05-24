@@ -627,6 +627,7 @@ Publish to NPM: https://zellwk.com/blog/publish-to-npm/
 
 <!-- > -->
 
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time** | **Activity** |
@@ -643,3 +644,4 @@ Publish to NPM: https://zellwk.com/blog/publish-to-npm/
 | 2:45 | 0:05 | Review Homework (Lecture) |
 
 In this lesson you will publish your library and share it with the world.
+-->
