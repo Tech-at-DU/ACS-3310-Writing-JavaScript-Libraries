@@ -164,6 +164,29 @@ Everything you enter here is metadata that describes the package that will event
 
 <!-- > -->
 
+The `package.json` might look like this: 
+
+```JSON
+{
+  "name": "string-lib",
+  "version": "1.0.0",
+  "description": "String utility functions",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
+```
+
+<!-- > --> 
+
 ### Login into npm 👩‍💻
 
 <!-- > -->
