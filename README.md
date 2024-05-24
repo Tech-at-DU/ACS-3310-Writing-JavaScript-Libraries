@@ -93,7 +93,7 @@ Students by the end of the course will be able to ...
 
 [GradeScope]: https://www.gradescope.com/courses/219049
 
-[String Lib]: ./assignments/assignment-01-string-lib.md)
+[String Lib]: ./assignments/assignment-01-string-lib.md
 [Publish to npm]: ./assignments/assignment-02.md
 [Add Unit Tests]: ./assignments/assignment-03.md
 [Date Lib]: assignments/assignment-07-date-lib.md
