@@ -234,6 +234,10 @@ Run `npm init --scope=username` instead of `npm init`
 
 <!-- > -->
 
+**Publish your your String lib to npm following the instructions above.** 🛠️
+
+<!-- > -->
+
 ### View your package npm 📡
 
 <!-- > -->
@@ -372,6 +376,16 @@ Here I tried to publish but the currently published version is: 1.0.2 and the ve
 <!-- > -->
 
 ## Install ESLint 🧼
+
+<!-- > -->
+
+Follow the instructions here to install ESLint: https://eslint.org/docs/latest/use/getting-started
+
+<!-- > -->
+
+**Be sure to add a `.gitignore`!** Before distributing your code you want to remove things that are not needed! 
+
+🫧
 
 <!-- > -->
 
@@ -588,10 +602,15 @@ Wrap up your string lib by:
 
 ## Resources
 
-Publish to NPM: https://zellwk.com/blog/publish-to-npm/
+- Publish to NPM: https://zellwk.com/blog/publish-to-npm/
+- Read about Monkey Patching: https://www.audero.it/blog/2016/12/05/monkey-patching-javascript/
+- Read about the prototype chain: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#constructors
+- Listen to a podcast about open source: https://www.npr.org/2024/05/17/1197959102/open-source-xz-hack
+- Read about `padStart()`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
 
 <!-- > -->
 
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time** | **Activity** |
@@ -608,3 +627,4 @@ Publish to NPM: https://zellwk.com/blog/publish-to-npm/
 | 2:45 | 0:05 | Review Homework (Lecture) |
 
 In this lesson you will publish your library and share it with the world.
+-->
