@@ -641,7 +641,8 @@ Wrap up your string lib by:
 
 ## Resources
 
-Publish to NPM: https://zellwk.com/blog/publish-to-npm/
+- Publish to NPM: https://zellwk.com/blog/publish-to-npm/
+- Listen to this podcast about open source: https://www.npr.org/2024/05/17/1197959102/open-source-xz-hack
 
 <!-- > -->
 
