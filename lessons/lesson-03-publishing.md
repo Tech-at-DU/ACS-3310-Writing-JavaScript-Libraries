@@ -164,6 +164,41 @@ Everything you enter here is metadata that describes the package that will event
 
 <!-- > -->
 
+The `package.json` might look like this: 
+
+```JSON
+{
+  "name": "string-lib",
+  "version": "1.0.0",
+  "description": "String utility functions",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
+```
+
+<!-- > -->
+
+Add an entry point. This is important because it tells the world where your code begins. The entry point is where to start running the code you have created. 
+
+Add the entry to the root of your `package.json`:
+
+```JSON
+"main": "src/index.js"
+```
+
+Adjust `"src/index.hjs"` so this path points to the file that begins your program. 
+
+<!-- > --> 
+
 ### Login into npm 👩‍💻
 
 <!-- > -->
@@ -533,6 +568,17 @@ The functions you wrote might take a String as a parameter and return a String. 
 
 An alternative might be to add your methods to the String class through the prototype chain. This is how the built-in String functions work!
 
+<!-- > --> 
+
+Note! Adding methods to the prototype of built in object types is NOT best practice! Since this is a global space, if everyone did this there would be chaos! 🙀
+
+So why am I showing this? 
+- You might see legacy code that uses this idea
+- You might want to use this for code that you write in a controlled environment
+- This illustrates how JavaScript works!
+
+Read more: https://www.audero.it/blog/2016/12/05/monkey-patching-javascript/
+
 <!-- > -->
 
 Q: What is prototype?
@@ -576,6 +622,13 @@ Rewrite your string functions so they are all methods of the String object. This
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1)
 }
+```
+
+The method above can now be called from any string like this: 
+
+```JS
+let name = 'george'
+name.capitalize() // George
 ```
 
 <!-- > -->
@@ -627,4 +680,5 @@ Wrap up your string lib by:
 | 2:45 | 0:05 | Review Homework (Lecture) |
 
 In this lesson you will publish your library and share it with the world.
+
 -->
