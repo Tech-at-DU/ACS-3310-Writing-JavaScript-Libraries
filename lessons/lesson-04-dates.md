@@ -160,9 +160,13 @@ This time we get a number.
 
 Depending on the context the Date object acts as a string, a number, or an object. 
 
-In JS you can include a Symbol.toPrimitive() which facilitates this conversion.
+```JS
+// In JS you can include toPrimitive() help determin how
+// your objects are converted to primitives like string and number
+Symbol.toPrimitive()
+```
 
-Read more about Symbol.toPrimitive() here: https://javascript.info/object-toprimitive
+Read more about `Symbol.toPrimitive()` here: https://javascript.info/object-toprimitive
 
 <!-- > -->
 
