@@ -645,6 +645,7 @@ Your group shows their solutions for the problems.
 
 <!-- > -->
 
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -656,3 +657,5 @@ Your group shows their solutions for the problems.
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         |
+
+-->
