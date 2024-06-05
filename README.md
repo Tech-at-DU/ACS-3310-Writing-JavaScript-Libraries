@@ -50,10 +50,10 @@ Students by the end of the course will be able to ...
 |  4    | Thr, May 30 | [Lesson 4 - Working with Dates] | [Date Lib], [Date Lab Problems] | Publish to npm |
 |  -    | Week 3 | JS Library 2 | Date Library | - |
 |  5    | Tue, Jun 4 | [Lesson 5 - Solving problems with Dates] | - | - |
-|  6    | Thr, Jun 6 | Labor Day no class | - | - |
+|  6    | Thr, Jun 6 | [Callback Promise Lab] | - | - |
 |  -    | Week 4 | - | - | - |
-|  7    | Tue, Jun 11 | [Lesson 6 - Async JS] | [Final Project], [API Lab] | [Date Lib] |
-|  8    | Thr, Jun 13 | [Lesson 7 - Lab] | [Callback Promise Lab], [API Lab] | - |
+|  7    | Tue, Jun 11 |  | [Final Project], [API Lab] | [Date Lib] |
+|  8    | Thr, Jun 13 | [Lesson 7 - Lab] | [API Lab] | - |
 |  -    | Week 5 | JS Library 3 | API Library | - |
 |  9    | Tue, Jun 18 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
 | 10    | Thr, Jun 20 | [Lesson 11 - Typescript] |  | - |
