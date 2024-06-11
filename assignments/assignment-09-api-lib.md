@@ -2,13 +2,13 @@
 
 ## Description 
 
-Your goal for this assignment is create your own library from scratch. Your library must have unit tests, use Typescript, be bundled, published to npm, and include continuous integration. 
+Your goal for this assignment is to create your own library from scratch. Your library must have unit tests, use Typescript, be bundled, published to npm, and include continuous integration. 
+
+Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code.
 
 The subject for this project can be anything you like. If you're not sure what to do consider making a library that works with an existing web API, see the notes below. 
 
-This assignment is due the last day of class. 
-
-Your goal with this assignment is to write a JavaScript library. Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code. 
+This assignment is due the last day of class.  
 
 ### Why this assignment?
 
