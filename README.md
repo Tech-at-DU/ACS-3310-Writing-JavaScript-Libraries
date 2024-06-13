@@ -53,7 +53,7 @@ Students by the end of the course will be able to ...
 |  6    | Thr, Jun 6 | [Callback Promise Lab] | - | - |
 |  -    | Week 4 | - | - | - |
 |  7    | Tue, Jun 11 |  | [Final Project], [API Lab] | [Date Lib] |
-|  8    | Thr, Jun 13 | [Lesson 7 - Lab] | [API Lab] | - |
+|  8    | Thr, Jun 13 | [Lesson 7 - Lab] | - | [API Lab] |
 |  -    | Week 5 | JS Library 3 | API Library | - |
 |  9    | Tue, Jun 18 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
 | 10    | Thr, Jun 20 | [Lesson 11 - Typescript] |  | - |
