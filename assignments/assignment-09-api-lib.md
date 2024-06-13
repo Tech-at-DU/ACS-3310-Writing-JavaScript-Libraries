@@ -26,7 +26,7 @@ You will write a library of code that solves a problem. The code you write will 
 
 Here are a few ideas for libraries that you might write: 
 
-- Write library that works with an API to make that API easier to use. See the ideas below.
+- Write library that works with a web API to make that API easier to use. See the ideas below.
 - Make a deck of cards. This might be an object that tracks a deck of cards. It would contain methods that shuffle and deal, and draw cards from the deck. It might include properties that track the deck and discard pile.
 - Create a utility library. This might be modeled after [lodash](https://lodash.com). Obviously you would not be able to make the entire lodash library in the time available. You could write some functions that cover some of the utility functions contained in lodash. This might be functions like [`difference()`](https://lodash.com/docs/4.17.15#difference) which compares two arrays and returns an array with only values that are different. [`chunk`](https://lodash.com/docs/4.17.15#chunk), [`compact`](https://lodash.com/docs/4.17.15#compact) and any of the other functions that you thnk would be interesting to solve.
 - The `random()` function in JS is weak. Write a library that includes functions that allows us to easily generate random numbers. You might include functions like `random(n)` which generates a random int from 0 to n - 1, `choose(arr)` returns a random element from an array, `die(sides)` returns a function that generates die rolls for a die of n sides, `shuffle(arr)` randomizes the elements in an array and returns a new array. You can probably think of more random number generation ideas.
