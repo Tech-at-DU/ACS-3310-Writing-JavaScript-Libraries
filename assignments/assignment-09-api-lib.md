@@ -10,6 +10,8 @@ The subject for this project can be anything you like. If you're not sure what t
 
 This assignment is due the last day of class.  
 
+Here is a rough example of what your library might look like: https://github.com/soggybag/really-random
+
 ### Why this assignment?
 
 This is a great practice writing JavaScript code. You might use the code you write here. Someone else might use the code you write! 
