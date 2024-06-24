@@ -58,8 +58,8 @@ Students by the end of the course will be able to ...
 |  9    | Tue, Jun 18 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
 | 10    | Thr, Jun 20 | [Lesson 11 - Typescript] |  | - |
 |  -    | Week 6 | - | - | - |
-| 11    | Tue, Jun 25 | - | - | [Typescript Lab] |
-| 12    | Thr, Jun 27 | [Lesson 8 - Continuous Integration] | - | Typescript |
+| 11    | Tue, Jun 25 | [Lesson 8 - Continuous Integration] | - | [Typescript Lab] |
+| 12    | Thr, Jun 27 | - | - | Typescript |
 |  -    | Week 7 | - | - | - |
 | 13    | Tue, Jul 2 | [Lesson 9 - Bundling Code] | - | - |
 | 14    | Thr, Jul 4 | Holiday (no class) | - | - |
