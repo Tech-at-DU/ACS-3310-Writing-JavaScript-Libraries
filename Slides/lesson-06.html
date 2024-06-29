@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="./assets/Reveal/makeschool.css" />
 
-
     <script>
       document.write(
         '<script src="http://' +
@@ -25,21 +24,30 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
+      <div class="slides">
+        <section data-markdown data-separator="^\n<!-- > -->\n" data-separator-vertical="^\n<!-- v -->\n">
+          <textarea data-template>
+            <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 - API Lib
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 What?
 
 With this project you will create a library that works with an API.
 
 ⚙️
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Why?
 
 APIs are used everywhere and are an important part of the web ecosystem. 
 
 🌍
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Libraries make working with APIs easier. 
 
 🧰
@@ -47,7 +55,9 @@ Libraries make working with APIs easier.
 <!-- Put a link to the slides so that students can find them -->
 
 <!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Learning Objectives 
 
 1. Describe and define callback functions
@@ -56,26 +66,36 @@ Libraries make working with APIs easier.
 1. Use Promise in Aynchronous code 
 1. Describe uses and functions of `aysnc` and `await`
 1. Use `aysnch` and `await` to handle asynchronous calls
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Follow these lessons in these videos: 
 
 - [Callbacks](https://www.youtube.com/watch?v=x4FqqFCduuM&list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M&index=21&t=20s)
 - [Promises](https://www.youtube.com/watch?v=vRPhVPGuSd4&list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M&index=22)
 - [Async Await](https://www.youtube.com/watch?v=4exyyvKJ_GI&list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M&index=23)
 - [Challenges](https://www.youtube.com/watch?v=RfZQDxfrRt8&list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M&index=24)
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## What's a callback? 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 A callback is a function invoked by another function. 🦾
 
 A callback is often used with asynchronous actions like handling network requests. 🌏 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Examples of callbacks: 
 
 - `setInterval()` and `setTimeOut()` use a callback to run code after time period is over. 
 - `map()`, `filter()`, and `reduce()` use a callback to execute code with each iteration. 
 - `addEventListener()` uses a callback to run code when an event occurs. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 In practical terms a callback is a function passed to another function or method as an argument.
 
 ```JS
@@ -85,7 +105,9 @@ function hello() {
 
 setTimeout(hello, 3000) // hello callback runs 3 secs later
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 In javascript a function is value and can be assigned or passed around your code just like any other type of value. 
 
 ```JS
@@ -101,11 +123,15 @@ doingThings(11) // returns 22
 // Passed as a parameter (it's a callback here)
 [1,2,3,4].map(doStuff) // returns [2, 4, 3, 8]
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 A callback is the function you pass as an argument that is assigned to a parameter. 
 
 **Important: Arrow functions work best for callbacks!**
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Q: What's a parameter? 
 
 A: A variable that stores a value received by a function
@@ -115,7 +141,9 @@ function doStuff(n) {  // n is the parameter
   return n * 2
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Q: What's an argument? 
 
 A: An argument is the value passed to a function. 
@@ -123,21 +151,29 @@ A: An argument is the value passed to a function.
 ```JS
 doStuff(2) // 2 is the argument! 
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Download these arrow function practice problems: 
 
 https://github.com/Tech-at-DU/arrow-functions-and-callback-challenges
 
 Do: 01-arrow-function-practice.js
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ### Implement a function with a callback
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 You have probably used the OpenWeatherMap API before. 
 
 Imagine you want take your code to the next level. 
 
 Do this using callbacks!
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Start with a function that takes a callback as a parameter! 
 
 ```JS 
@@ -152,13 +188,17 @@ function getWeather(callBack) {
 Notice `callback` is the name of a parameter variable and this function is invoked on the last line. 
 
 So `callBack` is the the callback!
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Often we prefix the name of a parameter that holds a callback with `on`:
 
 - `onComplete`
 - `onSuccess`
 - `onError`
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 What is happening here? 
 
 ```JS 
@@ -175,9 +215,13 @@ function handleWeather() {
 
 getWeather(handleWeather) // call getWeather and pass the callback
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Here `handleWeather` is a function that is passed to `getWeather` and is executed as `callback` there.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Or use an inline/anonymous function. 
 
 ```JS 
@@ -195,7 +239,9 @@ getWeather( () => {
 ```
 
 <small>Often callbacks are passed as anonymous functions</small>
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Get weather needs some information to do it's work: apikey and units.
 
 ```JS 
@@ -207,14 +253,18 @@ function getWeather(onComplete) {
   onComplete()
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 This isn't practical. For every use the apikey and units might change!
 
 
 Q: What's the problem here? 
 
 Q: How can we solve this problem? 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Solution, add some parameters!
 
 ```JS 
@@ -227,11 +277,15 @@ function getWeather(onComplete, apikey, units) {
 getWeather(() => { ... }, '1234', 'imperial') 
 getWeather(() => { ... }), '4321', 'metric')
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Q: how do you get your data from `getWeather` into your callback? 
 
 A: Pass the data as an argument to the callback.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 We have a problem!
 
 ```JS 
@@ -247,7 +301,9 @@ getWeather(() => {
   // json is not accessible here! 
 }, '1234', 'imperial')
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Q: How do you get data from a callback? 
 
 A: Pass it as a parameter!
@@ -267,17 +323,23 @@ const handleWeather = (data) => {
 
 getWeather(handleWeather, '1234', 'metric')
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Apply these ideas here: 
 
 https://github.com/Tech-at-DU/weather-api
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Q: What if there is an error? 🤔
 
 A: Add an error callback! 😮
 
 <small>This is how most JS methods handled errors before promises. Many systems still use this arranegment.</small>
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ```JS 
 function getWeather(apikey, units, onSuccess, onError) {
   fetch(...)
@@ -297,7 +359,9 @@ getWeather('myapikey', 'metric', (data) => {
 ```
 
 <small>onSuccess, and onError are the two callbacks!</small>
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Or write all of that in separate functions. 
 
 ```JS 
@@ -317,17 +381,25 @@ getWeather('myapikey', 'metric', handleData, handleError)
 ```
 
 <small>Notice both callbacks receive an argument!</small>
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 This is starting to get complicated. 
 
 You can simplify this by using a Promise 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Promise
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Promise is an object that is used to handle asynchronous actions. 
 
 A Promise works with callbacks you can think of Promise as managing both the success 🙌 and error 👎 callbacks . 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ```JS 
 function getWeather() {
   // Fetch returns a Promise
@@ -349,18 +421,24 @@ getWeather() // Call then() and catch() on the Promise
 The `Promise.then()` and `Promise.catch()` methods take the callbacks you used earlier. 
 
 Promise decides which to execute.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ### async and await
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 The `async` and `await` keywords are used to handle Promises.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Any function that that begins with `async` will return a Promise, even if you don't explicitly return a promise in the code block.
 
 ```JS
 async function something() {
-
+  // Doesn't return anything! 
 }
-
+// Async functions always return a Promise!
 something().then().catch()
 ```
 or 
@@ -373,7 +451,9 @@ async function something() {
 const p = something() // Always returns a promise
 p.then().catch()
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 The `await` key word can only be used inside of an `async` function. Use it to resolve a Promise. 
 
 ```JS 
@@ -388,21 +468,37 @@ async function getWeather() {
 
 getWeather().then(json => ...)
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
+Want to understand Promise better? Work through these practice problems: 
+
+https://github.com/Tech-at-DU/callbacks-and-promise/
+
+<!-- > -->
+
 ## Using a callback with an API
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 The following examples are more detailed and turn the previouse examples into actual code. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Start with some no frills code. Start here: 
 
 https://github.com/Tech-at-DU/weather-api
 
 Follow the instructions in the readme.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Here are a few ideas
 
 Working with the code above apply the following ideas. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Set up some callbacks. You'll need one for success and one for error. 
 
 ```JS
@@ -419,7 +515,9 @@ function getWeather(zip, apiKey, success, error) {
     .catch(err => error(err))
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Externally you would use the function above like this: 
 
 ```JS 
@@ -427,7 +525,9 @@ function onSuccess(json) { ... }
 function onError(err) { ... }
 getWeather('94010', 'mykey', onSuccess, onError)
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Your code could return a Promise. Simplest would be to return 
 
 ```JS 
@@ -440,7 +540,9 @@ function getWeatherPromise(zip, apiKey) {
   return fetch(path).then(res => res.json())
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Externally uou would use the code above like this: 
 
 ```JS 
@@ -452,7 +554,9 @@ function onSuccess(json) { ... }
 
 function onError(err) { ... }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 You could also use aysnc and await. 
 
 ```JS
@@ -468,7 +572,9 @@ async function getWeatherAsync(zip, apiKey) {
   return json
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 This works exactly the same as the previous example and would be called the same from outside. 
 
 ```JS 
@@ -480,15 +586,21 @@ function onSuccess(json) { ... }
 
 function onError(err) { ... }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Improving the Experience
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 The current data from OpenWeatherMap is really hard to parse.
 
 - Has multiple levels of data stored
 - Some of the keys use the same names
 - Some of the keys are confusing
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 You can improve on this. 
 
 
@@ -520,13 +632,17 @@ Currently OpenWeatherMap is returning something that looks like this:
   wind: {speed: 25.28, deg: 270}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 That's really hard to grasp. What's the difference between `main` and `weather`? Main has the temperature but weather has the description of the weather conditions. Main really seems to be about the temp and air pressure. 
 
 Why is weather an array with only one value? Everything else is objects.
 
 You could improve on this, developers would thank you. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Format a better data object. 
 
 ```JS
@@ -546,22 +662,30 @@ async function getWeatherAsync(zip, apiKey) {
 }
 
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Homework
 
 - Complete and submit the [API Lab](https://github.com/Tech-at-DU/weather-api)
 - Complete the homework assignment [API Lib](https://github.com/Tech-at-DU/ACS-3310-Writing-JavaScript-Libraries/blob/master/assignments/assignment-09-api-lib.md)
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Wrap Up
 
 - Continue working on your current tutorial
 - Complete reading
 - Complete challenges
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Additional Resources
 
 1. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -573,10 +697,15 @@ async function getWeatherAsync(zip, apiKey) {
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         |
-</script></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
 
     <script src="./plugin/markdown/markdown.js"></script>
     <script src="./plugin/highlight/highlight.js"></script>
@@ -605,6 +734,9 @@ async function getWeatherAsync(zip, apiKey) {
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
         slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -617,12 +749,26 @@ async function getWeatherAsync(zip, apiKey) {
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3}, queryOptions);
+      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3,"_":["Lessons/"],"static":"Slides"}, queryOptions);
     </script>
 
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>

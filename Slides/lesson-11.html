@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="./assets/Reveal/makeschool.css" />
 
-
     <script>
       document.write(
         '<script src="http://' +
@@ -25,7 +24,10 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
+      <div class="slides">
+        <section data-markdown data-separator="^\n<!-- > -->\n" data-separator-vertical="^\n<!-- v -->\n">
+          <textarea data-template>
+            <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 - Lesson 11
 
 <small style="display:block;text-align:center">Writing in TypeScript</small>
@@ -37,24 +39,34 @@ In this class, you will begin learning to use Typescript to solve more advanced 
 <!-- Put a link to the slides so that students can find them -->
 
 <!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Learning Objectives
 
 1. Define instance properties and their types
 1. Use enums
 1. Use generics
 1. Write types for functions
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 # Review 
 
 Download the examples here: https://github.com/Tech-at-DU/typescript-intro
 
 Take a look at `example-8.ts` and `example-9.ts` add the types and compile it. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 # Classes 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Classes are used to create instances of objects. Objects store values as properties. These properties have types!
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Consider the Person class below. It needs some types. 
 
 ```JS
@@ -65,7 +77,9 @@ class Person {
 	}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 In typescript the syntax for a class looks like this: 
 
 ```JS
@@ -81,7 +95,9 @@ class Person {
 ```
 
 <small>Person stores `name` a string, and `age` a number.</small>
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Class methods are defined like functions: 
 
 ```JS
@@ -90,28 +106,44 @@ class Person {
 	describe(): string {
 		return `${this.name} is ${this.age}`
 	}
+
+	setAge(newAge: number) {
+		this.age = newAge
+	}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Try `example-10.ts` and `example-11.ts`
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 # Enumerations 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 An enumeration is a named set values. These act like constants you might define to describe all of the possible choices that are be avaiable. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Use enumerations, enum for short, to name the possible choices. 
 
 For example: 
 
 - Units - Metric, Standard, Imperial
 - Direction - North, South, East, West
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Why use an enum? 
 
 - More reliable than strings 
 - Descriptive choices
 - Prevents erroneous values
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Consider this typical scenario: 
 
 ```JS
@@ -127,7 +159,9 @@ getWeather(zip, apikey, 'millimeters')
 ```
 
 What could go wrong? 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 **Constants**: Defining contants is good but doesn't show that these values work together. Your constants are in a pool of other variables. 
 
 ```JS
@@ -142,7 +176,9 @@ function getWeather(zip, apikey, unit = METRIC) {
 ```
 
 Better, but what is STANDARD? What is KEY could it be a unit? 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Another possible choice might be an **object**: 
 
 ```JS
@@ -162,7 +198,9 @@ This is getting better but not perfect.
 ```JS
 Units.millimeters = 'mm'
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 With typescript you can define an enum! 
 
 ```TS
@@ -172,29 +210,40 @@ enum Unit {
   standard
 }
 
-function getWeather(zip: string, apikey: string, unit: Unit = Unit.metric) {
+function getWeather(
+	zip: string, apikey: string, unit: Unit = Unit.metric) {
   // ...
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 These are the possible choices for units in the openweathermap API. Unlike the methods above TypeScript would check against the enum and would show an error if we used a value not on the list! 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 In many situations you have a limited set of choices and your program should always choose from that set. An enum guarantees that you will always choose from the possible choices! 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Under the hood enums are just objects with keys. You could have done this but TypeScript does it for you and adds error checking! 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Imagine you are making a game or mapping app. It needs to work with the compass directions.
 
-```JS
+```TS
 // Define an enum that represents the possible directions 
 enum Direction {
 	North, South, East, West
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 An enum can be used as a value and a type. The function takes the `Direction` enum as the parameter and check it against possible cases in the switch block. 
 
-```JS
+```TS
 function move(direction: Direction) { // direction is enum type
 	switch(direction) {
 		case Direction.E:
@@ -208,20 +257,26 @@ function move(direction: Direction) { // direction is enum type
 	}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 So what's the value of an enum? 
 
-```JS
+```TS
 console.log(Direction.N) // 0
 ```
 
 Under the hood an enum is an array and each of the cases is just the index of that case. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Some times it's useful to assign a value to each case of an enum. For example maybe our program needs to print the direction.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 With the current code this `printDirection` function is not very useful.
 
-```JS
+```TS
 let currentDirection = Direction.N
 
 function printDirection() {
@@ -232,10 +287,12 @@ printDirection()
 ```
 
 The output here is: `You are travelling 0` which isn't very useful. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Each case for an enum can also be a value.
 
-```JS
+```TS
 enum Direction {
 	N = 'North', // Set each case to a string
 	S = 'South',
@@ -246,25 +303,43 @@ enum Direction {
 
 With this change everything works the same as before but the value of the enum is represented as the strings you defined: 
 
-```JS
+```TS
 console.log(Direction.N) // 'North'
 printDirection() // You are travelling North
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Try the challenges in `example-12.ts`
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Read more about enums here: 
 
 - https://www.typescriptlang.org/docs/handbook/enums.html
 - https://2ality.com/2020/01/typescript-enums.html
 - https://en.wikipedia.org/wiki/Enumerated_type
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Functions as Types
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 In Typescript functions are also expressed as types. 
 
 A function that receives a function as a parameter or returns a function must describe that function as a type.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
+```TS
+const add: (number, number) => number = (a: number, b: number ) => {
+	return a + b
+} 
+```
+
+<!-- > -->
+
 For example: 
 
 ```JS
@@ -279,7 +354,9 @@ console.log(hello())
 ```
 
 Challenge modify the function above to take a string: Name as input and combine that with the output. The output of the returned function should read: `Hello ${name}`.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Let's try that again. Write a function that takes a number as input and returns a function. The returned function should return value multiplied by the input number. 
 
 ```JS 
@@ -304,13 +381,19 @@ function doLater() {
 
 doLater(() => {}, 2000) // executes the callback in 2 secs.
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Try the challenges in `example-13.ts` and `example-14.ts`
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Generic types 
 
 Generic types solve the situation where you have a function that defines a parameter that can take an argument of different types.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Imagine the following: 
 
 ```JS
@@ -328,11 +411,15 @@ console.log(sendItBack(c))
 ```
 How can you make this type safe?
 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 There is something subtle going on here. The function above takes any type as an input and returns any type as an ouput. 
 
 🔬
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 So what's the problem? There is no guarantee that the input will match the output! 
 
 🍎 ➡️ 🍎
@@ -340,17 +427,25 @@ So what's the problem? There is no guarantee that the input will match the outpu
 🍊 ➡️ 🍊
 
 🍐 ➡️ 🍓 😱
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Using `any` here works but it's not type safe. What if the function transformed the input into another type? 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 While this example seems contrived, because it is, it is more common than you might think! 
 
 Think of some examples where this might occur?
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Where generics come into play often is Arrays. 
 
 Think about functions like: `push`, `slice`, `splice` and `reverse`.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ```JS
 function sendItBackString(thing: string): string {...}
 function sendItBackNumber(thing: number): number {...}
@@ -359,7 +454,9 @@ function sendItBackBoolean(thing: boolean): boolean {...}
 ```
 
 Thisa is not a scalable solution! 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Solve this problem with a generic:
 
 ```JS
@@ -371,7 +468,9 @@ function sendItBack<T>(thing: T): T {
 ```
 
 The generic type is expressed as `<T>` and you'll use `T` where that type is needed. Here `thing` is type `T` and the function returns something of type `T`. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Imagine you have a function that takes in an array, of any type, and it prints the type of each item in the array: 
 
 ```JS
@@ -390,7 +489,9 @@ getTypes(objs)    // object, object
 ```
 
 Again this is a contrived example but it does something that is not possible without generics.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Consider this example. The function here reverses an array, nevermind that Array.reverse() is a thing! For the function below to work it needs to know the type of the input array and the type of the output array. 
 
 ```JS
@@ -404,10 +505,16 @@ function reverse<T>(arr: T[]): T[] {
 
 console.log(reverse(numbers)) // 4,3,2,1 
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 What's going on there? The function takes an array of type `T` and returns an Array of type `T`. Inside the function we declare an array `rra` of type `T` and return this. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Consider this idea. You need to create a function that returns the next item from an array. The function needs to take in an array of any type, and return a function that returns a value that matches the type of the input array. 
+
+<!-- > -->
 
 ```JS
 function iterate<T>(arr: T[]): () => T {
@@ -429,23 +536,49 @@ console.log(nextName())   // Bo
 
 Here the type of the input array needs to be known and the type of the the return value for the function that is returned. 
 
+<!-- > -->
+
+What if you need more than one generic type? 
+
+<!-- > -->
+
+Consider this: 
+
+```TypeScript
+function thing<T, U>(it: T, other: U): { a: T, b: U } {
+	return { a: it, b: other }
+}
+```
+
+Here there are two generic types T and U. 
+
+<!-- > -->
+
 - https://www.typescriptlang.org/docs/handbook/generics.html
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Typescript Lab
 
 Continue solving the Typescript Exercisms. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ### Homework
 
 <!-- [Assignment 8 - Typescript](../assignments/assignment-08.md) -->
 
 Continue working your final project. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Additional Resources
 
 1. https://exercism.io/my/tracks/typescript
 1. https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
-</script></section><section  data-markdown><script type="text/template"><!-- 
+
+<!-- > -->
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -458,10 +591,15 @@ Continue working your final project.
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         | -->
 
-</script></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
 
     <script src="./plugin/markdown/markdown.js"></script>
     <script src="./plugin/highlight/highlight.js"></script>
@@ -490,6 +628,9 @@ Continue working your final project.
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
         slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -502,12 +643,26 @@ Continue working your final project.
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3}, queryOptions);
+      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3,"_":["Lessons/"],"static":"Slides"}, queryOptions);
     </script>
 
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>

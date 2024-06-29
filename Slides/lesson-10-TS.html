@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="./assets/Reveal/makeschool.css" />
 
-
     <script>
       document.write(
         '<script src="http://' +
@@ -25,26 +24,35 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
+      <div class="slides">
+        <section data-markdown data-separator="^\n<!-- > -->\n" data-separator-vertical="^\n<!-- v -->\n">
+          <textarea data-template>
+            <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 - Lesson 9
 
 <!-- Put a link to the slides so that students can find them -->
 
 <!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Learning Objectives 
 
 1. Recall basic types from last class
 1. Modify an existing code base to use TypeScript
 1. Rewrite tests in TypeScript using Jest
 1. Install and use linting software using eslint-typescript
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Adding Types to FizzBuzz
 
 If you haven't already, clone the FizzBuzz repository here: https://github.com/Make-School-Labs/fizz-buzz-test
 
 Modify the FizzBuzz code _and_ tests to use types. Include at least one class or interface in your implementation.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Testing using Jest
 
 Instructions adapted from https://basarat.gitbooks.io/typescript/content/docs/testing/jest.html
@@ -54,7 +62,9 @@ Install Jest using npm:
 ```bash
 npm i jest @types/jest ts-jest -D
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Add a `jest.config.js` file to the root of your project and initialize it with the following:
 
 ```javascript
@@ -67,7 +77,9 @@ module.exports = {
   },
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Now you can run `npx jest` to run your tests.
 
 You can also add the following to your `package.json`:
@@ -79,11 +91,15 @@ You can also add the following to your `package.json`:
 ```
 
 This allows you to run with `npm t`.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Linting with typescript-eslint
 
 Follow [this tutorial](https://www.npmjs.com/package/eslint-config-airbnb-typescript) on configuring with the Airbnb Style Guide with TypeScript. Follow the instructions for "no React support". You may need to install ESLint plugins if you haven't already.
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 Next, to get typescript-eslint integration in your VSCode editor, follow [this tutorial](https://medium.com/@oliver.grack/using-eslint-with-typescript-and-react-hooks-and-vscode-c583a18f0c75) under "Telling VSCode that ESLint checks our TypeScript":
 
 After installing the ESLint extension in VSCode, go to `Code > Prefrences > Settings` and click the button with `{}` to go to the JSON settings view. Enter the following into the JSON file:
@@ -102,7 +118,9 @@ After installing the ESLint extension in VSCode, go to `Code > Prefrences > Sett
   }
 ]
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 For more information on configuring eslint, you can read their [User Guide](https://eslint.org/docs/user-guide/configuring). 
 
 For example, if you want eslint to ignore your Jest global variables, you can add the following:
@@ -112,21 +130,29 @@ env: {
     "jest": true
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Homework
 
 [Assignment 7 - API Lib](../assignments/assignment-07.md)
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Wrap Up
 
 - Continue working on your current tutorial
 - Complete reading
 - Complete challenges
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Additional Resources
 
 1. 
-</script></section><section  data-markdown><script type="text/template">
+
+<!-- > -->
+
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -138,10 +164,15 @@ env: {
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         |
-</script></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
 
     <script src="./plugin/markdown/markdown.js"></script>
     <script src="./plugin/highlight/highlight.js"></script>
@@ -170,6 +201,9 @@ env: {
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
         slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -182,12 +216,26 @@ env: {
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3}, queryOptions);
+      var options = extend(defaultOptions, {"controls":true,"progress":true,"autoPlayMedia":false,"slideNumber":"c/t","showSlideNumber":"all","controlsTutorial":true,"controlsLayout":"edges","transition":"slide","transitionSpeed":"medium","minScale":0.5,"maxScale":3,"_":["Lessons/"],"static":"Slides"}, queryOptions);
     </script>
 
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>
