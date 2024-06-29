@@ -529,9 +529,3 @@ if (Math.abs(dd) < 7) {
 
 <!-- > -->
 
-## After class 
-
-Continue the current assignment.
-
-[Assignment 7 - Date Lib](../assignments/assignment-07.md)
-

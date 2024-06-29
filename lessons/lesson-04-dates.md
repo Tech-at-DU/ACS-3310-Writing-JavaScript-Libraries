@@ -160,9 +160,13 @@ This time we get a number.
 
 Depending on the context the Date object acts as a string, a number, or an object. 
 
-In JS you can include a Symbol.toPrimitive() which facilitates this conversion.
+```JS
+// In JS you can include toPrimitive() help determin how
+// your objects are converted to primitives like string and number
+Symbol.toPrimitive()
+```
 
-Read more about Symbol.toPrimitive() here: https://javascript.info/object-toprimitive
+Read more about `Symbol.toPrimitive()` here: https://javascript.info/object-toprimitive
 
 <!-- > -->
 
@@ -174,9 +178,7 @@ Would return the difference in the two dates.
 
 <!-- > -->
 
-Try these exercises on your own. 
-
-You can run all of the code here in the console, execute it with node in the commandline, run it in a Repl or any place you can run JavaScript. 
+Try these exercises on your own. Execute it with node in the commandline, run it in a Repl or any place you can run JavaScript. You can even run this code in the borswer console! 
 
 <small><em>I highly encourage you to write and run the code in each example on your own!</em></small>
 
@@ -240,11 +242,11 @@ Since your birthday.
 const bday = new Date('9/26/1965') // get your birthday
 const now = new Date()    // get todays date
 const diff = now - bday   // calculate the difference in ms
-const secs = diff / 1000  // get the seconds
-const mins = secs / 60    // get minutes
-const hrs = mins / 60     // get hours
-const days = hrs / 24     // get days
-const yrs = days / 365.25 // get years
+const secs = diff / 1000  // divide by 1000 to get the seconds
+const mins = secs / 60    // divide by 60 to get minutes
+const hrs = mins / 60     // divide by 60 to get hours
+const days = hrs / 24     // divide by 24 to get days
+const yrs = days / 365.25 // divide by 365.25 to get years
 console.log('Seconds:', secs)
 console.log('Minutes:', mins)
 console.log('Hours:', hrs)
@@ -252,7 +254,7 @@ console.log('days:', days)
 console.log('Years:', yrs)
 ```
 
-This isn't the only solution!
+This isn't the only solution! Its possible you used another solution, which is okay!
 
 </details>
 
@@ -357,7 +359,7 @@ myDate.setMinutes(30)
 
 Best Practice! 👩‍💻
 
-_Never mutate source object. Always make a copy and mutate the copy to avoid side effects._
+_Never mutate the source date! Always make a copy and mutate the copy to avoid side effects._
 
 ```JS
 const d = new Date(2019, 0, 10)
@@ -372,30 +374,30 @@ console.log(newDate) // 10 June 2019
 
 ### Class Methods 
 
-Date provides a couple of class methods. 
+Date provides a couple of class methods.
 
 <!-- > -->
 
-Class methods are methods that are called from the class (class methods are not called from an instance)
+Class methods are methods that are called from the class (NOT called from an instance!)
 
 ```JS
-const now = Date.now() // Class method is called on the Class Object
+const now = Date.now() // now() is a class method
 
 // As opposed to an instance method
-const today = new Date() 
-today.getFullYear() // method called on an instance
+const today = new Date()
+today.getFullYear() // getFullYear is an instance method
 ```
 
 <!-- > -->
 
 ```JS
 // 1564251902406` the ms right now since the Unix Epoch
-Date.now() 
-// create date from UTC parameters 
-Date.UTC(year, month, day, hour, min, sec, ms) 
-// creates a date from date string or returns 
+Date.now()
+// create date from UTC parameters
+Date.UTC(year, month, day, hour, min, sec, ms)
+// creates a date from date string or returns
 // NaN if unable to parse the string.
-Date.parse(string)  
+Date.parse(string)
 ```
 
 <!-- > -->
@@ -643,6 +645,7 @@ Your group shows their solutions for the problems.
 
 <!-- > -->
 
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -654,3 +657,5 @@ Your group shows their solutions for the problems.
 | 1:00        | 0:45      | In Class Activity II      |
 | 1:45        | 0:05      | Wrap up review objectives |
 | TOTAL       | 1:50      | -                         |
+
+-->

@@ -2,13 +2,15 @@
 
 ## Description 
 
-Your goal for this assignment is create your own library from scratch. Your library must have unit tests, use Typescript, be bundled, published to npm, and include continuous integration. 
+Your goal for this assignment is to create your own library from scratch. Your library must have unit tests, use Typescript, be bundled, published to npm, and include continuous integration. 
+
+Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code.
 
 The subject for this project can be anything you like. If you're not sure what to do consider making a library that works with an existing web API, see the notes below. 
 
-This assignment is due the last day of class. 
+This assignment is due the last day of class.  
 
-Your goal with this assignment is to write a JavaScript library. Think of a programming problem you can solve. Think of code that you might write often and how you can provide an alternative to writing this code. 
+Here is a rough example of what your library might look like: https://github.com/soggybag/really-random
 
 ### Why this assignment?
 
@@ -16,11 +18,22 @@ This is a great practice writing JavaScript code. You might use the code you wri
 
 ## Project requirements
 
-You will write a library of code that solves a problem. 
+You will write a library of code that solves a problem. The code you write will include the following: 
 
-- Write library that works with an API to make that API easier to use. See the ideas below. 
-- If you're not sure what to write you can [solve the OpenWeatherApi problems](https://github.com/Tech-at-DU/weather-api). 
-- You can also choose to create a library for one of the existing JS Browser APIs. 
+- Unit Tests
+- TypeScript
+- Bundled
+- Published to npm
+- Continuous Integration
+
+Here are a few ideas for libraries that you might write: 
+
+- Write library that works with a web API to make that API easier to use. See the ideas below.
+- Make a deck of cards. This might be an object that tracks a deck of cards. It would contain methods that shuffle and deal, and draw cards from the deck. It might include properties that track the deck and discard pile.
+- Create a utility library. This might be modeled after [lodash](https://lodash.com). Obviously you would not be able to make the entire lodash library in the time available. You could write some functions that cover some of the utility functions contained in lodash. This might be functions like [`difference()`](https://lodash.com/docs/4.17.15#difference) which compares two arrays and returns an array with only values that are different. [`chunk`](https://lodash.com/docs/4.17.15#chunk), [`compact`](https://lodash.com/docs/4.17.15#compact) and any of the other functions that you thnk would be interesting to solve.
+- The `random()` function in JS is weak. Write a library that includes functions that allows us to easily generate random numbers. You might include functions like `random(n)` which generates a random int from 0 to n - 1, `choose(arr)` returns a random element from an array, `die(sides)` returns a function that generates die rolls for a die of n sides, `shuffle(arr)` randomizes the elements in an array and returns a new array. You can probably think of more random number generation ideas.
+- Build a library that makes working with any of the build browser APIs easier. The geolocation example that returned a promise would be a good example, you can also add more features to geolocation to make it easier to work with. The browser has a large number of APIs, [take a look](https://developer.mozilla.org/en-US/docs/Web/API).
+- Canvas is not as easy as it should be to work with. Building a library that creates objects to represent elements that are displayed on canvas would be useful. You could create a `Sprite` object that has `x`, `y` and other properties, sprites would be able to draw themselves to a canvas. Taken to an extreme you would have a game library like [this](https://phaser.io). 
 
 Here is a list of APIs that you could build a library around: 
 

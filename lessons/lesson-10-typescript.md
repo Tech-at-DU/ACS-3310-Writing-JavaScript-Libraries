@@ -47,7 +47,7 @@ Data types describe the *shape* of the data that we're expecting.
 
 Example types found in many languages: 
 
-`string`, `number`, `boolean`, `object`, `array`, `class`
+`string`, `number`, `boolean`, `object`, `array`, any `class` is a type
 
 <!-- > -->
 
