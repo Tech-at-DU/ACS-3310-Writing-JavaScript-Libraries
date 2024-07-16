@@ -50,9 +50,9 @@ Students by the end of the course will be able to ...
 |  4    | Thr, Sep  5 | [TS Classes and Interfaces] |  | - |
 |  -    | **Week 3** | - | - | - |
 |  5    | Tue, Sep 10 |  | [Project] 2 | [Project] 1 |
-|  6    | Thr, Sep 12 |  | - | - |
+|  6    | Thr, Sep 12 |  | [TS Enums] | - |
 |  -    | **Week 4** | - | - | - |
-|  7    | Tue, Sep 17 |  |  |  |
+|  7    | Tue, Sep 17 | [TS Function Types and Generics] |  |  |
 |  8    | Thr, Sep 19 |  |  |  |
 |  -    | **Week 5** | - | - | - |
 |  9    | Tue, Sep 24 |  | [Project] 3 | [Project] 2 |
@@ -76,6 +76,8 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [Unit Testing]: ./lectures/lecture-unit-testing.md
 [TypeScript]: ./lectures/lecture-typescript.md
 [TS Classes and Interfaces]: ./lectures/lecture-ts-class-and-interfaces.md
+[TS Enums]: ./lectures/lecture-ts-enum.ms
+[TS Function Types and Generics]: ./lectures/lecture/ts-function-types-and-generics.md
 
 <!-- - [String Lib]
 - [Fizz Buzz Unit Tests]

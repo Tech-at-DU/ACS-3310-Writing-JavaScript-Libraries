@@ -96,3 +96,63 @@ const persons: Person = [new Instructor(), new Student()]
 Try these ideas out in example-8.ts and example-9.ts 
 
 https://github.com/Tech-at-DU/typescript-intro
+
+# Classes 
+
+<!-- > -->
+
+Classes are used to create instances of objects. Objects store values as properties. These properties have types!
+
+<!-- > -->
+
+Consider the Person class below. It needs some types. 
+
+```JS
+class Person {
+	constructor(name, age) {
+		this.name = name 
+		this.age = age
+	}
+}
+```
+
+<!-- > -->
+
+In typescript the syntax for a class looks like this: 
+
+```JS
+class Person {
+	name: string // instance variables!
+	age: number  // set types here!
+
+	constructor(name: string, age: string) {
+		this.name = name 
+		this.age = age
+	}
+}
+```
+
+<small>Person stores `name` a string, and `age` a number.</small>
+
+<!-- > -->
+
+Class methods are defined like functions: 
+
+```JS
+class Person {
+	...
+	describe(): string {
+		return `${this.name} is ${this.age}`
+	}
+
+	setAge(newAge: number) {
+		this.age = newAge
+	}
+}
+```
+
+<!-- > -->
+
+Try `example-10.ts` and `example-11.ts`
+
+<!-- > -->
