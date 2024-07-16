@@ -55,8 +55,8 @@ Students by the end of the course will be able to ...
 |  7    | Tue, Sep 17 | [TS Function Types] |  |  |
 |  8    | Thr, Sep 19 | [TS Generics] |  |  |
 |  -    | **Week 5** | - | - | - |
-|  9    | Tue, Sep 24 |  | [Project] 3 | [Project] 2 |
-| 10    | Thr, Sep 26 |  |  |  |
+|  9    | Tue, Sep 24 | [Dates] | [Project] 3 | [Project] 2 |
+| 10    | Thr, Sep 26 | [Bundling] |  |  |
 |  -    | **Week 6** | - | - | - |
 | 11    | Tue, Oct  1 |  |  |  |
 | 12    | Thr, Oct  3 |  |  |  |
@@ -79,6 +79,8 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [TS Enums]: ./lectures/lecture-ts-enum.ms
 [TS Function Types]: ./lectures/lecture-ts-function-types.md
 [TS Generics]: ./lectures/lecture-ts-generics.md
+[Dates]: ./lectures/lecture-dates.md
+[Bundling]: ./lectures/lecture-bundling.md
 
 <!-- - [String Lib]
 - [Fizz Buzz Unit Tests]
