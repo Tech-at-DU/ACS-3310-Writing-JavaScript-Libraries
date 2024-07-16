@@ -77,8 +77,8 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [TypeScript]: ./lectures/lecture-typescript.md
 [TS Classes and Interfaces]: ./lectures/lecture-ts-class-and-interfaces.md
 [TS Enums]: ./lectures/lecture-ts-enum.ms
-[TS Function Types]: ./lectures/lecture/ts-function-types.md
-[TS Generics]: ./lectures/lecture/ts-generics.md
+[TS Function Types]: ./lectures/lecture-ts-function-types.md
+[TS Generics]: ./lectures/lecture-ts-generics.md
 
 <!-- - [String Lib]
 - [Fizz Buzz Unit Tests]
