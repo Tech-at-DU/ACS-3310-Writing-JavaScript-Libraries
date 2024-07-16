@@ -47,7 +47,7 @@ Students by the end of the course will be able to ...
 |  2    | Thr, Aug 29 | [Unit Testing] |  | - |
 |  -    | **Week 2** | - | - | - |
 |  3    | Tue, Sep  3 | [TypeScript] |  | - |
-|  4    | Thr, Sep  5 |  |  | - |
+|  4    | Thr, Sep  5 | [TS Classes and Interfaces] |  | - |
 |  -    | **Week 3** | - | - | - |
 |  5    | Tue, Sep 10 |  | [Project] 2 | [Project] 1 |
 |  6    | Thr, Sep 12 |  | - | - |
@@ -75,6 +75,7 @@ You are responsible for creating three libraries written in JS. Follow the guide
 
 [Unit Testing]: ./lectures/lecture-unit-testing.md
 [TypeScript]: ./lectures/lecture-typescript.md
+[TS Classes and Interfaces]: ./lectures/lecture-ts-class-and-interfaces.md
 
 <!-- - [String Lib]
 - [Fizz Buzz Unit Tests]
