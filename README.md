@@ -56,7 +56,7 @@ Students by the end of the course will be able to ...
 |  8    | Thr, Sep 19 | [Dates] | - | - |
 |  -    | **Week 5** | - | - | - |
 |  9    | Tue, Sep 24 | [Bundling] | [Project] 3 | [Project] 2 |
-| 10    | Thr, Sep 26 |  | - | - |
+| 10    | Thr, Sep 26 | [Publishing] | - | - |
 |  -    | **Week 6** | - | - | - |
 | 11    | Tue, Oct  1 |  | - | - |
 | 12    | Thr, Oct  3 |  | - | - |
@@ -81,6 +81,7 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [TS Generics]: ./lectures/lecture-ts-generics.md
 [Dates]: ./lectures/lecture-dates.md
 [Bundling]: ./lectures/lecture-bundling.md
+[Publishing]: ./lectures/lecture-publishing-to-npm.md
 
 <!-- - [String Lib]
 - [Fizz Buzz Unit Tests]
