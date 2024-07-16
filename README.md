@@ -52,8 +52,8 @@ Students by the end of the course will be able to ...
 |  5    | Tue, Sep 10 |  | [Project] 2 | [Project] 1 |
 |  6    | Thr, Sep 12 |  | [TS Enums] | - |
 |  -    | **Week 4** | - | - | - |
-|  7    | Tue, Sep 17 | [TS Function Types and Generics] |  |  |
-|  8    | Thr, Sep 19 |  |  |  |
+|  7    | Tue, Sep 17 | [TS Function Types] |  |  |
+|  8    | Thr, Sep 19 | [TS Generics] |  |  |
 |  -    | **Week 5** | - | - | - |
 |  9    | Tue, Sep 24 |  | [Project] 3 | [Project] 2 |
 | 10    | Thr, Sep 26 |  |  |  |
