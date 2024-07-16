@@ -49,17 +49,17 @@ Students by the end of the course will be able to ...
 |  3    | Tue, Sep  3 | [TypeScript] |  | - |
 |  4    | Thr, Sep  5 | [TS Classes and Interfaces] |  | - |
 |  -    | **Week 3** | - | - | - |
-|  5    | Tue, Sep 10 |  | [Project] 2 | [Project] 1 |
-|  6    | Thr, Sep 12 |  | [TS Enums] | - |
+|  5    | Tue, Sep 10 | [TS Enums] | [Project] 2 | [Project] 1 |
+|  6    | Thr, Sep 12 | [TS Function Types] | - | - |
 |  -    | **Week 4** | - | - | - |
-|  7    | Tue, Sep 17 | [TS Function Types] |  |  |
-|  8    | Thr, Sep 19 | [TS Generics] |  |  |
+|  7    | Tue, Sep 17 | [TS Generics] |  |  |
+|  8    | Thr, Sep 19 | [Dates] |  |  |
 |  -    | **Week 5** | - | - | - |
-|  9    | Tue, Sep 24 | [Dates] | [Project] 3 | [Project] 2 |
-| 10    | Thr, Sep 26 | [Bundling] |  |  |
+|  9    | Tue, Sep 24 | [Bundling] | [Project] 3 | [Project] 2 |
+| 10    | Thr, Sep 26 |  | - | - |
 |  -    | **Week 6** | - | - | - |
-| 11    | Tue, Oct  1 |  |  |  |
-| 12    | Thr, Oct  3 |  |  |  |
+| 11    | Tue, Oct  1 |  | - | - |
+| 12    | Thr, Oct  3 |  | - | - |
 |  -    | **Week 7** | - | - | - |
 | 13    | Tue, Oct  8 |  |  | [Project] 3 |
 | 14    | Thr, Oct  10 |  |  |  |
