@@ -42,40 +42,47 @@ Students by the end of the course will be able to ...
 
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
-|  -    | **Week 1** | JS Library 1 | String Library |  |
-|  1    | Tue, Aug 27 | [Lesson 1 - Solving string problems] | [String Lib] | - |
-|  2    | Thr, Aug 29 | [Lesson 2 - Unit testing] | [Fizz Buzz Unit Tests] | - |
+|  -    | **Week 1** | - | - | - |
+|  1    | Tue, Aug 27 | Intro | [Project] 1 | - |
+|  2    | Thr, Aug 29 | [Unit Testing] |  | - |
 |  -    | **Week 2** | - | - | - |
-|  3    | Tue, Sep  3 | Day [Lesson 3 - Publishing to npm] | - | String Lib Due |
-|  4    | Thr, Sep  5 | [Lesson 4 - Working with Dates] | [Date Lib], [Date Lab Problems] | Publish to npm |
-|  -    | **Week 3** | JS Library 2 | Date Library | - |
-|  5    | Tue, Sep 10 | [Lesson 5 - Solving problems with Dates] | - | - |
-|  6    | Thr, Sep 12 | [Callback Promise Lab] | - | - |
+|  3    | Tue, Sep  3 | [TypeScript] |  | - |
+|  4    | Thr, Sep  5 |  |  | - |
+|  -    | **Week 3** | - | - | - |
+|  5    | Tue, Sep 10 |  | [Project] 2 | [Project] 1 |
+|  6    | Thr, Sep 12 |  | - | - |
 |  -    | **Week 4** | - | - | - |
-|  7    | Tue, Sep 17 |  | [Final Project], [API Lab] | [Date Lib] |
-|  8    | Thr, Sep 19 | [Lesson 7 - Lab] | - | [API Lab] |
-|  -    | **Week 5** | JS Library 3 | API Library | - |
-|  9    | Tue, Sep 24 | [Lesson 10 - Typescript Intro] | [Final Project], [Typescript Lab] |  |
-| 10    | Thr, Sep 26 | [Lesson 11 - Typescript] |  | - |
+|  7    | Tue, Sep 17 |  |  |  |
+|  8    | Thr, Sep 19 |  |  |  |
+|  -    | **Week 5** | - | - | - |
+|  9    | Tue, Sep 24 |  | [Project] 3 | [Project] 2 |
+| 10    | Thr, Sep 26 |  |  |  |
 |  -    | **Week 6** | - | - | - |
-| 11    | Tue, Oct  1 | [Lesson 8 - Continuous Integration] | - | [Typescript Lab] |
-| 12    | Thr, Oct  3 | - | - | Typescript |
+| 11    | Tue, Oct  1 |  |  |  |
+| 12    | Thr, Oct  3 |  |  |  |
 |  -    | **Week 7** | - | - | - |
-| 13    | Tue, Oct  8 | [Lesson 9 - Bundling Code] | - | - |
-| 14    | Thr, Oct  10 | Holiday (no class) | - | - |
+| 13    | Tue, Oct  8 |  |  | [Project] 3 |
+| 14    | Thr, Oct  10 |  |  |  |
 
 <!-- |  -    | **Week 8** | Review work | - | - |
 | 15    | Tue, Jul 9 | Final Assessment | - | [Final Project] | -->
 <!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
 
 ## Assignments
-- [String Lib]
+You are responsible for creating three libraries written in JS. Follow the guide on the [Project] page. 
+
+[Project]: ./assignments/projects.md
+
+[Unit Testing]: ./lectures/lecture-unit-testing.md
+[TypeScript]: ./lectures/lecture-typescript.md
+
+<!-- - [String Lib]
 - [Fizz Buzz Unit Tests]
 - [Date Lab Problems]
 - [Date Lib]
 - [API Lab]
 - [Callback Promise Lab]
-- [Final Project]
+- [Final Project] -->
 
 <!--  -->
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
