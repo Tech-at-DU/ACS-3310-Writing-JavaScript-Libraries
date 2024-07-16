@@ -1,4 +1,10 @@
-# ACS 3310 Lecture TS Generics
+# ACS 3310 Lecture: TS Generics
+
+<small style="display:block;text-align:center">TS Generics</small>
+
+<!-- Put a link to the slides so that students can find them -->
+
+➡️ [**Slides**](https://docs.google.com/presentation/d/1aBUDlkov4Bg3BHjALA3u6NQPDSsLvHNwgO-pzNvcl-4/edit?usp=sharing ':ignore')
 
 ## Generic types 
 

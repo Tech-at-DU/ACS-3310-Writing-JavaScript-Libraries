@@ -1,4 +1,4 @@
-# Bundling
+# ACS 3310 Lecture: Bundling
 
 <small style="display:block;text-align:center">Bundling Libraries for distribution</small>
 

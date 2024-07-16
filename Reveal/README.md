@@ -5,6 +5,10 @@
 Run Slides with: 
 
 ```bash
+// Lectures
+reveal-md lectures/ --css makeschool.css
+
+// Lessons
 reveal-md Lessons/ --css makeschool.css
 ```
 

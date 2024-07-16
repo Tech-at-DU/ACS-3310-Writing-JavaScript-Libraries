@@ -1,5 +1,11 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# ACS 3310 - Writing in TypeScript
+# ACS 3310 Lecture: Writing in TypeScript
+
+<small style="display:block;text-align:center">Writing TypeScript</small>
+
+<!-- Put a link to the slides so that students can find them -->
+
+➡️ [**Slides**](https://docs.google.com/presentation/d/1aBUDlkov4Bg3BHjALA3u6NQPDSsLvHNwgO-pzNvcl-4/edit?usp=sharing ':ignore')
 
 <!-- > -->
 

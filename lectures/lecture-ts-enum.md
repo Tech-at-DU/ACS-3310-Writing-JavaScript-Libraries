@@ -1,7 +1,7 @@
 <!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
-# ACS 3310 - Lesson 11
+# ACS 3310 Lecture: TS Enums
 
-<small style="display:block;text-align:center">Writing in TypeScript</small>
+<small style="display:block;text-align:center">TS Enums</small>
 
 <!-- ([slides](https://docs.google.com/presentation/d/1ovt7YeAfqaiN8duWjwhYxldTwvca382QTHYyBUFZZ_8/edit)) -->
 
