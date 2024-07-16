@@ -123,11 +123,9 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
 ## Course Requirements 
-
 See the [Course Requirements page](course-requirements.md) for a full list of what is required from you this term. 
 
 ## Video Lectures
-
 You can follow video lectures for this class here: 
 
 https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
