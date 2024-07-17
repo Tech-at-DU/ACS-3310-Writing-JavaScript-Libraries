@@ -47,4 +47,4 @@ Your submitted homework should inlcude a test app that shows your code in action
 | Test App        |  5 |
 | Uses Bundling   |  5 |
 | Uses CI         |  5 |
-| Total           | 35 |
+| Total           | 33 |

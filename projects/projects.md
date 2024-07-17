@@ -17,3 +17,11 @@ You are resposible for completing three of the projects listed below. The sugges
 [String Library]: ./project-string-lib.md
 
 Or, you can tell about a library that you would like to write and do that instead of one of the projects listed. 
+
+<!-- 
+
+Alternative Assignments
+
+Complete JS Exercisms - 1 point each
+
+ -->

@@ -65,7 +65,9 @@ Students by the end of the course will be able to ...
 | 14    | Thr, Oct  10 |  | - | - |
 
 ## Course Requirements 
-Your final grade will be calculated by amount of work completed. See the [Project] page for a list of projects points assigned to each. 100 points earns an A for the course! it is possible to get more than 100 points!  
+Your final grade will be calculated by amount of work completed. See the [Project] page for a list of projects points assigned to each. 100 points earns an A for the course! it is possible to get more than 100 points!
+
+100 points can be gathered by completing 3 Libraries by the end of the term. 
 
 ## Video Lectures
 You can follow video lectures for this class here: 
