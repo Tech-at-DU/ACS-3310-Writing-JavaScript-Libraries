@@ -76,7 +76,7 @@ You are responsible for creating three libraries written in JS. Follow the guide
 [Unit Testing]: ./lectures/lecture-unit-testing.md
 [TypeScript]: ./lectures/lecture-typescript.md
 [TS Classes and Interfaces]: ./lectures/lecture-ts-class-and-interfaces.md
-[TS Enums]: ./lectures/lecture-ts-enum.ms
+[TS Enums]: ./lectures/lecture-ts-enum.md
 [TS Function Types]: ./lectures/lecture-ts-function-types.md
 [TS Generics]: ./lectures/lecture-ts-generics.md
 [Dates]: ./lectures/lecture-dates.md
