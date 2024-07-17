@@ -64,12 +64,13 @@ Students by the end of the course will be able to ...
 | 13    | Tue, Oct  8 |  | - | [Project] 3 |
 | 14    | Thr, Oct  10 |  | - | - |
 
-<!-- |  -    | **Week 8** | Review work | - | - |
-| 15    | Tue, Jul 9 | Final Assessment | - | [Final Project] | -->
-<!-- | 16    | Mon, Oct 10 | Final Assesment | - | - | -->
+## Course Requirements 
+Your final grade will be calculated by amount of work completed. See the [Project] page for a list of projects points assigned to each. 100 points earns an A for the course! it is possible to get more than 100 points!  
 
-## Assignments
-You are responsible for creating three libraries written in JS. Follow the guide on the [Project] page. 
+## Video Lectures
+You can follow video lectures for this class here: 
+
+https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 
 [Project]: ./projects/projects.md
 
@@ -123,11 +124,4 @@ You are responsible for creating three libraries written in JS. Follow the guide
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
 
-## Course Requirements 
-See the [Course Requirements page](course-requirements.md) for a full list of what is required from you this term. 
-
-## Video Lectures
-You can follow video lectures for this class here: 
-
-https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 
