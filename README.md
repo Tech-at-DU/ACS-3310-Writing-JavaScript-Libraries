@@ -71,7 +71,7 @@ Students by the end of the course will be able to ...
 ## Assignments
 You are responsible for creating three libraries written in JS. Follow the guide on the [Project] page. 
 
-[Project]: ./assignments/projects.md
+[Project]: ./projects/projects.md
 
 [Unit Testing]: ./lectures/lecture-unit-testing.md
 [TypeScript]: ./lectures/lecture-typescript.md
