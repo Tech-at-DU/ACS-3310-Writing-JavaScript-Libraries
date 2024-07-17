@@ -3,18 +3,9 @@
 
 <small style="display:block;text-align:center">TS Enums</small>
 
-<!-- ([slides](https://docs.google.com/presentation/d/1ovt7YeAfqaiN8duWjwhYxldTwvca382QTHYyBUFZZ_8/edit)) -->
-
-In this class, you will begin learning to use Typescript to solve more advanced problems.
-
-<!-- Put a link to the slides so that students can find them -->
-
-<!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-
 <!-- > -->
 
 ## Learning Objectives
-
 1. Define instance properties and their types
 1. Use enums
 1. Use generics

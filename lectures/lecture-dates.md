@@ -5,20 +5,7 @@
 
 <!-- > -->
 
-Time for another library! This time you'll make a library that works with Dates.
-
-📆 ⏰ ⌛️
-
-<!-- > -->
-
-<!-- Put a link to the slides so that students can find them -->
-<!-- 
-➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-
-<!-- ➡️ [**Slides**](https://docs.google.com/presentation/d/1zBpVfNByDj5u4Bsg1EtW_zx3qm_6oEm85BStYOyKlDk/edit?usp=sharing ':ignore') -->
-
 ## Video Lessons 
-
 - https://youtu.be/Yo-AKuJ7-fw
 - https://youtu.be/DZi7Cdahfzc
 - https://youtu.be/UA9p5kvW8rg

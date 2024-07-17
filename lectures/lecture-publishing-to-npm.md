@@ -3,10 +3,6 @@
 
 <small style="display:block;text-align:center">Publishing to npm</small>
 
-<!-- Put a link to the slides so that students can find them -->
-
-➡️ [**Slides**](https://docs.google.com/presentation/d/1BdgVBeemOXlARsS_wbS798UNFjCixwuIN9QhlDdxshg/edit?usp=sharing)
-
 <!-- > -->
 
 ## Learning Objectives
