@@ -2,12 +2,18 @@
 
 You are resposible for completing three of the projects listed below. The suggestions below are listed in order of difficulty. The string and date libraries include documentation to help solve those problems. The others are more open ended and require more input from you.
 
-- [String Library] - A library of helper functions that work with strings. 
-- [Date Library] - A library with improvements for working with dates
-- [Deck of Cards Library] - A library that simulates a deck of cards
-- [Random Library] - A library that imrpves working with random numbers
-- [API Library] - A library that makes makes working with a web API easier
-- [Sprite Library] - A library that defines an object that can draw itself to canvas
+- [String Library] (up to 35) - A library of helper functions that work with strings. 
+- [Date Library] (up to 35) - A library with improvements for working with dates
+- [Deck of Cards Library] (up to 35) - A library that simulates a deck of cards
+- [Random Library] (up to 35) - A library that imrpves working with random numbers
+- [API Library] (up to 35) - A library that makes makes working with a web API easier
+- [Sprite Library] (up to 35) - A library that defines an object that can draw itself to canvas
+- Blog Post (5) - About an existing lib, Interview the maintainer
+- Watch Videos (1 each)
+- TypeScript Exorcisms (2 each)
+
+100 points = A
+
 
 [Date Library]: ./project-date-lib.md
 [Random Library]: ./project-random-lib.md 
