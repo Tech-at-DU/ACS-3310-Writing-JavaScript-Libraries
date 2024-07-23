@@ -43,7 +43,7 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | **Week 1** | - | - | - |
-|  1    | Tue, Aug 27 | Intro | [Project] 1 | - |
+|  1    | Tue, Aug 27 | [Writing Libraries] | [Project] 1 | - |
 |  2    | Thr, Aug 29 | [Unit Testing] | - | - |
 |  -    | **Week 2** | - | - | - |
 |  3    | Tue, Sep  3 | [TypeScript] | - | - |
@@ -75,6 +75,8 @@ You can follow video lectures for this class here:
 https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 
 [Project]: ./projects/projects.md
+
+[Writing Libraries]: ./lectures/lecture-writing-a-lib.md
 
 [Unit Testing]: ./lectures/lecture-unit-testing.md
 [TypeScript]: ./lectures/lecture-typescript.md
