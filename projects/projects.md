@@ -9,8 +9,7 @@ You are resposible for completing three of the projects listed below. The sugges
 - [API Library] (up to 35) - A library that makes makes working with a web API easier
 - [Sprite Library] (up to 35) - A library that defines an object that can draw itself to canvas
 - Blog Post (5) - About an existing lib, Interview the maintainer
-- Watch Videos (1 each)
-- TypeScript Exorcisms (2 each)
+- TypeScript Exercisms (2 each) - https://exercism.org/tracks/typescript
 
 100 points = A
 
