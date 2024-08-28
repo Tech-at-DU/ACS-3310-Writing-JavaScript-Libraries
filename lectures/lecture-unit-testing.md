@@ -464,7 +464,7 @@ Use the coverage command with Jest to test the coverage of your tests.
 
 ### Homework
 
-[Add Unit Tests](../assignments/assignment-03.md)
+Continue working on your first library. You need to include unit tests. Use the notes above to add Jest and set up some unit tests. Think about what needs to be tested. Think about the input and output of your functions and methods. What is the expected output for specific inputs? 
 
 <!-- > -->
 
