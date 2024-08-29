@@ -12,7 +12,32 @@
 
 <!-- > -->
 
-## Overview
+## Interview Question
+Fizz Buzz is a game where you count from 1 to x. If a number is divisible by 3 you replace it with Fizz, and if a number is divisble by 5 you replace it with Buzz, and if a number is divisible by 3 and 5 you replace it with Fizz Buzz. 
+
+For example:
+- 1
+- 2
+- Fizz
+- 4
+- Buzz
+- Fizz
+- 7
+- 8
+- Fizz
+- Buzz
+- 11
+- Fizz
+- 13
+- 14
+- Fizz Buzz
+- 16
+- 17
+- etc.
+
+**Challenge** Write a function that takes a number as an argument and returns "Fizz" if that number is divisible by 3, "Buzz" if that number is divisble by 5, "Fizz Buzz" if the number is divisible by 3 and 5, or the number. 
+
+## Unit Testing
 
 **Quality code** 🏅 is test passing code. 
 
