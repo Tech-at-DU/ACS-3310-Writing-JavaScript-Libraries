@@ -455,6 +455,17 @@ Check coverage and identify what has not been tested.
 
 <!-- > -->
 
+## Test Driven Development TDD
+Test Driven Developement, or TDD, is a style of programming where you create unit tests for code that you have yet to write. You then write code to make those tests pass. 
+
+The idea is that you speculate what the output should be and write unit tests. You'll then write the minimum code to make those tests pass. 
+
+TDD can help you improve by inspiring confidence in the code you write, while encouraging you not to over thing problems. 
+
+**Challege** start work on your current JS Library project. Stub some functions or features. Setup unit tests with Jest that test your functions for expected output. 
+
+<!-- > -->
+
 ### Debriefing the tests
 
 Discuss these questions
