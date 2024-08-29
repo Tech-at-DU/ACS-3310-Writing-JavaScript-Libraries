@@ -37,6 +37,22 @@ For example:
 
 **Challenge** Write a function that takes a number as an argument and returns "Fizz" if that number is divisible by 3, "Buzz" if that number is divisble by 5, "Fizz Buzz" if the number is divisible by 3 and 5, or the number. 
 
+Your function might look something like this: 
+
+```JS
+function fizzBuzz(n) {
+  // ...
+}
+
+fizzBuzz(1) // 1
+fizzBuzz(2) // 2
+fizzBuzz(3) // "Fizz"
+fizzBuzz(4) // 4
+fizzBuzz(5) // "Buzz"
+fizzBuzz(6) // "Fizz"
+fizzBuzz(15) // "Fizz Buzz" 
+```
+
 ## Unit Testing
 
 **Quality code** 🏅 is test passing code. 
