@@ -13,7 +13,6 @@ You are resposible for completing three of the projects listed below. The sugges
 
 100 points = A
 
-
 [Date Library]: ./project-date-lib.md
 [Random Library]: ./project-random-lib.md 
 [API Library]: ./project-api-lib.md
