@@ -42,7 +42,29 @@ Collaborating classes: Card has these properties:
 And these methods:
 - `toString()` - returns a string reorientation of the card. 
 - `toValue()` - returns the numeric value of a card. 
-- `toEmoji()` - returns an emoji representation of the card.  
+- `toEmoji()` - returns an emoji representation of the card.
+
+## Use TDD 
+You can imagine how this class might function with some hypothetical unit tests. 
+
+```JS
+test('Deck has 52 cards', () => {
+  const deck = new Deck()
+  expect(deck.deck.length).toBe(52)
+})
+
+test('Deck discard is empty', () => {
+  const deck = new Deck()
+  expect(deck.discardPile.length).toBe(0)
+})
+
+test('Deck can draw a card', () => {
+  const deck = new Deck()
+  const card = deck.draw()
+  expect(deck.deck.length).toBe(51)
+  expect(card).toBeInstanceOf(Card)
+})
+```
 
 ## Test app
 Your submitted homework should inlcude a test app that shows your code in action. The test should import your code to a react Project with npm. Your test app does not have to be complex, the goal is to show your library functioning in context, not creating complex comercial project. 
