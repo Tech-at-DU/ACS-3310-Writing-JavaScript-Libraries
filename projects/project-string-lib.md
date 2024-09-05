@@ -196,9 +196,9 @@ Your submitted homework should inlcude a test app that shows your code in action
 | Category | Points |
 |:---------|:-------|
 | Code & function | 10 |
+| Test App        | 10 |
 | Uses Typescript |  5 |
 | Has Unit Tests  |  5 |
-| Test App        |  5 |
-| Uses Bundling   |  5 |
-| Uses CI         |  5 |
+| Uses Bundling   |  3 |
+| Uses CI         |  2 |
 | Total           | 35 |
