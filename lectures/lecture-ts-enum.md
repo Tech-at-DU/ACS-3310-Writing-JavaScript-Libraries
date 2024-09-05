@@ -223,3 +223,7 @@ Read more about enums here:
 - https://en.wikipedia.org/wiki/Enumerated_type
 
 <!-- > -->
+
+Read more about Enums: https://blog.logrocket.com/typescript-enums-vs-types/
+
+Check out the docs: https://www.typescriptlang.org/docs/handbook/enums.html
