@@ -4,582 +4,361 @@
 
 <!-- > -->
 
-This class session covers the concept of bundling. This is the process of combining files and processing them for use and distribution. 
+# Bundling with Webpack
+This example walks through bundling your code using webpack. 
 
-Why do we need to bundle code? To understand this you need to understand the problem that bundling solves. Before 2015 JS didn't have the concept of a module built in. Read this article: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+## What is bundling? 
 
-From the article we get the following concepts: 
-
-- JS variables are global which is a problem
-- All code is global which is a problem
-- Modules compartmentalize code to solve these problems
-- esmodules were introduced in 2015
-
-Info on esmodules: https://javascript.info/import-export
-
-Newer browsers can use esmodules, but there are still many older browsers out in the world that don't support this. For these we might want to bundle code using the commonJS system. NodeJS has recently added support for esmodules but much of the existing code still uses the commonjs (require) system. 
-
-https://snipcart.com/blog/javascript-module-bundler
-
-<!-- Put a link to the slides so that students can find them -->
-
-<!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
-
-<!-- > -->
-
-<!-- ## Review: Callbacks! -->
-
-<!-- > -->
-
-<!-- ## Promises
-
-Let's study Promise! try these Replits! The first three review Promise and the last provides a practical use case and challenge!
-
-- https://replit.com/@MakeSchoolFEW/Promise-01#readme.md
-- https://replit.com/@MakeSchoolFEW/Promise-11#readme.md
-- https://replit.com/@MakeSchoolFEW/Promise-12#readme.md
-- https://replit.com/@MakeSchoolFEW/Promise-02#readme.md
-- https://replit.com/@MakeSchoolFEW/Promise-03#readme.md
-
-Solve this problem with Primsies and Callbacks. The sample code shows hoe to use the browsers geolocation API. It uses two callbacks. Your goal is to make it work with a Promise! 
-
-- https://replit.com/@MakeSchoolFEW/GeoLocation#script.js -->
-
-<!-- > -->
-
-## Why learn how to bundle files? 
-
-<!-- > -->
-
-🎁
-
-Bundling is used in professional environments. Bundling code yourself will help you understand how modern web projects work. 
-
-🧐
-
-<!-- > -->
-
-🎁 ➡️ 🌍
-
-Bundling your files allows them to be distributed so they can be used anywhere without extra work. 
-
-<!-- > -->
-
-Your files need to be handled differently if they are used in the browser, NodeJS, or in a React project. 
-
-Bundling files allows them to be used in all these. 
-
-🍎 🍊 🍐
-
-<!-- > -->
-
-## Learning Objectives 
-
-1. Describe reasons for bundling files
-1. Describe modules 
-1. Use Webpack to bundle code
-
-<!-- > -->
-
-## Bundling with Webpack
-
-<!-- > -->
-
-References:
-
-- https://webpack.js.org/guides/typescript/
-- https://tobias-barth.net/blog/Bundling-your-library-with-Webpack
-
-<!-- > -->
-
-Follow these steps to bundle your code with webpack. 
-
-<!-- > -->
-
-Choose one of your library projects to work with. 
-
-<!-- > -->
-
-Install webpack:
-
-```
-npm install webpack webpack-cli --save-dev
-```
-
-From here you are ready to bundle code.
-
-Create `webpack.config.js`. This file tells webpack how to bundle. You can use webpack without a config file and will will create `./dist/bundle.js` using it's default settings. 
-
-Add the following to `webpack.config.js`: 
+### A quick history of JS 
+In the old days there were no modules and all code was global. This was a big problem, so developers came up with the "Immediately Invoked Function Expression" or IIFE. 
 
 ```JS
-// umd 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-		library: 'lib',
-		libraryTarget: 'umd',
-		globalObject: 'this',
+(function() {
+  // Everything declared in this block is 
+  // isoltaed to to this block. 
+  var x = 100
+  function hello() {
+
+  }
+})()
+
+// The code inside the block above is not accessible
+// outside of the block. 
+```
+
+Fixed some issues but created a problem when you need different blocks of code to communicate. 
+
+The commonjs defined a module format that can be used to share data by importing and exporting that data. This is facilitated by requireJS. 
+
+https://requirejs.org/docs/commonjs.html
+
+The commonjs format was incorporated into NodeJS. 
+
+https://requirejs.org/docs/node.html
+
+All of this evolved into the Universal Module Defintion (UMD) format. 
+
+https://github.com/umdjs/umd
+
+UMD is something that can be used anywhere. It works with both browser based apps and Node Based apps. Note, the browser and Node are two different environments! 
+
+### Ecmascript Modules
+Ecmascript is the term for the standard that is used for the JavaScript language and the two can be used interchangably. You are writing Ecmascript. 
+
+A recent addition to Ecmascript is the concept of modules. 
+
+### What is a Module? 
+Think of a module of a scope. Code written in that scope is not available outside the scope unless it is imported or exported. 
+
+In practice a module is a file. Anything you define in that file is not accessible and will not clash with anything in another module (file). Any module can declare exports for things it wants to share with other modules, and import things it wants to use from other modules. 
+
+## Why bundle? 
+Older borwsers don't support the newer ESM (Ecmascript Modules) the process of bundling converst code you write with newer syntax into code that will work in older browsers, it will also make code compatible with RequireJS and Node. 
+
+Besides creating versions of your code that are compatible with various module systems ESM, CommonJS, and UMD, it also performs other tasks like converting TypeScript to JavaScript. 
+
+## What is Rollup? 
+Rollup is a JavaScript bundler. You'll use it to combine seperate JS files into a single file, convert TypeScript to JS, and form that code into modules that conform to one or more of the module formats like ESM, UMD, or AMD. 
+
+Rollup also performs Tree Shaking, which process of eliminating code that is not used. 
+
+## Getting Started
+Following the steps below you will:
+ 
+- Install and configure Webpack to do the following: 
+  - Compile your type script
+  - Create ESM 
+  - Create UMD
+- Add a .npmignore to remove extra files from your npm package
+- Configure TypeScript
+
+## Install dependencies
+
+```bash
+npm install --save-dev rollup rollup-plugin-typescript2 typescript @rollup/plugin-node-resolve @rollup/plugin-commonjs
+```
+## TypeScript Config
+Create tsconfig.json
+
+Add:
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
+```
+
+## Rollup config
+Create rollup.config.js
+
+Add 
+```js
+import typescript from 'rollup-plugin-typescript2';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+
+export default {
+  input: 'src/index.ts', // Entry point
+  output: [
+    {
+      file: 'dist/bundle.umd.js',
+      format: 'umd', // Universal Module Definition
+      name: 'MyLibrary', // Global name in UMD builds
+      sourcemap: true,
+    },
+    {
+      file: 'dist/bundle.esm.js',
+      format: 'es', // ESM format
+      sourcemap: true,
+    }
+  ],
+  plugins: [
+    resolve(), // To resolve node_modules
+    commonjs(), // To convert CommonJS modules to ES6
+    typescript({
+      tsconfig: "./tsconfig.json",
+      useTsconfigDeclarationDir: true, // Output .d.ts files to the specified folder
+    }),
+  ]
 };
 ```
 
-Here you have configured webpack by: 
-- setting the entry point. This tells webpack which file contains the code it should bundle. 
-- Set the output path and folder name `dist`, and file name `bundle.js`
-- You also set the name of the lib. This creates a global variable for non-esmodule platforms. 
-- You set the to type of module to umd, which is compatible with NodeJS. 
+## Package.json options
+Edit package.json
 
-If you are using TypeScript you can follow the instructions below to add TypeScript to your bundling pipeline. 
-
-<!-- > -->
-
-Install TypeScript and TypeScript Loader:
-
-```
-npm install typescript ts-loader --save-dev
-```
-
-<!-- > -->
-
-Make a new file: `tsconfig.json`
-
-Add the following:
-
-```JSON
+```json
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node"
+  "name": "your-package-name",
+  "version": "1.0.0",
+  "main": "dist/bundle.umd.js",
+  "module": "dist/bundle.esm.js",
+  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
   }
 }
 ```
 
-<!-- > -->
+## Using the bundler
+Use one of the two commands below to run the bundling process. This should compile your TypeScript code into JS, creating `bundle.esm.js`, and `bundle.umd.js`, along with source maps for each. 
 
-Create a new file: `webpack.config.js`
+Building your code when you are ready to publish. 
 
-Add the following: 
-
-```JS
-const path = require('path');
-
-module.exports = {
-  entry: './src/index.ts',
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
-		library: 'lib',
-		libraryTarget: 'umd',
-		globalObject: 'this',
-  },
-};
-```
-
-<!-- > -->
-
-You may need to edit the values here: 
-
-- `entry`: points to your source file
-- `filename`: names the output file
-- `path`: sets the output directory
-- `library`: sets the name of the global variable created in a browser environment
-
-<!-- > -->
-
-Edit package.json
-
-Add this to scripts: 
-
-```JSON
-"build": "webpack --config webpack.config.js"
-```
-
-<!-- > -->
-
-Bundle your files by running: 
-
-```
+```bash
 npm run build
 ```
 
-<!-- > -->
+Or, watch your code and compile when files are edited and saved. 
 
-In these steps you added webpack to your project and added a script to run webpack and have it bundle your code. 
-
-👠 👑 🎧 ➡️ 🎁
-
-<!-- > -->
-
-## What is a bundle and why do we have them? 
-
-🤔
-
-<!-- > -->
-
-In the old days you could write code and run it in a browser. 
-
-That was it. 
-
-<!-- > -->
-
-Until recently, code run in browser was global. Any variables that were created were accessible from anywhere. 
-
-<!-- > -->
-
-What could go wrong? 
-
-<!-- > -->
-
-Imagine importing a couple libraries only to find out that they don't work because the code on one is redefining a variable used in the other. 
-
-<!-- > -->
-
-script-1.js
-```JS
-function counter() {
-  // does something really important
-}
+```bash
+npm run watch
 ```
 
-script-2.js
-```JS
-var counter = 0
+## What is a source map? 
+Source maps are files that map your minified or compiled code (like from TypeScript or a bundler) back to the original source code. They allow developers to debug and trace errors in the original code, even if the code running in the browser or environment is transformed. When using source maps, you can see the original TypeScript or ES6+ code in developer tools, making it easier to troubleshoot issues without having to deal with the compiled output.
+
+## Review the bundling setup
+The following describes what is happening in the bundling setup described here. 
+
+### 1. **TypeScript Compilation:**
+   TypeScript is being compiled based on your `tsconfig.json` configuration, which specifies important options like:
+   - `target: "es5"`: This ensures compatibility with older JavaScript environments.
+   - `module: "esnext"`: Tells TypeScript to leave ES module imports and exports as they are.
+   - `declaration: true`: Generates `.d.ts` files (type declarations) for consumers of your library.
+   - `outDir: "dist"`: Specifies the output directory for compiled files.
+   - `strict: true`: Enables TypeScript's strict type-checking.
+
+### 2. **Rollup Bundling:**
+   Rollup is a module bundler that is responsible for creating the final UMD and ESM bundles of your library. Here's what happens in `rollup.config.js`:
+   
+   - **Input**: The entry file (`src/index.ts`) is the starting point of your library.
+   - **Output**: 
+     - **UMD Format (`dist/bundle.umd.js`)**: UMD (Universal Module Definition) works across multiple environments—browser, Node.js, or AMD. This is useful for making your library flexible in how it's consumed.
+     - **ESM Format (`dist/bundle.esm.js`)**: ESM (ECMAScript Module) is the modern JavaScript module format, ideal for tree-shaking and usage in modern environments like web applications or other modules.
+   - **Sourcemap**: This option enables sourcemaps, allowing developers to debug your library more easily by mapping the compiled code back to the original TypeScript source.
+   
+### 3. **Plugins:**
+   - **`@rollup/plugin-node-resolve`**: This allows Rollup to find and bundle dependencies from `node_modules` if needed.
+   - **`@rollup/plugin-commonjs`**: Converts CommonJS modules (used in many npm packages) to ES6, so Rollup can include them in the bundle.
+   - **`rollup-plugin-typescript2`**: This handles the TypeScript compilation, integrates it with Rollup, and ensures that `.d.ts` files (TypeScript type definitions) are generated as per your `tsconfig.json`.
+
+### 4. **UMD and ESM Outputs:**
+   - **UMD (Universal Module Definition)**: The `umd` format is designed to work in different environments—browser (global variable), Node.js (CommonJS), and AMD. This makes your library versatile and usable in various settings.
+   - **ESM (ECMAScript Module)**: The `es` format outputs an ES module that is useful for modern JavaScript environments. ESM supports tree-shaking, meaning unused code can be excluded when bundled by the consumer of your library.
+
+### 5. **`type: "module"` in `package.json`:**
+   Adding `"type": "module"` in `package.json` tells Node.js that your package should be treated as an ESM package. This ensures that when your library is used in environments like Node.js, ESM syntax (import/export) is handled correctly.
+
+### 6. **Build Script:**
+   The `"build": "rollup -c"` script runs Rollup with the configuration from `rollup.config.js`, bundling your TypeScript source code into both UMD and ESM formats.
+
+### Summary:
+- TypeScript compiles your code into JavaScript.
+- Rollup bundles it into different module formats (UMD for wide compatibility and ESM for modern environments).
+- Type declaration files are generated for TypeScript consumers.
+- Sourcemaps are included for debugging.
+- The `"type": "module"` in `package.json` ensures correct behavior in Node.js environments using ES modules.
+
+## Stretch Challenges! 
+Try applying the dieas below to extend the work above. 
+
+### 1. **Customize File Names (Output)**
+You can use placeholders in Rollup's `output.file` option to dynamically adjust filenames based on the format or environment (development/production).
+
+In `rollup.config.js`, you could change the output filenames like this:
+```javascript
+export default {
+  input: 'src/index.ts',
+  output: [
+    {
+      file: 'dist/my-library.umd.js', // Custom UMD file name
+      format: 'umd',
+      name: 'MyLibrary',
+      sourcemap: true,
+    },
+    {
+      file: 'dist/my-library.esm.js', // Custom ESM file name
+      format: 'es',
+      sourcemap: true,
+    }
+  ],
+  // Plugins remain unchanged
+};
 ```
 
-Run your code
-```JS
-counter() // calls function
-TypeError: counter is not a function.
+You can also dynamically set file names using the `NODE_ENV` environment variable:
+```javascript
+const production = !process.env.ROLLUP_WATCH;
+
+export default {
+  input: 'src/index.ts',
+  output: [
+    {
+      file: production ? 'dist/my-library.min.js' : 'dist/my-library.js', // Different output for production
+      format: 'umd',
+      name: 'MyLibrary',
+      sourcemap: true,
+    },
+    {
+      file: production ? 'dist/my-library.esm.min.js' : 'dist/my-library.esm.js',
+      format: 'es',
+      sourcemap: true,
+    }
+  ],
+  // Plugins remain unchanged
+};
 ```
 
-<!-- > -->
+### 2. **Minify Production Code**
+To minify your code for production, you can use the **Terser** plugin. It compresses and minifies the bundled code, making it more suitable for production.
 
-This is was really happening. 
+1. Install Terser:
+   ```bash
+   npm install --save-dev rollup-plugin-terser
+   ```
 
-So clever people invented a module system. 
+2. Use it in your Rollup config:
+   ```javascript
+   import typescript from 'rollup-plugin-typescript2';
+   import resolve from '@rollup/plugin-node-resolve';
+   import commonjs from '@rollup/plugin-commonjs';
+   import { terser } from 'rollup-plugin-terser'; // Import the terser plugin
 
-<!-- > -->
+   const production = !process.env.ROLLUP_WATCH;
 
-The two popular module systems were:
+   export default {
+     input: 'src/index.ts',
+     output: [
+       {
+         file: production ? 'dist/my-library.umd.min.js' : 'dist/my-library.umd.js',
+         format: 'umd',
+         name: 'MyLibrary',
+         sourcemap: true,
+       },
+       {
+         file: production ? 'dist/my-library.esm.min.js' : 'dist/my-library.esm.js',
+         format: 'es',
+         sourcemap: true,
+       }
+     ],
+     plugins: [
+       resolve(),
+       commonjs(),
+       typescript({
+         tsconfig: './tsconfig.json',
+       }),
+       production && terser() // Minify only if it's production
+     ]
+   };
+   ```
 
-- [CommonJS](https://www.commonjs.org)
-- [RequireJS](https://requirejs.org)
+### 3. **Generate Separate Development and Production Bundles**
+You can have separate configurations for development and production builds using the `NODE_ENV` environment variable:
+1. In `rollup.config.js`:
+   ```javascript
+   const production = process.env.NODE_ENV === 'production';
 
-<!-- > -->
+   export default {
+     input: 'src/index.ts',
+     output: {
+       file: production ? 'dist/my-library.min.js' : 'dist/my-library.js',
+       format: 'umd',
+       name: 'MyLibrary',
+       sourcemap: true,
+     },
+     plugins: [
+       resolve(),
+       commonjs(),
+       typescript(),
+       production && terser() // Minify production build only
+     ]
+   };
+   ```
 
-CommonJS is JavaScript code that wraps your JS code. It allows you to create modules. 
+2. Set environment variables in your build scripts in `package.json`:
+   ```json
+   {
+     "scripts": {
+       "build:dev": "NODE_ENV=development rollup -c",
+       "build:prod": "NODE_ENV=production rollup -c"
+     }
+   }
+   ```
 
-<!-- > -->
+Now, you can run:
+- `npm run build:dev` for development
+- `npm run build:prod` for production (with minification)
 
-If you've ever used: 
+### 4. **Tree Shaking and Dead Code Elimination**
+Rollup automatically performs **tree-shaking**, meaning it removes unused code from your final bundle. To ensure this works efficiently:
+- Use ES module syntax (`import`/`export`) throughout your codebase.
+- Avoid side effects in your modules.
 
-```JS
-const duckPond = require('pond')
-```
-
-You've been using RequireJS!
-
-<!-- > -->
-
-What's a module?
-
-A module is a block of code that contains all of it's variables. Usually a module is a file. 
-
-- [What's a module](https://softwareengineering.stackexchange.com/questions/167859/what-actually-is-a-module-in-software-engineering)
-- [Where JS modules come from](https://medium.com/sungthecoder/javascript-module-module-loader-module-bundler-es6-module-confused-yet-6343510e7bde)
-- [History of JS modules](https://objectpartners.com/2019/05/24/javascript-modules-a-brief-history/)
-
-<!-- > -->
-
-Modules in a nutshell.
-
-- A file defines a module. 
-- All variables and functions are scoped to that file. 
-- A module may export values it wants to share.
-
-<!-- > -->
-
-Hey, don't we have these already...
-
-<!-- > -->
-
-ES Modules was added to the JavaScript spec in 2015, and by 2020 had broad support in most web browsers and JavaScript runtimes.
-
-<!-- > -->
-
-Wow! That was like last week! 
-
-Are ES modules that new? 
-
-Yes, they are! 
-
-<!-- > -->
-
-ES Modules are where we get `import from`: 
-
-```JS
-import Amazing, { things } from 'some-lib'
-...
-export default SomethingUseful
-```
-
-<!-- > -->
-
-script-1.js
-```JS
-let counter = 0
-...
-```
-
-script-2.js
-```JS
-function counter() {
-  return ...something really important...
-}
-
-export default counter
-```
-
-In script-1 counter is not exposed. Script-2 exports counter, it can be imported where it is needed. 
-
-Using modules these identifiers do not clash!
-
-<!-- > -->
-
-They probably don't work in older browsers!
-
-What are going to do? 😱
-
-<!-- > -->
-
-Bundle our code! (using CommonJS and RequireJS) 
-
-<!-- > -->
-
-Bundling also makes our code compatible with different environments. 
-
-<!-- > -->
-
-What types of environments are there? 
-
-- Browser
-- NodeJS
-- ...
-
-<!-- > -->
-
-Ever notice that the browser doesn't support `require()` but NodeJS uses it a lot!  
-
-Require is another code wrapper that works with CommonJS. You can use it in the browser if you import it. 
-
-- https://requirejs.org/docs/commonjs.html
-
-<!-- > -->
-
-Let's review:
-
-- In JS land everything is global (variables and stuff)
-- CommonJS was invented to create a module system
-  - Modules allow variables with the same name to live in their own module
-- RequireJS was invented to allow things to be shared between modules
-
-<!-- > -->
-
-Universal Module Definition UMD is a format combines CommonJS and RequireJS. It takes into account whether your code is running in a browser or in a node environment. 
-
-<!-- > -->
-
-Wait, where did UMD come from? 
-
-Remember the webpack.config?
-
-```JS
+To improve this further, you can add specific configuration in the output to ensure better dead code elimination:
+```javascript
 output: {
-  filename: 'index.js',
-  path: path.resolve(__dirname, 'dist'),
-  library: 'reallyRandom',
-  libraryTarget: 'umd', <--
-  globalObject: 'this',
+  file: production ? 'dist/my-library.min.js' : 'dist/my-library.js',
+  format: 'umd',
+  name: 'MyLibrary',
+  sourcemap: true,
+  treeshake: true, // Explicitly enable tree-shaking
 },
 ```
 
-<!-- > -->
-
-What does UMD do for me? 
-
-Allows your libraries run in the browser or in Node.
-
-<!-- > -->
-
-Why is that important? 
-
-<!-- > -->
-
-If you are going to write code that runs in the browser you should understand all of the tooling that makes it work. 
-
-<!-- > -->
-
-If you are going to use modern libraries like React, they all use these ideas, you should understand what is happening behind the scenes. 
-
-<!-- > -->
-
-How can I prove that all of this is doing what was described here? 
-
-<!-- > -->
-
-Make two files: 
-
-1. `example-node.js`
-2. `example-browser.html`
-
-Imagine these are two separate projects. One is a browser project the other is a NodeJS project. 
-
-<!-- > -->
-
-After building your code following steps above take note of the file name and location of your bundled code. This file named in ouput section of the webpack config. 
-
-<!-- > -->
-
-In `example-node.js` import your code by adding: 
-
-```JS
-const lib = require('./path/to/bundle.js')
-// add some code here to test your lib
-```
-
-Run this in your terminal.
-
-<!-- > -->
- 
-In `example-browser.html` add a script tag:
-
-```HTML
-<script src="./path/to/bundle.js"></script>
-<script>
-  // Add some code here to test your lib
-</script>
-```
-
-In this example the code will added the variable with the name used in: `library: 'lib'` the name here is lib. You can change it but will need to run webpack and bundle again!  
-
-<!-- > -->
-
-We just did something with code that makes it run in the browser and Node? 
-
-<!-- > -->
-
-Your code would not run in both places without this!
-
-<!-- > -->
-
-It's why you can use jQuery, Underscore, and many other libraries!
-
-<!-- > -->
-
-Let's Review: 
-
-- Once upon time there was JavaScript
-- JS had some problems with global variables
-- Wizards fixed this with some magic spells they called CommonJS and RequireJS
-- JS was improved but not everyone can use those improvements.
-- So we make our JS work everywhere with UMD
-
-<!-- > -->
-
-## How to make a umd module with webpack
-
-Use webpack like this: 
-
-```JS
-// umd 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-		library: 'lib',
-		libraryTarget: 'umd',
-		globalObject: 'this',
-  },
-};
-```
-
-This creates a module that will work in the borwser with all code attached to the variable: `lib`. This module will also work with NodeJS and `require()`.
-
-## How to make an es module with webpack
-
-The following will create a module that will work with the `import from` syntax. 
-
-```JS
-// esm
-module.exports = {
-  entry: './src/index.js',
-	experiments: {
-    outputModule: true,
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-		library: {
-			type: "module"
-		},
-  },
-};
-```
-
-This module will be output as index.js. 
-
-## How to create both an esm and umd module
-
-Webpack will create multiple module modules if you supply an array of configurations. 
-
-```JS
-// esm+umd
-module.exports = [{
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-		library: 'lib',
-		libraryTarget: 'umd',
-		globalObject: 'this',
-  }
-},
-	{
-  entry: './src/index.js',
-	experiments: {
-    outputModule: true,
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
-		library: {
-			type: "module"
-		},
-  },
-}
-];
-```
-
-This will output a umd module as `dist/bundle.js` and an esm module as `dist/index.js`. 
-
+### Summary of Extensions:
+- **Customize File Names**: Use dynamic names based on the environment or format.
+- **Minify Code**: Use `rollup-plugin-terser` to minify production builds.
+- **Separate Dev and Prod Builds**: Use environment variables to generate different builds.
+- **Tree Shaking**: Rollup removes unused code automatically for efficient bundles.

@@ -96,7 +96,7 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 - [Callback Promise Lab]
 - [Final Project] -->
 
-<!--  -->
+<!--  
 [Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
 [Lesson 2 - Unit testing]: ./lessons/lesson-02-unit-testing.md
 [Lesson 3 - Publishing to npm]: ./lessons/lesson-03-publishing.md
@@ -110,7 +110,7 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 [Lesson 11 - Typescript]: ./lessons/lesson-11.md
 [Lesson 12]: ./lessons/lesson-12.md
 [Lesson 13]: ./lessons/lesson-13.md
-
+-->
 [GradeScope]: https://www.gradescope.com/courses/219049
 
 [String Lib]: ./assignments/assignment-01-string-lib.md
