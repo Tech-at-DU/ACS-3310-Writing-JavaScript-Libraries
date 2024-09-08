@@ -64,6 +64,21 @@ Students by the end of the course will be able to ...
 | 13    | Tue, Oct  8 |  | - | [Project] 3 |
 | 14    | Thr, Oct  10 |  | - | - |
 
+
+<!-- 
+
+5. Bundling 
+6. Modules 
+7. TS Funtion types 
+8. CI
+9. TS Generics 
+10. JS Date 
+11. Promises
+12.  
+
+ -->
+
+
 ## Course Requirements 
 Your final grade will be calculated by amount of work completed. See the [Project] page for a list of projects points assigned to each. 100 points earns an A for the course! it is possible to get more than 100 points!
 
