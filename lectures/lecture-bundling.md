@@ -3,14 +3,14 @@
 <small style="display:block;text-align:center">Bundling Libraries for distribution</small>
 
 <!-- > -->
-
 # Bundling with Webpack
-This example walks through bundling your code using webpack. 
+This example walks through bundling your code using Rollup. 
 
 ## What is bundling? 
+Bundling is the process of processing and compiling your source code into production code that is ready to publish. 
 
 ### A quick history of JS 
-In the old days there were no modules and all code was global. This was a big problem, so developers came up with the "Immediately Invoked Function Expression" or IIFE. 
+In the old days module did not exist and all code was global. This was a big problem, so developers came up with the "Immediately Invoked Function Expression" or IIFE. 
 
 ```JS
 (function() {
@@ -26,9 +26,9 @@ In the old days there were no modules and all code was global. This was a big pr
 // outside of the block. 
 ```
 
-Fixed some issues but created a problem when you need different blocks of code to communicate. 
+This fixed some issues but created a problem when you need different blocks of code to communicate. 
 
-The commonjs defined a module format that can be used to share data by importing and exporting that data. This is facilitated by requireJS. 
+Commonjs defined a module format that could be used to share data by importing and exporting that data. This is facilitated by requireJS. 
 
 https://requirejs.org/docs/commonjs.html
 
@@ -40,7 +40,7 @@ All of this evolved into the Universal Module Defintion (UMD) format.
 
 https://github.com/umdjs/umd
 
-UMD is something that can be used anywhere. It works with both browser based apps and Node Based apps. Note, the browser and Node are two different environments! 
+UMD is a format that can be used anywhere. It works with both browser based apps and Node Based apps. The browser and Node are two different environments! 
 
 ### Ecmascript Modules
 Ecmascript is the term for the standard that is used for the JavaScript language and the two can be used interchangably. You are writing Ecmascript. 
@@ -48,24 +48,24 @@ Ecmascript is the term for the standard that is used for the JavaScript language
 A recent addition to Ecmascript is the concept of modules. 
 
 ### What is a Module? 
-Think of a module of a scope. Code written in that scope is not available outside the scope unless it is imported or exported. 
+Think of a module as a scope. Code written in that scope is not available outside the scope unless it is exported. Code from another module is not available unless it is imported.
 
 In practice a module is a file. Anything you define in that file is not accessible and will not clash with anything in another module (file). Any module can declare exports for things it wants to share with other modules, and import things it wants to use from other modules. 
 
 ## Why bundle? 
-Older borwsers don't support the newer ESM (Ecmascript Modules) the process of bundling converst code you write with newer syntax into code that will work in older browsers, it will also make code compatible with RequireJS and Node. 
+Older borwsers don't support the newer ESM (Ecmascript Modules) the process of bundling converts code you write with newer syntax into code that will work in older browsers, it will also make code compatible with RequireJS and Node. 
 
 Besides creating versions of your code that are compatible with various module systems ESM, CommonJS, and UMD, it also performs other tasks like converting TypeScript to JavaScript. 
 
 ## What is Rollup? 
 Rollup is a JavaScript bundler. You'll use it to combine seperate JS files into a single file, convert TypeScript to JS, and form that code into modules that conform to one or more of the module formats like ESM, UMD, or AMD. 
 
-Rollup also performs Tree Shaking, which process of eliminating code that is not used. 
+Rollup also performs Tree Shaking, which is process of eliminating code that is not used. 
 
 ## Getting Started
 Following the steps below you will:
  
-- Install and configure Webpack to do the following: 
+- Install and configure Rollup to do the following: 
   - Compile your type script
   - Create ESM 
   - Create UMD
@@ -167,7 +167,32 @@ npm run watch
 ```
 
 ## What is a source map? 
-Source maps are files that map your minified or compiled code (like from TypeScript or a bundler) back to the original source code. They allow developers to debug and trace errors in the original code, even if the code running in the browser or environment is transformed. When using source maps, you can see the original TypeScript or ES6+ code in developer tools, making it easier to troubleshoot issues without having to deal with the compiled output.
+Take a look at the output, in the dist folder, you'll see files `bundle.esm.js` and `bundle.esm.js.map`. The second file is a source map. 
+
+Source maps are files that map your minified or compiled code (like from TypeScript or a bundler) back to the original source code. They allow developers to debug and trace errors in the original code, even if the code has been transformed. 
+
+When using source maps, you can see the original TypeScript or ES6+ code in developer tools, making it easier to troubleshoot issues without having to deal with the compiled output.
+
+## Defining what is published to npm
+You might not want to publish all of the files in your project to the npm registry.  
+
+Edit your `package.json`:
+
+```json
+{
+  "name": "your-package-name",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist/",       // Include the built output
+    "README.md",   // Include documentation if necessary
+    "LICENSE"      // Include license file
+  ],
+  ...
+}
+```
+
+Only wat is listed under the "files" key should be uploaded to the package registry. Make sure you include everything that is needed without getting extra files that were used only for development. 
 
 ## Review the bundling setup
 The following describes what is happening in the bundling setup described here. 
