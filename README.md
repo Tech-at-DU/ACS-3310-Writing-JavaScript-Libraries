@@ -47,15 +47,15 @@ Students by the end of the course will be able to ...
 |  2    | Thr, Aug 29 | [Unit Testing] | - | - |
 |  -    | **Week 2** | - | - | - |
 |  3    | Tue, Sep  3 | [TypeScript] | - | - |
-|  4    | Thr, Sep  5 | [TS Classes and Interfaces] | - | - |
+|  4    | Thr, Sep  5 | [TS Classes and Interfaces], [TS Enums] | - | - |
 |  -    | **Week 3** | - | - | - |
-|  5    | Tue, Sep 10 | [TS Enums] | [Project] 2 | [Project] 1 |
+|  5    | Tue, Sep 10 | [Bundling] | [Project] 2 | [Project] 1 |
 |  6    | Thr, Sep 12 | [TS Function Types] | - | - |
 |  -    | **Week 4** | - | - | - |
 |  7    | Tue, Sep 17 | [TS Generics] | - | - |
 |  8    | Thr, Sep 19 | [Dates] | - | - |
 |  -    | **Week 5** | - | - | - |
-|  9    | Tue, Sep 24 | [Bundling] | [Project] 3 | [Project] 2 |
+|  9    | Tue, Sep 24 |  | [Project] 3 | [Project] 2 |
 | 10    | Thr, Sep 26 | [Publishing] | - | - |
 |  -    | **Week 6** | - | - | - |
 | 11    | Tue, Oct  1 |  | - | - |
