@@ -286,6 +286,8 @@ export default {
 };
 ```
 
+
+
 ### 2. **Minify Production Code**
 To minify your code for production, you can use the **Terser** plugin. It compresses and minifies the bundled code, making it more suitable for production.
 
@@ -328,6 +330,62 @@ To minify your code for production, you can use the **Terser** plugin. It compre
      ]
    };
    ```
+
+### Rollup config notes
+
+When I was done this is what I had in my `rollup.config.js`. 
+
+```JS
+import typescript from 'rollup-plugin-typescript2';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+
+export default {
+  input: 'src/index.ts', // Entry point
+  output: [
+    {
+      file: 'dist/bundle.umd.js',
+      format: 'umd', // Universal Module Definition
+      name: 'stringlib', // Global name in UMD builds
+      sourcemap: true,
+    },
+    {
+      file: 'dist/bundle.esm.js',
+      format: 'es', // ESM format
+      sourcemap: true,
+    }
+  ],
+  plugins: [
+    resolve(), // To resolve node_modules
+    commonjs(), // To convert CommonJS modules to ES6
+    typescript({
+      tsconfig: "./tsconfig.json",
+      useTsconfigDeclarationDir: true, // Output .d.ts files to the specified folder
+    }),
+  ]
+};
+```
+
+Notice I changed the names of the ouptu files to: `dist/bundle.umd.js` and `dist/bundle.esm.js`. I also changed the name of the Global var to `stringlib`. 
+
+With these changes I needed to make a couple changes to `package.json`. 
+
+```JSON
+  ...
+  "main": "dist/bundle.umd.js",
+  "module": "dist/bundle.esm.js",
+  "exports": {
+    ".": {
+      "require": "./dist/bundle.umd.js",
+      "import": "./dist/bundle.esm.js"
+    }
+  },
+  "types": "dist/types/index.d.ts",
+  "type": "module",
+  ...
+```
+
+This identifies the main file as `dist/bunlde.umd.js` and the ES Module as `dist/bundle.esm.js`. The "exports" key tells node where to find the correct files when using `import from` or `require()`. 
 
 ### 3. **Generate Separate Development and Production Bundles**
 You can have separate configurations for development and production builds using the `NODE_ENV` environment variable:
