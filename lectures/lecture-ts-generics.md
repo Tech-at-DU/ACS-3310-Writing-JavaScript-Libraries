@@ -173,3 +173,6 @@ Here there are two generic types T and U.
 - https://www.typescriptlang.org/docs/handbook/generics.html
 
 <!-- > -->
+
+Try the challenges in example-15.ts and example-16.ts
+
