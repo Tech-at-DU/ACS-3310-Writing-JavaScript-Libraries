@@ -137,14 +137,12 @@ Edit package.json
   "version": "1.0.0",
   "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
-   "exports": {
+  "exports": {
     ".": {
       "require": "./dist/bundle.umd.js",
       "import": "./dist/bundle.esm.js"
     }
   },
-  "types": "dist/types/index.d.ts",
-  "type": "module",
   "types": "dist/types/index.d.ts",
   "type": "module",
   "scripts": {
