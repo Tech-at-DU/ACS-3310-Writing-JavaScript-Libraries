@@ -1,4 +1,4 @@
-# Bundling with Webpack
+# Bundling with Rollup
 This example walks through bundling your code using Rollup. 
 
 ## What is bundling? 
