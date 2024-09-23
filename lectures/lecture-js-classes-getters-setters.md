@@ -1,6 +1,6 @@
 
 ## JS Classes 
-A class is the defintion of a data structure that encapsulates variables and functions. Creating an instance of a class creates a new copy of this structure with its unique variables and functions. 
+A class is the defintion of a data structure that encapsulates variables and functions. Creating an instance of a class creates a new copy of this structure. 
 
 Variables that belong to a class instance are called properties, and functions that belong to a class instance are called methods. 
 
@@ -19,7 +19,7 @@ class Cauldron{
 ```
 
 ### JS Class challenge problems
-In JavaScript, classes provide a way to create objects and define their structure, including properties (data) and methods (functions). Classes are a blueprint for creating multiple objects with similar structure.
+Classes provide a way to create objects and define their structure, including properties (data) and methods (functions). Classes are a blueprint for creating multiple objects with similar structure.
 
 **Syntax:**
 
@@ -41,12 +41,11 @@ class ClassName {
 ```
 
 - The `constructor` method is used to initialize the object’s properties.
-- Inside methods, the `this` keyword refers to the current object.
+- Inside methods, the `this` keyword refers to the current instance.
 - Methods can access properties and perform operations using `this.propertyName`.
 
 ### Example 1: Creating a Class
-
-Let's define a `Person` class with a constructor to set a person's name and age, and a method to display their info.
+Define a `Person` class with a constructor to set a person's name and age, and a method to display their info.
 
 ```javascript
 class Person {
@@ -65,8 +64,7 @@ person1.displayInfo();  // Output: Name: Alice, Age: 25
 ```
 
 ### Example 2: Adding More Methods
-
-We can add more methods to our `Person` class. Let's add a method to check if the person is an adult.
+Add more methods to our `Person` class. Let's add a method to check if the person is an adult.
 
 ```javascript
 class Person {
@@ -141,15 +139,9 @@ const book1 = new Book("1984", "George Orwell", 328);
 ```
 
 ### Conclusion
-Classes defintions, you can think of them as blueprints, for objects that can be created from the definition/blueprint. Cl;Classes encapsulate properties/variables, and methods/functions. A classes uses the keyword `this` to refer to the properties and methods it owns. 
+Classes defintions, you can think of them as blueprints, for objects that can be created from the definition/blueprint. Classes encapsulate properties/variables, and methods/functions. A classes uses the keyword `this` to refer to the properties and methods it owns. 
 
-
-
-
-
-
-
-### Getters and Setters in JavaScript
+## Getters and Setters in JavaScript
 Getters and setters are special methods. These methods act like properties when viewed from outside of a class. 
 
 A getter can take no arguments and define no parameters, and must return a value. 
@@ -222,8 +214,8 @@ person1.age = -5;  // Output: Age must be a positive number
 ```
 
 ### Key Points:
-- **Getters** are used to get the value of a property.
-- **Setters** are used to update or modify the value of a property, often with validation.
+- **Getters** are used to get the value of a property. Notice, the getter doesn't define any parameters, and must return a value.
+- **Setters** are used to update or modify the value of a property, often with validation. Notice, setters must define a single parameter, and can't return a value. 
 
 ---
 
@@ -246,6 +238,7 @@ class Circle {
   // Implement the getter for the area
 
   // Implement the setter for the radius
+
 }
 
 const circle1 = new Circle(5);
@@ -290,7 +283,6 @@ rect1.width = -2;              // Invalid width, should display an error message
 ---
 
 #### Challenge 3: `BankAccount` Class with Getters and Setters
-
 **Task**: Create a `BankAccount` class that tracks the balance of a bank account. You need to:
 1. Implement a getter `balance` that returns the current balance.
 2. Implement a setter `deposit` that adds money to the balance, but only if the amount is positive.
@@ -323,7 +315,6 @@ account.withdraw = 200;        // Invalid withdrawal, should display an error me
 ---
 
 #### Challenge 4: `Temperature` Class with Getters and Setters
-
 **Task**: Create a `Temperature` class that stores a temperature in Celsius. You need to:
 1. Implement a getter `fahrenheit` that returns the temperature in Fahrenheit (`F = C * 1.8 + 32`).
 2. Implement a setter `fahrenheit` that allows you to set the temperature in Fahrenheit, but it should convert the Fahrenheit temperature to Celsius.
@@ -349,9 +340,9 @@ console.log(temp._celsius);        // Expected: 37.78 (Celsius)
 ```
 
 ### Conclusion
-Classes can define getters and setters using the keywords `get` and `set`. Getters and setters look like properties from outside of a class, but look like functions from inside the inside the class. With this in mind, it makes sense that a getter can not accept any arguments and should return a value, and a setter must receive a single argument and not return a value. 
+Classes can define getters and setters using the keywords `get` and `set`. Getters and setters look like properties from outside of a class but, are defined like methods from inside the inside the class. With this in mind, it makes sense that a getter can not accept any arguments and should return a value, and a setter must receive a single argument and not return a value. 
 
-### Static Properties and Methods in JavaScript
+## Static Properties and Methods in JavaScript
 In JavaScript, **static properties** and **static methods** belong to the class itself rather than to instances of the class. This means you can access them directly on the class, without needing to create an object (or instance) of that class.
 
 - **Static properties**: Variables that belong to the class itself.
@@ -618,3 +609,123 @@ console.log(Car.totalCarsSold);  // Expected: 2
 
 ### Conclusion
 Like static methods, static properties belong to the class rather than the instance. 
+
+
+
+## Private Properties in JavaScript
+
+In JavaScript, **private properties** are properties that are only accessible within the class where they are defined. They cannot be accessed or modified directly from outside the class, which helps encapsulate the internal state of an object. This concept is useful in hiding implementation details and protecting data from being inadvertently modified.
+
+Starting from ES6, you can create private properties in JavaScript using the **`#` symbol**. This makes the property accessible only within the class itself.
+
+---
+
+### Example of Private Properties:
+
+```javascript
+class BankAccount {
+  // Private property
+  #balance;
+
+  constructor(owner, initialBalance) {
+    this.owner = owner;
+    this.#balance = initialBalance; // Initialize the private property
+  }
+
+  // Method to deposit money
+  deposit(amount) {
+    if (amount > 0) {
+      this.#balance += amount;
+      console.log(`Deposited ${amount}. New balance: ${this.#balance}`);
+    }
+  }
+
+  // Method to withdraw money
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.#balance) {
+      this.#balance -= amount;
+      console.log(`Withdrew ${amount}. New balance: ${this.#balance}`);
+    } else {
+      console.log('Insufficient funds.');
+    }
+  }
+
+  // Method to check balance
+  checkBalance() {
+    return `Current balance: ${this.#balance}`;
+  }
+}
+
+const account = new BankAccount('Alice', 1000);
+account.deposit(500);              // Deposited 500. New balance: 1500
+console.log(account.checkBalance()); // Current balance: 1500
+account.withdraw(200);              // Withdrew 200. New balance: 1300
+
+// Accessing private property directly will throw an error
+console.log(account.#balance);      // Error: Private field '#balance' must be declared in an enclosing class
+```
+
+In this example `#balance` is a provate property and can not be accessed from outside a class instance. 
+
+---
+
+### Key Points:
+
+1. **Private properties** are declared with a `#` symbol, making them accessible only within the class.
+2. You can't access or modify these properties from outside the class.
+3. Private properties help maintain **encapsulation** by restricting direct access to critical or sensitive data.
+
+---
+
+### Challenge Problems:
+
+#### 1. Temperature Converter
+Create a class called `TemperatureConverter` with the following functionality:
+- A private property `#temperature` to store the temperature in Celsius.
+- A method `setTemperature(temp)` to set the temperature.
+- A method `toFahrenheit()` that converts the Celsius temperature to Fahrenheit.
+- A method `toKelvin()` that converts the Celsius temperature to Kelvin.
+
+*Bonus*: Add validation to ensure the temperature can't be set below absolute zero (-273.15°C).
+
+---
+
+#### 2. User Authentication
+
+Create a class `User` with the following features:
+- Private properties `#username` and `#password` to store the user's credentials.
+- A method `setCredentials(username, password)` to set the credentials.
+- A method `authenticate(inputUsername, inputPassword)` that checks if the entered username and password match the stored credentials. If they match, return `"Login successful!"`, otherwise return `"Login failed!"`.
+
+*Bonus*: Add a method to reset the password that first checks if the old password is correct before updating.
+
+---
+
+#### 3. Car Speedometer
+
+Create a class called `Car` that tracks its speed:
+- A private property `#speed` to store the current speed.
+- A method `accelerate(amount)` that increases the speed by a given amount.
+- A method `brake(amount)` that decreases the speed (but never goes below 0).
+- A method `getSpeed()` that returns the current speed.
+
+*Bonus*: Add a method to ensure the speed can't exceed 200 km/h.
+
+---
+
+### Bonus Challenge (Advanced):
+
+#### 4. Shopping Cart
+
+Create a `ShoppingCart` class that stores items in a private property:
+- A private property `#items` (an array) that stores the items in the cart.
+- A method `addItem(itemName, price)` that adds an item with its price to the cart.
+- A method `removeItem(itemName)` that removes an item by its name.
+- A method `getTotal()` that returns the total price of all items in the cart.
+
+*Bonus*: Add a method `applyDiscount(percentage)` that reduces the total price by the given percentage.
+
+### Conclusion
+Private properties using the the `#` are new to JS. Check support here: https://caniuse.com/mdn-javascript_classes_private_class_fields. 
+
+Private properties allow you to more control which properties are accessible to other developers who might use code that you have written. 

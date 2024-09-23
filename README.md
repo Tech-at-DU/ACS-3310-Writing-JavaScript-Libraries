@@ -53,10 +53,10 @@ Students by the end of the course will be able to ...
 |  6    | Thr, Sep 12 | [Dates] [Publishing] | - | - |
 |  -    | **Week 4** | - | - | - |
 |  7    | Tue, Sep 17 | [TS Function Types] [higher-order-functions] | - | - |
-|  8    | Thr, Sep 19 | [TS Generics] [classes-getters-setters] | - | - |
+|  8    | Thr, Sep 19 | [TS Generics] | - | - |
 |  -    | **Week 5** | - | - | - |
-|  9    | Tue, Sep 24 | - | [Project] 3 | [Project] 2 |
-| 10    | Thr, Sep 26 | - | - | - |
+|  9    | Tue, Sep 24 | [classes-getters-setters] | [Project] 3 | [Project] 2 |
+| 10    | Thr, Sep 26 | [lecture-inheritance-vs-composition] | - | - |
 |  -    | **Week 6** | - | - | - |
 | 11    | Tue, Oct  1 |  | - | - |
 | 12    | Thr, Oct  3 |  | - | - |
@@ -146,3 +146,5 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 [classes-getters-setters]: ./lectures/lecture-js-classes-getters-setters.md
 
 [higher-order-functions]: ./lectures/lecture-higher-order-functions.md 
+
+[lecture-inheritance-vs-composition]: ./lectures/lecture-inheritance-vs-composition.md
