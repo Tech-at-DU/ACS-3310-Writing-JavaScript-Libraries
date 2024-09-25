@@ -58,7 +58,7 @@ Students by the end of the course will be able to ...
 |  9    | Tue, Sep 24 | [classes-getters-setters] | [Project] 3 | [Project] 2 |
 | 10    | Thr, Sep 26 | [lecture-inheritance-vs-composition] | - | - |
 |  -    | **Week 6** | - | - | - |
-| 11    | Tue, Oct  1 | [Promise] | - | - |
+| 11    | Tue, Oct  1 | [Promise] [lecture-continuous-integration] | - | - |
 | 12    | Thr, Oct  3 | [Async and Await] | - | - |
 |  -    | **Week 7** | - | - | - |
 | 13    | Tue, Oct  8 |  | - | [Project] 3 |
