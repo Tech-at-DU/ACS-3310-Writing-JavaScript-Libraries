@@ -58,8 +58,8 @@ Students by the end of the course will be able to ...
 |  9    | Tue, Sep 24 | [classes-getters-setters] | [Project] 3 | [Project] 2 |
 | 10    | Thr, Sep 26 | [lecture-inheritance-vs-composition] | - | - |
 |  -    | **Week 6** | - | - | - |
-| 11    | Tue, Oct  1 |  | - | - |
-| 12    | Thr, Oct  3 |  | - | - |
+| 11    | Tue, Oct  1 | [Promise] | - | - |
+| 12    | Thr, Oct  3 | [Async and Await] | - | - |
 |  -    | **Week 7** | - | - | - |
 | 13    | Tue, Oct  8 |  | - | [Project] 3 |
 | 14    | Thr, Oct  10 |  | - | - |
@@ -111,21 +111,6 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 - [Callback Promise Lab]
 - [Final Project] -->
 
-<!--  
-[Lesson 1 - Solving string problems]: ./lessons/lesson-01.md
-[Lesson 2 - Unit testing]: ./lessons/lesson-02-unit-testing.md
-[Lesson 3 - Publishing to npm]: ./lessons/lesson-03-publishing.md
-[Lesson 4 - Working with Dates]: ./lessons/lesson-04-dates.md
-[Lesson 5 - Solving problems with Dates]: ./lessons/lesson-05.md
-[Lesson 6 - Async JS]: ./lessons/lesson-06.md
-[Lesson 7 - Lab]: ./lessons/lesson-07.md
-[Lesson 8 - Continuous Integration]: ./lessons/lesson-08-continuous-integration.md
-[Lesson 9 - Bundling Code]: ./lessons/lesson-09-bundling.md
-[Lesson 10 - Typescript Intro]: ./lessons/lesson-10-typescript.md
-[Lesson 11 - Typescript]: ./lessons/lesson-11.md
-[Lesson 12]: ./lessons/lesson-12.md
-[Lesson 13]: ./lessons/lesson-13.md
--->
 [GradeScope]: https://www.gradescope.com/courses/219049
 
 [String Lib]: ./assignments/assignment-01-string-lib.md
@@ -142,9 +127,8 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEioZ_5TEk0h3LVqzT-EoM2M
 [Typescript Lab]: https://github.com/Tech-at-DU/typescript-intro
 
 [Callback Promise Lab]: https://github.com/Tech-at-DU/callbacks-and-promise
-
 [classes-getters-setters]: ./lectures/lecture-js-classes-getters-setters.md
-
 [higher-order-functions]: ./lectures/lecture-higher-order-functions.md 
-
 [lecture-inheritance-vs-composition]: ./lectures/lecture-inheritance-vs-composition.md
+
+[lecture-continuous-integration]: ./lectures/lecture-continuous-integration.md
