@@ -113,11 +113,111 @@ car.start();  // Output: "Engine starts." "Car is running."
 
 In general, composition is often favored in modern software design because it promotes flexibility, reusability, and modularity. However, inheritance can still be useful in scenarios where a strong, natural "is-a" relationship exists and the hierarchy is simple.
 
+## Challenge Problems
+To really understand this subject takes some effort and practice. Start with these problems. 
 
+### Challenge 1: Inheritance
+Your goal is to create a class that extends the `Date` class. Since the `Date` class doesn't have any easy way to get the day of the week and the month your class will provide getters that supply these. 
 
+In order to initialize the `Date` you will need to get a list of the arguments passed in and pass them along when you call `super`. Here is an example:
 
+```JS 
+class NeuDate extends Date {
+  constructor(...args) {
+    super(...args) // Must initialize super class! 
 
+  }
 
+  // Your methods here
 
+}
+```
 
+Your class should inlcude methods for `day` and `month`. The `day` method should return the day of the week as a string, something like: `Monday`. The `month` method should return the month as a string, soemthing like: `September`.
 
+### Challenge 2: Private properties 
+To solve the problem above you'll probably need a list of the days of the week and the months. Since these should not be accessed they should probably be private properties! 
+
+Since `Date` only provides the index of the Day and the Month you'll need a list of these. Editing this list is probably a bad idea it might best to store these as a private properties! 
+
+## Discussion
+Review your solution. Consider the earlier discussion of inheritance and composition. Think about the pros and cons of this solution. 
+
+## Composition
+Composition is where a class owns or "has a" class that it works with, rather than inherits from or "is" another class. In the previous example `NeuDate`is a `Date`. 
+
+Solve the previous problem with composition. You will make a new class that composes an instance of `Date`. Your new class should have methods that return the Day of the week and the Month. 
+
+```JS
+class D {
+  #date
+  constructor(...args) {
+    this.#date = new Date(...args) 
+  }
+
+ // Your methods
+
+}
+```
+
+Notice that `#date` is stored as a private property. You have to initialize your stored `Date` instance! Using the same idea from the previous example `...args` you can make sure that `#date` is initialized in the way a regular `Date` object can be initialized. 
+
+## Discussion
+What is different between `NeuDate` and `D`? Are there any pros or cons? 
+
+## Modules
+In these examples you may have stored the list of days and months as a property with the instance. Lets look more closely at this. 
+
+Instance properties are created and store unique values for each instance. Consider the following: 
+
+```JS
+class D {
+  #days
+  #months
+  #date
+  constructor(...args) {
+    this.#date = new Date(...args)
+    this.#days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    this.#months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  }
+
+  get year() {
+    return this.getFullYear()
+  }
+
+  get day() {
+    return this.#days[this.#date.getDay()]
+  }
+
+  get month() {
+    return this.#months[this.#date.getMonth()]
+  }
+}
+```
+
+Every instance of this class copies the days and months arrays, they are duplicated each time an instance of `NeuDate` is created! 
+
+This may not be a big deal, computers usually have RAM to spare to store a few extra strings. It could also be looked at as a waste of resources.
+
+Think about how these are use. These arrays will never change, they are only used internally by this class. 
+
+### Modules 
+By using modules you can hide these arrays and store them only once. 
+
+Its important to understand that the code inside of a module is: 
+- Only executed once!
+- When something is exported its the samething and not copied! 
+- Modules have their own scope. Nothing escapes a module unless it is exported!
+
+https://javascript.info/modules-intro
+
+## Challenge
+Read the article linked above. 
+
+Create a module for the days and months arrays. Export these and import them into your Date class. Remove the original references to these arrays. 
+
+## Discussion
+How is this arrangement different from the original? What exactly has changed? What are the pros and cons? 
+
+## Conclusion
+The topics covered here get the heart of CS and software design in JS 
