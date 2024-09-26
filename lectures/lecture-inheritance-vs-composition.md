@@ -182,7 +182,7 @@ class D {
   }
 
   get year() {
-    return this.getFullYear()
+    return this.#date.getFullYear()
   }
 
   get day() {
