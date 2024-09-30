@@ -5,17 +5,14 @@
 | A | **@mitchell** | `#few-2-1-js-libs` | [make.sc/few2.1](https://make.sc/few2.1) | [Virtual Office](https://make.sc/mitchell-zoom) | -->
  
 ## Course Description
-
 This course focuses on creating and publishing frontend libraries in JavaScript. Students will learn JavaScript testing, functional programming, module patterns, and basic build systems through creating and publishing NPM libraries. Unit testing is introduced and applied. The course emphasizes problem abstraction and writing code that solves general problems.
 
 ## Who should take this class?
-
 This class will give opportunity to practice JavaScript, writing unit tests, learn how npm works and continuous integration work.
 
 Take this class if you want to further your understanding of the JavaScript language and surrounding ecosystem.
 
 ## Prerequisites:  
-
 [ACS 1320](https://github.com/Tech-at-DU/ACS-1320-JavaScript-Foundations)
 
 ## Course Specifics
@@ -25,7 +22,6 @@ Take this class if you want to further your understanding of the JavaScript lang
 **Course Credits**: 3 units | 37.5 Seat Hours | 75 Total Hours
 
 ## Learning Outcomes
-
 Students by the end of the course will be able to ...
 
 1. Write Unit Tests in JavaScript
