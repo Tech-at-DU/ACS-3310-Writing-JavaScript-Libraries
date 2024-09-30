@@ -46,15 +46,15 @@ Students by the end of the course will be able to ...
 |  4    | Thr, Sep  5 | [TS Classes and Interfaces], [TS Enums] | - | - |
 |  -    | **Week 3** | - | - | - |
 |  5    | Tue, Sep 10 | [Bundling] | [Project] 2 | [Project] 1 |
-|  6    | Thr, Sep 12 | [Dates] [Publishing] | - | - |
+|  6    | Thr, Sep 12 | [Dates,] [Publishing] | - | - |
 |  -    | **Week 4** | - | - | - |
-|  7    | Tue, Sep 17 | [TS Function Types] [higher-order-functions] | - | - |
+|  7    | Tue, Sep 17 | [TS Function Types], [higher-order-functions] | - | - |
 |  8    | Thr, Sep 19 | [TS Generics] | - | - |
 |  -    | **Week 5** | - | - | - |
 |  9    | Tue, Sep 24 | [classes-getters-setters] | [Project] 3 | [Project] 2 |
-| 10    | Thr, Sep 26 | [lecture-inheritance-vs-composition] | - | - |
+| 10    | Thr, Sep 26 | [lecture-inheritance-vs-composition], [lecture-continuous-integration] | - | - |
 |  -    | **Week 6** | - | - | - |
-| 11    | Tue, Oct  1 | [Promise] [lecture-continuous-integration] | - | - |
+| 11    | Tue, Oct  1 | [Callback Promise Lab] | - | - |
 | 12    | Thr, Oct  3 | [Async and Await] | - | - |
 |  -    | **Week 7** | - | - | - |
 | 13    | Tue, Oct  8 |  | - | [Project] 3 |
