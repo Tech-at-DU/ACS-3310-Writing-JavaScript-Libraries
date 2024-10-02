@@ -10,6 +10,8 @@ Continuous Integration (CI) is a practice in software development where code cha
 GitHub Actions is GitHub’s CI/CD platform that allows you to automate workflows directly in your GitHub repositories. You define workflows using YAML files, and these workflows can automate a wide range of tasks, like running tests or building your code, triggered by events such as pushes, pull requests, or on a schedule.
 
 ## CI Workflow Example using GitHub Actions
+Crete a folder named: `.github/workflows`. Add a new file: `ci.yml`. 
+
 Below is the `ci.yml` file we created, which automates the CI process for an npm package using TypeScript, Rollup, and Jest.
 
 ```yaml
