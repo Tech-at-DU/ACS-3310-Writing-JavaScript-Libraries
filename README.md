@@ -57,7 +57,8 @@ Students by the end of the course will be able to ...
 | 11    | Tue, Apr 29 | [Callback Promise Lab] | - | - |
 | 12    | Thr, May  1 | [Async and Await] | - | - |
 |  -    | **Week 7**  | - | - | - |
-| 13    | Tue, May  6 |  | - | [Project] 3 |
+| 13    | Tue, May  6 |  | - | [Project] |
+| 14    | Thr, May  8 |  | Final Assessment | - |
 
 <!-- 
 
