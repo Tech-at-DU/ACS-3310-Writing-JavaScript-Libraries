@@ -1,204 +1,165 @@
-# ACS 3310 - Assignment 1 - String Lib
+# **ACS 3310 - Assignment 1: String Utility Library**
 
-The goal of this assignment is to create a JavaScript Library of String functions. 
+## **📌 Objective**
+You will **design, implement, and publish** a JavaScript string utility library using a **class-based approach**. The goal is to organize **string manipulation functions as static methods within a class** to make the library modular, reusable, and easy to maintain.
 
-## Video Lessons
+This assignment will help you:
+✅ Learn **API design** for reusable JavaScript libraries.  
+✅ Work with **npm, TypeScript, and unit testing**.  
+✅ Publish and document a package on **npm**.  
 
-- https://youtu.be/jKx45OJSDO4
-- https://youtu.be/ZHg0iWJln8E
-- https://youtu.be/6MTbBMDWGmA
-- https://youtu.be/80y__y2OsHY
-- https://youtu.be/sK_a_u0kHvE
-- https://youtu.be/3Qnv_hc0rIc
-- https://youtu.be/ijB1b-Xet9c
-- https://youtu.be/MNDaSp3UUu8
+---
 
-## Writing your first library
+## **🚀 Getting Started**
+1️⃣ **Set Up Your Project**  
+- Create a folder for this project.  
+- Inside, create a `src` directory for your source code.  
+- Add `src/index.js` (your main library file).  
+- Initialize npm:  
+  ```sh
+  npm init -y
+  ```  
+- Create a `README.md` for documentation.  
+- Initialize a GitHub repo, commit, and push your work.  
 
-In your repo create a file named: `index.js`. You'll add code to this file that solves the problems below.
+2️⃣ **Write Your Library Code**  
+- Implement **all required functions** as **static methods of a class** in `src/index.js`.  
 
-In this assignment you'll create a library of resuable code that works with strings. Strings are a core data type that every application will make use of. 
+3️⃣ **Test & Document Your Code**  
+- Write **unit tests** using Jest or Vitest.  
+- Document your API in `README.md`.  
+- Publish your library on **npm**.  
 
-- Make a folder for this project
-- Make a folder named `src` this will hold your developer source code. 
-- Add `src/index.js` add a file for your developer code 
-- Initialize your directory as an npm project: `npm init -y`
-- Add a `README.md` 
-- initialize your folder as a github repo
-- Commit your work with git
-- Push your work to GitHub
+---
 
-## What code to write
+## **🛠 Challenges: Implement These String Functions**
+Each function should be a **static method** in a class called `StringUtils`.
 
-The goal of this first library is to make write utilities that work with Strings. Strings are one of the most common data types that you work with. There are very few programs that don't make use of Strings in one form or another.
+### **Class-Based Structure**
+```js
+class StringUtils {
+  /**
+   * Returns true if the string is empty or contains only whitespace.
+   * @param {string} str
+   * @returns {boolean}
+   */
+  static isEmpty(str) {
+    return str.trim().length === 0;
+  }
 
-JavaScript has a built in String Object that has many methods built into it. These do a lot but often you need to combine these together to do something that has practical use. Your job to write functions that solve the problems below.
+  /**
+   * Capitalizes the first letter of the string.
+   * @param {string} str
+   * @returns {string}
+   */
+  static capitalize(str) {
+    if (this.isEmpty(str)) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
-**Challenge 1** 
+  /**
+   * Converts a string to kebab-case.
+   * @param {string} str
+   * @returns {string}
+   */
+  static kebabCase(str) {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-zA-Z0-9]+/g, "-");
+  }
+}
 
-`capitalize()` - makes the **first character** of a given string uppercase.
-
-Example: **h**ello world -> **H**ello world
-
-Strategies:
-
-1) Use `str[0]` to get the first character. Then use [`str.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) to convert that character to uppercase. Next use [`str.slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice) to get the remainder of the string and combine it with the uppercase first character. 
-
-2) Use [`str.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) to convert the string into an array of characters, upper case the first element of the array with [`str.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase), and then join the array with [`array.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
-
-**Challenge 2** 
-
-`allCaps()` - makes all characters uppercase. (this is the same as [`str.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase))
-
-Example: foo bar -> FOO BAR
-
-Strategy: Make a new function that uses `str.toUpperCase()`. You can make an alias with a shorter easier to remember name.  
-
-**Challenge 3** 
-
-`capitalizeWords()` - makes the first character of each word uppercase. Imagine that each word is separated by a space. 
-
-Example: **d**o **a**ll **t**he **t**hings -> **D**o **A**ll **T**he **T**hings
-
-Advanced: `capitalizeHeadline()` - capitalizes all of the words except the words: the, in, a, an, and, but, for, at, by, from unless one of these words is the first word of the string!
-
-Example: **t**he **m**ost **f**oo in **b**ar -> **T**he **M**ost **F**oo *in* **B**ar
-
-Strategies: 
-
-1) Use [`str.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) and split on a `' '` space, loop through each of the strings in the array and use your `capitalize()` function on each elemen. You can use `array.map()` here and use your `capitalize()` function as the callback. Last, use [`array.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) to join all of the elements into a single string.
-
-**Challenge 4** 
-
-`removeExtraSpaces()` - Removes all spaces from the beginning and end of a String along with any extra spaces in the middle. If more than one space appears in the middle of a string it is replaced by a single space.
-
-Example: 
-
-```JS
-"   Hello    world!   " -> "Hello world!"
+export default StringUtils;
 ```
 
-Advanced: Remove all whitespace characters, this includes return, enter, and tabs along with spaces. 
+### **Regular Expressions: When to Use Them?**
+Regular expressions (**regex**) are powerful tools for **pattern matching and replacement**, but they are not always the best solution. Here’s a guide on when to use them:
 
-Strategies: 
+✔ **Use regex for:**
+- Replacing multiple spaces, symbols, or formatting text (`/\s+/g`).
+- Extracting specific patterns (e.g., words, numbers, special characters).
+- Validating input (e.g., checking for emails, phone numbers, etc.).
 
-1) Use [`string.trim()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim) to remove white space from the beginning and ending of a string. Then plit the string into an array with [`str.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) (split on the `' '` space.) Filter the empty strings and use [`array.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) with a ' ' to put them back together.
-
-**Challenge 5**
-
-`kebobCase()` - Removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase. 
-
-Example: `"   Hello    world   "` -> `"hello-world"`
-
-Advanced: Remove special characters from the string. For example: `"Hello World!"` -> `"hello-world"` (notice the ! is removed)
-
-Strategies: 
-
-1. Convert the whole string to lower case with: `string.toLowerCase()`
-2. Split the string into an array of characters with: `string.split('')`
-3. Filter out the characters you don't want. You want to keep letters, numbers, the space `' '`, and the hyphen `'-'`. One way to approach that is to use the character code. Every character is assigned a number (the character code) for lowercase letters the a through z are codes: 97 to 122. The space " " is character code 32. You can get the character code using `string.charCodeAt()`. To preserve the numbers look for character codes 48 to 57 (0 to 9). You're looking for character codes 32, 48-57, 97-122, and 45. 
-4. Use the `removeExtraSpaces()` to remove any extra spaces.
-5. Split on the space and join with hyphen. 
-
-**Challenge 6** 
-
-`snakeCase()` - Removes extra space and replaces spaces with an underscore "_", and makes all characters lowercase. 
-
-Example:` "  what the    heck   "` -> `"what_the_heck"`
-
-Strategies: 
-
-1) Edit the kebob case function so that it takes the separating character as a parameter. This will allow you to provide the character that replces the space. 
-
-**Challenge 7** 
-
-`camelCase()` - Lowercases the first character of the first word. Then uppercases the first character of all other words, and removes all spaces. 
-
-Example: `Camel Case` -> `camelCase`
-
-Strategies: 
-  
-1) Use the ideas from `capitalizeWords()` function you wrote earlier. [`str.split()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) the string on the ' ' to get and array of words. Then loop starting on index 1 (you could use `array.map()`) and capitalize each word (use your function for this) then [`array.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) on the '' (empty string).
-
-**Challenge 8** 
-
-`shift()` this method will take the first character of a string and move to the end of a string: 
-
-Example: Hello World -> ello WorldH
-
-Strategies: Use `String.slice()`
-
-Advanced: Include an optional second parameter that sets the number of characters to shift. 
-
-Example: shift('foo bar', 3) -> ' barfoo'
-
-These functions should all take a string as input and return a string as output. 
-
-**Challenge 9**
-
-`makeHashTag(str)` - This function should convert the given string to a hash tag. A hash tag begins with `#` and no spaces. Each word in the phrase begins with an uppercase letter. 
-
-If the given string has more than three words pick the three longest and make the hash tag from those. 
+❌ **Avoid regex for:**
+- Simple string transformations (e.g., `.toLowerCase()`, `.trim()`, `.slice()`).
+- Operations that are clearer with loops or `.map()`.
 
 Example:
-
-- input: `"Amazing bongo drums for sale"`
-- output: `['#amazing', '#bongo', '#drums']`
-
-Strategies: 
-
-1) Split the string into an array of words by splitting on the " ". Check the length. Sort by length. Uppercase each of the first three words and add '#' at the beginning.   
-
-**Challenge 10**
-
-`isEmpty(str)` - Returns `true` if the given string is empty or contains only whitespace. White space includes: spaces, line returns, and tabs. These characters can be represented with: `\n` (new line) `\r` (carrige return), `\t` (tab).
-
-Example: 
-
-- Input: `"Abc def"`
-- Output: `isEmpty("Abc def") // false`
-
 ```js
-// Example - notice source string 
-// contains tabs, spaces, and returns
-const str = `   
-			
-			`;
+// Good use of regex (finding words)
+static extractWords(str) {
+  return str.match(/\b\w+\b/g) || [];
+}
 
-isEmpty(str) // true 
+// Simple alternative to regex (trimming spaces)
+static removeExtraSpaces(str) {
+  return str.split(" ").filter(word => word !== "").join(" ");
+}
 ```
 
-Strategies: 
+---
 
-1) You can use `string.trim()` to remove spaces at the beginning and end of the string. What's left is either empty characters like returns, enter or tab, or other characters. Loop over the remaining characters, if you find a character that is not `\n`, `\r`, or `\t` return false. If you got to the end of the loop return true. 
+### **Required Methods**
+Each function should handle edge cases such as empty strings, unexpected characters, or invalid input types. Below are examples to clarify expected behavior.
+📌 **Implement these functions as static methods in `StringUtils`**  
+✅ `capitalize(str)` → Capitalizes **first character**  
+📌 **Example:** `capitalize("hello world")` → "Hello world"  
+📌 **Edge case:** Empty string returns ""  
+✅ `allCaps(str)` → Capitalizes **all characters**  
+📌 **Example:** `allCaps("foo bar")` → "FOO BAR"  
+📌 **Edge case:** Non-alphabetic characters remain unchanged  
+✅ `capitalizeWords(str)` → Capitalizes **first letter of each word**  
+📌 **Example:** `capitalizeWords("do all the things")` → "Do All The Things"  
+📌 **Edge case:** Multiple spaces between words are reduced to a single space  
+✅ `removeExtraSpaces(str)` → Removes **leading, trailing, and excess spaces**  
+📌 **Example:** `removeExtraSpaces("   Hello    world!   ")` → "Hello world!"  
+📌 **Edge case:** Handles strings with only spaces correctly  
+✅ `kebabCase(str)` → Converts string to **kebab-case**  
+📌 **Example:** `kebabCase("Hello world")` → "hello-world"  
+📌 **Edge case:** Removes special characters except hyphens  
+✅ `snakeCase(str)` → Converts string to **snake_case**  
+📌 **Example:** `snakeCase("Hello world")` → "hello_world"  
+📌 **Edge case:** Handles multiple spaces and special characters correctly  
+✅ `camelCase(str)` → Converts string to **camelCase**  
+📌 **Example:** `camelCase("Camel Case")` → "camelCase"  
+📌 **Edge case:** Handles strings with mixed capitalization  
+✅ `truncate(str, maxLength)` → Truncates a string & adds "..." if too long  
+📌 **Example:** `truncate("This is a long sentence", 10)` → "This is a..."  
+📌 **Edge case:** If `maxLength` is greater than the string length, return original string  
+✅ `maskEmail(email)` → Masks part of an email address  
+📌 **Example:** `maskEmail("user@example.com")` → "u***@example.com"  
+📌 **Edge case:** Ensure valid email format before applying masking  
+✅ `isEmail(str)` → Checks if a string is a valid email  
+📌 **Example:** `isEmail("test@example.com")` → `true`  
+📌 **Edge case:** Rejects malformed emails like "test@@example"  
+✅ `isPalindrome(str)` → Checks if a string is a palindrome  
+📌 **Example:** `isPalindrome("racecar")` → `true`  
+📌 **Edge case:** Ignores case and spaces, e.g., "A Santa at NASA"  
+✅ `countWords(str)` → Counts the number of words in a string  
+📌 **Example:** `countWords("Hello world!")` → `2`  
+📌 **Edge case:** Handles extra spaces and punctuation correctly  
 
-**Challenge 11** Adding documentation 
+---
 
-Add a readme.md to your GitHub Repo. In this file you will document your library of string functions. 
+## **📊 Evaluation Rubric**
+| **Category** | **Points** |
+|------------|---------|
+| Core functions implemented | 10 |
+| Test app (demonstration) | 10 |
+| Uses TypeScript | 5 |
+| Has unit tests | 5 |
+| Uses bundling (e.g., Webpack, Rollup) | 3 |
+| Implements CI (GitHub Actions) | 2 |
+| **Total** | **35** |
 
-Also include a link to your library on npm. You'll be publishing this npm in class 2. 
+---
 
-## Stretch Goals
+## **🚀 Summary**
+- **Build a reusable JavaScript string utility library**.  
+- **Use AI for API design feedback and test generation**.  
+- **Publish on npm, document, and showcase in a test app**.  
+- **Improve debugging and best practices with AI assistance**.  
 
-- Replace tabs with spaces - Write a function that replaces all of the tabs with spaces. This is a common option in code editors. A tab is represented by `\t`. Each tab should be replaced by 1, 2, 4, or more spaces. Make this a parameter. 
-- Wrap words with tags. This function should wrap each word in a string with a tag. For example: `"hello wordl"` > `"<span>hello</span> <span>world</span>"`. The tag should be a parameter. 
-- Code syntax highlighter https://www.w3schools.com/howto/tryit.asp?filename=tryhow_syntax_highlight
-	- https://codepen.io/maxwell_alexius/pen/oeVxod
-	- https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/
-	- https://idiallo.com/blog/javascript-syntax-highlighter
-	- https://stackoverflow.com/questions/809423/writing-a-syntax-highlighter
-<!-- - convert to html entities. Read up on HTML entities if you are not familiar.  -->
+Would you like to add any final refinements? 🚀
 
-## Test app
-Your submitted homework should inlcude a test app that shows your code in action. The test should import your code to a react Project with npm. Your test app does not have to be complex, the goal is to show your library functioning in context, not creating complex comercial project. 
-
-## Evaluation
-| Category | Points |
-|:---------|:-------|
-| Code & function | 10 |
-| Test App        | 10 |
-| Uses Typescript |  5 |
-| Has Unit Tests  |  5 |
-| Uses Bundling   |  3 |
-| Uses CI         |  2 |
-| Total           | 35 |
