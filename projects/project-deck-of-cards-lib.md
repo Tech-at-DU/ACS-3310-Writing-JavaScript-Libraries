@@ -1,87 +1,126 @@
-# Project: Deck of Cards Library
-This library should define a class that represents a deck of cards. It should include a helper class that represents a card. 
+# **ACS 3310 - Assignment 4: Deck of Cards Library**
 
-You're jobe is to create the classes described below with the API (Application Programming Interface) that allows a prorgrammer to work with a deck and cards to simulate card games.
+## **📌 Objective**
+You will **design, implement, and publish** a **JavaScript library** for simulating a deck of playing cards. Your library should allow users to **create, shuffle, draw, and manage cards**, as well as provide additional functionality for card-based applications.
 
-## Background 
-To understand what you are making you need to understand what a deck of cards is. If you're not familiar a deck of cards is a collection of 52 or 54 cards. There are four suits: Clubs, Diamonds, Hearts, and Spades. Each card has a value and a suit. There are thirteen cards in each suit ranging in value from 1 to 10. Some of the cards are named: Ace, King Queen, Jack. There are two colors: Red (Diamonds and Hearts) and Black (Clubs and Spades). In most games Face cards have a value of 10, while the Ace has a value of 1. In some games an Ace is worth 11. 
+This assignment will help you:
+✅ Work with **object-oriented programming** in JavaScript.  
+✅ Learn **modular design** for reusable libraries.  
+✅ Implement **shuffling algorithms and card operations**.  
+✅ Publish and document a package on **npm**.  
 
-Read more about the 52 card deck: https://en.wikipedia.org/wiki/Standard_52-card_deck
+---
 
-Here are the assumptions:
-- a deck has 52 cards with the option of adding two jokers in which case there are 54 cards the deck is an array of cards
-- Every card has a suit hearts clubs diamonds and spades a value and a numeric value 
-- We need to be able to randomize the cards in the deck
-- Draw a card from the deck
-- Discard a card the discard pile is an array of cards
+## **🚀 Getting Started**
+### **1️⃣ Set Up Your Project**  
+- Create a folder for this project.  
+- Inside, create a `src` directory for your source code.  
+- Add `src/index.js` (your main library file).  
+- Initialize npm:  
+  ```sh
+  npm init -y
+  ```  
+- Create a `README.md` for documentation.  
+- Initialize a **GitHub repo**, commit, and push your work.  
 
-## Deck Class
-Can be initialized with these options:
-- `new Deck(hasJokers)`
-- Property `deck` Array
-- Property `discardPile` Array
-
-with the following methods:
-- `shuffle()` - randomized the deck
-- `draw()` - returns the card at index 0 and removes that from the deck
-- `discard(card)` - adds card to `discardPile` 
-- `addCard(card)` - adds a card to the top of the `deck`
-- `shuffleCard(card)` - adds card to `deck` and shuffles the `deck`
-- `slipCard(card)` - adds card to the bottom of the `deck`
-- `reveal()` - reveals the top card of the `deck`
-
-## Card Class
-Initializer
-- `aceIsEleven` - is a bollean that sets the value of an Ace to eleven when true, otherwise an Ace is 1. 
-
-Collaborating classes: Card has these properties:
-- `suit`
-- `value`
-- `color`
-
-And these methods:
-- `toString()` - returns a string reorientation of the card. 
-- `toValue()` - returns the numeric value of a card. 
-- `toEmoji()` - returns an emoji representation of the card.
-
-## Use TDD 
-You can imagine how this class might function with some hypothetical unit tests. 
-
-```JS
-test('Deck has 52 cards', () => {
-  const deck = new Deck()
-  expect(deck.deck.length).toBe(52)
-})
-
-test('Deck discard is empty', () => {
-  const deck = new Deck()
-  expect(deck.discardPile.length).toBe(0)
-})
-
-test('Deck can draw a card', () => {
-  const deck = new Deck()
-  const card = deck.draw()
-  expect(deck.deck.length).toBe(51)
-  expect(card).toBeInstanceOf(Card)
-})
+### **2️⃣ Organize Your Library**
+To make your library modular and scalable, organize your code into **separate modules**:
+```plaintext
+deck-of-cards-lib/
+│── src/
+│   │── index.js        # Main entry file
+│   │── classes/
+│   │   │── Card.js     # Defines individual card behavior
+│   │   │── Deck.js     # Defines deck operations
+│   │   │── Hand.js     # Manages a hand of cards (Optional)
+│   │── utils/
+│   │   │── shuffle.js  # Implements shuffling algorithms
+│   │   │── scoring.js  # Helper functions for game logic (Optional)
+│── tests/
+│   │── card.test.js
+│   │── deck.test.js
+│   │── hand.test.js
+│── package.json
+│── README.md
+│── .gitignore
+│── jest.config.js      # Jest configuration for testing
 ```
 
-## Test app
-Your submitted homework should inlcude a test app that shows your code in action. The test should import your code to a react Project with npm. Your test app does not have to be complex, the goal is to show your library functioning in context, not creating complex comercial project. 
+### **3️⃣ Implement the `Card` and `Deck` Classes**
 
-## Evaluation
-| Category | Points |
-|:---------|:-------|
-| Code & function | 10 |
-| Test App        | 10 |
-| Uses Typescript |  5 |
-| Has Unit Tests  |  5 |
-| Uses Bundling   |  3 |
-| Uses CI         |  2 |
-| Total           | 35 |
+#### **Card Class**
+Your `Card` class should include:
+- `suit`: The suit of the card (Hearts, Diamonds, Clubs, Spades).
+- `value`: The value of the card (Ace, 2-10, Jack, Queen, King).
+- `color`: Determine if the card is Red or Black.
+- `toString()`: Returns a string representation (e.g., "Ace of Spades").
+- `toEmoji()`: Returns a representation using Unicode suit symbols.
 
-<!-- | Expectations | Does not meet | Meets | Exceeds |
-|:-------------|:--------------|:------|:--------|
-| **_Completion_** | < 100% of functions written | All functions written | Includes all stretch functions, comments, and documentation |
-| **_Quality_** | Code is sloppy and/or throws errors | Code is well written with no errors | Considers edge cases |
-| **_Comprehension_** | Can't explain the code written | Can explain the code | Could write the code again from scratch | -->
+#### **Deck Class**
+Your `Deck` class should:
+- **Generate a full deck** (52 cards, plus optional Jokers).
+- **Shuffle** the deck using the **Fisher-Yates algorithm**.
+- **Draw cards** from the deck.
+- **Discard cards** and track a discard pile.
+- **Reset the deck** to its original state.
+- **Sort cards** by suit or value.
+
+### **4️⃣ Implement Shuffling and Sorting Algorithms**
+- **Shuffle the deck** using Fisher-Yates shuffle.
+- **Sort by suit** (`sortBySuit()`) and **sort by value** (`sortByValue()`).
+
+### **5️⃣ Additional Challenges**
+Enhance your library with additional features:
+| Feature | Description |
+|---------|------------|
+| **Hand Class** | Add a `Hand` class to track cards held by a player. |
+| **Multi-Deck Support** | Allow users to create decks with multiple sets of 52 cards. |
+| **Custom Deck Sizes** | Create decks of different sizes (20, 36, 52, etc.). |
+| **Game Logic Helper** | Implement functions to deal hands and evaluate winning conditions. |
+| **Joker & Wildcard Rules** | Allow customization for Joker rules. |
+| **Advanced Shuffling** | Implement different shuffle algorithms like **Overhand Shuffle**. |
+| **Deck Presets** | Allow creation of custom decks (e.g., Tarot cards, Uno, or Pinochle). |
+
+---
+
+## **🧪 AI-Powered Enhancements**
+### **🤖 AI Code Review**
+Before finalizing your API, ask AI to **review your class structure and function names**.
+
+📌 **AI Prompt:**  
+> "I am designing a JavaScript deck of cards library. Please review my class structure and method names. Do they follow best practices? Any improvements?"
+
+### **🧪 AI for Unit Testing**
+Use AI to **generate Jest unit tests** for your library.
+
+📌 **AI Prompt:**  
+> "Generate Jest test cases for my `Deck` and `Card` classes. Include tests for:
+> - Creating a deck
+> - Drawing cards
+> - Shuffling and verifying randomness
+> - Ensuring discard pile works"
+
+📌 **🛠 Activity:**  
+1. Generate test cases using AI.  
+2. Review & refine for **edge cases**.  
+
+---
+
+## **📊 Evaluation Rubric**
+| **Category** | **Points** |
+|------------|---------|
+| Core functions implemented | 10 |
+| Test app (demonstration) | 10 |
+| Uses TypeScript | 5 |
+| Has unit tests | 5 |
+| Uses bundling (e.g., Webpack, Rollup) | 3 |
+| Implements CI (GitHub Actions) | 2 |
+| **Total** | **35** |
+
+---
+
+## **🚀 Summary**
+- **Build a reusable JavaScript library for a deck of playing cards.**  
+- **Use AI for API design feedback and test generation.**  
+- **Publish on npm, document, and showcase in a test app.**  
+- **Improve debugging and best practices with AI assistance.**  
