@@ -1,44 +1,103 @@
-# Project: API Library
+# **ACS 3310 - Assignment 6: API Utility Library**
 
-## Description 
-Your goal is write a library that makes using a web API easier to use. 
+## **📌 Objective**
+You will **design, implement, and publish** a **JavaScript API utility library** that simplifies interactions with a chosen web API. Your library should provide **a clean and reusable interface** for handling API requests, responses, and errors efficiently.
 
-The code you write should be usable in any project that might make use of the chosen web API. This means that your code should not include things like API keys, instead it should receive these options from out side.
+This assignment will help you:
+✅ Work with **fetch requests and asynchronous programming**.  
+✅ Learn **how to abstract API interactions into a reusable library**.  
+✅ Implement **error handling, caching, and authentication**.  
+✅ Publish and document a package on **npm**.  
 
-Here is a list of web APIs that you could build a library around: 
+---
 
-- [Yoda Speak](https://rapidapi.com/ismaelc/api/yoda-speak)
-- [AccuWeather](https://rapidapi.com/stefan.skliarov/api/AccuWeather)
-- [Hearthstone](https://rapidapi.com/omgvamp/api/hearthstone)
-- [Breaking News](https://rapidapi.com/MyAllies/api/breaking-news)
-- [Natural Language Nutritional Analysis](https://rapidapi.com/edamam/api/edamam-nutrition-analysis)
-- [Measure the Happiness of large populations](https://rapidapi.com/andyreagan/api/hedonometer)
-- [Sentiment Analysis](https://rapidapi.com/peckjon/api/algorithmia-nlp-sentimentanalysis)
+## **🌐 Suggested APIs to Work With**
+Below are free public APIs that you can use to test and develop your API library:
 
-Explore these sites to find other APIs
+1. **[JSONPlaceholder](https://jsonplaceholder.typicode.com/guide/)** – Fake online REST API for testing and prototyping.
+   - Example: `https://jsonplaceholder.typicode.com/posts`
 
-- https://dev.to/biplov/15-fun-apis-for-your-next-project-5053
-- https://rapidapi.com/blog/most-popular-api/
-- https://apilist.fun
-- https://rapidapi.com/
-- https://www.programmableweb.com/
+2. **[OpenWeatherMap](https://openweathermap.org/api)** – Provides weather data, including current conditions and forecasts.
+   - Example: `https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY`
 
-Your goal is to simplify using your chosen API. This can be done in a few ways. Use any or all of the ideas below, or come up with your own ideas.
+3. **[REST Countries](https://restcountries.com/)** – Retrieves country details such as names, capitals, and populations.
+   - Example: `https://restcountries.com/v3.1/all`
 
-The Browser has many built in APIs. You have probably use a few these already. You can write a library for one of these if you like: https://developer.mozilla.org/en-US/docs/Web/API
+4. **[Cat Facts](https://catfact.ninja/)** – Fetches random cat facts.
+   - Example: `https://catfact.ninja/fact`
 
-Follow the tutorial here: https://www.youtube.com/playlist?list=PLoN_ejT35AEjGBv8nfv4GDszPvltjwmgL
+5. **[Dog CEO's Dog API](https://dog.ceo/dog-api/)** – Returns random dog images.
+   - Example: `https://dog.ceo/api/breeds/image/random`
 
-## Test app
-Your submitted homework should inlcude a test app that shows your code in action. The test should import your code to a react Project with npm. Your test app does not have to be complex, the goal is to show your library functioning in context, not creating complex comercial project. 
+6. **[CoinDesk](https://www.coindesk.com/coindesk-api)** – Provides real-time Bitcoin Price Index (BPI) data.
+   - Example: `https://api.coindesk.com/v1/bpi/currentprice.json`
 
-## Evaluation
-| Category | Points |
-|:---------|:-------|
-| Code & function | 10 |
-| Test App        | 10 |
-| Uses Typescript |  5 |
-| Has Unit Tests  |  5 |
-| Uses Bundling   |  3 |
-| Uses CI         |  2 |
-| Total           | 35 |
+7. **[BoredAPI](https://www.boredapi.com/)** – Suggests random activities to overcome boredom.
+   - Example: `https://www.boredapi.com/api/activity`
+
+8. **[Agify.io](https://agify.io/)** – Predicts the age of a person based on their name.
+   - Example: `https://api.agify.io?name=michael`
+
+9. **[Genderize.io](https://genderize.io/)** – Predicts the gender of a person based on their name.
+   - Example: `https://api.genderize.io?name=emily`
+
+10. **[Nationalize.io](https://nationalize.io/)** – Predicts the nationality of a person based on their name.
+    - Example: `https://api.nationalize.io?name=alex`
+
+Choose an API from the list above or find another public API that interests you.
+
+---
+
+## **🚀 Getting Started**
+### **1️⃣ Set Up Your Project**  
+- Create a folder for this project.  
+- Inside, create a `src` directory for your source code.  
+- Add `src/index.js` (your main library file).  
+- Initialize npm:  
+  ```sh
+  npm init -y
+  ```  
+- Create a `README.md` for documentation.  
+- Initialize a **GitHub repo**, commit, and push your work.  
+
+### **2️⃣ Organize Your Library**
+To make your library modular and scalable, organize your code into **separate modules**:
+```plaintext
+api-utils/
+│── src/
+│   │── index.js       # Main entry file
+│   │── classes/
+│   │   │── ApiClient.js  # Core API request handling class
+│   │── utils/
+│   │   │── fetchHelper.js   # Fetch API helper functions
+│   │   │── errorHandler.js  # Error handling utilities
+│   │   │── cache.js         # Caching logic
+│── tests/
+│   │── api.test.js
+│   │── fetchHelper.test.js
+│── package.json
+│── README.md
+│── .gitignore
+│── jest.config.js    # Jest configuration for testing
+```
+
+---
+
+## **📊 Evaluation Rubric**
+| **Category** | **Points** |
+|------------|---------|
+| Core functions implemented | 10 |
+| Test app (demonstration) | 10 |
+| Uses TypeScript | 5 |
+| Has unit tests | 5 |
+| Uses bundling (e.g., Webpack, Rollup) | 3 |
+| Implements CI (GitHub Actions) | 2 |
+| **Total** | **35** |
+
+---
+
+## **🚀 Summary**
+- **Build a reusable JavaScript library for interacting with APIs.**  
+- **Use AI for API design feedback and test generation.**  
+- **Publish on npm, document, and showcase in a test app.**  
+- **Improve debugging and best practices with AI assistance.**
