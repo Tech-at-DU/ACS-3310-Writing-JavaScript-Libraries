@@ -1,13 +1,23 @@
-# **ACS 3310 - Assignment 2: Sprite Canvas Library**  
+# **ACS 3310 - Assignment 3: Random Number Library**
 
 ## **📌 Objective**
-You will **design, implement, and publish** a **JavaScript library for working with the HTML5 Canvas API**, allowing users to create and manage **sprite-based objects** with a structured API.
+You will **design, implement, and publish** a **JavaScript library for generating random numbers** in various formats, covering **features beyond the built-in `Math.random()`**.
 
 This assignment will help you:
-✅ Work with **object-oriented programming** in JavaScript.  
-✅ Learn **canvas rendering and animation**.  
+✅ Work with **advanced JavaScript functions**.  
+✅ Learn **probability and randomness** in programming.  
 ✅ Build a **modular, reusable JavaScript library**.  
 ✅ Publish and document a package on **npm**.  
+
+---
+
+## **📺 Video Lessons**
+Watch these before starting:
+- [Lesson 1: Random Numbers in JavaScript](https://youtu.be/xyz)
+- [Lesson 2: Weighted Probability](https://youtu.be/xyz)
+- [Lesson 3: Shuffling Algorithms](https://youtu.be/xyz)
+- [Lesson 4: Simulating Dice Rolls](https://youtu.be/xyz)
+- [Lesson 5: Using Random Functions in Games](https://youtu.be/xyz)
 
 ---
 
@@ -23,8 +33,33 @@ This assignment will help you:
 - Create a `README.md` for documentation.  
 - Initialize a **GitHub repo**, commit, and push your work.  
 
-### **2️⃣ Write Your Library Code**  
-- Implement the **Sprite** and **SpriteManager** classes in `src/index.js`.  
+### **2️⃣ Write Your Library Code**
+- Implement the library using **modular JavaScript files**.
+- Organize functions into separate modules for **better scalability**.
+- Provide a central API entry point using `src/index.js`.
+
+### **Project Folder Structure**
+```plaintext
+random-utils/
+│── src/
+│   │── index.js          # Main entry file
+│   │── utils/
+│   │   │── core.js       # Core random functions (random, shuffle, flip, etc.)
+│   │   │── distributions.js  # Specialized functions (gaussian, weighted selection)
+│   │   │── format.js     # Formatting utilities (UUIDs, hex colors, dates)
+│   │   │── dice.js       # Dice-rolling functions
+│── tests/
+│   │── core.test.js
+│   │── distributions.test.js
+│   │── format.test.js
+│   │── dice.test.js
+│── examples/            # Example implementations & test app
+│── package.json
+│── README.md
+│── .gitignore
+│── jest.config.js        # Jest configuration for testing
+```  
+- Implement the **RandomUtils** class in `src/index.js`.  
 
 ### **3️⃣ Test & Document Your Code**  
 - Write **unit tests** using Jest or Vitest.  
@@ -33,125 +68,147 @@ This assignment will help you:
 
 ---
 
-## **🛠 Challenges: Implement the Sprite and SpriteManager Classes**
-### **🎨 The `Sprite` Class**
-The `Sprite` class represents a **drawable object** in the canvas. It should support **both shapes and images**.
+## **🛠 Challenges: Implement the RandomUtils Class**
+The `RandomUtils` class will provide **functions for generating random numbers**, covering **weighted randomness, dice rolls, and shuffling**.
 
-#### **Properties:**
-Each sprite should have the following properties:
-- `x` → **Horizontal position** on the canvas.  
-- `y` → **Vertical position** on the canvas.  
-- `width` → **Sprite width** in pixels.  
-- `height` → **Sprite height** in pixels.  
-- `rotation` → **Rotation angle** in degrees.  
-- `color` → **Fill color** (leave `undefined` to not fill).  
-- `stroke` → **Stroke width** (set to `0` for no stroke).  
-- `strokeColor` → **Stroke color**.  
-- `image` → **Path to an image file** (if provided, the sprite draws the image instead of a shape).  
+### **🎲 Implementing the Library with Modules**
 
-**📌 Example: Creating a Sprite**
+### **🔹 `src/utils/core.js` (Basic Random Functions)**
 ```js
-const player = new Sprite({
-  x: 50,
-  y: 50,
-  width: 40,
-  height: 40,
-  color: "blue",
-  stroke: 2,
-  strokeColor: "black"
-});
+export class CoreRandom {
+  static random(n = 1, o = null) {
+    return o === null ? Math.random() * n : Math.random() * (o - n) + n;
+  }
+
+  static flip(t = 0.5) {
+    return Math.random() < t;
+  }
+
+  static shuffle(arr) {
+    return arr.slice().sort(() => Math.random() - 0.5);
+  }
+}
 ```
 
-#### **Methods:**
-- `render(ctx)` → **Draws the sprite on the canvas** using a given **canvas rendering context (`ctx`)**.  
-
-**📌 Example: Rendering a Sprite**
+### **🔹 `src/utils/distributions.js` (Advanced Random Functions)**
 ```js
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-player.render(ctx);
+export class RandomDistributions {
+  static gaussian(mean = 0, stdDev = 1) {
+    let u = 1 - Math.random(); // Avoid 0
+    let v = Math.random();
+    let z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    return mean + z * stdDev;
+  }
+}
 ```
 
----
-
-### **🎮 The `SpriteManager` Class**
-This class **manages multiple sprites** and renders them efficiently.
-
-#### **Constructor:**
-- **Takes the `id` of a `<canvas>` element** and initializes the rendering context.
-
-#### **Methods:**
-- `addSprite(sprite)` → Adds a **sprite** to the manager.  
-- `update()` → **Draws all sprites** in the list.  
-- `start()` → **Begins an animation loop** using `requestAnimationFrame()`.  
-
-**📌 Example: Using `SpriteManager`**
+### **🔹 `src/utils/format.js` (Random String & UUID)**
 ```js
-const manager = new SpriteManager("gameCanvas");
-
-const enemy = new Sprite({
-  x: 100,
-  y: 75,
-  width: 50,
-  height: 50,
-  color: "red"
-});
-
-manager.addSprite(player);
-manager.addSprite(enemy);
-manager.start(); // Continuously renders all sprites
+export class RandomFormat {
+  static uuid() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      let r = (Math.random() * 16) | 0,
+        v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+}
 ```
 
+### **🔹 `src/utils/dice.js` (Dice Rolls & Dice Notation)**
+```js
+export class DiceRoller {
+  static die(sides) {
+    return Math.floor(Math.random() * sides) + 1;
+  }
+
+  static dieRoll(desc) {
+    return desc.split("+").reduce((total, part) => {
+      if (part.includes("d")) {
+        let [count, sides] = part.split("d").map(Number);
+        return total + Array.from({ length: count }, () => this.die(sides)).reduce((a, b) => a + b, 0);
+      }
+      return total + Number(part);
+    }, 0);
+  }
+}
+```
+
+### **🔹 `src/index.js` (Main API)**
+```js
+import * as core from "./utils/core.js";
+import * as distributions from "./utils/distributions.js";
+import * as format from "./utils/format.js";
+import * as dice from "./utils/dice.js";
+
+export const RandomUtils = {
+  ...core,
+  ...distributions,
+  ...format,
+  ...dice,
+};
+```
+
+Now, users can import the entire toolkit:
+```js
+import { RandomUtils } from "random-utils";
+console.log(RandomUtils.random(10, 20));
+```
+Or import only what they need:
+```js
+import { random } from "random-utils/utils/core.js";
+console.log(random(10, 20));
+```
+This class will include **static methods** for random number generation.
+
+#### **Core Methods:**
+✅ `random()` → **Returns a random number between 0 and 1**  
+✅ `random(n)` → **Returns a random number between 0 and `n`**  
+✅ `random(n, o)` → **Returns a random number between `n` and `o`**  
+✅ `die(x)` → **Returns a function that generates numbers between 1 and `x`**  
+✅ `shuffle(arr)` → **Returns a randomized copy of array `arr`**  
+✅ `flip(t = 0.5)` → **Returns a random boolean (`true` or `false`), weighted by `t`**  
+✅ `dieRoll(desc)` → **Parses a dice notation string and returns a roll total**  
+
 ---
 
-## **🎯 Bonus Features (Optional)**
-🌟 **Add physics-like movement** → Implement `velocityX` and `velocityY` for **smooth movement**.  
-🌟 **Collision detection** → Add a method to **detect sprite collisions**.  
-🌟 **Event listeners** → Allow sprites to react to **mouse clicks or keyboard events**.  
-🌟 **Sprite animation** → Support **frame-based sprite animations**.  
+## **🔹 Additional Problems for RandomUtils**
 
----
+### **1️⃣ Random UUID Generator**
+✅ `uuid()` → Generates a **random Universally Unique Identifier (UUID v4)**  
+📌 **Example:** `uuid(); // "3f6e5a4d-2f93-4821-bb6f-758bce43f74a"`  
 
-## **🧪 AI-Powered Enhancements**
-### **🤖 AI Code Review**
-Before finalizing your API, ask AI to **review your class structure and function design**.
+### **2️⃣ Random Hex Color Generator**
+✅ `randomColor()` → Generates a **random hex color code**  
+📌 **Example:** `randomColor(); // "#a3b5c7"`  
 
-📌 **AI Prompt:**  
-> "I am building a JavaScript sprite library for canvas. Please review my class structure and function names for clarity and usability. Here is my code:  
-> ```js
-> class Sprite { /* implementation */ }  
-> class SpriteManager { /* implementation */ }
-> ```
-> Are my method names intuitive? What improvements would you suggest?"
+### **3️⃣ Random Date Generator**
+✅ `randomDate(start, end)` → Generates a **random date** between two given dates  
+📌 **Example:** `randomDate(new Date(2000, 0, 1), new Date(2025, 0, 1)); // "2013-07-15T10:23:59.123Z"`  
 
----
+### **4️⃣ Gaussian (Normal) Distribution**
+✅ `gaussian(mean, stdDev)` → Generates a **random number based on a normal distribution**  
+📌 **Example:** `gaussian(100, 15); // Returns a number around 100 with standard deviation of 15`  
 
-### **🧪 AI for Unit Testing**
-Before writing tests yourself, ask AI to **generate test cases** for your library.
+### **5️⃣ Random Weighted Selection**
+✅ `weightedRandom(choices, weights)` → Returns a random element from `choices`, based on the given probability `weights`  
+📌 **Example:** `weightedRandom(["apple", "banana", "cherry"], [0.1, 0.3, 0.6]); // Returns "cherry" most often`  
 
-📌 **AI Prompt:**  
-> "Generate Jest test cases for my `Sprite` and `SpriteManager` classes.  
-> Include tests for:  
-> - Creating a sprite  
-> - Rendering a sprite  
-> - Managing multiple sprites  
-> - Handling animation loops."
+### **6️⃣ Random Alphanumeric String**
+✅ `randomString(length, charset)` → Generates a **random string** of a given length from the provided character set  
+📌 **Example:** `randomString(10, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"); // "X4gY92bLwZ"`  
 
-📌 **🛠 Activity:**  
-1. Generate test cases using AI.  
-2. Review & modify for **edge cases**.  
+### **7️⃣ Random Password Generator**
+✅ `generatePassword(length, options)` → Generates a **secure random password** with options like **uppercase, numbers, special characters**  
+📌 **Example:** `generatePassword(12, { uppercase: true, numbers: true, special: true }); // "A8@bD#2pQrT9"`  
 
----
+### **8️⃣ Dice Pool with Best/Worst Selection**
+✅ `bestOfRolls(n, diceType, bestN)` → Rolls `n` dice of `diceType`, returning the **best `bestN` rolls**  
+📌 **Example:** `bestOfRolls(4, "d6", 3); // Rolls 4d6 and returns the highest 3 values`  
 
-## **📝 Test App Requirement**
-Your submitted homework **must include a test app** that **demonstrates your library in action**.
-
-✔ **Must include:**  
-- Importing your library into a **React project** with npm.  
-- A simple canvas-based **interactive demo**.  
-
-📌 **Example:** A test app where **clicking the canvas adds a new sprite**.
+### **9️⃣ Generate a Random Username**
+✅ `randomUsername()` → Generates a **random username** by combining an adjective, noun, and number  
+📌 **Example:** `randomUsername(); // "BraveTiger42"`  
 
 ---
 
@@ -169,7 +226,7 @@ Your submitted homework **must include a test app** that **demonstrates your lib
 ---
 
 ## **🚀 Summary**
-- **Build a JavaScript library for managing sprites in the canvas.**  
+- **Build a JavaScript library for generating random numbers**.  
 - **Use AI for API design feedback and test generation.**  
 - **Publish on npm, document, and showcase in a test app.**  
 - **Improve debugging and best practices with AI assistance.**  
