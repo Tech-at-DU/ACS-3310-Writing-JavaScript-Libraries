@@ -1,8 +1,4 @@
 # ACS 3310
-
-<!-- | Course Section | Instructor | Slack Channel | Course Website | Instructor 1-on-1 |
-| :---: | :---: | :---: | :---: | :---: |
-| A | **@mitchell** | `#few-2-1-js-libs` | [make.sc/few2.1](https://make.sc/few2.1) | [Virtual Office](https://make.sc/mitchell-zoom) | -->
  
 ## Course Description
 This course focuses on creating and publishing frontend libraries in JavaScript. Students will learn JavaScript testing, functional programming, module patterns, and basic build systems through creating and publishing NPM libraries. Unit testing is introduced and applied. The course emphasizes problem abstraction and writing code that solves general problems.
