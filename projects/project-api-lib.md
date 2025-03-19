@@ -14,8 +14,8 @@ This assignment will help you:
 ## **🌐 Suggested APIs to Work With**
 Below are free public APIs that you can use to test and develop your API library:
 
-1. **[JSONPlaceholder](https://jsonplaceholder.typicode.com/guide/)** – Fake online REST API for testing and prototyping.
-   - Example: `https://jsonplaceholder.typicode.com/posts`
+1. **[NASA Open API](https://api.nasa.gov)** – Access a wealth of space-related data, including imagery, planetary information, and astrophysics data.
+   - Example: `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY​`
 
 2. **[OpenWeatherMap](https://openweathermap.org/api)** – Provides weather data, including current conditions and forecasts.
    - Example: `https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY`
@@ -23,20 +23,20 @@ Below are free public APIs that you can use to test and develop your API library
 3. **[REST Countries](https://restcountries.com/)** – Retrieves country details such as names, capitals, and populations.
    - Example: `https://restcountries.com/v3.1/all`
 
-4. **[Cat Facts](https://catfact.ninja/)** – Fetches random cat facts.
-   - Example: `https://catfact.ninja/fact`
+4. **[PokéAPI](https://pokeapi.co/docs/v2)** – Provides information on Pokémon, including their abilities, stats, and evolutions.​
+   - Example: `https://pokeapi.co/api/v2/pokemon/ditto`
 
-5. **[Dog CEO's Dog API](https://dog.ceo/dog-api/)** – Returns random dog images.
-   - Example: `https://dog.ceo/api/breeds/image/random`
+5. **[Open Library API](https://openlibrary.org/developers/api)** – Offers access to a vast collection of book data, including titles, authors, and subjects.​
+   - Example: `https://openlibrary.org/api/books?bibkeys=ISBN:0451526538&format=json`
 
 6. **[CoinDesk](https://www.coindesk.com/coindesk-api)** – Provides real-time Bitcoin Price Index (BPI) data.
    - Example: `https://api.coindesk.com/v1/bpi/currentprice.json`
 
-7. **[BoredAPI](https://www.boredapi.com/)** – Suggests random activities to overcome boredom.
-   - Example: `https://www.boredapi.com/api/activity`
+7. **[Pexels API](https://www.pexels.com/api/)** – Access high-quality and royalty-free images and videos for various search queries.​
+   - Example: `https://api.pexels.com/v1/search?query=nature`
 
-8. **[Agify.io](https://agify.io/)** – Predicts the age of a person based on their name.
-   - Example: `https://api.agify.io?name=michael`
+8. **[Deck of Cards API](https://deckofcardsapi.com)** – Simulate a deck of cards, draw cards, reshuffle, and more. Build a wrapper that plays a game.
+   - Example: `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
 
 Choose an API from the list above or find another public API that interests you.
 
