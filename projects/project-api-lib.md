@@ -38,12 +38,6 @@ Below are free public APIs that you can use to test and develop your API library
 8. **[Agify.io](https://agify.io/)** – Predicts the age of a person based on their name.
    - Example: `https://api.agify.io?name=michael`
 
-9. **[Genderize.io](https://genderize.io/)** – Predicts the gender of a person based on their name.
-   - Example: `https://api.genderize.io?name=emily`
-
-10. **[Nationalize.io](https://nationalize.io/)** – Predicts the nationality of a person based on their name.
-    - Example: `https://api.nationalize.io?name=alex`
-
 Choose an API from the list above or find another public API that interests you.
 
 ---
