@@ -334,7 +334,7 @@ https://jestjs.io/docs/en/getting-started
 
 ## Testing Fizz Buzz
 
-Your goal is to examine the source code and write some tests. The [Fizz Buzz sample code](https://github.com/Make-School-Labs/fizz-buzz-test) contains these functions. Each function takes some input and returns the output. 
+Your goal is to examine the source code and write some tests. The [Fizz Buzz sample code](https://github.com/Tech-at-DU/fizz-buzz-test/blob/master/fizzbuzz.js) contains these functions. Each function takes some input and returns the output. 
 
 - `isFizzy()`
 - `isBuzzy()`
