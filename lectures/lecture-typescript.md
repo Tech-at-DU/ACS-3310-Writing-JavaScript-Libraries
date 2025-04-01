@@ -1,34 +1,24 @@
-<!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
 # ACS 3310 Lecture: Writing in TypeScript
-
-<small style="display:block;text-align:center">Writing TypeScript</small>
-
-<!-- > -->
-
 In this class, you will begin writing TypeScript code and learn how to adapt your existing JS code to TypeScript.
 
-<!-- > -->
+---
 
 ## Why Is This Important? 🤔
 
-<!-- > -->
-
 Type safe code is an industry best practice. Expect to write code in TypeScript for professional projects.  
-
 👩‍💻 
 
-<!-- > -->
-
-TypeScript will also force you to think about the types you use in the code you write which will make a you a stronger programmer.
+TypeScript will also force you to think about the types you use in the code you write, which will make you a stronger programmer.
 
 ```js
+// What is going on here? What is a field and what is next? 
 module.exports = (field) => function(next) { // 🤔
   this.populate(field);
   next();
 };
 ```
 
-<!-- > -->
+---
 
 ## Learning Objectives
 
@@ -36,418 +26,301 @@ module.exports = (field) => function(next) { // 🤔
 2. Explain the pros & cons of static vs. dynamic typing
 3. Convert existing JS code to TypeScript
 4. Implement functions, enums, & interfaces using TypeScript
+5. Use AI to convert JS to TS and catch errors
+6. Write Jest tests for TypeScript files
 
-<!-- > -->
+---
 
 ## Static vs. Dynamic Typing
 
-<!-- > -->
-
-### Q: What is a type?
-
+### 💬 What is a type?
 Data types describe the *shape* of the data that we're expecting.
 
-Example types found in many languages: 
+Common types: `string`, `number`, `boolean`, `object`, `array`, `class`
 
-`string`, `number`, `boolean`, `object`, `array`, any `class` is a type
+---
 
-<!-- > -->
+### 🧠 Static Typing
 
-### Q: What is static typing?
+In statically typed languages, variable types are *fixed*.
 
-In a statically typed language, variable types are *static*, meaning that once a variable is set to a type, it cannot be changed. 
+```ts
+let x: number = 88; // x is always a number
+```
+
+Checked at *compile time*.
+
+🧠 **Check for Understanding:** What happens if you assign `x = 'hello'`?
+
+Static typed languages: Java, C++, Swift, **TypeScript**
+
+---
+
+### Dynamic Typing
+
+In dynamically typed languages, variable types can change:
 
 ```js
-x = 88 // once a number, x is always a number
+let x = 10;   // Number
+x = 'hello';  // String 😱
 ```
 
-<!-- > -->
+Checked *at runtime*. Can lead to hidden bugs.
 
-Statically typed languages generally check *at compile time* that a variable is being assigned the correct type of data. 
+Dynamic typed languages: Python, PHP, Ruby, **JavaScript**
 
-Examples of statically typed languages include Java, C, C++, Swift and **TypeScript**.
+---
 
-<!-- > -->
+## JS vs TS
 
-**Q:** Can you use static typing in JS?
+- JS is dynamic → harder to debug large projects
+- TS is compiled → safer, but slower to write
 
-**A:** Nope. JavaScript is a dynamically typed language.
+> **🍎 TS must be compiled to JS. Browsers can't run TS directly.**
 
-<!-- > -->
+---
 
-TypeScript is another language separate from JS and must be compiled into vanilla JS. 
+## Why Use Static Types?
 
-🍎 ➡️ 🥧
+- ✅ Catch bugs earlier
+- ✅ Improve readability
+- ✅ Enable autocompletion + intellisense
+- ✅ Easier refactoring
 
-**You can't use TypeScript in environments that expect JavaScript, for example the browser.**
+💬 **Discussion:** List 3 pros of static typing vs dynamic.
 
-You compile your TypeScript into vanilla JavaScript. 
+🤖 **AI Prompt:** "What are the advantages of TypeScript over JavaScript?"
 
-<!-- > -->
+---
 
-### What is dynamic typing?
-
-<!-- > -->
-
-In a dynamically typed language, a variable's type can change over the course of the program. Consider the following code:
-
-```JavaScript
-let x = 10       // x starts as a Number
-x = 'hello'      // x becomes a String
-```
-
-Usually you won't do this on purpose, **most often it will happen by accident.** 😱
-
-<!-- > -->
-
-In a dynamically typed language, we do not know *until runtime* what type of data a particular variable holds.
-
- 📦 🤔
-
-<!-- > -->
-
-Examples of dynamically typed languages include Python, PHP, Ruby, and **JavaScript**,.
-
-<!-- > -->
-
-## Why use one or the other?
-
-**Discussion:** Write down 3 reasons each for using either a statically typed or dynamically typed language.
-
-<!-- > -->
-
-### Static typing catches errors earlier in program development.
-
-<!-- > -->
-
-**Q:** What is happening on each line of code below?
-
-```JavaScript
+### Code Example – Debugging with Types
+```js
 function getPriceWithTax(amount, rate) {
-  const price = amount.toFixed(2)
-  const tax = price * rate
-  return price + tax
+  const price = amount.toFixed(2);
+  const tax = price * rate;
+  return price + tax;
 }
 ```
 
-<small>Ask yourself what type is assigned the variables at each line.</small>
+Q: What type is `price`? Is `price * rate` valid?
 
-What could possibly go wrong? 🤔
+---
 
-<!-- > -->
-
-### Static typing improves readability 🥸
-
-<!-- > -->
-
-Consider this code 🔎:
-
-```JavaScript
+### Code Example – Mystery Types
+```js
 function mystery(x) {
-  if (x.powerLevel <= 100) {
-    x.leave();
-  } else {
-    x.display();
-  }
+  if (x.powerLevel <= 100) x.leave();
+  else x.display();
 }
 ```
+What is `x`? What other properties/methods does it have?
 
-Now, consider the following questions:
-- What is x?
-- What other fields, data, and behavior does x have? 
-- How else can I interact with x?
-- How would I find this information?
-
-<!-- > -->
-
-Now, let's take a look at this code with some types added. 😎
-
-```TypeScript
+Now with TypeScript:
+```ts
 class Cat {
   powerLevel: number;
-  personality: string;
-  appearance: string;
-  photo: Image;
-  leave(): void { ... }
-  display(): void { ... }
+  leave(): void {}
+  display(): void {}
 }
-
 function mystery(x: Cat) { ... }
 ```
 
-<!-- > -->
+✅ More readable, discoverable, and testable
 
-### Static typing can improve your workflow ⚒️
+---
 
-<!-- > -->
+### IDE Power
 
-Since our types are set in stone at compile time, many code editors will use that information to give you smart autocomplete suggestions based on that particular data type. 
+VSCode uses TS types for:
+- 🧠 Autocomplete
+- 🔎 Cmd-click to jump to definition
+- 🔁 Refactor warnings
 
-<!-- > -->
+---
 
-If you use VSCode, you can use Intellisense to browse available methods from a class while writing code. You can also Cmd+Click on a method name to go directly to its definition.
+## Benefits of Dynamic Typing
 
-<!-- > -->
+- Faster to write code
+- More concise
+- No compilation step
 
-### Advantages of dynamic typing 🧐
+🤖 **Prompt:** "When is dynamic typing useful?"
 
-<!-- > -->
+---
 
-There isn't just one right answer that works in all scenarios; you will need to decide which style is right for your project. 
+## 🚀 Getting Started with TypeScript
 
-<!-- > -->
+Try this 5 min tutorial:
+👉 https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
-Here are some pros of _dynamic_ typing to consider:
+Reflect:
+- What surprised you?
+- What was different from JS?
+- What problems does TS solve?
 
-- It's faster to write
-- It's more succinct
-- Doesn't require extra compilation step
-
-<!-- > -->
-
-Advantages of static typing: 
-
-- Spots errors faster
-- When there's a type error it's obvious
-- Code is self documenting
-
-<!-- > -->
-
-## Challenge: Getting started with Typescript
-
-Take a look at this 5 min tutorial from the source. Take 5 mins and do the tutorial. 
-
-https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
-
-<!-- > -->
-
-- What did you see in the tutorial? 
-- Compare typescript and JavaScript?
-- Did you see anything new? 
-
-<!-- > -->
-
-Install typescript: 
-
-https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html
-
-<!-- > -->
-
-Tl;dr
-
-Install TypeScript
-
+Install TypeScript:
+```bash
+npm install -g typescript
 ```
-npm install -g typescript 
+Compile your code:
+```bash
+tsc index.ts  # outputs index.js
 ```
 
-Compile your TypeScript code
+Use `.ts` for TypeScript files.
 
-```
-tsc src/index.ts
-```
+🧠 Check: What happens if you forget to compile?
 
-Creates: index.js from index.ts
+---
 
-<!-- > -->
-
-TypeScript files use the `.ts` file extension. Convert any JS file to TypeScript by changing the name to `.ts`.
-
-📄.js ➡️ 📄.ts
-
-<!-- > -->
-
-## Features of TypeScript 
-
-<!-- > -->
-
-Follow the example with these files:
+## Try These Files:
 
 https://github.com/Tech-at-DU/typescript-intro
 
-Your source code will be the files named: .ts 
+- Start with `example-2.ts`
 
-Typescript files must be compiled into .js before they can be used. 
+---
 
-- `npm install -g typescript`
-- `tsc example-2.ts`
+## TypeScript Features
 
-<!-- > -->
-
-### Variables
-
-The basic types are `string`, `number`, and `boolean`. 
-
-You can't reassign a different type.
-
-```TypeScript
-let y = 88;           // implicitly typed number
-let sum: number = 10; // explicitly typed number
-const title: string = 'hello'; // type string
-let done: boolean = false;     // type boolean
-
-sum = undefined;  // OK
-sum = null;       // OK
-sum = '100';      // Not OK - will result in a compile error
-Math.round(title) // Compile error - round expects a number
+### ✅ Variables
+```ts
+let name: string = 'Ada';
+let age: number = 22;
+let isAdmin: boolean = true;
 ```
 
-<!-- > -->
+---
 
-Try these ideas out in example-2.ts 
-
-https://github.com/Tech-at-DU/typescript-intro
-
-<!-- > -->
-
-### Functions, Parameters, and Return types
-
-<!-- > -->
-
-You can add types to the parameters and return values of functions:
-
-```TypeScript
-// Add types to each parameter, and a type for the return value
-function add(num1: number, num2: number): number {
-  return num1 + num2;
+### ✅ Functions
+```ts
+function add(x: number, y: number): number {
+  return x + y;
 }
-
-const x = add(4, 6); // x is type number implcitly
-const y: number = add(2, 7); // explicit type
-const z = add('2', 7); // Compile Error
-const w: string = add(6, 1); // Compile Error
+add(2, 3); // 5
+add('2', 3); // ❌ Compile error
 ```
 
-<!-- > -->
+🤖 **Prompt:** "Add type annotations to this JS function: function greet(name) { return 'Hello ' + name; }"
 
-Try these ideas out in example-3.ts
+---
 
-https://github.com/Tech-at-DU/typescript-intro
-
-<!-- > -->
-
-You can also use default and optional parameters. If you want to skip one, just pass in `undefined`:
-
-```TypeScript
-function greet(greeting = 'Hello', person?: string) {
-  if (person) {
-    console.log(`${greeting}, ${person}!`);
-  } else {
-    console.log(`${greeting}!`);
-  }
-}
-
-greet();       // prints 'Hello!'
-greet('Hola'); // prints 'Hola!'
-greet(undefined, 'Jane'); // prints 'Hello, Jane!'
-```
-
-<!-- > -->
-
-Finally, if you don't know what type a piece of data will be, e.g. if you're receiving it from an API, you can always use the `any` type:
-
-```TypeScript
-let someValue: any = 10; // some value is a number
-someValue = [1, 2, 3];   // some value is now an array
-```
-
-<!-- > -->
-
-Try these ideas out in example-4.ts 
-
-https://github.com/Tech-at-DU/typescript-intro
-
-<!-- > -->
-
-### Arrays and Tuples
-
-<!-- > -->
-
-There are two ways to declare an array, which are completely equivalent (if you've used Java before, these should look familiar):
-
-```TypeScript
-let list1: number[] = [1, 2, 3];
-let list2: Array<number> = [1, 2, 3];
-```
-
-Note! Every memeber of an array must be the same type. 
-
-<!-- > -->
-
-What if we want an array with mixed values of different types? In that case, we can use the 'tuple' type:
-
-```TypeScript
-let person1: [string, number] = ['Jane', 20];
-```
-
-<!-- > -->
-
-Try these ideas out in example-5.ts and example-6.ts
-
-https://github.com/Tech-at-DU/typescript-intro
-
-<!-- > -->
-
-An enumeration is a list of all possible choices: 
-
-🍎 🍊 🍐
-
-<!-- > -->
-
-Use an enum when your program will:
-
-- Make a choice from a fixed list 
-  - zip, city, geo
-- Has a fixed list of values or responses
-  - North, South, East, West
-
-<!-- > -->
-
-Define an enum like this:
-
-```TypeScript
-enum Fruit { 
-  Apple, 
-  Orange, 
-  Pear 
-};
-```
-
-<!-- > -->
-
-Use an enum like this: 
-
-```TypeScript
-enum Fruit { Apple, Orange, Pear };
-
-let f: Fruit = Fruit.Pear; // 🍐
-```
-
-<!-- > -->
-
-Why did we use an enum? 🤔
-
-```TypeScript
-enum Fruit { Apple, Orange, Pear };
-
-let f: Fruit = Fruit.Pear;
-
-switch(f) {
-  case Fruit.Apple:
-    ...
-  case Fruit.Orange:
-    ...
-  case Fruit.Pear:
-    ...
+### ✅ Optional & Default Params
+```ts
+function greet(name = 'guest') {
+  console.log(`Hello, ${name}!`);
 }
 ```
 
-Notice you didn't use any strings! Enum is more reliable than a string!
+---
 
-<!-- > -->
+### ✅ The `any` Type
+```ts
+let data: any = 42;
+data = 'hello';
+```
+Use sparingly — defeats the purpose of TypeScript!
 
-Try these ideas out in example-7.ts 
+🤖 **Prompt:** "When should I use the 'any' type in TypeScript?"
 
-https://github.com/Tech-at-DU/typescript-intro
+---
 
-<!-- > -->
+### ✅ Arrays and Tuples
+```ts
+let nums: number[] = [1, 2, 3]; // Array
+let pair: [string, number] = ['Alice', 30]; // Tuple
+```
+
+🧠 Check: What happens if you push a string into `nums`?
+
+---
+
+### ✅ Enums
+```ts
+enum Fruit { Apple, Orange, Pear } // Enum Fruit
+let snack: Fruit = Fruit.Orange;
+```
+
+Use enums to replace string literals in options or states.
+
+---
+
+## 🔧 Interfaces
+```ts
+interface User {
+  id: number;
+  name: string;
+  isAdmin?: boolean; // optional
+}
+```
+
+🧪 Challenge: Write a function that accepts a `User` and returns a greeting string.
+
+🤖 **Prompt:** "Write a TypeScript interface for a product with id, title, and price."
+
+---
+
+## 🧪 Testing with TypeScript + Jest
+
+1. Install Jest & ts-jest:
+```bash
+npm install --save-dev jest ts-jest
+npx ts-jest config:init
+```
+
+2. Create `sum.ts`:
+```ts
+export function sum(a: number, b: number): number {
+  return a + b;
+}
+```
+
+3. Create `sum.test.ts`:
+```ts
+import { sum } from './sum';
+test('adds numbers', () => {
+  expect(sum(2, 3)).toBe(5);
+});
+```
+
+Run tests:
+```bash
+npm run test
+```
+
+---
+
+## 🧪 Project Integration
+
+🎯 Update your ACS 3310 library project to use TypeScript:
+- Rename `index.js` → `index.ts`
+- Add type annotations
+- Use interfaces or enums where possible
+
+🤖 **Prompt:** "Convert this JS module to TypeScript with proper types."
+
+---
+
+## 🧠 TypeScript Playground
+
+Play with types online — no install needed:  
+👉 https://www.typescriptlang.org/play
+
+Try out:
+- Adding types
+- Hover to see inferred types
+- See compiled JS on the right
+
+---
+
+## 🎯 Wrap-Up
+
+- ✅ Why TypeScript?
+- ✅ Static vs dynamic types
+- ✅ Adding types to functions
+- ✅ Using TS with Jest
+- ✅ How to refactor JS to TS
+- ✅ Using AI to support TS learning
+
+Great job! 🎉
+Let’s apply this to your own libraries next. 🔧
