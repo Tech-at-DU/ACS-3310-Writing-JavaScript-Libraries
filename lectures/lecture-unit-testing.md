@@ -17,13 +17,6 @@ Try giving these prompts in your coding environment or using ChatGPT to enhance 
 
 ---
 
-### Video Lessons
-
-- https://youtu.be/xXm_8DYjW6w
-- https://youtu.be/04y5jPykoIY
-
----
-
 ## ✅ What is a Unit Test?
 A **unit test** is a small test that checks if a single function or behavior works as expected.
 
@@ -567,21 +560,3 @@ Continue working on your first library. You need to include unit tests. Use the 
 
 1. [Fizz Buzz Unit Tests](https://github.com/Tech-at-DU/fizz-buzz-test)
 1. https://jestjs.io
-
-<!-- > -->
-
-<!--
-## Minute-by-Minute 
-
-| **Elapsed** | **Time** | **Activity** |
-| ----------- | -------- | ------------ |
-| 0:10 | 0:10 | [Overview](#overview) (Lecture) |
-| 0:05 | 0:15 | [Learning Objectives](#learning-objectives) (Lecture) |
-| 0:10 | 0:25 | [Unit Testing](#unit-testing) (Discussion) |
-| 0:15 | 0:40 | [Testing Example](#testing-example) (Demo/setup) |
-| 1:00 | 1:40 | [Testing Fizz Buzz](#testing-fizz-buzz) (Activity) |
-| 0:10 | 1:50 | BREAK |
-| 0:15 | 2:05 | Discuss Testing |
-| 0:30 | 2:35 | Start Homework |
-| 0:10 | 2:45 | Wrap up |
--->
