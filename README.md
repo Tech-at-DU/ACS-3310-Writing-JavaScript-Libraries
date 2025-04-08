@@ -42,7 +42,7 @@ Students by the end of the course will be able to ...
 |  4    | Thr, Apr  3 | [TS Classes and Interfaces], [TS Enums] | - | - |
 |  -    | **Week 3**  | - | - | - |
 |  5    | Tue, Apr  8 | [Bundling] | [Project] 2 | [Project] 1 |
-|  6    | Thr, Apr 10 | [Dates,] [Publishing] | - | - |
+|  6    | Thr, Apr 10 | [Dates] [Publishing] | - | - |
 |  -    | **Week 4**  | - | - | - |
 |  7    | Tue, Apr 15 | [TS Function Types], [higher-order-functions] | - | - |
 |  8    | Thr, Apr 17 | [TS Generics] | - | - |
