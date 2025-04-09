@@ -103,8 +103,13 @@ let days = diff / (1000 * 60 * 60 * 24);
 ---
 
 ## Type Coercion in Dates
-
 The `Date` object overrides the internal `toString()` and `valueOf()` methods (via `Symbol.toPrimitive`) to allow itself to be represented as different types depending on context.
+
+In a nutshell, type coercion ocurrs when you provide a value in an unexpected type and the language needs to convert to the expected type. For example: `"Count: " + 2 // "Count: 2"`. Here the expected type is a string but you have provided a number, the JS interpreter converts the number to a string and then moves on. 
+
+All objects provide methods to do type coercion. These are `.toString()` and `.valueOf()`, the first used when a string is expected, and the other when a number is expected. 
+
+Consider the example below, keep in mind that a date object is not a number or a string! 
 
 ```js
 let d = new Date();
@@ -113,7 +118,9 @@ console.log(d + 1);                // Uses d.valueOf(), returns timestamp
 console.log(Number(d));            // Same as d.valueOf()
 ```
 
-✅ Check: What method is used when you add a Date to a string? What about when you subtract a Date from a number?
+✅ Check: What method is used when you add a Date to a string? What about when you subtract a Date from a number? For example: `new Date() - 7`. 
+
+🤖 **AI Prompt:** "Explain type coercion in general, and give specific examples in JS."
 
 🤖 **AI Prompt:** "Explain how JavaScript decides which method to call when coercing a Date object."
 
@@ -125,7 +132,7 @@ console.log(Number(d));            // Same as d.valueOf()
 
 Get this repo: https://github.com/Tech-at-DU/JavaScript-Dates-lab
 
-Solve the problems there and submit your solutions to Gradescope. 
+Solve the problems there and submit your solutions to Gradescope.
 
 ---
 
