@@ -61,11 +61,39 @@ const c = new DateUtil(2023, 6, 15);    // From year, month, day
 const d = new DateUtil(new Date());     // From existing Date
 ```
 
+To do this you can use `args`. Read more about it here: https://javascript.info/rest-parameters-spread
+
+Here is some sample code: 
+
+```js
+class D {
+  constructor(...args) {
+    // Here we are initializing and storing a date object
+    this._date = new Date(...args); 
+  }
+}
+```
+
+TypeScript doesn't like this since the parameter types are variable. Here is one way to handle this with TypeScript.
+
+```TS
+class D {
+  _date: Date
+  // Constructor
+  constructor(...args: any[]) {
+    // this._date = new Date(...args)
+    this._date = new Date(...(args as [number, number, number, number?, number?, number?, number?]));
+
+  }
+}
+```
+
 #### **Human-Readable Properties**
 Replace clunky `Date` methods with more intuitive property names:
 ```js
 const d = new DateUtil(2023, 6, 15);
 console.log(d.year);   // 2023
+console.log(d.yr);     // 23
 console.log(d.month);  // July
 console.log(d.mon);    // Jul
 console.log(d.day);    // Saturday
@@ -73,10 +101,51 @@ console.log(d.dy);     // Sat
 console.log(d.date);   // 15
 ```
 
+The properties above need to derive values they return. To do that you can define these "getters". Read about "getter" methods here: https://javascript.info/property-accessors
+
+Here is some sample code to get you started: 
+
+```js
+class D {
+  constructor(...args) {
+    // Here we are initializing and storing a date object
+    this._date = new Date(...args); 
+  }
+
+  get year() {
+    return this._date.getFullYear()
+  }
+
+  // ...
+}
+```
+
 ---
 
 ## **4️⃣ Additional Methods**
 Enhance your library with the following **utility methods**:
+
+### **📌 Simple Date formatting function (`format(formatString)`)**
+✅ `format(formatString)` → Returns a **formtted date string** determined by the `formatString`. This is similar to formatting functions used in other langauges. Your function should replace any character on the list below with the associated date value. 
+
+| Format Character | Description | Example |
+|:-----------------|:------------|:--------|
+| Y | 4-digit year | 2025 |
+| y | 2-digit year | 25 |
+| m | Month as a number (01-12) | 04 |
+| B | Full month name | April |
+| b | Abbreviated month name | Apr |
+| d | Day of the month (01-31) | 10 |
+| A | Full weekday name | Thursday | 
+| a | Abbreviated weekday name | Thu |
+| H | Hour (00-23) | 19 |
+| I | Hour (01-12) | 07 |
+| M | Minute (00-59) | 36 |
+| S | Second (00-59) | 00 |
+| p | AM or PM | PM |
+
+
+📌 **Example:**
 
 ### **📌 Human-Readable Relative Date (`when()`)**
 ✅ `when()` → Returns a **human-readable string** describing the time difference between the date instance and now.
