@@ -144,8 +144,14 @@ Enhance your library with the following **utility methods**:
 | S | Second (00-59) | 00 |
 | p | AM or PM | PM |
 
+Any character not in the list above should be displayed. 
 
 📌 **Example:**
+```js 
+const d = D()
+d.format('B d, Y') // April 10, 2025
+d.format('d/m/y')  // 10/04/25 
+```
 
 ### **📌 Human-Readable Relative Date (`when()`)**
 ✅ `when()` → Returns a **human-readable string** describing the time difference between the date instance and now.
