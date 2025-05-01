@@ -54,7 +54,9 @@ Students by the end of the course will be able to ...
 | 12    | Thr, May  1 | [Async and Await] | - | - |
 |  -    | **Week 7**  | - | - | - |
 | 13    | Tue, May  6 |  | - | [Project] |
-| 14    | Thr, May  8 |  | Final Assessment | - |
+| 14    | Thr, May  8 |  |  | - |
+|  -    | **Week 8**  | - | - | - |
+| 15    | Tue, May 13 |  | - | Final Assessment |
 
 <!-- 
 
