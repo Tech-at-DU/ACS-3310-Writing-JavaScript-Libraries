@@ -51,7 +51,7 @@ Students by the end of the course will be able to ...
 | 10    | Thr, Apr 24 | [lecture-inheritance-vs-composition], [lecture-continuous-integration] | - | - |
 |  -    | **Week 6**  | - | - | - |
 | 11    | Tue, Apr 29 | [Callback Promise Lab] | - | - |
-| 12    | Thr, May  1 | [Async and Await] | - | - |
+| 12    | Thr, May  1 | Async and Await | - | - |
 |  -    | **Week 7**  | - | - | - |
 | 13    | Tue, May  6 |  | - | [Project] |
 | 14    | Thr, May  8 |  |  | - |
