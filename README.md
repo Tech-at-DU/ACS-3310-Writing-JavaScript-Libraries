@@ -66,6 +66,13 @@ Students by the end of the course will be able to ...
 [HW 5 Plugin Lib]: ./hw-5.md
 [HW 6 Final Project]: ./hw-6.md
 
+[Lesson 1]: ./lesson-1.md
+[Lesson 2]: ./lesson-2.md
+[Lesson 3]: ./lesson-3.md
+[Lesson 4]: ./lesson-4.md
+[Lesson 5]: ./lesson-5.md
+[Lesson 6]: ./lesson-6.md 
+
 
 ## Course Requirements 
 Your final grade will be calculated by amount of work completed. See the [Project] page for a list of projects points assigned to each. 100 points earns an A for the course! it is possible to get more than 100 points!
