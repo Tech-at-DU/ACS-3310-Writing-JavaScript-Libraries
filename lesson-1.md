@@ -63,23 +63,128 @@ Examples:
 
 A library exposes a **public API**.
 
-The API defines how developers interact with the library.
+The **API (Application Programming Interface)** defines how other developers interact with your library. It describes the functions, objects, and behaviors that users of the library rely on.
 
-Example API:
+For example, a utility library might expose a function like this:
 
 ```js
 chunk(array, size)
 ```
 
-When designing libraries, the API is one of the most important decisions.
+A developer does not need to know how `chunk` works internally. They only need to understand **how to use it**.
+
+When designing a library, the API is one of the most important things to consider. A good API makes a library easy to understand and pleasant to use.
+
+## Elements of an API
+
+When designing an API, developers should think carefully about several things:
+
+### Function Names
+
+Function names should clearly describe what the function does.
+
+Examples:
+
+```
+chunk(array, size)
+unique(array)
+formatDate(date)
+```
+
+Good names help developers quickly understand what a function is meant to do.
+
+### Parameters
+
+Parameters define the inputs to a function.
+
+A well-designed API should make parameters:
+
+- easy to understand
+- consistent across functions
+- ordered logically
+
+Example:
+
+```js
+chunk(array, size)
+```
+
+Here the developer can easily understand:
+
+- the function takes an array
+- the second argument controls the chunk size
+
+### Return Values
+
+Functions should return values that are predictable and useful.
+
+Example:
+
+```
+chunk([1,2,3,4], 2)
+
+→ [[1,2],[3,4]]
+```
+
+Developers should be able to guess what a function returns without reading the implementation.
+
+### Consistency
+
+Good libraries use **consistent patterns**.
+
+For example:
+
+```
+map(array, fn)
+filter(array, fn)
+reduce(array, fn)
+```
+
+Consistency makes APIs easier to learn because similar functions behave in similar ways.
+
+### Side Effects
+
+Some functions modify their inputs. Others return new values without changing the original data.
+
+Libraries should be clear about this behavior.
+
+Example:
+
+```
+sort(array)
+```
+
+Does the function modify the array, or return a new sorted array?
+
+Clear APIs avoid surprises.
+
+### Documentation and Examples
+
+Even a well-designed API needs examples.
+
+Example:
+
+```js
+chunk([1,2,3,4], 2)
+// [[1,2],[3,4]]
+```
+
+Good documentation helps developers quickly understand how to use the library.
+
+## Characteristics of a Good API
 
 Good APIs are:
 
-- simple
-- predictable
-- well documented
+- **simple** – easy to understand
+- **predictable** – functions behave consistently
+- **well named** – function names describe their purpose
+- **well documented** – examples show how to use the library
 
----
+In this course you will practice designing APIs for several small libraries.
+
+## Exploring APIs
+
+
 
 # Installing Libraries
 
@@ -153,6 +258,8 @@ npx tsc --version
 # Creating a TypeScript Configuration
 
 TypeScript projects use a configuration file called **tsconfig.json**.
+
+Read about tsconfig.json here: https://www.typescriptlang.org/tsconfig/
 
 You can create one with:
 
@@ -228,8 +335,6 @@ In the next class we will begin writing **typed function signatures** for librar
 
 ---
 
----
-
 # Active Learning — Explore a Real Library
 
 In this activity you will explore the design of a real npm library.
@@ -240,7 +345,7 @@ Work in small groups and choose **one of the following libraries**:
 - date-fns
 - nanoid
 
-Visit the npm page or GitHub repository for the library.
+Visit the npm page and GitHub repository for the library.
 
 Answer the following questions.
 

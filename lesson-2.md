@@ -28,6 +28,210 @@ By the end of this lesson you should be able to:
 
 ---
 
+# Warmup — Pure vs Impure Functions
+
+Before we begin working with TypeScript, we will review an important idea used throughout modern JavaScript libraries: **pure functions**.
+
+Many libraries are designed around pure functions because they are easier to test, easier to reason about, and easier to reuse.
+
+## What Is a Pure Function?
+
+A **pure function** has two key properties:
+
+1. The function always returns the **same output for the same inputs**.
+2. The function **does not change anything outside of itself** (no side effects).
+
+Example of a pure function:
+
+```js
+function add(a, b) {
+  return a + b
+}
+```
+
+This function is pure because:
+
+- it always returns the same result for the same inputs
+- it does not modify any external variables
+
+## What Is an Impure Function?
+
+An **impure function** either:
+
+- modifies external state
+- relies on external state
+- produces side effects (logging, network requests, modifying variables, etc.)
+
+Example:
+
+```js
+let total = 0
+
+function addToTotal(n) {
+  total += n
+}
+```
+
+This function is **impure** because it modifies the external variable `total`.
+
+Another example:
+
+```js
+function logMessage(message) {
+  console.log(message)
+}
+```
+
+This function produces a side effect (printing to the console).
+
+## Why Libraries Prefer Pure Functions
+
+Libraries often favor pure functions because they are:
+
+- easier to test
+- easier to reuse
+- easier to understand
+- less likely to introduce bugs
+
+For example, many utility libraries such as **Lodash** or **Ramda** rely heavily on pure functions.
+
+## Warmup Activity
+
+Work in pairs and decide whether each function is **pure or impure**.
+
+```js
+function square(n) {
+  return n * n
+}
+```
+
+```js
+let counter = 0
+
+function increment() {
+  counter++
+}
+```
+
+```js
+function doubleAll(arr) {
+  return arr.map(n => n * 2)
+}
+```
+
+```js
+function randomNumber() {
+  return Math.random()
+}
+```
+
+Discuss with your partner:
+
+- Which functions are pure?
+- Which are impure?
+- Why?
+
+We will briefly discuss your answers before continuing the lesson.
+
+---
+
+
+# Installing and Running TypeScript
+
+Before writing TypeScript code we need to install the **TypeScript compiler**.
+
+## Step 1 — Initialize a Project
+
+Create a new project folder and initialize npm:
+
+```bash
+npm init -y
+```
+
+This creates a `package.json` file for the project.
+
+## Step 2 — Install TypeScript
+
+Install TypeScript as a development dependency:
+
+```bash
+npm install typescript --save-dev
+```
+
+This installs the TypeScript compiler locally in your project.
+
+You can verify the installation with:
+
+```bash
+npx tsc --version
+```
+
+## Step 3 — Create a TypeScript Configuration
+
+Create a configuration file for the TypeScript compiler:
+
+```bash
+npx tsc --init
+```
+
+This generates a `tsconfig.json` file that controls how TypeScript compiles your code.
+
+A typical library configuration might include:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true
+  }
+}
+```
+
+## Step 4 — Compile TypeScript
+
+TypeScript files use the `.ts` extension.
+
+Example project structure:
+
+```
+project/
+  src/
+    index.ts
+  dist/
+```
+
+Compile the project using:
+
+```bash
+npx tsc
+```
+
+This compiles all `.ts` files and writes the generated JavaScript to the `dist` folder.
+
+## Step 5 — Add a Build Script
+
+You can make compilation easier by adding a script to `package.json`:
+
+```json
+"scripts": {
+  "build": "tsc"
+}
+```
+
+Now you can compile your project with:
+
+```bash
+npm run build
+```
+
+In this course we will use this workflow when building libraries.
+
+---
+
 # Why Libraries Use TypeScript
 
 When developers install a library, they rely on its API. If the API is unclear or accepts unexpected data, bugs can appear.
@@ -37,19 +241,20 @@ TypeScript helps prevent these problems.
 Example without types:
 
 ```js
-function chunk(array, size) {
-  // What should size be?
-  // What type of values are in the array?
+function repeat(text, count) {
+  // 
 }
 ```
 
 Example with TypeScript:
 
 ```ts
-function chunk<T>(array: T[], size: number): T[][] {
-  // Now the expected types are clear
+function repeat(text: string, count: number): string {
+  return text.repeat(count)
 }
 ```
+
+In this example TypeScript makes it clear that the function expects a **string** and a **number**, and that it returns a **string**.
 
 Types help developers:
 
@@ -102,7 +307,7 @@ first(['a','b','c'])
 
 ---
 
-# Active Learning — Converting JavaScript to TypeScript
+# Converting JavaScript to TypeScript
 
 Work in pairs.
 
@@ -131,7 +336,7 @@ Example discussion points:
 
 ---
 
-# Active Learning — Design Typed Utility Functions
+# Design Typed Utility Functions
 
 In small groups, design **two typed utility functions**.
 

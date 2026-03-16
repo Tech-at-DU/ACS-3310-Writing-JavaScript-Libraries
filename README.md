@@ -35,10 +35,10 @@ Students by the end of the course will be able to ...
 | Class | Date | Topics | Assignment | Asignment Due |
 |:------|:-----|:-------|:-----------|:--------------|
 |  -    | **Week 1**  | - | - | - |
-|  1    | Tue, Mar 24 | - | - | - |
-|  2    | Thr, Mar 26 | - | [HW 1 Utility Lib] | - |
+|  1    | Tue, Mar 24 | [Lesson 1] | - | - |
+|  2    | Thr, Mar 26 | [Lesson 2] - [Lab 1] | [HW 1 Utility Lib] | - |
 |  -    | **Week 2**  | - | - | - |
-|  3    | Tue, Mar 31 | - | - | [HW 1 Utility Lib] |
+|  3    | Tue, Mar 31 | [Lesson 3] | - | [HW 1 Utility Lib] |
 |  4    | Thr, Apr  2 | - | [HW 2 Validator Lib] | - |
 |  -    | **Week 3**  | - | - | - |
 |  5    | Tue, Apr  7 | - | - | [HW 2 Validator Lib] |
@@ -65,6 +65,8 @@ Students by the end of the course will be able to ...
 [HW 4 Reactive Store]: ./hw-4.md
 [HW 5 Plugin Lib]: ./hw-5.md
 [HW 6 Final Project]: ./hw-6.md
+
+[Lab 1]: ./lab-1.md
 
 [Lesson 1]: ./lesson-1.md
 [Lesson 2]: ./lesson-2.md

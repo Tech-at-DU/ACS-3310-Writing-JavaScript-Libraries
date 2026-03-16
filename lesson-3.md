@@ -6,12 +6,43 @@ In previous lessons you explored what libraries are and how TypeScript helps mak
 
 Testing is especially important for libraries because other developers depend on them. A bug in a library can break many applications.
 
-In this lesson you will learn:
+---
 
-- why testing libraries is important
-- how automated tests work
-- how to write tests using **Vitest**
-- how to test a library API
+# Warmup — The Leftpad Incident
+
+Before we begin writing tests, let's look at a real example of how problems in a small library can affect a large part of the software ecosystem.
+
+In 2016 a very small npm package called **left-pad** was removed from npm. The package only contained a few lines of code used to pad strings on the left side.
+
+Example behavior:
+
+```js
+leftPad("cat", 5, " ")
+// "  cat"
+```
+
+Even though the library was tiny, it was used by **thousands of other packages**. When the package was removed, many projects suddenly stopped building.
+
+Developers around the world saw errors when running:
+
+```
+npm install
+```
+
+Many applications and build systems failed because they depended (directly or indirectly) on this tiny library.
+
+## Discussion Questions
+
+Look up the source code for leftpad. Then discuss the questions below. 
+
+Work in small groups and discuss:
+
+1. Why would so many libraries depend on such a small utility?
+2. What risks appear when many packages depend on each other?
+3. How might testing help library authors prevent breaking changes?
+4. Should very small utilities be published as separate packages?
+
+We will briefly discuss your ideas before continuing the lesson.
 
 ---
 
@@ -46,9 +77,10 @@ If this function stops working correctly, many programs might break. Tests help 
 
 ---
 
+
 # What Is a Unit Test?
 
-A **unit test** checks that a small piece of code works correctly.
+A **unit test** checks that a small unit of code works correctly. Most often the unit of code is a function! 
 
 Example function:
 
@@ -67,6 +99,48 @@ test('adds two numbers', () => {
 ```
 
 The test verifies that the function returns the expected result.
+
+---
+
+## How Tests Pass and Fail
+
+A unit test **passes** when the code inside the test runs without throwing an error.
+
+Most testing libraries work the same way:
+
+- If an **expectation fails**, an error is thrown.
+- If **no errors occur**, the test passes.
+
+Example:
+
+```ts
+test('adds two numbers', () => {
+  expect(add(2,3)).toBe(5)
+})
+```
+
+If the function returned `4` instead of `5`, the `expect` statement would throw an error and the test would **fail**.
+
+### Important Idea
+
+A test that contains **no expectations** will almost always pass.
+
+Example:
+
+```ts
+test('empty test', () => {
+  const x = 2 + 2 // Always passes!
+})
+
+// Or even: 
+test('empty test', () => {
+  // Always passes! 
+})
+```
+
+This test does not check anything, so it will pass even if the code is wrong.
+
+Good tests should always include **clear expectations about behavior**.
 
 ---
 
@@ -102,9 +176,37 @@ npm test
 
 When testing a library function we usually test:
 
-1. **Normal behavior**
-2. **Edge cases**
-3. **Incorrect inputs** (when relevant)
+1. **Normal behavior**  
+   This is the most common or expected use of the function. Tests should verify that the function works correctly for typical inputs.
+
+2. **Edge cases**  
+   Edge cases are unusual or boundary situations where bugs often appear. These usually occur at the "edges" of valid input.
+
+   Examples of edge cases include:
+
+   - empty arrays
+   - very small inputs (0, 1, or negative numbers)
+   - very large inputs
+   - inputs at boundaries (for example the exact chunk size)
+
+   For example:
+
+   ```ts
+   chunk([], 2)        // empty array
+   chunk([1], 2)       // smaller than chunk size
+   chunk([1,2,3], 2)   // remainder values
+   ```
+
+3. **Incorrect inputs** (when relevant)  
+   These tests check how the function behaves when it receives invalid data.
+
+   Examples:
+
+   - passing the wrong type
+   - passing `null` or `undefined`
+   - passing values that should cause an error
+
+   Not every function needs these tests, but they can help make a library more robust.
 
 Example tests for `chunk`:
 
