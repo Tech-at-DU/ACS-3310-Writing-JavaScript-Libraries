@@ -39,10 +39,10 @@ Students by the end of the course will be able to ...
 |  2    | Thr, Mar 26 | [Lesson 2] - [Lab 1] | [HW 1 Utility Lib] | - |
 |  -    | **Week 2**  | - | - | - |
 |  3    | Tue, Mar 31 | [Lesson 3] | - | [HW 1 Utility Lib] |
-|  4    | Thr, Apr  2 | - | [HW 2 Validator Lib] | - |
+|  4    | Thr, Apr  2 | [Lesson 4] | [HW 2 Validator Lib] | - |
 |  -    | **Week 3**  | - | - | - |
-|  5    | Tue, Apr  7 | - | - | [HW 2 Validator Lib] |
-|  6    | Thr, Apr  9 | - | [HW 3 Event Emitter] | - |
+|  5    | Tue, Apr  7 | [Lesson 5] | - | [HW 2 Validator Lib] |
+|  6    | Thr, Apr  9 | [Lesson 6] | [HW 3 Event Emitter] | - |
 |  -    | **Week 4**  | - | - | - |
 |  7    | Tue, Apr 14 | - | - | [HW 3 Event Emitter] |
 |  8    | Thr, Apr 16 | - | [HW 4 Reactive Store] | - |

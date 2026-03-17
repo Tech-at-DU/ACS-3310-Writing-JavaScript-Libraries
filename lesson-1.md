@@ -42,9 +42,9 @@ Instead of writing everything yourself, you can install a library and use the fu
 Example:
 
 ```js
-import { chunk } from 'lodash'
+import { chunk } from 'lodash' // Import lib code
 
-chunk([1,2,3,4], 2)
+chunk([1,2,3,4], 2) // use code
 ```
 
 Libraries usually focus on solving **one category of problems**.
@@ -86,9 +86,9 @@ Function names should clearly describe what the function does.
 Examples:
 
 ```
-chunk(array, size)
-unique(array)
-formatDate(date)
+chunk(array, size) // splits an array into "chunks" of size
+unique(array)      // removes duplicate values
+formatDate(date)   // formats a date
 ```
 
 Good names help developers quickly understand what a function is meant to do.
@@ -126,7 +126,7 @@ chunk([1,2,3,4], 2)
 → [[1,2],[3,4]]
 ```
 
-Developers should be able to guess what a function returns without reading the implementation.
+Developers should be able to guess what a function returns _without reading the implementation_.
 
 ### Consistency
 
@@ -135,6 +135,7 @@ Good libraries use **consistent patterns**.
 For example:
 
 ```
+// These share the same "signature"
 map(array, fn)
 filter(array, fn)
 reduce(array, fn)
@@ -156,7 +157,7 @@ sort(array)
 
 Does the function modify the array, or return a new sorted array?
 
-Clear APIs avoid surprises.
+**Clear APIs avoid surprises.**
 
 ### Documentation and Examples
 
@@ -183,8 +184,6 @@ Good APIs are:
 In this course you will practice designing APIs for several small libraries.
 
 ## Exploring APIs
-
-
 
 # Installing Libraries
 
@@ -333,6 +332,66 @@ Today we focus on:
 
 In the next class we will begin writing **typed function signatures** for library APIs.
 
+## GitHub Classroom Lab
+
+In this lab you will set up a simple TypeScript project and practice compiling code.
+
+Follow these steps carefully:
+
+1. Open the assignment link:
+
+https://classroom.github.com/a/rp_Ioyeq
+
+2. Accept the assignment. This will create a private repository for you.
+
+3. Clone your repository to your computer:
+
+```bash
+git clone <your-repo-url>
+cd ACS-3310-Lab-1
+```
+
+4. Install dependencies:
+
+```bash
+npm install
+```
+
+5. Compile the TypeScript project:
+
+```bash
+npm run build
+```
+
+6. Run the tests:
+
+```bash
+npm test
+```
+
+7. Complete the challenges in the `src/` folder.
+
+8. When finished, commit and push your work:
+
+```bash
+git add .
+git commit -m "complete lab 1"
+git push
+```
+
+## What You Should Learn
+
+- how to clone a repository
+- how to install dependencies
+- how to compile TypeScript
+- how to run tests
+
+## Submission
+
+Your work is submitted automatically when you push to GitHub.
+
+You should complete this lab during class.
+
 ---
 
 # Active Learning — Explore a Real Library
@@ -413,17 +472,97 @@ Discuss your design with your group.
 
 ---
 
-# Preparing for Homework 1
+# Active Learning — API Design from Specifications
 
-Your first assignment will be to build a **small utility library**.
+Work in groups of 3–4.
 
-Before writing code you should think carefully about:
+You will design function APIs based on **requirements**.
 
-- what functions the library provides
-- what the API should look like
-- how developers will use it
+Your goal is to decide:
 
-Good library design begins with **clear API design**.
+- function names
+- parameter names
+- parameter order
+- return values
+
+---
+
+## Requirement 1 — Split an Array
+
+**Description:**  
+Split an array into smaller arrays of a given size.
+
+**Input:**
+- a list of values
+- a number representing the size
+
+**Output:**
+- a list of lists
+
+---
+
+## Requirement 2 — Group Items
+
+**Description:**  
+Group items in a list based on a rule.
+
+**Input:**
+- a list of items
+- a function that returns a key for each item
+
+**Output:**
+- an object mapping keys to lists of items
+
+---
+
+## Requirement 3 — Filter Valid Items
+
+**Description:**  
+Return only items that meet a condition.
+
+**Input:**
+- a list of items
+- a function that checks if an item is valid
+
+**Output:**
+- a list of valid items
+
+---
+
+## Requirement 4 — Format Currency
+
+**Description:**  
+Format a number as a currency string.
+
+**Input:**
+- a number
+- a currency code (e.g. USD, EUR)
+
+**Output:**
+- a formatted string
+
+---
+
+## Instructions
+
+For each:
+
+- design a function signature
+- write example usage
+
+Do NOT copy existing libraries.
+
+---
+
+## Discussion
+
+Compare your solutions with another group.
+
+Discuss:
+
+- Which API is easier to understand?
+- Which naming choices are better?
+- Where do designs differ?
 
 ---
 
