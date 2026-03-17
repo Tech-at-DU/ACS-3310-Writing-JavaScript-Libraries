@@ -38,8 +38,8 @@ Students by the end of the course will be able to ...
 |  1    | Tue, Mar 24 | [Lesson 1] | - | - |
 |  2    | Thr, Mar 26 | [Lesson 2] - [Lab 1] | [HW 1 Utility Lib] | - |
 |  -    | **Week 2**  | - | - | - |
-|  3    | Tue, Mar 31 | [Lesson 3] | - | [HW 1 Utility Lib] |
-|  4    | Thr, Apr  2 | [Lesson 4] | [HW 2 Validator Lib] | - |
+|  3    | Tue, Mar 31 | [Lesson 3] | [HW 2 Validator Lib] | [HW 1 Utility Lib] |
+|  4    | Thr, Apr  2 | [Lesson 4] |  | - |
 |  -    | **Week 3**  | - | - | - |
 |  5    | Tue, Apr  7 | [Lesson 5] | - | [HW 2 Validator Lib] |
 |  6    | Thr, Apr  9 | [Lesson 6] | [HW 3 Event Emitter] | - |

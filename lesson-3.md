@@ -2,47 +2,11 @@
 
 ## Overview
 
-In previous lessons you explored what libraries are and how TypeScript helps make library APIs clearer. In this lesson we will learn how to **test libraries**.
+In previous lessons you designed library APIs and used TypeScript to describe function behavior.
 
-Testing is especially important for libraries because other developers depend on them. A bug in a library can break many applications.
+In this lesson you will learn how to **verify that your code actually works** using tests.
 
----
-
-# Warmup — The Leftpad Incident
-
-Before we begin writing tests, let's look at a real example of how problems in a small library can affect a large part of the software ecosystem.
-
-In 2016 a very small npm package called **left-pad** was removed from npm. The package only contained a few lines of code used to pad strings on the left side.
-
-Example behavior:
-
-```js
-leftPad("cat", 5, " ")
-// "  cat"
-```
-
-Even though the library was tiny, it was used by **thousands of other packages**. When the package was removed, many projects suddenly stopped building.
-
-Developers around the world saw errors when running:
-
-```
-npm install
-```
-
-Many applications and build systems failed because they depended (directly or indirectly) on this tiny library.
-
-## Discussion Questions
-
-Look up the source code for leftpad. Then discuss the questions below. 
-
-Work in small groups and discuss:
-
-1. Why would so many libraries depend on such a small utility?
-2. What risks appear when many packages depend on each other?
-3. How might testing help library authors prevent breaking changes?
-4. Should very small utilities be published as separate packages?
-
-We will briefly discuss your ideas before continuing the lesson.
+You have already written functions in Homework 1. Now we will learn how to **prove those functions behave correctly**.
 
 ---
 
@@ -50,39 +14,65 @@ We will briefly discuss your ideas before continuing the lesson.
 
 By the end of this lesson you should be able to:
 
-- Explain why **automated tests** are important for libraries
-- Write **unit tests** using Vitest
-- Test the behavior of library functions
-- Use tests to verify that your code works correctly
+* Explain why **automated tests** are important for libraries
+* Write **unit tests** using Vitest
+* Use tests to detect bugs
+* Understand what kinds of situations tests should cover
+
+---
+
+# Warmup — The Leftpad Incident
+
+In 2016 a very small npm package called **left-pad** was removed from npm. The package only contained a few lines of code used to pad strings.
+
+```js
+leftPad("cat", 5, " ")
+// "  cat"
+```
+
+Even though the library was tiny, it was used by **thousands of other packages**. When it was removed, many projects stopped working.
+
+Developers around the world saw errors when running:
+
+```
+npm install
+```
+
+### Important Idea
+
+Testing would **not have prevented this problem**. The issue was not a bug—it was that the package disappeared.
+
+However, this event shows:
+
+* how many systems depend on small libraries
+* how fragile the ecosystem can be
+* why reliability matters
 
 ---
 
 # Why Testing Matters
 
-Libraries are used by many developers. If a function behaves incorrectly, it can cause problems in many applications.
+Libraries are used by many developers. If a function behaves incorrectly, it can break many applications.
 
-Automated tests help developers:
+You wrote functions like `chunk`, `unique`, or `sum`.
 
-- detect bugs early
-- ensure code behaves as expected
-- safely change or improve code later
+If one of those functions is wrong, every program using it is also wrong.
 
-For example, imagine a `chunk` function:
+Tests help you:
 
-```ts
-chunk([1,2,3,4], 2)
-```
-
-If this function stops working correctly, many programs might break. Tests help ensure this does not happen.
+* detect bugs early
+* confirm behavior is correct
+* safely refactor code later
 
 ---
 
-
 # What Is a Unit Test?
 
-A **unit test** checks that a small unit of code works correctly. Most often the unit of code is a function! 
+A **unit test** checks that a small piece of code works correctly.
 
-Example function:
+Most often, the unit is a function.
+
+Example:
 
 ```ts
 function add(a: number, b: number): number {
@@ -90,81 +80,94 @@ function add(a: number, b: number): number {
 }
 ```
 
-Example test:
+Test:
 
 ```ts
 test('adds two numbers', () => {
-  expect(add(2,3)).toBe(5)
+  expect(add(2, 3)).toBe(5)
 })
 ```
-
-The test verifies that the function returns the expected result.
 
 ---
 
-## How Tests Pass and Fail
+# How Tests Pass and Fail
 
-A unit test **passes** when the code inside the test runs without throwing an error.
+A test **passes** when no errors are thrown.
 
-Most testing libraries work the same way:
-
-- If an **expectation fails**, an error is thrown.
-- If **no errors occur**, the test passes.
-
-Example:
+A test **fails** when an expectation is not met.
 
 ```ts
-test('adds two numbers', () => {
-  expect(add(2,3)).toBe(5)
+expect(add(2, 3)).toBe(5)
+```
+
+If the result is not `5`, an error is thrown and the test fails.
+
+### Important
+
+A test with **no expectations** will always pass.
+
+```ts
+test('empty', () => {
+  const x = 2 + 2
 })
 ```
 
-If the function returned `4` instead of `5`, the `expect` statement would throw an error and the test would **fail**.
+Good tests must clearly define expected behavior.
 
-### Important Idea
+---
 
-A test that contains **no expectations** will almost always pass.
+# What Should We Test?
 
-Example:
+When testing a function, we usually test:
+
+### 1. Normal behavior
+
+Typical inputs the function is expected to handle.
+
+### 2. Edge cases
+
+Edge cases are boundary or unusual inputs where bugs often appear.
+
+Examples:
+
+* empty arrays
+* very small values
+* values at boundaries
 
 ```ts
-test('empty test', () => {
-  const x = 2 + 2 // Always passes!
-})
-
-// Or even: 
-test('empty test', () => {
-  // Always passes! 
-})
+chunk([], 2)
+chunk([1], 2)
 ```
 
-This test does not check anything, so it will pass even if the code is wrong.
+### 3. Incorrect inputs (when relevant)
 
-Good tests should always include **clear expectations about behavior**.
+These test how the function behaves with invalid data.
+
+Examples:
+
+* wrong types
+* null or undefined
 
 ---
 
 # Introducing Vitest
 
-In this course we will use **Vitest** to write and run tests.
+You have already used Vitest in earlier labs.
 
-Vitest provides functions such as:
+Vitest provides:
 
-- `test()` — defines a test
-- `expect()` — checks results
+* `test()` — defines a test
+* `expect()` — checks results
 
-Example test file:
+Example:
 
 ```ts
-import { chunk } from '../src/chunk'
-
-
-test('chunk splits array into groups', () => {
+test('chunk splits arrays', () => {
   expect(chunk([1,2,3,4], 2)).toEqual([[1,2],[3,4]])
 })
 ```
 
-To run tests:
+Run tests with:
 
 ```
 npm test
@@ -172,132 +175,127 @@ npm test
 
 ---
 
-# What Should We Test?
+# Active Learning — Prove the Bug Exists
 
-When testing a library function we usually test:
-
-1. **Normal behavior**  
-   This is the most common or expected use of the function. Tests should verify that the function works correctly for typical inputs.
-
-2. **Edge cases**  
-   Edge cases are unusual or boundary situations where bugs often appear. These usually occur at the "edges" of valid input.
-
-   Examples of edge cases include:
-
-   - empty arrays
-   - very small inputs (0, 1, or negative numbers)
-   - very large inputs
-   - inputs at boundaries (for example the exact chunk size)
-
-   For example:
-
-   ```ts
-   chunk([], 2)        // empty array
-   chunk([1], 2)       // smaller than chunk size
-   chunk([1,2,3], 2)   // remainder values
-   ```
-
-3. **Incorrect inputs** (when relevant)  
-   These tests check how the function behaves when it receives invalid data.
-
-   Examples:
-
-   - passing the wrong type
-   - passing `null` or `undefined`
-   - passing values that should cause an error
-
-   Not every function needs these tests, but they can help make a library more robust.
-
-Example tests for `chunk`:
-
-```ts
-expect(chunk([1,2,3,4], 2)).toEqual([[1,2],[3,4]])
-expect(chunk([1,2,3], 2)).toEqual([[1,2],[3]])
-```
-
-These tests verify different situations.
-
----
-
-# Active Learning — Write Your First Tests
-
-Work in pairs.
+Work in pairs. **Do not use AI** to fix the function. *Focus on writing tests that describe expected behavior*.
 
 Consider the following function:
 
 ```ts
-function double(n: number): number {
-  return n * 2
+function sum(nums: number[]): number {
+  return nums.reduce((acc, n) => acc + n, 1)
 }
 ```
 
-Write **two tests** for this function.
+## Your Task
 
-Questions to consider:
+1. Do NOT change the function
+2. Write a test that proves something is wrong
+3. Run the test
+4. Observe the result
 
-1. What is a normal case?
-2. What happens with zero?
-3. What other values might be useful to test?
+## Questions
 
-Example:
+* What should the function return?
+* What input reveals the problem?
+
+Example idea:
 
 ```ts
-test('double multiplies numbers by two', () => {
-  expect(double(4)).toBe(8)
-})
+expect(sum([1,2,3])).toBe(6)
 ```
 
-Discuss your tests with your partner.
+## Discussion
 
----
+You did not "find" the bug.
 
-# Active Learning — Testing a Utility Function
+You **proved the bug exists** by defining expected behavior.
 
-Now consider a function from your Homework 1 assignment.
 
-Example:
+## Problem 2
+
+Consider the following function:
 
 ```ts
-function unique<T>(array: T[]): T[] {
-  return [...new Set(array)]
+function isEven(n: number): boolean {
+  return n % 2 === 1
 }
 ```
 
-Write **three tests** for this function.
+## Your Task
+	1.	Write a test that proves this function behaves incorrectly
+	2.	Think about both even and odd numbers
+	3.	Run your test and observe the result
 
-Ideas:
+## Questions
+	•	What should isEven(4) return?
+	•	What should isEven(3) return?
 
-- normal case
-- duplicate values
-- empty array
+## Problem 3
 
-Example test idea:
+Consider the following function:
 
 ```ts
-expect(unique([1,1,2,3])).toEqual([1,2,3])
+function first<T>(arr: T[]): T {
+  return arr[1]
+}
 ```
 
-Discuss why these tests are useful.
+## Your Task
+	1.	Write a test that reveals the issue
+	2.	Consider arrays of different sizes
+
+## Questions
+	•	What should happen with a single-element array?
+	•	What should happen with a larger array?
+
+You did not “find” the bug.
+
+You proved the bug exists by *defining expected behavior*.
 
 ---
 
-# Preparing for Homework 1
+# Active Learning — Define Behavior First
 
-Your Homework 1 assignment requires tests for each function in your library.
+Consider this function:
 
-Minimum requirement:
+```ts
+function average(nums: number[]): number {
+  return nums.reduce((a, b) => a + b, 0) / nums.length
+}
+```
 
-- **at least two tests per function**
+## In pairs:
 
-Before writing your functions, try writing tests first.
+1. What should happen if the array is empty?
+2. Write a test for that case
+
+There may not be one correct answer.
+
+This is a design decision.
+
+---
+
+# Preparing for Homework 2 — Validator Library
+
+Your next assignment is to build a **Validator Library**.
+
+Testing will be a required part of this assignment.
+
+For each validator you should test:
+
+* valid inputs
+* invalid inputs
+* edge cases
 
 Example:
 
 ```ts
-expect(chunk([1,2,3,4], 2)).toEqual([[1,2],[3,4]])
+isEmail("test@example.com") // true
+isEmail("invalid")          // false
 ```
 
-This approach is called **test-driven thinking**.
+You should write tests **before or alongside your implementation**.
 
 ---
 
@@ -305,8 +303,8 @@ This approach is called **test-driven thinking**.
 
 Answer the following questions:
 
-1. Why are automated tests important for libraries?
-2. What kinds of situations should tests cover?
-3. How might tests help you improve your library design?
+1. How do tests help you detect bugs?
+2. What is an edge case?
+3. What did you learn from writing a failing test?
 
-Be prepared to discuss your answers in class.
+Be prepared to discuss your answers.
