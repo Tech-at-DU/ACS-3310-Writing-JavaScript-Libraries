@@ -1,19 +1,17 @@
-
-
 # Lesson 2 — Introduction to TypeScript for Libraries
 
 ## Overview
 
-In the previous lesson you explored what JavaScript libraries are and how developers use them. In this lesson we will introduce **TypeScript**, a tool that helps developers write safer and more maintainable JavaScript.
+In this lesson you will begin using **TypeScript** to describe and enforce how functions behave.
 
-TypeScript adds **types** to JavaScript. Types describe what kind of data a function expects and what it returns. This is especially important when building libraries that other developers will use.
+TypeScript adds **types** to JavaScript. These types help clarify what a function expects and what it returns. This is especially important when building libraries used by other developers.
 
-In this lesson we will learn:
+In this lesson you will:
 
-- what TypeScript is
-- why libraries often use TypeScript
-- how to write basic types
-- how to convert JavaScript functions to TypeScript
+- review pure vs impure functions
+- learn core TypeScript types
+- see how TypeScript prevents errors
+- convert JavaScript functions to TypeScript
 
 ---
 
@@ -23,25 +21,21 @@ By the end of this lesson you should be able to:
 
 - Explain what **TypeScript** is
 - Add **type annotations** to functions
-- Understand **generic types** at a basic level
-- Convert simple JavaScript code into TypeScript
+- Use TypeScript with arrays and functions
+- Convert JavaScript code into TypeScript
 
 ---
 
 # Warmup — Pure vs Impure Functions
 
-Before we begin working with TypeScript, we will review an important idea used throughout modern JavaScript libraries: **pure functions**.
+Many JavaScript libraries are built from **pure functions**.
 
-Many libraries are designed around pure functions because they are easier to test, easier to reason about, and easier to reuse.
+A **pure function**:
 
-## What Is a Pure Function?
+1. returns the same output for the same inputs
+2. does not modify anything outside the function
 
-A **pure function** has two key properties:
-
-1. The function always returns the **same output for the same inputs**.
-2. The function **does not change anything outside of itself** (no side effects).
-
-Example of a pure function:
+Example:
 
 ```js
 function add(a, b) {
@@ -49,18 +43,11 @@ function add(a, b) {
 }
 ```
 
-This function is pure because:
+An **impure function**:
 
-- it always returns the same result for the same inputs
-- it does not modify any external variables
-
-## What Is an Impure Function?
-
-An **impure function** either:
-
-- modifies external state
-- relies on external state
-- produces side effects (logging, network requests, modifying variables, etc.)
+- changes external state
+- depends on external state
+- produces side effects
 
 Example:
 
@@ -72,32 +59,9 @@ function addToTotal(n) {
 }
 ```
 
-This function is **impure** because it modifies the external variable `total`.
-
-Another example:
-
-```js
-function logMessage(message) {
-  console.log(message)
-}
-```
-
-This function produces a side effect (printing to the console).
-
-## Why Libraries Prefer Pure Functions
-
-Libraries often favor pure functions because they are:
-
-- easier to test
-- easier to reuse
-- easier to understand
-- less likely to introduce bugs
-
-For example, many utility libraries such as **Lodash** or **Ramda** rely heavily on pure functions.
-
 ## Warmup Activity
 
-Work in pairs and decide whether each function is **pure or impure**.
+Work with a partner. Decide whether each function is pure or impure.
 
 ```js
 function square(n) {
@@ -107,7 +71,6 @@ function square(n) {
 
 ```js
 let counter = 0
-
 function increment() {
   counter++
 }
@@ -125,128 +88,21 @@ function randomNumber() {
 }
 ```
 
-Discuss with your partner:
-
-- Which functions are pure?
-- Which are impure?
-- Why?
-
-We will briefly discuss your answers before continuing the lesson.
-
 ---
 
+# Why Use TypeScript?
 
-# Installing and Running TypeScript
+Libraries expose APIs that other developers depend on.
 
-Before writing TypeScript code we need to install the **TypeScript compiler**.
-
-## Step 1 — Initialize a Project
-
-Create a new project folder and initialize npm:
-
-```bash
-npm init -y
-```
-
-This creates a `package.json` file for the project.
-
-## Step 2 — Install TypeScript
-
-Install TypeScript as a development dependency:
-
-```bash
-npm install typescript --save-dev
-```
-
-This installs the TypeScript compiler locally in your project.
-
-You can verify the installation with:
-
-```bash
-npx tsc --version
-```
-
-## Step 3 — Create a TypeScript Configuration
-
-Create a configuration file for the TypeScript compiler:
-
-```bash
-npx tsc --init
-```
-
-This generates a `tsconfig.json` file that controls how TypeScript compiles your code.
-
-A typical library configuration might include:
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES2019",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "rootDir": "src",
-    "outDir": "dist",
-    "strict": true
-  }
-}
-```
-
-## Step 4 — Compile TypeScript
-
-TypeScript files use the `.ts` extension.
-
-Example project structure:
-
-```
-project/
-  src/
-    index.ts
-  dist/
-```
-
-Compile the project using:
-
-```bash
-npx tsc
-```
-
-This compiles all `.ts` files and writes the generated JavaScript to the `dist` folder.
-
-## Step 5 — Add a Build Script
-
-You can make compilation easier by adding a script to `package.json`:
-
-```json
-"scripts": {
-  "build": "tsc"
-}
-```
-
-Now you can compile your project with:
-
-```bash
-npm run build
-```
-
-In this course we will use this workflow when building libraries.
-
----
-
-# Why Libraries Use TypeScript
-
-When developers install a library, they rely on its API. If the API is unclear or accepts unexpected data, bugs can appear.
-
-TypeScript helps prevent these problems.
-
-Example without types:
+Without types:
 
 ```js
 function repeat(text, count) {
-  // 
+  return text.repeat(count)
 }
 ```
 
-Example with TypeScript:
+With TypeScript:
 
 ```ts
 function repeat(text: string, count: number): string {
@@ -254,21 +110,32 @@ function repeat(text: string, count: number): string {
 }
 ```
 
-In this example TypeScript makes it clear that the function expects a **string** and a **number**, and that it returns a **string**.
+Types make it clear:
 
-Types help developers:
+- what inputs are expected
+- what output is returned
 
-- understand how a library works
-- catch mistakes early
-- write better documentation
+They also help catch mistakes early.
 
 ---
 
-# Basic Type Annotations
+# Core TypeScript Types
 
-TypeScript allows you to add type information to variables and function parameters.
+## Basic Types
 
-Example:
+```ts
+const name: string = "Ana"
+const age: number = 20
+const isActive: boolean = true
+```
+
+## Arrays
+
+```ts
+const nums: number[] = [1, 2, 3]
+```
+
+## Functions
 
 ```ts
 function add(a: number, b: number): number {
@@ -276,42 +143,68 @@ function add(a: number, b: number): number {
 }
 ```
 
-Here we specify:
-
-- `a` must be a number
-- `b` must be a number
-- the function returns a number
-
----
-
-# Generic Types
-
-Libraries often need to work with **many types of data**. Generics allow us to write flexible functions.
-
-Example:
+Example with arrays:
 
 ```ts
-function first<T>(array: T[]): T {
-  return array[0]
+function doubleAll(arr: number[]): number[] {
+  return arr.map(n => n * 2)
 }
 ```
 
-This function works for any type of array.
+---
 
-Example usage:
+# TypeScript in Action
+
+TypeScript can catch errors before your code runs.
 
 ```ts
-first([1,2,3])
-first(['a','b','c'])
+function add(a: number, b: number): number {
+  return a + b
+}
+
+add(2, 3)
+add("2", 3) // Error
 ```
+
+The second call produces an error because the types are incorrect.
 
 ---
 
-# Converting JavaScript to TypeScript
+# Generics (Introduction)
+
+Sometimes we want functions to work with many types.
+
+Without generics:
+
+```ts
+function firstNumber(arr: number[]): number {
+  return arr[0]
+}
+
+function firstString(arr: string[]): string {
+  return arr[0]
+}
+```
+
+This repeats the same logic.
+
+With generics:
+
+```ts
+function first<T>(arr: T[]): T {
+  return arr[0]
+}
+```
+
+Now the function works with any type.
+
+---
+
+# Activity — Convert JavaScript to TypeScript
 
 Work in pairs.
 
-Below is a simple JavaScript function.
+Convert the following functions to TypeScript.
 
 ```js
 function unique(array) {
@@ -319,69 +212,36 @@ function unique(array) {
 }
 ```
 
-Your task is to convert this function into **TypeScript**.
+```js
+function sum(nums) {
+  return nums.reduce((acc, n) => acc + n, 0)
+}
+```
 
-Questions to consider:
+```js
+function filter(arr, fn) {
+  return arr.filter(fn)
+}
+```
 
-1. What type should the array contain?
-2. What type should the function return?
-3. Can the function work with multiple types?
+## Requirements
 
-Write your TypeScript version of the function.
-
-Example discussion points:
-
-- Should the function use generics?
-- What happens if the array contains objects?
+- add type annotations
+- choose appropriate types
+- use generics where helpful
 
 ---
 
-# Design Typed Utility Functions
+# Preparing for Lab 1
 
-In small groups, design **two typed utility functions**.
+In the lab you will:
 
-Examples might include:
+- set up a TypeScript project
+- compile code
+- run tests
+- implement functions with types
 
-```
-chunk(array, size)
-partition(array, predicate)
-unique(array)
-```
-
-For each function write:
-
-- function name
-- parameter types
-- return type
-- example usage
-
-Example:
-
-```
-function chunk<T>(array: T[], size: number): T[][]
-```
-
-Discuss how TypeScript helps make the API clearer.
-
----
-
-# Preparing for Homework 1
-
-Your Homework 1 assignment asks you to create a **utility library written in TypeScript**.
-
-Before beginning the assignment:
-
-1. Decide what functions your library will include.
-2. Think about what types those functions should use.
-3. Write the function signatures before implementing the logic.
-
-Example:
-
-```ts
-function groupBy<T>(array: T[], keyFn: (item: T) => string): Record<string, T[]>
-```
-
-Planning the types first often leads to a cleaner design.
+Focus on writing **clear function signatures** before implementing logic.
 
 ---
 
@@ -389,8 +249,8 @@ Planning the types first often leads to a cleaner design.
 
 Answer the following questions:
 
-1. How do types help developers understand a library?
-2. What types might be useful for your utility library functions?
-3. What advantages do generics provide when designing reusable functions?
+1. How do types improve code clarity?
+2. What types did you find most useful?
+3. When might generics be helpful?
 
-Be prepared to discuss your answers with the class.
+Be prepared to discuss your answers.
