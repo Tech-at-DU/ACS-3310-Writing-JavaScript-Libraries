@@ -10,8 +10,9 @@ In this lesson you will:
 
 - review pure vs impure functions
 - learn core TypeScript types
-- see how TypeScript prevents errors
-- convert JavaScript functions to TypeScript
+- understand function types and callbacks
+- learn the basics of generics
+- apply these ideas in a design activity and lab
 
 ---
 
@@ -21,7 +22,8 @@ By the end of this lesson you should be able to:
 
 - Explain what **TypeScript** is
 - Add **type annotations** to functions
-- Use TypeScript with arrays and functions
+- Read and write **function types**
+- Use **generics** for reusable functions
 - Convert JavaScript code into TypeScript
 
 ---
@@ -143,30 +145,75 @@ function add(a: number, b: number): number {
 }
 ```
 
-Example with arrays:
+---
+
+# Function Types (Important)
+
+Functions themselves have types.
+
+Example:
 
 ```ts
-function doubleAll(arr: number[]): number[] {
-  return arr.map(n => n * 2)
+function filter(arr: number[], fn: (n: number) => boolean): number[] {
+  return arr.filter(fn)
 }
 ```
+
+```ts
+function double(n: number): number {
+  return n * 2
+}
+
+const fn: (n: number) => number = double
+```
+
+The type:
+
+```ts
+(n: number) => number
+```
+
+means:
+
+- takes a number
+- returns a number
 
 ---
 
-# TypeScript in Action
-
-TypeScript can catch errors before your code runs.
+## Practice
 
 ```ts
-function add(a: number, b: number): number {
-  return a + b
-}
-
-add(2, 3)
-add("2", 3) // Error
+function applyTwice(value: number, fn: (n: number) => number): number
 ```
 
-The second call produces an error because the types are incorrect.
+What does this type mean?
+
+- What does the function `fn` take?
+- What does it return?
+
+---
+
+### Practice 2
+
+```ts
+function mapNumbers(arr: number[], fn: (n: number) => number): number[]
+```
+
+- What does the function `fn` take?
+- What does it return?
+- What does `mapNumbers` return?
+
+---
+
+### Practice 3
+
+```ts
+function checkAll(arr: number[], fn: (n: number) => boolean): boolean
+```
+
+- What does the function `fn` take?
+- What does it return?
+- What does `checkAll` return?
 
 ---
 
@@ -186,25 +233,35 @@ function firstString(arr: string[]): string {
 }
 ```
 
-This repeats the same logic.
-
 With generics:
 
 ```ts
-function first<T>(arr: T[]): T {
+function first<T>(arr: T[]): T | undefined {
   return arr[0]
 }
 ```
 
 Now the function works with any type.
 
+`T` represents a placeholder type that is determined when the function is called.
+
 ---
 
-# Activity — Convert JavaScript to TypeScript
+## Multiple Generic Types
+
+You can use multiple generic type parameters when needed.
+
+```ts
+function pair<A, B>(a: A, b: B): [A, B] {
+  return [a, b]
+}
+```
+
+---
+
+## Practice — Convert to TypeScript
 
 Work in pairs.
-
-Convert the following functions to TypeScript.
 
 ```js
 function unique(array) {
@@ -224,33 +281,65 @@ function filter(arr, fn) {
 }
 ```
 
-## Requirements
+---
 
-- add type annotations
-- choose appropriate types
-- use generics where helpful
+## Reading Types
+
+```ts
+function filterBy<T>(arr: T[], fn: (item: T) => boolean): T[]
+```
+
+- What does this function take?
+- What does it return?
 
 ---
 
-# Preparing for Lab 1
+# Activity — Mini Library Sprint
 
-In the lab you will:
+Work in pairs. Choose ONE:
 
-- set up a TypeScript project
-- compile code
-- run tests
-- implement functions with types
+1. filterBy
+2. mapBy
+3. pluck
+4. groupBy (challenge)
 
-Focus on writing **clear function signatures** before implementing logic.
+---
+
+## Step 1 — Design
+
+- function name
+- parameters
+- return value
+
+---
+
+## Step 2 — Add Types
+
+- add TypeScript types
+- use generics
+
+---
+
+## Step 3 — Think About Edge Cases
+
+- empty array
+- invalid input
+
+---
+
+## Step 4 — Compare
+
+Compare with another group.
+
+---
+
+# Lab 2
+
+https://classroom.github.com/a/rhZh9dZJ
 
 ---
 
 # Reflection
 
-Answer the following questions:
-
 1. How do types improve code clarity?
-2. What types did you find most useful?
-3. When might generics be helpful?
-
-Be prepared to discuss your answers.
+2. When are generics useful?
