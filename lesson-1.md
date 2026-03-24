@@ -394,7 +394,7 @@ You should complete this lab during class.
 
 ---
 
-# Active Learning — Explore a Real Library
+# Explore a Real Library
 
 In this activity you will explore the design of a real npm library.
 
@@ -425,7 +425,7 @@ Write your answers in a short shared document.
 
 ---
 
-# Active Learning — API Design Exercise
+# API Design Exercise
 
 Now imagine you are designing a small library.
 
@@ -472,7 +472,7 @@ Discuss your design with your group.
 
 ---
 
-# Active Learning — API Design from Specifications
+# API Design from Specifications
 
 Work in groups of 3–4.
 
