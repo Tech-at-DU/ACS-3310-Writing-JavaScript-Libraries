@@ -1,18 +1,10 @@
-# Lesson 2 — Introduction to TypeScript for Libraries
+# Lesson 2 — TypeScript for Libraries (2:45 Session)
 
 ## Overview
 
-In this lesson you will begin using **TypeScript** to describe and enforce how functions behave.
+In this lesson you will learn how to use **TypeScript** to describe how functions behave, and apply these ideas to designing reusable library code.
 
-TypeScript adds **types** to JavaScript. These types help clarify what a function expects and what it returns. This is especially important when building libraries used by other developers.
-
-In this lesson you will:
-
-- review pure vs impure functions
-- learn core TypeScript types
-- understand function types and callbacks
-- learn the basics of generics
-- apply these ideas in a design activity and lab
+You will work in pairs throughout the lesson. Expect to discuss, write code, and compare ideas.
 
 ---
 
@@ -20,50 +12,18 @@ In this lesson you will:
 
 By the end of this lesson you should be able to:
 
-- Explain what **TypeScript** is
-- Add **type annotations** to functions
-- Read and write **function types**
-- Use **generics** for reusable functions
-- Convert JavaScript code into TypeScript
+- Add type annotations to functions
+- Read and explain function types
+- Use generics to write reusable functions
+- Design a clear, typed function API
 
 ---
 
-# Warmup — Pure vs Impure Functions
+# ⏱️ Part 1 — Warmup: Pure vs Impure (20 min)
 
-Many JavaScript libraries are built from **pure functions**.
+## Task (Pairs)
 
-A **pure function**:
-
-1. returns the same output for the same inputs
-2. does not modify anything outside the function
-
-Example:
-
-```js
-function add(a, b) {
-  return a + b
-}
-```
-
-An **impure function**:
-
-- changes external state
-- depends on external state
-- produces side effects
-
-Example:
-
-```js
-let total = 0
-
-function addToTotal(n) {
-  total += n
-}
-```
-
-## Warmup Activity
-
-Work with a partner. Decide whether each function is pure or impure.
+Decide whether each function is **pure** or **impure**.
 
 ```js
 function square(n) {
@@ -90,74 +50,43 @@ function randomNumber() {
 }
 ```
 
----
+## Discuss
 
-# Why Use TypeScript?
+- Which of these would you trust in a library?
+- Why?
 
-Libraries expose APIs that other developers depend on.
-
-Without types:
-
-```js
-function repeat(text, count) {
-  return text.repeat(count)
-}
-```
-
-With TypeScript:
-
-```ts
-function repeat(text: string, count: number): string {
-  return text.repeat(count)
-}
-```
-
-Types make it clear:
-
-- what inputs are expected
-- what output is returned
-
-They also help catch mistakes early.
+Be ready to share.
 
 ---
 
-# Core TypeScript Types
+# ⏱️ Part 2 — Reading Types (25 min)
 
-## Basic Types
-
-```ts
-const name: string = "Ana"
-const age: number = 20
-const isActive: boolean = true
-```
-
-## Arrays
+## Examine this function
 
 ```ts
-const nums: number[] = [1, 2, 3]
+function filterBy<T>(arr: T[], fn: (item: T) => boolean): T[]
 ```
 
-## Functions
+## Task (Pairs — 5–7 minutes)
 
-```ts
-function add(a: number, b: number): number {
-  return a + b
-}
-```
+1. Write your answers down
+2. Be ready to explain
+
+Answer:
+
+- What does this function do?
+- What does `fn` do?
+- What is `T`?
+
+## Share
+
+We will discuss answers as a class.
 
 ---
 
-# Function Types (Important)
+# ⏱️ Part 3 — Function Types (30 min)
 
-Functions themselves have types.
-
-Example:
-
-```ts
-function filter(arr: number[], fn: (n: number) => boolean): number[] {
-  return arr.filter(fn)
-}
-```
+## Example
 
 ```ts
 function double(n: number): number {
@@ -167,37 +96,48 @@ function double(n: number): number {
 const fn: (n: number) => number = double
 ```
 
-The type:
+### This type means:
 
 ```ts
 (n: number) => number
 ```
-
-means:
 
 - takes a number
 - returns a number
 
 ---
 
-## Practice
+## Practice (Pairs — 5 minutes)
+
+Work with a partner.
+
+1. Write your answers down
+2. Be ready to explain your answers
 
 ```ts
 function applyTwice(value: number, fn: (n: number) => number): number
 ```
 
-What does this type mean?
+Discuss and write:
 
-- What does the function `fn` take?
+- What does `fn` take?
 - What does it return?
+- What does `applyTwice` return?
 
 ---
 
-### Practice 2
+### Practice 2 (Pairs — 3 minutes)
+
+Work with a partner.
+
+1. Write your answers down
+2. Be ready to explain your reasoning
 
 ```ts
 function mapNumbers(arr: number[], fn: (n: number) => number): number[]
 ```
+
+Discuss and write:
 
 - What does the function `fn` take?
 - What does it return?
@@ -205,11 +145,18 @@ function mapNumbers(arr: number[], fn: (n: number) => number): number[]
 
 ---
 
-### Practice 3
+### Practice 3 (Pairs — 3 minutes)
+
+Work with a partner.
+
+1. Write your answers down
+2. Be ready to explain your reasoning
 
 ```ts
 function checkAll(arr: number[], fn: (n: number) => boolean): boolean
 ```
+
+Discuss and write:
 
 - What does the function `fn` take?
 - What does it return?
@@ -217,23 +164,22 @@ function checkAll(arr: number[], fn: (n: number) => boolean): boolean
 
 ---
 
-# Generics (Introduction)
+# ⏱️ Part 4 — Generics (30 min)
 
-Sometimes we want functions to work with many types.
-
-Without generics:
+## Problem
 
 ```ts
-function firstNumber(arr: number[]): number {
-  return arr[0]
-}
-
-function firstString(arr: string[]): string {
-  return arr[0]
-}
+function firstNumber(arr: number[]): number
+function firstString(arr: string[]): string
 ```
 
-With generics:
+## Question
+
+What is wrong with this approach?
+
+---
+
+## Solution
 
 ```ts
 function first<T>(arr: T[]): T | undefined {
@@ -241,27 +187,30 @@ function first<T>(arr: T[]): T | undefined {
 }
 ```
 
-Now the function works with any type.
-
-`T` represents a placeholder type that is determined when the function is called.
+`T` is a placeholder type determined when the function is called.
 
 ---
 
-## Multiple Generic Types
+## Practice (Pairs)
 
-You can use multiple generic type parameters when needed.
+Write:
 
 ```ts
-function pair<A, B>(a: A, b: B): [A, B] {
-  return [a, b]
-}
+function last<T>(arr: T[]): T | undefined
 ```
+
+Explain:
+
+- What is `T`?
+- Where does it come from?
 
 ---
 
-## Practice — Convert to TypeScript
+# ⏱️ Part 5 — Convert JS → TS (25 min)
 
-Work in pairs.
+## Task (Pairs)
+
+Convert these to TypeScript:
 
 ```js
 function unique(array) {
@@ -281,65 +230,109 @@ function filter(arr, fn) {
 }
 ```
 
----
+Focus on:
 
-## Reading Types
-
-```ts
-function filterBy<T>(arr: T[], fn: (item: T) => boolean): T[]
-```
-
-- What does this function take?
-- What does it return?
+- parameter types
+- return types
+- function types
 
 ---
 
-# Activity — Mini Library Sprint
+# ⏱️ Part 6 — Mini Library Sprint (50 min)
 
-Work in pairs. Choose ONE:
+## Choose ONE problem (assigned by instructor)
 
-1. filterBy
-2. mapBy
-3. pluck
-4. groupBy (challenge)
+### Option A — Advanced filter
+Create a function that:
+- filters items
+- also limits the number of results
+
+### Option B — Map with index
+Create a function that:
+- maps items
+- callback receives (item, index)
+
+### Option C — Flexible pluck
+Create a function that:
+- extracts a property
+- works with any key (not just "name")
+
+### Option D — groupBy (challenge)
+Create a function that:
+- groups items into categories
+- returns an object of arrays
 
 ---
 
-## Step 1 — Design
+## Step 1 — Design (10 min)
+
+Write down:
 
 - function name
-- parameters
-- return value
+- parameter names
+- what the function should do
+- one example call
 
 ---
 
-## Step 2 — Add Types
+## Step 2 — Add Types (15–20 min)
 
 - add TypeScript types
-- use generics
+- use generics where needed
+- type any callback functions
+- update your example call if needed
 
 ---
 
-## Step 3 — Think About Edge Cases
+## Step 3 — Edge Cases (10 min)
+
+Write at least two edge cases:
 
 - empty array
-- invalid input
+- unexpected input
 
 ---
 
-## Step 4 — Compare
+## Step 4 — Compare (10–15 min)
 
-Compare with another group.
+Join another group.
+
+1. Explain your function to them
+2. Compare designs
+3. Decide which version is clearer and why
+
+Focus on:
+
+- naming
+- parameter order
+- type clarity
 
 ---
 
-# Lab 2
+# ⏱️ Part 7 — Lab 2 Start (30 min)
 
-https://classroom.github.com/a/rhZh9dZJ
+## Instructions
+
+1. Accept the assignment: https://classroom.github.com/a/tpmlN-gN
+2. Clone your repo
+3. Run:
+
+```bash
+npm ci
+npm run build
+npm test
+```
+
+If any command fails, stop and ask for help immediately.
+
+4. Begin implementing functions
 
 ---
 
-# Reflection
+# Reflection (End of Class)
 
-1. How do types improve code clarity?
-2. When are generics useful?
+Answer:
+
+1. What does `(item: T) => boolean` mean?
+2. What does `T` represent?
+3. What makes a function API clear?
