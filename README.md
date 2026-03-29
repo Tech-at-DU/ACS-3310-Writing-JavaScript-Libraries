@@ -38,35 +38,36 @@ Students by the end of the course will be able to ...
 |  1    | Tue, Mar 24 | [Lesson 1] - Lab 1 | [HW 1 Utility Lib] | - |
 |  2    | Thr, Mar 26 | [Lesson 2] - Lab 2 |  | - |
 |  -    | **Week 2**  | - | - | - |
-|  3    | Tue, Mar 31 | [Lesson 3] - Lab 3 | [HW 2 Validator Lib] | [HW 1 Utility Lib] |
-|  4    | Thr, Apr  2 | [Lesson 4] |  | - |
+|  3    | Tue, Mar 31 | Holiday Cesar Chavez Day | - | - |
+|  4    | Thr, Apr  2 | [Lesson 3] |  | - |
 |  -    | **Week 3**  | - | - | - |
-|  5    | Tue, Apr  7 | [Lesson 5] | - | [HW 2 Validator Lib] |
-|  6    | Thr, Apr  9 | [Lesson 6] | [HW 3 Event Emitter] | - |
+|  5    | Tue, Apr  7 | [Lesson 4] | - |  |
+|  6    | Thr, Apr  9 | [Lesson 5] |  | - |
 |  -    | **Week 4**  | - | - | - |
-|  7    | Tue, Apr 14 | - | - | [HW 3 Event Emitter] |
-|  8    | Thr, Apr 16 | - | [HW 4 Reactive Store] | - |
+|  7    | Tue, Apr 14 | [Lesson 5] | - |  |
+|  8    | Thr, Apr 16 | - |  | - |
 |  -    | **Week 5**  | - | - | - |
-|  9    | Tue, Apr 21 | - | - | [HW 4 Reactive Store] |
-| 10    | Thr, Apr 23 | - | [HW 5 Plugin Lib] | - |
+|  9    | Tue, Apr 21 | - | - |  |
+| 10    | Thr, Apr 23 | - |  | - |
 |  -    | **Week 6**  | - | - | - |
-| 11    | Tue, Apr 28 | - | - | [HW 5 Plugin Lib] |
-| 12    | Thr, Apr 30 | - | [HW 6 Final Project] | - |
+| 11    | Tue, Apr 28 | - | - |  |
+| 12    | Thr, Apr 30 | - |  | - |
 |  -    | **Week 7**  | - | - | - |
 | 13    | Tue, May  5 | - | - | - |
 | 14    | Thr, May  7 | - | - | - |
 |  -    | **Week 8**  | - | - | - |
-| 15    | Tue, May 12 | - | - | [HW 6 Final Project] |
+| 15    | Tue, May 12 | - | - |  |
 
 
 [HW 1 Utility Lib]: ./hw-1.md
-[HW 2 Validator Lib]: ./hw-2.md
-[HW 3 Event Emitter]: ./hw-3.md
-[HW 4 Reactive Store]: ./hw-4.md
-[HW 5 Plugin Lib]: ./hw-5.md
-[HW 6 Final Project]: ./hw-6.md
 
-[Lab 1]: ./lab-1.md
+[PostKit Project Spec]: ./PostKit.md
+[PostKit Libs Spec]: ./PostKit-libs.md
+
+[PostKit Week 1]: ./PostKit-week-1.md
+[PostKit Week 2]: ./PostKit-week-2.md
+[PostKit Week 3]: ./PostKit-week-3.md
+[PostKit Week 4]: ./PostKit-week-4.md
 
 [Lesson 1]: ./lesson-1.md
 [Lesson 2]: ./lesson-2.md

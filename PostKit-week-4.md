@@ -150,3 +150,10 @@ You are learning how to:
 > build a complete application using code written by others.
 
 Focus on making everything work together.
+
+---
+
+## Resources 
+
+- [PostKit Libs Spec](./PostKit-libs.md)
+- [PostKit Project Spec](./PostKit.md)

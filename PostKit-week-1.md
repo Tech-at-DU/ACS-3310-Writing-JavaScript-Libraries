@@ -191,3 +191,10 @@ It starts with a clear API.
 This week, focus on designing something that is:
 
 > easy to understand, easy to use, and ready to build next week.
+
+---
+
+## Resources 
+
+- [PostKit Libs Spec](./PostKit-libs.md)
+- [PostKit Project Spec](./PostKit.md)

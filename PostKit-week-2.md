@@ -170,3 +170,10 @@ This week is about turning your design into **working, tested code**.
 Focus on:
 
 > correctness, clarity, and confidence in your implementation.
+
+---
+
+## Resources 
+
+- [PostKit Libs Spec](./PostKit-libs.md)
+- [PostKit Project Spec](./PostKit.md)

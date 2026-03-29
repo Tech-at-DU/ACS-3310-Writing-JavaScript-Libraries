@@ -202,3 +202,10 @@ A published package is only useful if others can use it easily.
 Focus on:
 
 > reliability, clarity, and real-world usability.
+
+---
+
+## Resources 
+
+- [PostKit Libs Spec](./PostKit-libs.md)
+- [PostKit Project Spec](./PostKit.md)
