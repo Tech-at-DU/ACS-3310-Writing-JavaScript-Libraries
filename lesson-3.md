@@ -1,4 +1,4 @@
-# Lesson 3 — Testing JavaScript Libraries
+# Lesson 3 — Testing JavaScript Libraries (2:45 Session)
 
 ## Overview
 
@@ -6,7 +6,7 @@ In previous lessons you designed library APIs and used TypeScript to describe fu
 
 In this lesson you will learn how to **verify that your code actually works** using tests.
 
-You have already written functions in Homework 1. Now we will learn how to **prove those functions behave correctly**.
+You will write tests, run them, and use them to prove whether code is correct.
 
 ---
 
@@ -14,65 +14,81 @@ You have already written functions in Homework 1. Now we will learn how to **pro
 
 By the end of this lesson you should be able to:
 
-* Explain why **automated tests** are important for libraries
-* Write **unit tests** using Vitest
-* Use tests to detect bugs
-* Understand what kinds of situations tests should cover
+- Explain why automated tests are important
+- Write unit tests using Vitest
+- Use tests to prove bugs exist
+- Identify normal cases, edge cases, and invalid inputs
 
 ---
 
-# Warmup — The Leftpad Incident
+# ⏱️ Part 1 — Warmup: Unexpected Behavior (15 min)
 
-In 2016 a very small npm package called **left-pad** was removed from npm. The package only contained a few lines of code used to pad strings.
+## Background — Floating Point Surprise
+
+In JavaScript, the following expression does NOT behave as many people expect:
 
 ```js
-leftPad("cat", 5, " ")
-// "  cat"
+0.1 + 0.2 === 0.3
+// false
 ```
 
-Even though the library was tiny, it was used by **thousands of other packages**. When it was removed, many projects stopped working.
+Instead:
 
-Developers around the world saw errors when running:
-
+```js
+0.1 + 0.2
+// 0.30000000000000004
 ```
-npm install
-```
 
-### Important Idea
+This happens because of how numbers are represented internally.
 
-Testing would **not have prevented this problem**. The issue was not a bug—it was that the package disappeared.
-
-However, this event shows:
-
-* how many systems depend on small libraries
-* how fragile the ecosystem can be
-* why reliability matters
+Key idea: even simple-looking code can behave unexpectedly.
 
 ---
 
-# Why Testing Matters
+## Task (Pairs — 5 min)
 
-Libraries are used by many developers. If a function behaves incorrectly, it can break many applications.
+Work with a partner.
 
-You wrote functions like `chunk`, `unique`, or `sum`.
+Discuss:
 
-If one of those functions is wrong, every program using it is also wrong.
-
-Tests help you:
-
-* detect bugs early
-* confirm behavior is correct
-* safely refactor code later
+- Why might this result be surprising?
+- What assumption is being violated?
 
 ---
 
-# What Is a Unit Test?
+## Task (Pairs — 5 min)
 
-A **unit test** checks that a small piece of code works correctly.
+Write your answers:
 
-Most often, the unit is a function.
+- What test would you write for this behavior?
+- What result would you expect that test to check?
 
-Example:
+Be ready to share.
+
+---
+
+# ⏱️ Part 2 — What Is a Test? (20 min)
+
+## Example — What a Test Looks Like
+
+A unit test checks that a function returns the expected result.
+
+```ts
+test('multiplies two numbers', () => {
+  expect(multiply(2, 3)).toBe(6)
+})
+```
+
+Focus on this idea:
+
+- We call a function
+- We check that the result matches what we expect
+
+---
+
+## Quick Activity (Pairs — 5 min)
+
+Given this function:
 
 ```ts
 function add(a: number, b: number): number {
@@ -80,31 +96,81 @@ function add(a: number, b: number): number {
 }
 ```
 
-Test:
+Write ONE test for this function using the pattern above.
+
+---
+
+## Breakdown of the Example
 
 ```ts
-test('adds two numbers', () => {
-  expect(add(2, 3)).toBe(5)
+test('multiplies two numbers', () => {
+  expect(multiply(2, 3)).toBe(6)
 })
 ```
 
 ---
 
-# How Tests Pass and Fail
+## Test Pattern
 
-A test **passes** when no errors are thrown.
+Most tests follow this structure:
 
-A test **fails** when an expectation is not met.
+1. Arrange — prepare inputs
+2. Act — call the function
+3. Assert — check the result
+
+```ts
+test('adds numbers', () => {
+  const a = 2
+  const b = 3
+
+  const result = add(a, b)
+
+  expect(result).toBe(5)
+})
+```
+
+---
+
+# ⏱️ Part 3 — How Tests Pass and Fail (15 min)
+
+## Task (Pairs — 5 min)
+
+Discuss and write:
+
+- When does a test pass?
+- When does a test fail?
+
+<details>
+<summary>Answer (reveal after discussion)</summary>
+
+- A test passes when no error is thrown
+- A test fails when an error is thrown
+
+</details>
+
+---
+
+## Key Idea
+
+- A test passes when **no errors are thrown**
+- A test fails when an **error is thrown**
+
+---
+
+## How `expect()` Works
 
 ```ts
 expect(add(2, 3)).toBe(5)
 ```
 
-If the result is not `5`, an error is thrown and the test fails.
+- If correct → nothing happens → test passes
+- If incorrect → `expect()` throws an error → test fails
 
-### Important
+---
 
-A test with **no expectations** will always pass.
+## Quick Check (2 min)
+
+Will this test pass or fail?
 
 ```ts
 test('empty', () => {
@@ -112,74 +178,127 @@ test('empty', () => {
 })
 ```
 
-Good tests must clearly define expected behavior.
+Type your answer in chat:
+
+- `pass` or `fail`
+- one short reason (why?)
 
 ---
 
-# What Should We Test?
+<details>
+<summary>Answer (reveal after discussion)</summary>
 
-When testing a function, we usually test:
+This test will **pass** because **no error is ever thrown**.
 
-### 1. Normal behavior
+A test must include an `expect()` (or something that can fail) to be useful.
 
-Typical inputs the function is expected to handle.
+</details>
 
-### 2. Edge cases
+---
 
-Edge cases are boundary or unusual inputs where bugs often appear.
+# ⏱️ Part 4 — What Should We Test? (25 min)
 
-Examples:
+## Types of Tests
 
-* empty arrays
-* very small values
-* values at boundaries
+1. Normal cases
+2. Edge cases
+3. Invalid inputs
+
+Normal cases:
+- Typical, expected inputs
+- The function behaves the way it is usually used
+- Example: sum([1, 2, 3])
+
+Edge cases:
+- Boundary or unusual inputs
+- Often involve empty values, minimum/maximum values, or limits
+- Example: sum([])
+
+Invalid inputs:
+- Inputs that the function is not designed to handle
+- May cause errors or require special handling
+- Example: sum(null as any), sum("hello" as any)
+
+---
+
+## Activity (Pairs — 10 min)
+
+Given:
 
 ```ts
-chunk([], 2)
-chunk([1], 2)
+function sum(nums: number[]): number {
+  return nums.reduce((acc, n) => acc + n, 0)
+}
 ```
 
-### 3. Incorrect inputs (when relevant)
+Write:
 
-These test how the function behaves with invalid data.
+- 1 normal test
+- 1 edge case
+- 1 invalid input test
 
-Examples:
+Write your tests in code.
 
-* wrong types
-* null or undefined
-
----
-
-# Introducing Vitest
-
-You have already used Vitest in earlier labs.
-
-Vitest provides:
-
-* `test()` — defines a test
-* `expect()` — checks results
-
-Example:
+<details>
+<summary>Example Tests (reveal after discussion)</summary>
 
 ```ts
-test('chunk splits arrays', () => {
-  expect(chunk([1,2,3,4], 2)).toEqual([[1,2],[3,4]])
-})
+// normal case
+expect(sum([1, 2, 3])).toBe(6)
+
+// edge case
+expect(sum([])).toBe(0)
+
+// invalid input (example behavior)
+expect(sum([undefined as any])).toBeNaN()
 ```
 
-Run tests with:
-
-```
-npm test
-```
+</details>
 
 ---
 
-# Active Learning — Prove the Bug Exists
+# Common Assertions (Vitest)
 
-Work in pairs. **Do not use AI** to fix the function. *Focus on writing tests that describe expected behavior*.
+You will see different assertion methods used in tests. Here are the most common ones:
 
-Consider the following function:
+```ts
+// exact equality (numbers, strings, booleans)
+expect(2 + 2).toBe(4)
+
+// deep equality (arrays, objects)
+expect([1, 2]).toEqual([1, 2])
+
+// NaN check
+expect(Number('hello')).toBeNaN()
+
+// approximate equality (floating point)
+expect(0.1 + 0.2).toBeCloseTo(0.3)
+
+// throws error
+expect(() => doSomething()).toThrow()
+```
+
+## Quick Notes
+
+- Use `.toBe()` for simple values
+- Use `.toEqual()` for arrays and objects
+- Use `.toBeNaN()` when the result is not a number
+- Use `.toBeCloseTo()` for floating point math
+- Use `.toThrow()` when testing errors
+
+---
+
+# ⏱️ Part 5 — Prove the Bug Exists (40 min)
+
+Work in pairs.
+
+Do NOT fix the function.
+
+Your job is to write tests that prove something is wrong.
+
+---
+
+## Problem 1
 
 ```ts
 function sum(nums: number[]): number {
@@ -187,34 +306,23 @@ function sum(nums: number[]): number {
 }
 ```
 
-## Your Task
+### Task (Pairs — 10 min)
 
-1. Do NOT change the function
-2. Write a test that proves something is wrong
-3. Run the test
-4. Observe the result
+- Write at least 2 tests that prove this function is incorrect
+- Run your tests
 
-## Questions
-
-* What should the function return?
-* What input reveals the problem?
-
-Example idea:
+<details>
+<summary>Example Test (reveal after discussion)</summary>
 
 ```ts
-expect(sum([1,2,3])).toBe(6)
+expect(sum([1, 2, 3])).toBe(6) // will fail
 ```
 
-## Discussion
+</details>
 
-You did not "find" the bug.
-
-You **proved the bug exists** by defining expected behavior.
-
+---
 
 ## Problem 2
-
-Consider the following function:
 
 ```ts
 function isEven(n: number): boolean {
@@ -222,18 +330,24 @@ function isEven(n: number): boolean {
 }
 ```
 
-## Your Task
-	1.	Write a test that proves this function behaves incorrectly
-	2.	Think about both even and odd numbers
-	3.	Run your test and observe the result
+### Task (Pairs — 10 min)
 
-## Questions
-	•	What should isEven(4) return?
-	•	What should isEven(3) return?
+- Write at least 2 tests (even and odd)
+- Run your tests
+
+<details>
+<summary>Example Tests (reveal after discussion)</summary>
+
+```ts
+expect(isEven(2)).toBe(true)  // fails
+expect(isEven(3)).toBe(false) // fails
+```
+
+</details>
+
+---
 
 ## Problem 3
-
-Consider the following function:
 
 ```ts
 function first<T>(arr: T[]): T {
@@ -241,23 +355,35 @@ function first<T>(arr: T[]): T {
 }
 ```
 
-## Your Task
-	1.	Write a test that reveals the issue
-	2.	Consider arrays of different sizes
+### Task (Pairs — 10 min)
 
-## Questions
-	•	What should happen with a single-element array?
-	•	What should happen with a larger array?
+- Write tests for different array sizes
+- Include an edge case
 
-You did not “find” the bug.
+<details>
+<summary>Example Tests (reveal after discussion)</summary>
 
-You proved the bug exists by *defining expected behavior*.
+```ts
+expect(first([1, 2, 3])).toBe(1) // fails
+expect(first(["a", "b"])) .toBe("a") // fails
+```
+
+</details>
 
 ---
 
-# Active Learning — Define Behavior First
+## Reflection (Pairs — 5 min)
 
-Consider this function:
+Discuss:
+
+- What inputs revealed each bug?
+- How did your test prove it?
+
+---
+
+# ⏱️ Part 6 — Define Behavior First (20 min)
+
+## Activity (Pairs — 10 min)
 
 ```ts
 function average(nums: number[]): number {
@@ -265,46 +391,115 @@ function average(nums: number[]): number {
 }
 ```
 
-## In pairs:
+Write tests for:
 
-1. What should happen if the array is empty?
-2. Write a test for that case
+- normal case
+- edge case (empty array)
 
-There may not be one correct answer.
+<details>
+<summary>Example Tests (reveal after discussion)</summary>
 
-This is a design decision.
+```ts
+// normal case
+expect(average([2, 4, 6])).toBe(4)
+
+// edge case (depends on design)
+expect(average([])).toBeNaN()
+```
+
+</details>
+
+---
+
+## Discussion (Pairs — 5 min)
+
+- What should happen for an empty array?
+- Should it return 0, NaN, or throw an error?
+
+---
+
+# ⏱️ Part 7 — Build a Test Suite (30 min)
+
+## Activity (Pairs — 20 min)
+
+Write 3–5 tests for:
+
+```ts
+function multiply(nums: number[]): number
+```
+
+You must include:
+
+- 2 normal tests
+- 1 edge case
+- 1 invalid input
+
+<details>
+<summary>Example Test Set (reveal after discussion)</summary>
+
+```ts
+// normal
+expect(multiply([2, 3])).toBe(6)
+expect(multiply([1, 2, 3, 4])).toBe(24)
+
+// edge
+expect(multiply([])).toBe(1)
+
+// invalid
+// expect(() => multiply(null as any)).toThrow()
+```
+
+</details>
+
+---
+
+## Compare (Pairs — 10 min)
+
+Join another group.
+
+- Compare your test sets
+- Which tests are clearer?
+- Which cover more cases?
+
+---
+
+# ⏱️ Part 8 — Lab / Practice (20 min)
+
+Open your lab repository.
+
+1. Run:
+
+```bash
+npm test
+```
+
+2. Add at least TWO new tests:
+- one edge case
+- one invalid input
+
+3. Run tests again
+
+If anything fails:
+👉 Ask for help immediately
 
 ---
 
 # Preparing for Homework 2 — Validator Library
 
-Your next assignment is to build a **Validator Library**.
+For each function you write, you should include:
 
-Testing will be a required part of this assignment.
-
-For each validator you should test:
-
-* valid inputs
-* invalid inputs
-* edge cases
-
-Example:
-
-```ts
-isEmail("test@example.com") // true
-isEmail("invalid")          // false
-```
-
-You should write tests **before or alongside your implementation**.
+- 2 normal tests
+- 1 edge case
+- 1 invalid input test
 
 ---
 
 # Reflection
 
-Answer the following questions:
+Write answers:
 
-1. How do tests help you detect bugs?
+1. How do tests help detect bugs?
 2. What is an edge case?
-3. What did you learn from writing a failing test?
+3. What makes a test useful?
 
-Be prepared to discuss your answers.
+Be ready to discuss.

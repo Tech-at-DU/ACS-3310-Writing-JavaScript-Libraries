@@ -24,7 +24,7 @@ Create a small **utility library** that exports at least **5 reusable functions*
 
 Your library should contain general-purpose functions similar to those found in libraries like lodash or underscore.
 
-Examples of acceptable functions include:
+You must implement the following functions:
 
 - `chunk(array, size)`
 - `groupBy(array, keyFn)`
