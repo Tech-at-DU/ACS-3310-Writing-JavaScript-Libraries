@@ -174,7 +174,8 @@ Will this test pass or fail?
 
 ```ts
 test('empty', () => {
-  const x = 2 + 2
+  const arr = []
+  arr[1]
 })
 ```
 
@@ -207,27 +208,33 @@ A test must include an `expect()` (or something that can fail) to be useful.
 Normal cases:
 - Typical, expected inputs
 - The function behaves the way it is usually used
-- Example: sum([1, 2, 3])
+- Example: `sum([1, 2, 3])`
 
 Edge cases:
 - Boundary or unusual inputs
 - Often involve empty values, minimum/maximum values, or limits
-- Example: sum([])
+- Example: `sum([])`
 
 Invalid inputs:
 - Inputs that the function is not designed to handle
 - May cause errors or require special handling
-- Example: sum(null as any), sum("hello" as any)
+- Example: `sum(null as any)`, `sum("hello" as any)`
 
 ---
 
 ## Activity (Pairs — 10 min)
 
-Given:
+Work with a partner.
+
+You will write test ideas for **two different functions**.
+
+### Function A
+
+Given this function:
 
 ```ts
-function sum(nums: number[]): number {
-  return nums.reduce((acc, n) => acc + n, 0)
+function multiply(nums: number[]): number {
+  return nums.reduce((acc, n) => acc * n, 1)
 }
 ```
 
@@ -239,18 +246,42 @@ Write:
 
 Write your tests in code.
 
+Be ready to explain why each test belongs in its category.
+
+#### Function B
+
+```ts
+function formatName(person: { first: string; last: string; middle?: string }): string {
+  return person.middle
+    ? `${person.first} ${person.middle} ${person.last}`
+    : `${person.first} ${person.last}`
+}
+```
+
+For formatName, write:
+  - 1 normal test
+  - 1 edge case
+  - 1 invalid input test
+
+Write your tests in code.
+
+Be ready to explain:
+  - why each test belongs in its category
+  - how the categories change depending on the function
+
 <details>
 <summary>Example Tests (reveal after discussion)</summary>
 
 ```ts
-// normal case
-expect(sum([1, 2, 3])).toBe(6)
+// Function A: multiply
+expect(multiply([2, 3])).toBe(6)
+expect(multiply([])).toBe(1)
+expect(multiply([undefined as any])).toBeNaN()
 
-// edge case
-expect(sum([])).toBe(0)
-
-// invalid input (example behavior)
-expect(sum([undefined as any])).toBeNaN()
+// Function B: formatName
+expect(formatName({ first: 'Ada', last: 'Lovelace' })).toBe('Ada Lovelace')
+expect(formatName({ first: 'Ada', middle: 'Byron', last: 'Lovelace' })).toBe('Ada Byron Lovelace')
+expect(() => formatName(null as any)).toThrow()
 ```
 
 </details>
@@ -365,7 +396,7 @@ function first<T>(arr: T[]): T {
 
 ```ts
 expect(first([1, 2, 3])).toBe(1) // fails
-expect(first(["a", "b"])) .toBe("a") // fails
+expect(first(["a", "b"])).toBe("a") // fails
 ```
 
 </details>
