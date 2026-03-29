@@ -1,5 +1,3 @@
-
-
 # Lesson 4 — Structuring a JavaScript Library
 
 ## Overview

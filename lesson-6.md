@@ -1,5 +1,3 @@
-
-
 # Lesson 6 — Building and Distributing a Library
 
 ## Overview

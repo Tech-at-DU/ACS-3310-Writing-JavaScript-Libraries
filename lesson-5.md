@@ -1,6 +1,3 @@
-
-
-
 # Lesson 5 — The npm Ecosystem and `package.json`
 
 ## Overview
