@@ -128,7 +128,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 4 — Tag Utility Library (Ca'Sandra)[https://github.com/CaSandraSmith/tag-utility-lib]
+# Package 4 — Tag Utility Library [Ca'Sandra](https://github.com/CaSandraSmith/tag-utility-lib)
 
 ## Purpose
 Parse, normalize, validate, and clean tag data.
