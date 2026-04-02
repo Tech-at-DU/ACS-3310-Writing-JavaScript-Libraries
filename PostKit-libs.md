@@ -50,7 +50,7 @@ You must use these types if they are specified in the library code you are respo
 
 ---
 
-# Package 1 — Slug Library
+# Package 1 — Slug Library Faith
 
 ## Purpose
 Convert post titles into URL-safe slugs.
@@ -128,7 +128,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 4 — Tag Utility Library
+# Package 4 — Tag Utility Library Ca'Sandra
 
 ## Purpose
 Parse, normalize, validate, and clean tag data.
@@ -190,7 +190,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 6 — Filter / Sort Library
+# Package 6 — Filter / Sort Library Bernadette
 
 ## Purpose
 Filter and sort posts for display.
@@ -221,7 +221,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 7 — Search Library
+# Package 7 — Search Library Jimmy
 
 ## Purpose
 Search post content.
@@ -247,7 +247,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 8 — Date / Display Library
+# Package 8 — Date / Display Library Ivan
 
 ## Purpose
 Format dates and labels for the UI.
