@@ -76,7 +76,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 2 — Excerpt Library
+# Package 2 — Excerpt Library Killian
 
 ## Purpose
 Generate short summaries from post content.
