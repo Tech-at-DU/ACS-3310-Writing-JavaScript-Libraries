@@ -247,7 +247,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 8 — Date / Display Library Ivan
+# Package 8 — Date / Display Library [Ivan](https://github.com/lawrence-ivan-reyes/acs-3310-postkit)
 
 ## Purpose
 Format dates and labels for the UI.
