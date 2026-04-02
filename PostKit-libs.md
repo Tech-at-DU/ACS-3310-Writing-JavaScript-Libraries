@@ -190,7 +190,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 6 — Filter / Sort Library Bernadette
+# Package 6 — Filter / Sort Library [Bernadette](https://github.com/beaquino18/postkit-filter-sort)
 
 ## Purpose
 Filter and sort posts for display.
