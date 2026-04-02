@@ -221,7 +221,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 7 — Search Library Jimmy
+# Package 7 — Search Library [Jimmy](https://github.com/Jimmy-Vu/ACS-3310-Search-Library)
 
 ## Purpose
 Search post content.
