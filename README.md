@@ -45,18 +45,18 @@ Students by the end of the course will be able to ...
 |  6    | Thr, Apr  9 | [Lesson 5] | - | - |
 |  -    | **Week 4**  | - | - | - |
 |  7    | Tue, Apr 14 | [Lesson 5] | [PostKit Week 2] |  |
-|  8    | Thr, Apr 16 | - |  | - |
+|  8    | Thr, Apr 16 | - | - | - |
 |  -    | **Week 5**  | - | - | - |
 |  9    | Tue, Apr 21 | - | [PostKit Week 3] |  |
-| 10    | Thr, Apr 23 | - |  | - |
+| 10    | Thr, Apr 23 | - | - | - |
 |  -    | **Week 6**  | - | - | - |
-| 11    | Tue, Apr 28 | - | - |  |
-| 12    | Thr, Apr 30 | - |  | - |
+| 11    | Tue, Apr 28 | - | - | - |
+| 12    | Thr, Apr 30 | - | - | - |
 |  -    | **Week 7**  | - | - | - |
 | 13    | Tue, May  5 | - | - | - |
 | 14    | Thr, May  7 | - | - | - |
 |  -    | **Week 8**  | - | - | - |
-| 15    | Tue, May 12 | - | - |  |
+| 15    | Tue, May 12 | - | - | - |
 
 [HW 1 Utility Lib]: ./hw-1.md
 

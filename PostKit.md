@@ -187,8 +187,7 @@ Examples:
 ## Technical Requirements
 
 - Use **React + TypeScript**  
-- Use **npm packages from your classmates**  
-- Do not copy code from other packages  
+- Use **npm packages from your classmates**   
 - Do not reimplement library logic  
 
 ---
@@ -200,7 +199,7 @@ Examples:
 - Do NOT modify another student’s package  
 
 If a package has issues:  
-👉 document the problem and work around it carefully  
+👉 document the problem and work around it carefully, report an issue, or make a pull request. 
 
 ---
 
