@@ -159,7 +159,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 5 — Validation Library
+# Package 5 — Validation Library Sunil
 
 ## Purpose
 Validate post data before saving or publishing.
@@ -278,7 +278,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 9 — Storage Library
+# Package 9 — Storage Library David
 
 ## Purpose
 Persist posts locally and support import/export.
@@ -309,7 +309,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 10 — UI Component Library
+# Package 10 — UI Component Library Ashley 
 
 ## Purpose
 Provide reusable UI components for the PostKit app.
