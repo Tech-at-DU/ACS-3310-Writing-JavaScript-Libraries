@@ -102,7 +102,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 3 — Reading Time Library Julia
+# Package 3 — Reading Time Library [Julia](https://github.com/dejmedus/postkit-reading-time)
 
 ## Purpose
 Estimate how long a post takes to read.
