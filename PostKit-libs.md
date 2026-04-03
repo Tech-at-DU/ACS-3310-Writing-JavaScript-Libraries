@@ -50,7 +50,7 @@ You must use these types if they are specified in the library code you are respo
 
 ---
 
-# Package 1 — Slug Library Faith
+# Package 1 — Slug Library [Faith](https://github.com/FaithKauwe/postkit-slug-library)
 
 ## Purpose
 Convert post titles into URL-safe slugs.
