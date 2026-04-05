@@ -6,7 +6,7 @@ In previous lessons you designed library APIs and used TypeScript to describe fu
 
 In this lesson you will learn how to **verify that your code actually works** using tests.
 
-You will write tests, run them, and use them to prove whether code is correct.
+You will write tests, run them, and use them to prove when code is incorrect.
 
 ---
 
@@ -16,7 +16,7 @@ By the end of this lesson you should be able to:
 
 - Explain why automated tests are important
 - Write unit tests using Vitest
-- Use tests to prove bugs exist
+- Use tests to prove implementations do not match their documentation
 - Identify normal cases, edge cases, and invalid inputs
 
 ---
@@ -129,6 +129,18 @@ test('adds numbers', () => {
 })
 ```
 
+## Important Idea
+
+A good test does not just check that code works.
+
+A good test can **prove that code is wrong**.
+
+In this lesson and lab, your goal is to:
+
+- read the documentation
+- write tests for the expected behavior
+- show that the implementation does not match
+
 ---
 
 # ⏱️ Part 3 — How Tests Pass and Fail (15 min)
@@ -191,7 +203,7 @@ Type your answer in chat:
 
 This test will **pass** because **no error is ever thrown**.
 
-A test must include an `expect()` (or something that can fail) to be useful.
+A test must include an `expect()` (or something that can fail/throw error) to be useful.
 
 </details>
 
@@ -323,7 +335,11 @@ expect(() => doSomething()).toThrow()
 
 Work in pairs.
 
-Do NOT fix the function.
+Do NOT fix the function yet.
+
+Your goal is to write tests based on the *intended behavior*, not the current implementation.
+
+If your tests do not fail, they are not useful.
 
 Your job is to write tests that prove something is wrong.
 
@@ -449,48 +465,70 @@ expect(average([])).toBeNaN()
 
 ---
 
-# ⏱️ Part 7 — Build a Test Suite (30 min)
+# ⏱️ Part 7 — Regex Primer (20 min)
 
-## Activity (Pairs — 20 min)
+In the lab, many of the functions work with strings. Regular expressions (regex) are a powerful tool for working with text.
 
-Write 3–5 tests for:
+You do NOT need to master regex today — just understand the basics.
 
-```ts
-function multiply(nums: number[]): number
-```
+## What is Regex?
 
-You must include:
-
-- 2 normal tests
-- 1 edge case
-- 1 invalid input
-
-<details>
-<summary>Example Test Set (reveal after discussion)</summary>
+A regex is a pattern used to match text.
 
 ```ts
-// normal
-expect(multiply([2, 3])).toBe(6)
-expect(multiply([1, 2, 3, 4])).toBe(24)
-
-// edge
-expect(multiply([])).toBe(1)
-
-// invalid
-// expect(() => multiply(null as any)).toThrow()
+/hello/
 ```
 
-</details>
+Matches the string "hello".
 
 ---
 
-## Compare (Pairs — 10 min)
+## Common Patterns
 
-Join another group.
+```ts
+/\s/      // whitespace (space, tab, newline)
+/\s+/     // one or more whitespace characters
+/\w/      // word character (letters, numbers, underscore)
+/[^\w\s]/ // anything that is NOT a word or whitespace
+```
 
-- Compare your test sets
-- Which tests are clearer?
-- Which cover more cases?
+---
+
+## Useful String Methods
+
+```ts
+text.replace(/\s+/g, ' ')    // collapse whitespace
+text.replace(/[^\w\s]/g, '') // remove punctuation
+text.split(/\s+/)            // split on any whitespace
+```
+
+---
+
+## Mini Activity (5 min)
+
+Predict the output:
+
+```ts
+"Hello,   world!!!".replace(/[^\w\s]/g, '')
+```
+
+```ts
+"one   two\nthree".split(/\s+/)
+```
+
+Be ready to explain your answers.
+
+---
+
+## Why This Matters
+
+Many bugs in the lab come from:
+
+- incorrect whitespace handling
+- punctuation not being removed
+- splitting strings incorrectly
+
+Regex helps you write correct implementations AND better tests.
 
 ---
 
@@ -504,13 +542,17 @@ Open your lab repository.
 npm test
 ```
 
-2. Add at least TWO new tests:
-- one edge case
-- one invalid input
+2. Notice: all tests currently pass, but they do not test anything useful.
 
-3. Run tests again
+3. Replace placeholder tests with real tests that:
+- reflect the documented behavior
+- fail with the current implementation
 
-If anything fails:
+4. After your tests fail:
+- fix the implementation
+- run tests again until everything passes
+
+If anything fails and you are stuck:
 👉 Ask for help immediately
 
 ---
@@ -519,9 +561,12 @@ If anything fails:
 
 For each function you write, you should include:
 
-- 2 normal tests
-- 1 edge case
-- 1 invalid input test
+- tests that describe expected behavior
+- at least 2 normal tests
+- at least 1 edge case
+- at least 1 invalid input test
+
+Your tests should be strong enough to catch incorrect implementations.
 
 ---
 

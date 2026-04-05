@@ -41,7 +41,7 @@ Students by the end of the course will be able to ...
 |  3    | Tue, Mar 31 | Holiday Cesar Chavez Day | - | - |
 |  4    | Thr, Apr  2 | [PostKit Project Spec] [PostKit Libs Spec] | [PostKit Week 1] | - |
 |  -    | **Week 3**  | - | - | - |
-|  5    | Tue, Apr  7 | - | [PostKit Week 2] |  |
+|  5    | Tue, Apr  7 | [Lesson 3] | [PostKit Week 2] |  |
 |  6    | Thr, Apr  9 | - | - | - |
 |  -    | **Week 4**  | - | - | - |
 |  7    | Tue, Apr 14 | - | [PostKit Week 3] |  |
