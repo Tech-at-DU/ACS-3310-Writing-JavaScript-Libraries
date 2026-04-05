@@ -50,7 +50,7 @@ You must use these types if they are specified in the library code you are respo
 
 ---
 
-# Package 1 — Slug Library
+# Package 1 — Slug Library [Faith](https://github.com/FaithKauwe/postkit-slug-library)
 
 ## Purpose
 Convert post titles into URL-safe slugs.
@@ -76,7 +76,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 2 — Excerpt Library
+# Package 2 — Excerpt Library [Killian](https://github.com/KJSDR/3310-Excerpt-Library)
 
 ## Purpose
 Generate short summaries from post content.
@@ -102,7 +102,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 3 — Reading Time Library
+# Package 3 — Reading Time Library [Julia](https://github.com/dejmedus/postkit-reading-time)
 
 ## Purpose
 Estimate how long a post takes to read.
@@ -128,7 +128,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 4 — Tag Utility Library
+# Package 4 — Tag Utility Library [Ca'Sandra](https://github.com/CaSandraSmith/tag-utility-lib)
 
 ## Purpose
 Parse, normalize, validate, and clean tag data.
@@ -159,7 +159,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 5 — Validation Library
+# Package 5 — Validation Library Sunil
 
 ## Purpose
 Validate post data before saving or publishing.
@@ -190,7 +190,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 6 — Filter / Sort Library
+# Package 6 — Filter / Sort Library [Bernadette](https://github.com/beaquino18/postkit-filter-sort)
 
 ## Purpose
 Filter and sort posts for display.
@@ -221,7 +221,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 7 — Search Library
+# Package 7 — Search Library [Jimmy](https://github.com/Jimmy-Vu/ACS-3310-Search-Library)
 
 ## Purpose
 Search post content.
@@ -247,7 +247,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 8 — Date / Display Library
+# Package 8 — Date / Display Library [Ivan](https://github.com/lawrence-ivan-reyes/acs-3310-postkit)
 
 ## Purpose
 Format dates and labels for the UI.
@@ -278,7 +278,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 9 — Storage Library
+# Package 9 — Storage Library David
 
 ## Purpose
 Persist posts locally and support import/export.
@@ -309,7 +309,7 @@ Your package must include functions that can:
 
 ---
 
-# Package 10 — UI Component Library
+# Package 10 — UI Component Library Ashley 
 
 ## Purpose
 Provide reusable UI components for the PostKit app.
