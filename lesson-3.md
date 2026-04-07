@@ -196,6 +196,8 @@ text.replace(/\s+/g, ' ') // all whitespace
 
 👉 It exists because text processing is everywhere
 
+Take a few minutes and read this guide to regex: https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-regex/
+
 ---
 
 ## Core Idea (5 min)
