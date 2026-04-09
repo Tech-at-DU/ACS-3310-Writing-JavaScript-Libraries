@@ -42,7 +42,7 @@ Students by the end of the course will be able to ...
 |  4    | Thr, Apr  2 | [PostKit Project Spec] [PostKit Libs Spec] | [PostKit Week 1] | - |
 |  -    | **Week 3**  | - | - | - |
 |  5    | Tue, Apr  7 | [Lesson 3] | [PostKit Week 2] |  |
-|  6    | Thr, Apr  9 | [Lesson 4] | - | - |
+|  6    | Thr, Apr  9 | [Lesson 4] - [Lesson 4 HW Structure] | - | - |
 |  -    | **Week 4**  | - | - | - |
 |  7    | Tue, Apr 14 | - | [PostKit Week 3] |  |
 |  8    | Thr, Apr 16 | - | - | - |
@@ -68,10 +68,13 @@ Students by the end of the course will be able to ...
 [PostKit Week 3]: ./PostKit-week-3.md
 [PostKit Week 4]: ./PostKit-week-4.md
 
+
+
 [Lesson 1]: ./lesson-1.md
 [Lesson 2]: ./lesson-2.md
 [Lesson 3]: ./lesson-3.md
 [Lesson 4]: ./lesson-4.md
+[Lesson 4 HW Structure]: ./lesson-4-structure.md
 [Lesson 5]: ./lesson-5.md
 [Lesson 6]: ./lesson-6.md 
 
