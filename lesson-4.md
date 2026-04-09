@@ -1,181 +1,238 @@
-# Lesson 4 — Structuring a JavaScript Library
+# Lesson 4 — Working with Dates in JavaScript (2:45 Session)
 
 ## Overview
 
-So far you have explored:
+Dates show up everywhere in apps: posts, events, logs, deadlines.
 
-- what libraries are
-- how TypeScript improves APIs
-- how to test library functions
-
-In this lesson we will focus on **how libraries are structured**. A clear project structure makes a library easier to understand, maintain, and publish.
-
-You will learn how to organize your code, export a public API, and design a library so that other developers can easily use it.
+In this lesson you will learn how to **work with dates** and how to design **small reusable date utilities**.
 
 ---
 
-# Learning Goals
+## Learning Goals
 
 By the end of this lesson you should be able to:
 
-- Organize code for a small library project
-- Understand the purpose of `src`, `tests`, and `index.ts`
-- Export functions as a **public API**
-- Understand the difference between **internal code** and **public code**
+- Create and parse dates in JavaScript
+- Format dates for display
+- Compare and sort dates
+- Perform basic date arithmetic
+- Recognize common date pitfalls
+- Design reusable date utility functions
 
 ---
 
-# Typical Library Structure
+# ⏱️ Part 1 — Why Dates Matter (15 min)
 
-Most JavaScript libraries follow a structure similar to this:
+## Discussion (Pairs)
 
-```
-my-library/
-  src/
-    chunk.ts
-    groupBy.ts
-    index.ts
-  tests/
-    chunk.test.ts
-    groupBy.test.ts
-  package.json
-  tsconfig.json
-  README.md
-```
+- How would you sort blog posts by date?
+- How would you display "2 days ago"?
+- How would you format this: `2026-04-02T19:52:00Z`?
 
-### What each part does
+## Key Idea
 
-| File/Folder | Purpose |
-|-------------|---------|
-| `src/` | library source code |
-| `tests/` | automated tests |
-| `index.ts` | public API entry point |
-| `package.json` | package configuration |
-| `tsconfig.json` | TypeScript configuration |
-| `README.md` | documentation |
+Dates are:
+- everywhere
+- easy to misuse
+- a great example of a **library problem**
 
 ---
 
-# Public API vs Internal Code
+# ⏱️ Part 2 — Creating Dates (20 min)
 
-A library should clearly define what other developers are allowed to use.
+## Common Ways
 
-The **public API** is the part of the library that users import.
+```js
+const now = new Date()
 
-Example:
+const fromString = new Date('2025-12-25')
 
-```ts
-import { chunk } from 'my-library'
+const fromNumbers = new Date(2025, 11, 25) // Dec (month is 0-indexed!)
+
+const timestamp = Date.now() // number (ms since 1970)
 ```
 
-The `index.ts` file usually defines the public API.
+## Important
 
-Example:
+- Months are **0-indexed** in numeric constructor
+- Strings are usually ISO format
 
-```ts
-export { chunk } from './chunk'
-export { groupBy } from './groupBy'
-```
+## Quick Check
 
-Only exported functions are visible to users of the library.
-
-Internal helper functions should stay private.
+- What is the difference between `Date.now()` and `new Date()`?
+- What month is `11`?
 
 ---
 
-# Designing the Public API
+# ⏱️ Part 3 — Formatting Dates (20 min)
 
-A well-designed library API should be:
+## Built-in Methods
 
-- simple
-- predictable
-- easy to discover
+```js
+const d = new Date()
 
-Example utility library API:
-
-```ts
-import { chunk, unique, partition } from 'array-utils'
+d.toLocaleString()
+d.toDateString()
+d.toISOString()
 ```
 
-Instead of requiring users to import many internal files.
+## More Control
+
+```js
+new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(new Date())
+```
+
+## Design Question
+
+When writing a library function:
+
+- Should you return a `Date`?
+- A formatted string?
+- A number (timestamp)?
+
+👉 Formatting is usually for **display**, not storage.
 
 ---
 
-# Active Learning — Explore a Library Structure
+# ⏱️ Part 4 — Comparing and Sorting Dates (20 min)
 
-Work in pairs.
+## Comparing
 
-Visit the GitHub repository for one of these libraries:
+```js
+const d1 = new Date('2025-01-01')
+const d2 = new Date('2025-12-25')
 
-- nanoid
-- date-fns
-- lodash-es
+console.log(d1 < d2) // true
+```
 
-Look at the project structure.
+## Sorting
 
-Answer the following questions:
+```js
+dates.sort((a, b) => a - b)
+```
 
-1. Where is the source code located?
-2. Where are the tests located?
-3. How does the library export its public API?
-4. How easy is the project structure to understand?
+## Example — Posts
 
-Discuss your findings with your partner.
+```js
+posts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+```
+
+## Activity (Pairs)
+
+Write a sort function that sorts posts **newest first**.
 
 ---
 
-# Active Learning — Design Your Library Structure
+# ⏱️ Part 5 — Date Arithmetic (20 min)
 
-Now think about your **Homework 1 utility library**.
+## Difference Between Dates
 
-Design a project structure for it.
+```js
+const d1 = new Date('2025-01-01')
+const d2 = new Date('2025-01-10')
 
-Example starting point:
-
-```
-array-utils/
-  src/
-    chunk.ts
-    partition.ts
-    unique.ts
-    index.ts
-  tests/
+const diffMs = d2 - d1
 ```
 
-Questions to discuss:
+## Convert to Days
 
-1. What files will you create in `src/`?
-2. How will you organize your tests?
-3. What should your `index.ts` export?
+```js
+const days = diffMs / (1000 * 60 * 60 * 24)
+```
 
-Write your proposed structure.
+## Discussion
+
+- Should you round, floor, or ceil?
+- What counts as "1 day ago"?
+
+👉 These are **design decisions** in a library
 
 ---
 
-# Preparing for Homework 1
+# ⏱️ Part 6 — Common Pitfalls (15 min)
 
-Before implementing your utility library, make sure you have:
+## Watch Out For
 
-- created a clear **project structure**
-- planned which files will contain each function
-- decided what your **public API** will look like
+- Months are 0-indexed (numeric constructor)
+- Invalid dates (`new Date('bad')`)
+- Time zones (local vs UTC)
+- String parsing inconsistencies
 
-Example API:
+## Example
 
-```ts
-import { chunk, groupBy, partition } from 'my-utils'
+```js
+new Date('2025-12-25')
+new Date(2025, 11, 25)
 ```
 
-Designing the structure first makes implementation much easier.
+👉 These may not behave exactly the same
 
 ---
 
-# Reflection
+# ⏱️ Part 7 — Think Like a Library Author (20 min)
 
-Answer the following questions:
+## Activity (Pairs)
 
-1. Why is it important to separate public API from internal code?
-2. What makes a library structure easy to understand?
-3. How will you organize the files in your utility library?
+Design 2–3 date utility functions.
 
-Be prepared to discuss your answers in class.
+Examples:
+
+- `formatDate(dateString)`
+- `daysBetween(a, b)`
+- `isBefore(a, b)`
+- `relativeDate(dateString)`
+
+For each function define:
+
+- Input
+- Output
+- Behavior
+- Edge cases
+
+👉 Be precise. Ambiguous behavior leads to bugs.
+
+---
+
+# ⏱️ Part 8 — Lab Setup (15 min)
+
+You will complete a GitHub Classroom assignment with date problems.
+
+https://classroom.github.com/a/hgeSh6Hb
+
+## Goals
+
+- Write small reusable date functions
+- Practice working with Date objects
+- Apply API design thinking
+
+## Example Problems
+
+- Format a date
+- Compare two dates
+- Calculate days between dates
+- Sort posts by date
+- Generate "x days ago" labels
+
+---
+
+# Reflection (10 min)
+
+Write answers:
+
+1. What makes working with dates difficult?
+2. What is one common pitfall?
+3. What should a good date utility function define clearly?
+
+---
+
+## Final Thought
+
+Dates are not just values.
+
+They are **behavior + assumptions**.
+
+Good libraries make those assumptions explicit.
