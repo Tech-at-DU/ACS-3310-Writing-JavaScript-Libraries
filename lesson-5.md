@@ -59,7 +59,7 @@ Ask yourself:
 3. Are edge cases documented?
 4. Is there anything a classmate might misuse because it is unclear?
 
-Also check your source code for **JSDoc comments**. Every exported function should have one.
+Also check your source code for **[JSDoc comments](https://jsdoc.app)**. Every exported function should have one.
 
 JSDoc comments appear as tooltips in the editor when another developer calls your function. They are the difference between documentation someone has to look up and documentation that appears as they type.
 
