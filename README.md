@@ -44,8 +44,8 @@ Students by the end of the course will be able to ...
 |  5    | Tue, Apr  7 | [Lesson 3] | [PostKit Week 2] |  |
 |  6    | Thr, Apr  9 | [Lesson 4] - [Lesson 4 HW Structure] | - | - |
 |  -    | **Week 4**  | - | - | - |
-|  7    | Tue, Apr 14 | [Lesson 5] - [AI Use Policy] | [PostKit Week 3] |  |
-|  8    | Thr, Apr 16 | [Lesson 6] | - | - |
+|  7    | Tue, Apr 14 | [Lesson 5] | [PostKit Week 3] |  |
+|  8    | Thr, Apr 16 | [Lesson 6] - [AI Use Policy] | - | - |
 |  -    | **Week 5**  | - | - | - |
 |  9    | Tue, Apr 21 | - | - | - |
 | 10    | Thr, Apr 23 | - | - | - |
