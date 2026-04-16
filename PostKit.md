@@ -1,259 +1,219 @@
-# PostKit
+# PostKit — Application Requirements
 
-# PostKit — Final Application Specification
+---
+
+## What Are Requirements?
+
+In professional software development, a **requirements document** describes what a system must do from the perspective of the people who will use it. It defines the problem, not the solution.
+
+Requirements are different from a technical spec:
+
+| Requirements | Technical Spec |
+|---|---|
+| Describes what users need | Describes how to build it |
+| Written before implementation | Written during or after design |
+| Guides decisions | Prescribes decisions |
+| Stable across implementations | Changes with technology choices |
+
+A product manager, designer, or client typically writes requirements. Engineers read them and make implementation decisions. Those decisions — which libraries to use, how to structure components, how to handle edge cases — are the engineer's job.
+
+In a professional project, you might receive requirements in different forms:
+
+- A written document like this one
+- A set of user stories in a project management tool (Linear, Jira, GitHub Issues)
+- Acceptance criteria attached to design mockups
+- A conversation with a stakeholder
+
+Regardless of form, your job is the same: understand what the user needs, then make good decisions about how to build it.
+
+**In this project**, you are the engineer. These requirements describe what PostKit users need. Your implementation decisions — including which class libraries to use and how to compose them — are yours to make.
+
+---
 
 ## Overview
 
-In this project, you will build a complete application called **PostKit**.
+PostKit is a lightweight content publishing tool for writers who manage multiple posts in different states of completion.
 
-PostKit is a lightweight **content publishing app** that allows users to:
-
-- create and edit posts  
-- organize posts with tags and categories  
-- generate slugs and summaries  
-- search, filter, and sort content  
-- view formatted metadata (dates, reading time, status)  
+Users write posts, organize them, and move them through a workflow from draft to published. They need to find posts quickly, understand their status at a glance, and trust that their work is saved.
 
 ---
 
-## Core Requirement
+## Users
 
-This application **must use the libraries created by your classmates**.
-
-You may NOT reimplement functionality that already exists in a library.
-
-Instead, your job is to:
-
-- install each package from npm  
-- use the exported functions/components  
-- integrate them into a working app  
+PostKit has one type of user: **a writer** who creates, edits, and manages their own posts.
 
 ---
 
-## Shared Data Model
+## Data
 
-All features in PostKit are built around this type:
+PostKit manages **posts**. Each post has:
 
-```ts
-export type PostStatus = 'draft' | 'review' | 'published'
+- a unique identifier
+- a title
+- a body (the written content)
+- an author
+- one or more tags
+- a category
+- a status indicating where it is in the workflow
+- timestamps recording when it was created and last updated
 
-export type Post = {
-  id: string
-  title: string
-  body: string
-  author: string
-  tags: string[]
-  category: string
-  status: PostStatus
-  createdAt: string
-  updatedAt: string
-}
-```
+Posts move through a defined workflow: **draft → review → published**.
 
 ---
 
-## Application Features
+## Requirements
 
-Your PostKit app must include the following features.
-
----
-
-### 1. Post List View
-
-Display a list of posts showing:
-
-- title  
-- status  
-- tags  
-- reading time  
-- created or updated date  
-
-**Must use:**
-- filter/sort library  
-- date formatting library  
-- reading time library  
-- tag utility library  
+Each requirement below describes something the user must be able to do, or something the system must do on the user's behalf.
 
 ---
 
-### 2. Search
+### R1 — Browse Posts
 
-Users must be able to search posts.
+Users need to see all of their posts in one place.
 
-- search by title, body, or tags  
-- results update as user types or on submit  
+For each post in the list, the user must be able to see:
+- the title
+- the current status
+- the tags
+- how long the post will take to read
+- when it was created or last updated
 
-**Must use:**
-- search library  
-
----
-
-### 3. Filter and Sort
-
-Users must be able to:
-
-- filter by status  
-- filter by tag  
-- sort by date or title  
-
-**Must use:**
-- filter/sort library  
+The list must remain useful as the number of posts grows. Users must be able to narrow and reorder it without losing their place.
 
 ---
 
-### 4. Post Editor
+### R2 — Filter Posts
 
-Users must be able to:
+Users need to find posts by status or topic.
 
-- create a new post  
-- edit an existing post  
-- update title, body, tags, category, and status  
+The system must allow users to:
+- show only posts with a specific status
+- show only posts containing a specific tag
 
-**Must use:**
-- validation library  
-- tag utility library  
+Filters should be combinable where reasonable.
 
 ---
 
-### 5. Post Preview / Summary
+### R3 — Sort Posts
 
-Display a preview of a post showing:
+Users need to control the order posts appear in.
 
-- slug  
-- excerpt  
-- reading time  
-- formatted date  
-- status label  
-
-**Must use:**
-- slug library  
-- excerpt library  
-- reading time library  
-- date formatting library  
+The system must allow users to sort posts by:
+- date (newest first or oldest first)
+- title (A–Z or Z–A)
 
 ---
 
-### 6. Slug Generation
+### R4 — Search Posts
 
-Each post must have a slug derived from its title.
+Users need to find a specific post quickly when they remember something about its content.
 
-- slugs must be URL-safe  
-- slugs must be unique  
-
-**Must use:**
-- slug library  
+The system must allow users to search across post titles, body content, and tags. Results should reflect the current search as the user types or after they submit.
 
 ---
 
-### 7. Persistence
+### R5 — Create and Edit Posts
 
-Posts must be saved and loaded locally.
+Users need to write new posts and update existing ones.
 
-- data persists between page reloads  
+The system must allow users to:
+- create a new post
+- edit the title, body, tags, category, and status of any existing post
+- receive feedback when required fields are missing or invalid
 
-**Must use:**
-- storage library  
-
----
-
-### 8. Import / Export (Optional but recommended)
-
-Users can:
-
-- export posts as JSON  
-- import posts from JSON  
-
-**Must use:**
-- storage library  
+The system should prevent saving a post that does not meet minimum validity requirements.
 
 ---
 
-### 9. UI Components
+### R6 — Understand Post URLs
 
-Your app must use shared UI components where provided.
+Users publishing content need each post to have a stable, readable URL identifier.
 
-Examples:
-
-- search input  
-- tag list  
-- status badge  
-- post card  
-
-**Must use:**
-- component library (if assigned)
+The system must generate a URL-safe identifier (slug) from the post title. Slugs must be unique — no two posts can share the same slug.
 
 ---
 
-## Technical Requirements
+### R7 — Preview Post Metadata
 
-- Use **React + TypeScript**  
-- Use **npm packages from your classmates**   
-- Do not reimplement library logic  
+Before publishing, users want to see how their post will appear to readers.
 
----
-
-## What You Must Not Do
-
-- Do NOT rewrite library functionality yourself  
-- Do NOT bypass a package because it is inconvenient  
-- Do NOT modify another student’s package  
-
-If a package has issues:  
-👉 document the problem and work around it carefully, report an issue, or make a pull request. 
+The system must show users a preview of:
+- the generated slug
+- a short excerpt from the body
+- the estimated reading time
+- the formatted publish or update date
+- the current status in a readable form
 
 ---
 
-## Minimum Completion Requirements
+### R8 — Save and Restore Work
 
-Your app is complete when:
+Users expect their posts to still be there when they return.
 
-- all major features are implemented  
-- all required libraries are used  
-- the app runs without errors  
-- data persists correctly  
-- search, filter, and sort all work  
+The system must save posts locally so that data is not lost between sessions. Posts must be restored automatically when the user returns to the app.
 
 ---
 
-## Evaluation Criteria
+### R9 — Export and Import Posts (Recommended)
 
-Your project will be evaluated on:
+Users may want to back up their posts or move them between devices.
 
-### 1. Integration
-- did you use all required libraries correctly?
-
-### 2. Functionality
-- does the app behave as expected?
-
-### 3. Code Quality
-- is your code readable and organized?
-
-### 4. Correct Use of APIs
-- did you follow each package’s documented behavior?
-
-### 5. Completeness
-- are all required features implemented?
+The system should allow users to:
+- export all posts as a downloadable file
+- import posts from a previously exported file
 
 ---
 
-## Key Idea
+### R10 — Consistent Visual Language
 
-This project is not about building everything yourself.
-
-It is about:
-
-> using well-designed libraries to build a complete system
+The interface should feel coherent. Similar things should look similar. Status indicators, tag displays, and post cards should be visually consistent across the app.
 
 ---
 
-## Final Thought
+## Technical Constraints
 
-If your app feels difficult to build, that is part of the assignment.
+These constraints are fixed. They are not implementation decisions — they are project requirements.
 
-You are experiencing what real developers face when working with external libraries:
+**You must use React and TypeScript.**
 
-- unclear APIs  
-- edge cases  
-- unexpected behavior  
+**You must use the libraries built by your classmates.** These libraries exist to handle specific responsibilities within PostKit. Reimplementing functionality that a library already provides is not permitted.
 
-Your job is to **make it work anyway**.
+The libraries cover: slug generation, excerpt creation, reading time estimation, tag handling, post validation, filtering and sorting, search, date and status display, local storage, and UI components.
+
+If a library has a bug or gap, document it and work around it. If a library you need was not completed, raise it with the class — the group will decide how to handle it.
+
+**Do not modify another student's library.** Open an issue. Submit a PR only for small, obvious fixes with the author's agreement.
+
+---
+
+## Acceptance Criteria
+
+Your implementation is complete when a user can:
+
+- [ ] See a list of their posts with title, status, tags, reading time, and date
+- [ ] Filter the list by status or tag
+- [ ] Sort the list by date or title
+- [ ] Search posts and get accurate results
+- [ ] Create a new post and see it appear in the list
+- [ ] Edit an existing post and see the changes saved
+- [ ] See validation feedback when required fields are missing
+- [ ] See a slug, excerpt, reading time, and formatted date in the post preview
+- [ ] Close and reopen the browser and find their posts still there
+
+---
+
+## A Note on Implementation Decisions
+
+Requirements describe the *what*. You decide the *how*.
+
+When you sit down to implement a feature, you should be able to answer:
+- What does the user need this to do?
+- Which library handles this responsibility?
+- What does the library's API expect, and what does it return?
+- How does this connect to the rest of the app?
+
+If you are using an AI tool, use it to help answer the *how* — after you have understood the *what*. Describe the requirement you are solving, provide the library documentation, and ask AI to help you implement that specific piece. Then verify it meets the requirement before moving on.
+
+An AI that generates an entire application from a single prompt will produce something that looks like it works and is difficult to understand, modify, or fix. An AI that helps you implement one requirement at a time, guided by your understanding, produces code you can own.
+
+You will be asked to explain and extend your implementation later in the term. Build something you understand.

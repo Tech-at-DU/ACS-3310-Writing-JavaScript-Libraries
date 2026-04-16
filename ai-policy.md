@@ -1,7 +1,7 @@
 # AI Use Policy
 ### ACS 3310 — PostKit Engineering Team
 
-**Version 1.0 | Effective: Week 1**
+**Version 1.1 | Effective: Week 4**
 
 ---
 
@@ -60,6 +60,55 @@ This is not a punishment. It is a practice. Engineers who can articulate what AI
 If you used no AI assistance, write: *"No AI assistance used."*
 
 There is no bonus for not using AI. There is no penalty for using it. The note is required either way.
+
+---
+
+### How to Use AI Well on PostKit
+
+The failure mode is asking AI for a complete solution: pasting the entire spec into a prompt and accepting what comes back. The output will look plausible, will be difficult to understand, and will be brittle when requirements change. You will not be able to explain it, and you will not learn from it.
+
+The effective approach is **requirements-first, one piece at a time**.
+
+Before asking AI to write any code, you should be able to answer these questions yourself:
+
+1. **What does the user need this to do?** (the requirement)
+2. **Which library is responsible for this behavior?** (your decision)
+3. **What does that library's API expect and return?** (read the README)
+4. **How does this fit into the surrounding app?** (your decision)
+
+Once you can answer those, AI becomes genuinely useful — for scaffolding the component, wiring the state, writing the plumbing. Give it your requirement and the library documentation. Ask it to implement that one specific thing.
+
+**A prompt that works:**
+
+```
+I am building a React app called PostKit using TypeScript.
+
+I need to implement the following requirement:
+"Users must be able to filter the post list by status (draft, review, published)."
+
+I am using a library called postkit-filter-sort. Here is its documentation:
+[paste the relevant README section]
+
+Please write a React component that renders a status filter control 
+and filters a list of Post objects using this library.
+```
+
+**A prompt that does not work:**
+
+```
+Here is the PostKit spec. Build me the app.
+```
+
+The difference is not politeness. The difference is that the first prompt contains your thinking. You have understood the requirement, chosen the library, read the docs, and defined the scope. AI is filling in syntax. In the second prompt, AI is doing all the thinking — and it will do it wrong in ways that are hard to detect and harder to fix.
+
+**After AI generates code, your job is not done:**
+
+- Read every line before using it
+- Verify every library call against the actual README
+- Test it against the requirement — does it do what the user needs?
+- Fix what is wrong and document what you changed in your AI use note
+
+The spec will change later in the term. Code you understand can be adapted. Code you accepted without understanding will be difficult to modify correctly.
 
 ---
 
