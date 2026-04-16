@@ -56,6 +56,11 @@ Not all packages were completed. This is a real problem that needs a real soluti
 
 This is also not unusual. In professional projects, dependencies fall through — a vendor goes dark, a package gets abandoned, a team member is unavailable. Work does not stop. The team finds a path forward.
 
+Missing Packages: 
+- Validation Library Sunil
+- UI Component Library Ashley
+-  Storage Library David (Working on it, maybe Friday?)
+
 As a class, identify which packages are missing and discuss the options:
 
 **Option A — Volunteer implementation**
