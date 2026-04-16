@@ -174,6 +174,30 @@ The interface should feel coherent. Similar things should look similar. Status i
 
 These constraints are fixed. They are not implementation decisions — they are project requirements.
 
+### Shared Data Model
+
+All PostKit libraries and the app operate on the same data types. Use these exactly as defined — do not create your own version.
+
+```ts
+export type PostStatus = 'draft' | 'review' | 'published'
+
+export type Post = {
+  id: string
+  title: string
+  body: string
+  author: string
+  tags: string[]
+  category: string
+  status: PostStatus
+  createdAt: string
+  updatedAt: string
+}
+```
+
+Define this once in your app — in a `types.ts` file — and import it everywhere. Any library that accepts or returns a `Post` is using this same shape.
+
+---
+
 **You must use React and TypeScript.**
 
 **You must use the libraries built by your classmates.** These libraries exist to handle specific responsibilities within PostKit. Reimplementing functionality that a library already provides is not permitted.

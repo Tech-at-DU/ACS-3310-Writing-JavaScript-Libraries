@@ -198,7 +198,7 @@ One feature working end to end is better than five features half-built.
 
 **On the shared `Post` type:**
 
-All PostKit libraries that operate on posts use the same `Post` type. Define or import it once, in `types.ts`, and use it everywhere. Do not define your own version.
+The `Post` and `PostStatus` types are defined in [PostKit.md](./PostKit.md) under Technical Constraints. Copy them into `types.ts` in your app and import from there everywhere. Do not define your own version.
 
 **On working around missing packages:**
 

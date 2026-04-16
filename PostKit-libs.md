@@ -18,35 +18,16 @@ However, each package must satisfy the required behaviors described below.
 
 # Shared Types
 
-Libraries that operate on posts should use these shared types.
+The `Post` and `PostStatus` types are defined in the [PostKit Requirements](./PostKit.md) under Technical Constraints. That is the authoritative definition — do not define your own version.
+
+If your library accepts or returns a `Post` object, import and use that type. This ensures all libraries and the app work with the same data shape.
 
 ```ts
-export type PostStatus = 'draft' | 'review' | 'published'
-
-export type Post = {
-  id: string
-  title: string
-  body: string
-  author: string
-  tags: string[]
-  category: string
-  status: PostStatus
-  createdAt: string
-  updatedAt: string
-}
-
-export type PostSummary = {
-  id: string
-  title: string
-  slug: string
-  excerpt: string
-  readingTime: number
-  tags: string[]
-  status: PostStatus
-}
+// In your library
+import type { Post, PostStatus } from './types'
 ```
 
-You must use these types if they are specified in the library code you are responsible for. 
+Your library's `types.ts` (or equivalent) should re-export these so consumers can import them from your package if needed.
 
 ---
 
