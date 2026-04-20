@@ -47,13 +47,13 @@ Students by the end of the course will be able to ...
 |  7    | Tue, Apr 14 | [Lesson 5] | [PostKit Week 3] |  |
 |  8    | Thr, Apr 16 | [Lesson 6] - [AI Use Policy] | - | - |
 |  -    | **Week 5**  | - | - | - |
-|  9    | Tue, Apr 21 | - | - | - |
-| 10    | Thr, Apr 23 | - | - | - |
+|  9    | Tue, Apr 21 | [Lesson 7] | [PostKit Week 4] | - |
+| 10    | Thr, Apr 23 | [Lesson 8] | - | - |
 |  -    | **Week 6**  | - | - | - |
-| 11    | Tue, Apr 28 | - | - | - |
-| 12    | Thr, Apr 30 | - | - | - |
+| 11    | Tue, Apr 28 | [Lesson 9] | - | - |
+| 12    | Thr, Apr 30 | [Lesson 10] | - | - |
 |  -    | **Week 7**  | - | - | - |
-| 13    | Tue, May  5 | - | - | - |
+| 13    | Tue, May  5 | - | [PostKit Spec Change] | - |
 | 14    | Thr, May  7 | - | - | - |
 |  -    | **Week 8**  | - | - | - |
 | 15    | Tue, May 12 | - | - | - |
@@ -78,7 +78,11 @@ Students by the end of the course will be able to ...
 [Lesson 4]: ./lesson-4.md
 [Lesson 4 HW Structure]: ./lesson-4-structure.md
 [Lesson 5]: ./lesson-5.md
-[Lesson 6]: ./lesson-6.md 
+[Lesson 6]: ./lesson-6.md
+[Lesson 7]: ./lesson-7.md
+[Lesson 8]: ./lesson-8.md
+[Lesson 9]: ./lesson-9.md
+[Lesson 10]: ./lesson-10.md
 
 
 ## Course Requirements 
