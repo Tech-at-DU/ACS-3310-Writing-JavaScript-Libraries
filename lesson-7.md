@@ -2,9 +2,9 @@
 
 ## Overview
 
-PostKit is more than a list of components. It is an application with shared data, multiple views, navigation, and persistence. Before writing any feature code, you need to understand the architectural decisions that make all of that possible.
+PostKit is more than a list of components. It is an application with shared data, multiple views, navigation, and persistence. Before writing any feature code, you need to understand hom the requirements define the architectural decisions that make the app possible.
 
-Today's lesson covers three foundational concepts — state management, routing, and styling — and how to use AI effectively as a learning and building tool while you develop PostKit.
+Today's lesson covers three foundational concepts — state management, routing, and styling — and how to use AI effectively as a learning and building tool while you develop PostKit. Its about asking and answering the right questions before any code is written.
 
 **Reference documents:**
 - [PostKit Requirements](./PostKit.md)
@@ -29,7 +29,9 @@ By the end of this lesson you should be able to:
 
 ### Lecture
 
-Before reaching for a library or asking AI for code, think about what PostKit actually needs.
+
+
+Before asking AI for code, think about what PostKit actually needs by understanding the requirements.
 
 Open [PostKit.md](./PostKit.md) and look at the requirements. Now ask: what does the application need to manage?
 
@@ -41,16 +43,16 @@ Open [PostKit.md](./PostKit.md) and look at the requirements. Now ask: what does
 
 Now ask: what breaks if you put all of this into a single React component?
 
-Everything. One component managing all posts, all UI state, all views, all persistence becomes unreadable in hours. You cannot test pieces of it, you cannot reuse anything, and every change risks breaking everything else.
+Everything. One component managing all posts, all UI state, all views, all persistence becomes unreadable. You cannot test pieces of it, you cannot reuse anything, and every change risks breaking everything else.
 
 The solution is to separate concerns deliberately:
 
 | Concern | What handles it |
 |---|---|
 | Post data and operations | A store (state management) |
-| Which view is showing | A router |
+| Which view is shown | A router |
 | UI interaction state | Local component state |
-| Persistence | The storage library + store middleware |
+| Persistence | The storage library + store middleware (this might not be obvious unless you are familiar with options available, it will need research.) |
 | Display logic | Components |
 
 These are not arbitrary conventions. Each one is a boundary — a place where responsibilities change hands. Understanding where the boundaries are before you start building saves significant time.
@@ -79,13 +81,13 @@ You could lift state up to a common parent — `App.tsx` — and pass posts down
 ```
 [Store: posts, filters, search]
         ↑ subscribe / dispatch
-   ┌────┴────┐
+   ┌────┴────────┐
 PostListView  PostDetailView
 ```
 
 **Your options:**
 
-**React Context** — built into React, no install required. You wrap your app in a provider and consume values anywhere in the tree. Works well for data that does not change often. Can cause performance issues if overused for frequently-changing data.
+**React Context** — built into React, no install required. You wrap your app in a provider and consume values anywhere in the tree. Works well for data that _does not change often_. Can cause performance issues if overused for frequently-changing data.
 
 ```tsx
 const PostContext = createContext<PostStore | null>(null)
@@ -124,6 +126,8 @@ const posts = usePostStore(s => s.posts)
 
 The choice is yours — but make it deliberately, and understand why.
 
+Knowing your options is only half the problem. Knowing which question to ask is the other half. A conversation with AI or a teammate can surface the right tool quickly — but only if you know what to ask for. Read the requirements: PostKit needs data shared across multiple views, and posts must survive a browser refresh. Those two facts tell you what to look for — a global state solution with persistence support. The tool that fits is a research question. The requirement that defines the need is not.
+
 ---
 
 ## ⏱️ Part 3 — Routing (15 min)
@@ -147,6 +151,8 @@ This breaks immediately when you need:
 - The URL to reflect what is on screen
 
 **Client-side routing** intercepts navigation events and renders the correct component for the current URL — without a full page reload. The URL changes, the browser history updates, the back button works. From the user's perspective it behaves like a normal website. From the developer's perspective it is all still one React app.
+
+Are these features described in the requirements? If so where? Your job is identifying features like this first, then idenrifying the solution. 
 
 **Your options:**
 
@@ -222,18 +228,98 @@ Install: `npm install -D tailwindcss` and follow the Vite setup guide.
 
 ---
 
+### Styling Prompts: Tool vs. Character
+
+Your choice of styling tool — Tailwind, CSS Modules, styled-components — tells AI *how* to write styles. It does not tell AI what the app should feel like. Those are two different things, and both belong in your prompt.
+
+Look at R10:
+
+> The interface should feel coherent. Similar things should look similar. Status indicators, tag displays, and post cards should be visually consistent across the app.
+
+This requirement tells AI almost nothing about aesthetic direction. Coherence is a property of any design. A chaotic app can be coherently chaotic.
+
+What AI needs from you is the *character* of the app — **what it feels like** to use it, **who it is for**, **what it should prioritize**. PostKit is a writing tool. Writers need focus. *That tells you something about what the interface should and should not do.*
+
+**Compare these two prompts:**
+
+```
+Use Tailwind. Implement R10 — consistent visual language.
+```
+
+```
+Use Tailwind. PostKit is a writing tool for people who need to focus.
+The interface should be quiet and uncluttered — high whitespace, muted
+colors, minimal decoration. Nothing should compete with the content.
+Status badges and tags should be subtle, not colorful. Post cards should
+feel like a clean list, not a dashboard.
+```
+
+Both prompts choose Tailwind. The second produces a completely different result — because it gives AI a user and a purpose, not just a tool and a requirement.
+
+**The lesson:** your styling choice sets the implementation. Your description of the user experience sets the direction. AI will optimize toward whatever character you describe. If you describe nothing, it will default to a generic SaaS aesthetic — prominent buttons, card shadows, accent colors — which may have nothing to do with what PostKit should feel like.
+
+Before you write your styling prompt, answer these questions:
+- Who is using PostKit and what are they trying to do?
+- What should the app feel like when it is working well?
+- What should it *not* look like?
+
+Put those answers in your prompt. R10 is the requirement. Your answers are the brief.
+
+---
+
 ## ⏱️ Part 5 — Prompt Writing Best Practices (20 min)
 
 ### Lecture
 
-A good AI prompt is not a question. It is a brief — a structured description of context, constraints, and a specific ask. The more precisely you describe the situation, the more useful the output.
+There are two distinct ways to work with AI on a project like PostKit. Knowing which to use and when is the difference between AI as a thinking partner and AI as a code dispenser.
 
-**The anatomy of an effective prompt:**
+---
+
+### Strategy 1 — The Initialization Conversation
+
+Before writing a single line of code, have a conversation with AI that builds shared context. This is not about generating code. It is about making sure AI understands the project well enough to help you make good decisions.
+
+The sequence that works:
+
+**Step 1 — Describe the app**
+Give AI a short overview of what PostKit is and who it is for. This sets the character of the project before any technical decisions are made.
+
+**Step 2 — Walk through the requirements one by one**
+Share each requirement from [PostKit.md](./PostKit.md) individually. After each one, let AI respond and ask questions. Answer them. This forces both you and AI to think about each requirement in isolation before the whole picture is assembled.
+
+You will be surprised what comes up. AI may ask about things you had not considered — how persistence should work, what happens when a user has no posts, whether search should be case-sensitive. These are real design questions. Answering them now is better than discovering them mid-implementation.
+
+**Step 3 — Share technical constraints**
+After the requirements, provide the constraints: React + TypeScript, Zustand or Context, the PostKit libraries and their APIs.
+
+**Step 4 — Share the acceptance criteria**
+Let AI see what "done" looks like from the user's perspective.
+
+**Step 5 — Ask if AI is ready**
+This is the most important step. Ask:
+
+> "Do you think we are ready to start building this app? Is there any information you might need from me first?"
+
+This inverts the usual dynamic. Instead of you guessing what context AI needs, you let AI tell you. An AI that asks "how do you want to handle posts with duplicate titles?" or "what styling approach do you have in mind?" is surfacing decisions you need to make before coding begins.
+
+Answer every question. Then start building.
+
+**Why this produces better results than jumping straight to implementation:**
+
+AI has now reasoned through the entire project before writing any code. When you ask it to implement a specific feature later, it already knows the data model, the constraints, the libraries, and what "done" looks like. It is far less likely to invent things or make inconsistent choices.
+
+---
+
+### Strategy 2 — The Implementation Prompt
+
+Once context is established, use structured implementation prompts for each feature. This is what you reach for mid-project when you know exactly what you are building.
+
+**The anatomy of an effective implementation prompt:**
 
 ```
 1. CONTEXT      — What are you building? What exists already?
 2. CONSTRAINT   — What technologies, libraries, or patterns must you use?
-3. REQUIREMENT  — What specific thing does the user need? (from PostKit.md)
+3. REQUIREMENT  — What specific user need are you solving? (from PostKit.md)
 4. LIBRARY DOCS — The actual API documentation for any library involved
 5. ASK          — One specific, scoped output request
 6. OUTPUT FORM  — What do you want back? (component, function, explanation)
@@ -254,7 +340,7 @@ I am using a library called postkit-filter-sort. Its API is:
   filterByTag(posts: Post[], tag: string): Post[]
   sortByDate(posts: Post[], direction: 'asc' | 'desc'): Post[]
 
-Requirement: users need to filter the post list by status and sort by date.
+Requirement (R2): users must be able to filter the post list by status and sort by date.
 
 Please write a React component called PostListView that:
 - reads posts from usePostStore
@@ -278,7 +364,19 @@ Keep the component focused. Do not add styling or features beyond what is descri
 Build me the PostKit app using these libraries: [list of package names]
 ```
 
-AI will generate a plausible-looking app that invents all the library APIs, uses the wrong types, and is difficult to understand or modify.
+AI will generate a plausible-looking app that invents all the library APIs, uses the wrong types, and is difficult to understand or modify. It will also make all the architecture decisions for you — which means you will not understand them and will not be able to explain or change them.
+
+---
+
+### When to Use Each Strategy
+
+| Situation | Strategy |
+|---|---|
+| Starting a new project | Initialization conversation |
+| Implementing a specific feature | Implementation prompt |
+| Making an architecture decision | Initialization conversation |
+| Integrating a library you know | Implementation prompt |
+| Unsure what questions to ask | Ask AI what it needs to know |
 
 ---
 
