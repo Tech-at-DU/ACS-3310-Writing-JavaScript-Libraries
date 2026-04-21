@@ -2,7 +2,7 @@
 
 ## Overview
 
-PostKit is more than a list of components. It is an application with shared data, multiple views, navigation, and persistence. Before writing any feature code, you need to understand hom the requirements define the architectural decisions that make the app possible.
+PostKit is more than a list of components. It is an application with shared data, multiple views, navigation, and persistence. Before writing any feature code, you need to understand how the requirements define the architectural decisions that make the app possible.
 
 Today's lesson covers three foundational concepts — state management, routing, and styling — and how to use AI effectively as a learning and building tool while you develop PostKit. Its about asking and answering the right questions before any code is written.
 
