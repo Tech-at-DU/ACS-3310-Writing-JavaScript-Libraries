@@ -29,8 +29,6 @@ By the end of this lesson you should be able to:
 
 ### Lecture
 
-
-
 Before asking AI for code, think about what PostKit actually needs by understanding the requirements.
 
 Open [PostKit.md](./PostKit.md) and look at the requirements. Now ask: what does the application need to manage?
@@ -124,6 +122,8 @@ const posts = usePostStore(s => s.posts)
 
 **What to use for PostKit:** React Context or Zustand are both reasonable. Zustand's persistence middleware makes the storage requirement easy to satisfy in one place. Context keeps your dependencies minimal.
 
+> I don't think context is a good choice here. The AI has other criteria or might be looking at the problem beyond my bias?
+
 The choice is yours — but make it deliberately, and understand why.
 
 Knowing your options is only half the problem. Knowing which question to ask is the other half. A conversation with AI or a teammate can surface the right tool quickly — but only if you know what to ask for. Read the requirements: PostKit needs data shared across multiple views, and posts must survive a browser refresh. Those two facts tell you what to look for — a global state solution with persistence support. The tool that fits is a research question. The requirement that defines the need is not.
@@ -152,7 +152,7 @@ This breaks immediately when you need:
 
 **Client-side routing** intercepts navigation events and renders the correct component for the current URL — without a full page reload. The URL changes, the browser history updates, the back button works. From the user's perspective it behaves like a normal website. From the developer's perspective it is all still one React app.
 
-Are these features described in the requirements? If so where? Your job is identifying features like this first, then idenrifying the solution. 
+> Are these features described in the requirements? If so where? Your job is to indentify features like this, then identify the solution. 
 
 **Your options:**
 
@@ -182,6 +182,8 @@ const post = posts.find(p => p.id === id)
 **TanStack Router** — a newer alternative with stronger TypeScript support and type-safe route parameters. More setup, but increasingly popular in TypeScript-first projects.
 
 **What to use for PostKit:** React Router is the practical choice. It is the most documented, the most searched, and the one AI tools have the most training data on.
+
+> Interesting that AI calls out "the one AI tools have the most training data on"
 
 Install:
 ```bash
@@ -224,7 +226,11 @@ Install: `npm install -D tailwindcss` and follow the Vite setup guide.
 
 **styled-components / Emotion** — CSS written in JavaScript, colocated with components. Supports dynamic styles based on props. More setup, larger bundle.
 
+> Never heard of Emotion CSS: https://emotion.sh/docs/introduction learn somethoing new! 
+
 **What matters most:** pick one approach and use it consistently. Mixing strategies creates confusion.
+
+> Alwasy good advice! 
 
 ---
 
@@ -238,7 +244,11 @@ Look at R10:
 
 This requirement tells AI almost nothing about aesthetic direction. Coherence is a property of any design. A chaotic app can be coherently chaotic.
 
+> Whoa, is that a window into AI thought? 
+
 What AI needs from you is the *character* of the app — **what it feels like** to use it, **who it is for**, **what it should prioritize**. PostKit is a writing tool. Writers need focus. *That tells you something about what the interface should and should not do.*
+
+> That makes a lot of sense, and mirrors the kind of conversation you might have with other team members when developing an app. 
 
 **Compare these two prompts:**
 
@@ -256,14 +266,22 @@ feel like a clean list, not a dashboard.
 
 Both prompts choose Tailwind. The second produces a completely different result — because it gives AI a user and a purpose, not just a tool and a requirement.
 
+> I used a user-centric prompt with an implementation direction: `Use Tailwind. The design should be clean and uncluttered. The app should allow authors to focus on writing without distraction.` I suspect to the AI this packs a lot meaning without explicit descriptions.
+
 **The lesson:** your styling choice sets the implementation. Your description of the user experience sets the direction. AI will optimize toward whatever character you describe. If you describe nothing, it will default to a generic SaaS aesthetic — prominent buttons, card shadows, accent colors — which may have nothing to do with what PostKit should feel like.
+
+> SaaS = Software as a Service. Looks like Bootstrap.
 
 Before you write your styling prompt, answer these questions:
 - Who is using PostKit and what are they trying to do?
 - What should the app feel like when it is working well?
 - What should it *not* look like?
 
-Put those answers in your prompt. R10 is the requirement. Your answers are the brief.
+> I have a theory that answering these questions in a prompt will have great effect. 
+
+**Put those answers in your prompt. R10 is the requirement. Your answers are the brief.**
+
+> This last line needed to be called out. Combining requirements with a design brief is probably have a large influence on the final product. 
 
 ---
 
@@ -273,9 +291,13 @@ Put those answers in your prompt. R10 is the requirement. Your answers are the b
 
 There are two distinct ways to work with AI on a project like PostKit. Knowing which to use and when is the difference between AI as a thinking partner and AI as a code dispenser.
 
+> Thinking partner is what you should all be looking for! 
+
 ---
 
 ### Strategy 1 — The Initialization Conversation
+
+> I used Claude to write this lesson. It original wrote something very different, with very different prompt suggestions. I asked it about the prompts I had used to create my solution. It agreed that strategy was strong. I had it rewrite the whole lesson based on that conversation. 
 
 Before writing a single line of code, have a conversation with AI that builds shared context. This is not about generating code. It is about making sure AI understands the project well enough to help you make good decisions.
 
@@ -284,16 +306,24 @@ The sequence that works:
 **Step 1 — Describe the app**
 Give AI a short overview of what PostKit is and who it is for. This sets the character of the project before any technical decisions are made.
 
+> When I made my solution I started with something like `We will be creating an app called PostKit. Lets talk about it for a bit to understand the problem.` I'm not sure how this affects the outcome. I suspect that telling the AI to discuss the problem to understand it can be powerful. 
+
 **Step 2 — Walk through the requirements one by one**
 Share each requirement from [PostKit.md](./PostKit.md) individually. After each one, let AI respond and ask questions. Answer them. This forces both you and AI to think about each requirement in isolation before the whole picture is assembled.
 
 You will be surprised what comes up. AI may ask about things you had not considered — how persistence should work, what happens when a user has no posts, whether search should be case-sensitive. These are real design questions. Answering them now is better than discovering them mid-implementation.
 
+> These are all good questions, you would be talking about these with your team, or coworking partner. They need to be uncovered and discussed before work begins! 
+
 **Step 3 — Share technical constraints**
 After the requirements, provide the constraints: React + TypeScript, Zustand or Context, the PostKit libraries and their APIs.
 
+> This should all come from the Technical Requirements document, and from the discussion of Requirements.
+
 **Step 4 — Share the acceptance criteria**
 Let AI see what "done" looks like from the user's perspective.
+
+> This is another one that needs to be called out. What does "done" look like? This must have a strong effect on an AI generated solution.
 
 **Step 5 — Ask if AI is ready**
 This is the most important step. Ask:
@@ -304,13 +334,21 @@ This inverts the usual dynamic. Instead of you guessing what context AI needs, y
 
 Answer every question. Then start building.
 
+> I'm surprised the AI didn't mention this in the original lesson. Seems like the kind of thing you would ask your team, or coworking partner, or the kind of thing your project manager might ask you. Its kind of question that generates important questions! 
+
 **Why this produces better results than jumping straight to implementation:**
 
 AI has now reasoned through the entire project before writing any code. When you ask it to implement a specific feature later, it already knows the data model, the constraints, the libraries, and what "done" looks like. It is far less likely to invent things or make inconsistent choices.
 
+> Doesn't this sound like a better path? It also gives you an opportunity to input, and ask questions. 
+
 ---
 
 ### Strategy 2 — The Implementation Prompt
+
+> This is what Claude offered orignally. This is good prompting but it leaves out a lot of nuance gained from the previous strategy. 
+
+> Not mentioned below Tip: Ask Claude to create a todo list when working on complex tasks to track progress and remain on track.
 
 Once context is established, use structured implementation prompts for each feature. This is what you reach for mid-project when you know exactly what you are building.
 
@@ -390,6 +428,8 @@ When AI produces code you do not fully understand, do not skip past it. Ask foll
 
 This is the most effective use of AI as a learning tool. The code is the context for the explanation. You get an answer that is specific to what you are actually building, not a generic tutorial.
 
+> You should be doing this every time you are using AI!
+
 **After every AI response, ask yourself:**
 1. Do I understand every line?
 2. Have I verified every library call against the README?
@@ -397,6 +437,8 @@ This is the most effective use of AI as a learning tool. The code is the context
 4. What would I change or fix?
 
 If you cannot answer these, you are not ready to use the code.
+
+> Read that last line again. 
 
 ---
 
