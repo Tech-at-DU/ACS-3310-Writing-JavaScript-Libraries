@@ -1,346 +1,425 @@
-# Lesson 8 — Building PostKit: Patterns and Integration
+# Lesson 8 — Building PostKit: Core Features
 
 ## Overview
 
-Today is a lab session focused on implementing PostKit features correctly and understanding the React patterns behind them.
+Today is a self-guided lab. There is no lecture.
 
-You will look at three patterns that appear repeatedly in PostKit — derived data with `useMemo`, side effects and cleanup with `useEffect`, and controlled forms. You will also work through a concrete example of how multiple libraries compose in a single feature, and practice diagnosing integration failures.
+You will implement the core PostKit requirements in a suggested order. Each section tells you which requirement to solve, which libraries are involved, how to structure your AI prompt, and how to verify the feature is working.
 
-By the end of class you should have at least two PostKit requirements fully implemented and working.
+Work through the sections in order. Later requirements depend on earlier ones being in place. Two requirements fully working are better than five half-built.
 
----
-
-## Learning Goals
-
-By the end of this lesson you should be able to:
-
-- Use `useMemo` to compute derived data efficiently
-- Use `useEffect` correctly for side effects and cleanup
-- Build controlled forms with validation
-- Compose multiple libraries in a single feature
-- Diagnose whether a failure is in your code, the library, or the integration
+**Reference documents:**
+- [PostKit Requirements](./PostKit.md)
+- [AI Use Policy](./ai-policy.md)
+- [Prompt Log](./prompt-log.md)
 
 ---
 
-## ⏱️ Part 1 — React Patterns in PostKit (25 min)
+## How to Use This Lesson
 
-### Lecture
+Each section follows the same structure:
 
-Three patterns appear in almost every PostKit feature. Understanding them before you need them saves significant debugging time.
+1. **The requirement** — what the user needs
+2. **Libraries involved** — which PostKit packages handle this
+3. **What to build** — the specific implementation task
+4. **Prompt structure** — how to ask AI for help
+5. **Verify it works** — a checklist before moving on
+6. **Log it** — add an entry to `PROMPTS.md`
 
----
-
-### Pattern 1 — Derived Data with `useMemo`
-
-PostKit's list view shows a filtered, sorted, searched subset of all posts. This derived list is computed from the full post array plus whatever filters are active.
-
-You could compute it directly in the render:
-
-```tsx
-function PostListView() {
-  const posts = usePostStore(s => s.posts)
-  const visible = filterByStatus(posts, statusFilter) // runs every render
-  // ...
-}
-```
-
-This works but recalculates on every render — even when posts and filters have not changed.
-
-`useMemo` memoizes the result. The calculation only re-runs when its dependencies change:
-
-```tsx
-const visible = useMemo(() => {
-  let result = posts
-  if (statusFilter) result = filterByStatus(result, statusFilter)
-  if (tagFilter)    result = filterByTag(result, tagFilter)
-  if (searchQuery)  result = searchPosts(result, searchQuery)
-  return sortByDate(result, sortDirection)
-}, [posts, statusFilter, tagFilter, searchQuery, sortDirection])
-```
-
-The dependency array `[posts, statusFilter, ...]` tells React: only recompute when one of these values changes.
-
-**When to use `useMemo`:**
-- Computing a filtered or sorted list
-- Deriving a value from a large array
-- Any calculation that is expensive and depends on specific values
-
-**When not to bother:**
-- Simple calculations on small data
-- Values that always change anyway
+When you hit a pattern you don't understand — `useMemo`, `useEffect`, `useCallback`, TypeScript utility types — ask AI to explain it in the context of what you are building. Do not skip past code you don't understand. Understanding it now means you can change it later.
 
 ---
 
-### Pattern 2 — Side Effects with `useEffect`
+## Build Order
 
-A side effect is anything that reaches outside the component: timers, subscriptions, network requests, manual DOM changes. `useEffect` is the correct place to handle these.
-
-In PostKit, two common uses:
-
-**Syncing form state when the route changes:**
-
-```tsx
-// When navigating from /posts/a to /posts/b, the component
-// may not remount — the form needs to reset manually
-useEffect(() => {
-  if (post) {
-    setForm({
-      title: post.title,
-      body: post.body,
-      tagsInput: post.tags.join(', '),
-    })
-  }
-}, [post?.id]) // only re-run when the post ID changes
-```
-
-**Autosave with debounce:**
-
-```tsx
-useEffect(() => {
-  if (isNew) return // don't autosave a post that hasn't been created yet
-  const timer = setTimeout(save, 500)
-  return () => clearTimeout(timer) // cleanup: cancel the timer if form changes again
-}, [form, isNew, save])
-```
-
-The return value from `useEffect` is a **cleanup function**. It runs before the effect re-runs, and when the component unmounts. Without the cleanup here, every keystroke would start a 500ms timer that never gets cancelled — firing many redundant saves.
-
-**The dependency array controls when the effect runs:**
-
-| Dependency array | Runs |
-|---|---|
-| No array | After every render |
-| `[]` | Once on mount |
-| `[a, b]` | When `a` or `b` changes |
+| Step | Requirements | Depends on |
+|---|---|---|
+| 1 | R8 — Persistence | Nothing — do this first |
+| 2 | R1 — Browse posts | R8 |
+| 3 | R5 — Create and edit | R1 |
+| 4 | R2 + R3 — Filter and sort | R5 (real posts to filter) |
+| 5 | R4 — Search | R5 |
+| 6 | R6 + R7 — Slug and preview | R5 |
 
 ---
 
-### Pattern 3 — Controlled Forms
+## Step 1 — R8: Persistence
 
-A controlled form keeps form values in React state and updates state on every change. This gives you a single source of truth for the form data.
+### What the user needs
 
-```tsx
-const [form, setForm] = useState({ title: '', body: '', tagsInput: '' })
+Posts must survive a browser refresh. Data must be saved locally and restored automatically when the user returns.
 
-function handleChange(field: keyof typeof form, value: string) {
-  setForm(prev => ({ ...prev, [field]: value }))
-}
+### Libraries involved
 
-return (
-  <input
-    value={form.title}
-    onChange={e => handleChange('title', e.target.value)}
-  />
-)
+The **storage library** handles serializing and deserializing posts. Your state management (Zustand or Context) connects to it.
+
+If you are using Zustand, the `persist` middleware handles this directly — it wraps your store and saves state to `localStorage` automatically.
+
+If you are using React Context, you will need to call the storage library explicitly on save and load.
+
+### What to build
+
+- Connect your post store to local storage
+- Verify that posts created in the app still exist after a hard refresh
+
+### Prompt structure
+
+```
+I am building a PostKit app with React and TypeScript.
+
+I am using [Zustand with persist middleware / React Context + storage library].
+
+My Post type is:
+[paste your Post type]
+
+My current store looks like this:
+[paste your store]
+
+I am using a storage library called [package name]. Its API is:
+[paste relevant README section]
+
+I need posts to persist between browser sessions.
+
+Please show me how to connect my store to local storage using this library.
+Explain what each part does as you go.
 ```
 
-**Validation** runs against the form state before save or submit:
+### Verify it works
 
-```tsx
-type Errors = Partial<Record<keyof typeof form, string>>
+- [ ] Create a post manually in the browser console or via a hardcoded seed
+- [ ] Refresh the page — the post is still there
+- [ ] Open DevTools → Application → Local Storage — find your stored data
 
-function validate(form: FormState): Errors {
-  const errors: Errors = {}
-  if (!form.title.trim()) errors.title = 'Title is required.'
-  if (!form.body.trim())  errors.body = 'Body is required.'
-  return errors
-}
+### Log it
 
-function handleCreate() {
-  const errs = validate(form)
-  if (Object.keys(errs).length > 0) {
-    setErrors(errs)
-    return
-  }
-  // proceed with save
-}
-```
-
-Display errors inline, next to each field. Clear a field's error when the user starts typing in it.
+Note in your prompt log: what did the storage library actually do vs. what the store middleware did? Were they the same thing or different layers?
 
 ---
 
-## ⏱️ Part 2 — Composing Libraries in One Feature (20 min)
+## Step 2 — R1: Browse Posts
 
-### Lecture
+### What the user needs
 
-The PostKit post preview panel uses four libraries simultaneously:
+Users must see a list of their posts. Each post in the list shows the title, status, tags, reading time, and date.
 
-```tsx
-const excerpt  = createExcerpt(form.body, 160)       // excerpt library
-const readTime = formatTime(readingTime(form.body))   // reading time library
-const slug     = post?.id ?? '—'                     // slug (used as id in store)
-const date     = post ? formatDate(post.updatedAt) : '—' // date library
+### Libraries involved
+
+- **Reading time library** — estimate how long the post takes to read
+- **Date display library** — format `createdAt` or `updatedAt` for display
+- **Tag utility library** — normalize and display tags
+
+### What to build
+
+- A list view that reads posts from your store
+- Each post card shows: title, status, tags, reading time, date
+- Seed the store with two or three posts if it is empty so you have something to display
+
+### Prompt structure
+
+```
+I am building a PostListView component in React + TypeScript for PostKit.
+
+My Post type is:
+[paste your Post type]
+
+I read posts from my store like this:
+[paste your store read pattern]
+
+I need to display each post with: title, status, tags, reading time, and date.
+
+I am using these libraries:
+- [reading time package]: [paste relevant API]
+- [date display package]: [paste relevant API]
+- [tag utility package]: [paste relevant API]
+
+Please write a PostCard component that accepts a Post and renders these fields.
+Use the libraries above for reading time, date, and tags.
+Do not add styling or features beyond what is described.
 ```
 
-Each library is responsible for exactly one thing. The component composes their outputs.
+### Verify it works
 
-This is the system at work. None of these libraries knows about the others. They each take simple inputs and return simple outputs. The component is the integration layer.
+- [ ] At least two posts appear in the list
+- [ ] Reading time shows a sensible value (e.g. "1 min read")
+- [ ] Date shows a formatted string, not an ISO timestamp
+- [ ] Tags are displayed — check they are normalized (lowercase, no duplicates)
+- [ ] Status is visible for each post
 
-**What can go wrong here:**
+### Log it
 
-| Problem | Likely cause |
-|---|---|
-| `createExcerpt` returns `undefined` | Empty string input not handled by library |
-| `formatTime` throws | `readingTime` returned `null` instead of `0` |
-| Date shows "Invalid Date" | Library expects ISO string, received something else |
-| Slug is `undefined` | Post ID was not set correctly at creation |
-
-In each case the fix is different. You need to know which library produced the bad value before you can decide what to do.
+Note: did any library return unexpected output for a post with very short body text or empty tags? What did you do about it?
 
 ---
 
-## ⏱️ Part 3 — Diagnosing Integration Failures (20 min)
+## Step 3 — R5: Create and Edit Posts
 
-### Lecture
+### What the user needs
 
-When something breaks in PostKit, the failure is rarely obvious. A component crashes, but the cause could be in your code, in one of the libraries, or in how you connected them.
+Users must be able to create a new post and edit an existing one. They can update the title, body, tags, category, and status. Required fields must be validated before saving.
 
-**A systematic approach:**
+### Libraries involved
 
-**Step 1 — Isolate the failure**
+- **Tag utility library** — parse tags from a text input
+- **Validation library** — validate post fields before saving (if available)
 
-Add a `console.log` before the problem line. Print the exact value going into the library call.
+### What to build
 
-```tsx
-console.log('body input to createExcerpt:', form.body)
-const excerpt = createExcerpt(form.body, 160)
+- A post editor view with fields for title, body, tags, category, and status
+- Controlled form state — each field is a value in React state
+- Validation before create/save — show inline errors for missing required fields
+- Connect to your store's `addPost` and `updatePost` operations
+
+### Prompt structure
+
+**For the form:**
+```
+I am building a post editor in React + TypeScript for PostKit.
+
+My FormState type has these fields: title, body, tagsInput, category.
+I need a controlled form where each field updates React state on change.
+
+I am using a tag library called [package name] to parse tags from tagsInput.
+Its API: [paste relevant API]
+
+Please write:
+1. The FormState type
+2. The useState setup
+3. A handleChange function that updates a single field
+4. An input and textarea connected to the form state
+
+Keep it focused. No styling yet.
 ```
 
-Does the input look right? If not, the bug is upstream of the library.
+**For validation:**
+```
+I have a PostKit post editor with this form state:
+[paste your FormState type]
 
-**Step 2 — Test the library in isolation**
+I need a validate function that:
+- returns an error message for each invalid field
+- checks title is not empty
+- checks body is not empty  
+- checks that parseTags(tagsInput) returns at least one tag
+- checks category is not empty
 
-Open the browser console. Call the library function directly with the exact value you saw:
+The return type should allow partial errors — not every field needs an error.
 
-```js
-import { createExcerpt } from 'postkit-excerpt'
-createExcerpt('', 160) // what does it return?
+Please write the validate function and the Errors type.
+Explain what Partial<Record<keyof FormState, string>> means as you go.
 ```
 
-Does it behave as the README says? If not, this is a library bug — file an issue.
+### Verify it works
 
-**Step 3 — Check your types**
+- [ ] Creating a new post adds it to the store and list view
+- [ ] Editing an existing post updates it in the store
+- [ ] Submitting an empty form shows errors on required fields
+- [ ] Errors clear when the user starts typing in a field
+- [ ] Tags are parsed correctly from comma-separated input
+- [ ] After creating a post, it appears in the list with correct reading time and date
 
-TypeScript will often catch mismatches at compile time. If you have type errors you are suppressing or ignoring, fix them before debugging runtime behavior. The type error is usually pointing directly at the problem.
+### Log it
 
-**Step 4 — Check the integration point**
-
-If the library works in isolation but fails in the component, the problem is in how you are connecting them. Common causes:
-- Calling the function before data is available (undefined on first render)
-- Passing the wrong field from the Post object
-- Expecting a different return type than what the library produces
-
-**Step 5 — Document and work around**
-
-If a library has a genuine bug you cannot fix, guard against its output:
-
-```tsx
-const excerpt = createExcerpt(form.body, 160) ?? 'No excerpt available'
-```
-
-Add a comment explaining why the guard is there:
-
-```tsx
-// postkit-excerpt returns undefined for empty input (issue #3)
-// guard until library is updated
-const excerpt = createExcerpt(form.body, 160) ?? ''
-```
-
-This makes your workaround visible and traceable.
+Note: how did the tag library handle unusual input — extra spaces, uppercase, empty strings between commas? Did you need to adjust your validation to account for this?
 
 ---
 
-### Active Learning — Diagnose a Failure (15 min)
+## Step 4 — R2 and R3: Filter and Sort
 
-Work in pairs.
+### What the user needs
 
-Consider this scenario:
+Users must be able to filter posts by status and by tag. Users must be able to sort by date or title, in either direction.
 
-```tsx
-const visible = useMemo(() => {
-  let result = posts
-  if (statusFilter) result = filterByStatus(result, statusFilter)
-  if (searchQuery)  result = searchPosts(result, searchQuery)
-  return sortByDate(result, sortDirection)
-}, [posts, statusFilter, searchQuery, sortDirection])
+### Libraries involved
+
+- **Filter/sort library** — `filterByStatus`, `filterByTag`, `sortByDate`, `sortByTitle`
+
+### What to build
+
+- Status filter controls (buttons or tabs for draft, review, published, and all)
+- Tag filter control (a select or list of available tags)
+- Sort controls (date or title, ascending or descending)
+- The visible list is derived from all posts by applying filters and sort in sequence
+
+The derived list should be computed with `useMemo` — it recalculates only when posts or filter settings change, not on every render.
+
+### Prompt structure
+
+```
+I am building filter and sort controls for PostKit's post list view.
+
+My Post type is:
+[paste your Post type]
+
+I store filter settings in [my store / local state]:
+- statusFilter: PostStatus | null
+- tagFilter: string | null
+- sortField: 'date' | 'title'
+- sortDirection: 'asc' | 'desc'
+
+I am using a library called [package name]. Its API:
+[paste filterByStatus, filterByTag, sortByDate, sortByTitle signatures]
+
+Please write a useMemo that:
+1. Starts with all posts
+2. Applies statusFilter if set
+3. Applies tagFilter if set
+4. Sorts by sortField and sortDirection
+
+Explain what the dependency array should contain and why.
 ```
 
-The list shows no posts when a status filter is applied, even though matching posts exist.
+### Verify it works
 
-Work through the diagnostic steps:
+- [ ] Selecting "Draft" shows only draft posts
+- [ ] Selecting a tag shows only posts with that tag
+- [ ] Clearing filters shows all posts again
+- [ ] Sort by date newest shows most recent post first
+- [ ] Sort by title A–Z shows posts alphabetically
+- [ ] Combining status filter and tag filter works correctly
 
-1. What would you log, and where?
-2. How would you test `filterByStatus` in isolation?
-3. What are three possible causes?
-4. If the library is confirmed broken, how do you document the workaround?
+### Log it
 
-Discuss your approach with your pair. Be ready to share.
-
----
-
-## ⏱️ Part 4 — Lab: Two Features End to End (75 min)
-
-Work on your PostKit app.
-
-### Goal
-
-By the end of class, implement two requirements fully — working in the UI, connected to real libraries, with no hardcoded data.
-
-Good first targets:
-
-**R1 + R2 + R3 — Post list with filter and sort**
-This is the core of the app. Implement the list view with status filter and date sort working end to end. Use `useMemo` for the derived list.
-
-**R5 — Post editor with validation**
-Implement the controlled form, connect the tag utility library for parsing tags, and add inline validation before save.
-
-**R7 — Post preview panel**
-Add the sidebar showing slug, excerpt, reading time, and formatted date. Connect all four libraries.
-
-### Working with AI on these features
-
-When you reach for AI, write a prompt that includes:
-
-1. The requirement you are solving (from PostKit.md)
-2. The React pattern you need (useMemo, useEffect, controlled form)
-3. The store structure you are using
-4. The library APIs involved (paste from README)
-5. A specific, scoped ask
-
-After AI generates code:
-- Read every line before using it
-- Ask AI to explain any pattern you don't recognize
-- Verify every library call against the README
-- Test it against the requirement
-
-### When you get stuck
-
-Use the diagnostic steps from Part 3. Isolate before you escalate.
-
-If you are stuck for more than 15 minutes on one problem:
-1. Move to a different requirement
-2. Ask a classmate
-3. File a GitHub issue on the relevant library
-4. Ask the instructor
-
-Progress on two requirements is better than being blocked on one.
+Note: did you encounter any case where filtering produced unexpected results? Was the issue in your code, the library, or the data?
 
 ---
 
-## ⏱️ Wrap-up (5 min)
+## Step 5 — R4: Search
+
+### What the user needs
+
+Users must be able to search posts by title, body, or tags. Results should update as the user types or after they submit.
+
+### Libraries involved
+
+- **Search library** — search posts against a query string
+
+### What to build
+
+- A search input connected to state
+- Apply the search library to the post list as part of the filter/sort pipeline
+- Search should compose with status and tag filters — a filtered + searched list
+
+### Prompt structure
+
+```
+I have a PostKit post list view that already filters and sorts posts with useMemo.
+
+Here is my current useMemo:
+[paste your existing filter/sort useMemo]
+
+I need to add search. I am using a library called [package name].
+Its API: [paste relevant API]
+
+Please update my useMemo to also apply search when a searchQuery string is set.
+The search should run after status and tag filters.
+
+Show me where in the pipeline to add it and why order matters.
+```
+
+### Verify it works
+
+- [ ] Typing a word that appears in a post title shows that post
+- [ ] Typing a word from a post's body shows that post
+- [ ] Typing a tag value shows posts with that tag
+- [ ] Clearing the search shows the full (filtered) list again
+- [ ] Search and status filter work together — only matching posts in the selected status appear
+
+### Log it
+
+Note: does search interact with the filter correctly? What happens when you search for something and also have a status filter active?
+
+---
+
+## Step 6 — R6 and R7: Slug and Post Preview
+
+### What the user needs
+
+Each post must have a URL-safe slug derived from its title. The post editor must show a preview panel with: slug, excerpt, reading time, formatted date, and status.
+
+### Libraries involved
+
+- **Slug library** — already used when creating the post ID
+- **Excerpt library** — generate a short summary from the body
+- **Reading time library** — already used in the list view
+- **Date display library** — already used in the list view
+
+### What to build
+
+- A preview panel alongside the post editor showing live metadata
+- Values update as the user types (they read from form state, not saved post data)
+- The slug is the post's ID — show it in the preview
+- The excerpt is generated from the current body text
+- Reading time is estimated from the current body text
+- Date shows the last saved time, or a placeholder for new posts
+
+### Prompt structure
+
+```
+I am building a post preview panel for my PostKit post editor.
+
+The preview should show live values derived from the current form state.
+
+My form state is:
+[paste your FormState type]
+
+My post object is (may be undefined for new posts):
+[paste your Post type]
+
+I am using these libraries:
+- [excerpt package]: [paste API]
+- [reading time package]: [paste API]
+- [date display package]: [paste API]
+
+Please write the four derived values I need to display:
+1. excerpt — from form.body
+2. readingTime — formatted string from form.body
+3. slug — the post id, or a placeholder for new posts
+4. displayDate — formatted updatedAt for existing posts, placeholder for new
+
+For each value, show me how to guard against undefined or empty input.
+Explain what ?? does and when to use it instead of ||.
+```
+
+### Verify it works
+
+- [ ] Typing in the body field updates the excerpt in the preview panel
+- [ ] Typing in the body updates the reading time
+- [ ] The slug shows the post ID for existing posts and a placeholder for new ones
+- [ ] The date shows a readable format, not an ISO string
+- [ ] Empty body shows a graceful fallback, not a crash or blank
+
+### Log it
+
+Note: which library required the most guarding for edge case input? What did it return for empty strings?
+
+---
+
+## When You Get Stuck
+
+1. Re-read the library README — the answer is usually there
+2. Add `console.log` before the problem line and check the actual value
+3. Test the library function in the browser console directly
+4. Ask a classmate whose library you are using
+5. File a GitHub issue if the library is broken
+6. Ask AI with the diagnostic information you gathered in steps 1–3
+
+Do not ask AI to "fix it" without first knowing what is wrong. "It doesn't work" produces bad prompts. "The library returns undefined for empty string input and I need to guard against it" produces good prompts.
+
+---
+
+## Wrap-up (10 min)
 
 Share with the class:
 
-1. Which requirements did you implement?
-2. What was the hardest integration problem you hit?
-3. What AI prompt produced the most useful output?
+1. Which step did you reach today?
+2. Which library integration was hardest? What did you discover?
+3. What was one thing AI explained well that you didn't understand before?
 
 ---
 
 ## Reflection
 
-1. Explain `useMemo` in your own words. When would removing it break something?
-2. Why does the autosave `useEffect` need a cleanup function? What would happen without it?
-3. Describe the diagnostic steps you would take if a library call silently returns the wrong value.
-4. Which two requirements did you implement today? What libraries did each one use?
+1. What is the correct build order for these features and why does it matter?
+2. Describe the filter and sort pipeline in your own words. What is `useMemo` doing and why is it used here?
+3. Which library required the most defensive coding — guards for unexpected output? What does that tell you about the library's design?
+4. Paste one prompt from today that produced genuinely useful output. What made it work?
