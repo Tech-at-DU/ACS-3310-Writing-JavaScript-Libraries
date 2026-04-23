@@ -2,142 +2,142 @@
 
 ## What This Is
 
-A prompt log is a running record of every significant AI interaction during PostKit development.
+A prompt log is a running record of your significant AI interactions during PostKit development.
 
-You are required to maintain this log throughout the project. It is submitted as part of your Gradescope assignments and referenced in reflection questions.
+You are not submitting this as a separate assignment. It lives in your app repository as `PROMPTS.md` and exists for one practical reason: **Gradescope questions will ask you to paste real prompts and describe real outcomes**. Students who maintained a log answer those questions in minutes. Students who reconstruct from memory produce vague, unconvincing answers.
 
-This is not a punishment. Engineers who can look back at their prompts and explain what improved are better at working with AI. Engineers who cannot are guessing.
-
----
-
-## Why Keep a Log
-
-Three reasons:
-
-**1. It makes your thinking visible.**
-A prompt is a description of a problem. Weak prompts reveal unclear thinking. If you cannot write a prompt that produces useful output, you probably do not understand the problem well enough yet.
-
-**2. It shows how you improved.**
-Your Week 4 prompts and your Week 7 prompts should look different. More specific context, more precise asks, less reliance on AI to make decisions. If they look the same, something did not change.
-
-**3. It creates accountability.**
-Reflection questions ask you to paste real prompts. A log you have been maintaining all along makes this easy. A log you reconstruct at the end is missing the failures — which are the most useful part.
+Keep it current. Two minutes per entry during development is worth hours at submission time.
 
 ---
 
-## Format
+## Two Entry Formats
 
-Keep your prompt log in a file called `PROMPTS.md` in your PostKit app repository.
-
-Add an entry every time you use AI for a significant task — not for every autocomplete suggestion, but whenever you write a deliberate prompt to solve a problem.
-
-Each entry uses this format:
+Use the **short form** for most entries — anything you might want to reference later. Use the **long form** for entries you know you'll cite in a Gradescope question, or for any interaction that taught you something significant.
 
 ---
+
+### Short Form
 
 ```
-## [Date] — [Short description of what you were trying to do]
+## [Date] — [What you were trying to do]
 
-**Requirement:** [Which PostKit requirement were you working on? e.g. R2, R11]
+**Requirement:** R[number]
+
+**Prompt summary:** [One or two sentences describing what you asked]
+
+**Outcome:** [What AI produced, what worked, what you had to fix]
+```
+
+**Example:**
+
+```
+## 2026-04-22 — Filter pipeline
+
+**Requirement:** R2
+
+**Prompt summary:** Asked AI to write a useMemo for filtering posts by status
+and tag using postkit-filter-sort. Included my Post type and the library API.
+
+**Outcome:** Correct structure. AI added an unsolicited sort call I removed.
+Verified filterByStatus against the README — function name was correct.
+```
+
+---
+
+### Long Form
+
+Use this when you want a full record — for Gradescope questions or for anything that revealed something important.
+
+```
+## [Date] — [What you were trying to do]
+
+**Requirement:** R[number]
 
 **The prompt:**
-[Paste the full prompt exactly as you wrote it]
+[Paste the full prompt]
 
 **What AI produced:**
-[Brief description — or paste the relevant output]
+[Describe or paste the output]
 
 **What I had to fix or verify:**
-[Be specific. What was wrong? What did you check against the README?
-What did you test? What did AI get wrong?]
+[Specific. What was wrong? What did you check? What did you test?]
 
-**What I would do differently:**
-[Optional — but useful if the prompt did not work well]
+**What I learned:**
+[Optional — what did this reveal about the library, the pattern, or your own code?]
 ```
 
----
-
-## Example Entry
+**Example:**
 
 ```
-## 2026-04-21 — Filter pipeline with useMemo
+## 2026-04-22 — Autosave debounce
 
-**Requirement:** R2 — Filter posts by status
+**Requirement:** R5
 
 **The prompt:**
-I am building a React + TypeScript app called PostKit.
+I am building a PostKit post editor with autosave. I want changes to save
+500ms after the user stops typing. My save function is defined with useCallback.
 
-I have a Zustand store called usePostStore that holds posts: Post[].
+Here is my current useEffect:
+[pasted code]
 
-Post type:
-  { id: string, title: string, status: 'draft'|'review'|'published',
-    tags: string[], createdAt: string, updatedAt: string }
-
-I am using a library called postkit-filter-sort. Its API:
-  filterByStatus(posts: Post[], status: PostStatus): Post[]
-  filterByTag(posts: Post[], tag: string): Post[]
-  sortByDate(posts: Post[], direction: 'asc'|'desc'): Post[]
-
-Requirement: users must be able to filter the post list by status.
-
-Please write a useMemo hook that:
-- reads posts from usePostStore
-- applies filterByStatus when a statusFilter string is set
-- returns the filtered array
-
-Keep it focused on just the filter logic. No sorting yet.
+Please explain:
+1. What the cleanup function does — trace what happens if the user types
+   three characters quickly
+2. What would happen if I removed it
+3. Why save is in the dependency array
 
 **What AI produced:**
-A useMemo with the correct dependency array and correct use of filterByStatus.
-It also added a sortByDate call I did not ask for.
+Clear explanation of debounce pattern. Explained that without cleanup, each
+keystroke would schedule a save that fires regardless of subsequent keystrokes.
+Explained that save must be in the dependency array because useEffect closes
+over it — if save changes, the effect needs to re-run with the new version.
 
 **What I had to fix or verify:**
-- Removed the unsolicited sort call — I will add that separately
-- Verified filterByStatus function name against the README (correct)
-- Tested: set statusFilter to 'draft', confirmed only draft posts appeared
-- Found: the library returns [] not null for no matches — no guard needed
+Tested: typed rapidly, confirmed only one save fired 500ms after last keystroke.
+Checked DevTools network tab — no duplicate saves.
 
-**What I would do differently:**
-Add "do not add features I did not ask for" to the prompt constraints.
+**What I learned:**
+The isFirstRender.current pattern prevents the autosave from firing immediately
+on mount. Without it, opening an existing post triggers an immediate save.
 ```
 
 ---
 
-## What Makes a Good Entry
+## What Counts as a Log Entry
 
-**Be specific about what AI got wrong.**
-"AI made a small mistake" is not useful. "AI used `filterPosts` instead of `filterByStatus` — it invented a function name that does not exist in the library" is useful.
+Log entries are for deliberate prompts where you described a problem and asked AI to produce code, an explanation, or a diagnosis.
 
-**Describe what you verified, not just that you verified.**
-"I tested it" is not useful. "I set the status filter to 'draft', confirmed only draft posts appeared, then set it to 'published' and confirmed the list updated" is useful.
+**Log these:**
+- Asking AI to implement a feature or component
+- Asking AI to explain a pattern you encountered
+- Asking AI to help diagnose a bug
+- Asking AI to write a test
 
-**Include failures.**
-A prompt that produced useless output is more valuable to log than one that worked perfectly. Failures show what you learned to avoid.
-
----
-
-## Minimum Entries Required
-
-| Phase | Minimum entries |
-|---|---|
-| PostKit app build (Weeks 4–5) | 5 entries |
-| Integration testing (Week 6) | 3 entries |
-| Spec change (Week 7) | 4 entries |
-
-These are minimums. Most students will have more.
-
----
-
-## What Is Not a Prompt Log Entry
-
+**Skip these:**
 - Autocomplete suggestions you accepted without thinking
-- Asking AI to explain a concept (useful, but not a log entry)
-- Asking AI to fix a syntax error or typo
-- Copy-pasting a Stack Overflow answer
-
-Log entries are for deliberate prompts where you described a problem and asked AI to produce code or a test.
+- Syntax corrections or typo fixes
+- Generic questions ("what is React?")
 
 ---
 
-## Submission
+## How the Log Supports Gradescope
 
-Your `PROMPTS.md` file lives in your PostKit app repository. Gradescope questions will ask you to paste specific entries. Keep the log current — reconstructing it at the end from memory will produce weak answers.
+Gradescope questions will ask things like:
+
+- *"Paste one prompt from Week 4 and one from Week 7 for a similar task. What changed?"*
+- *"Paste the prompt that produced your most useful test. What did you have to fix?"*
+- *"What did AI get wrong, and how did you catch it?"*
+
+These questions cannot be answered convincingly without real prompts. A log maintained throughout the project makes them easy. A log reconstructed at the end makes them hard.
+
+The quality of your Gradescope answers reflects whether you kept the log. There is no separate log grade — but the log is what makes the reflection questions answerable.
+
+---
+
+## Keeping It Honest
+
+The prompt log is not graded on whether you used AI a lot or a little. It is a record of how you worked.
+
+A log with three detailed entries where you genuinely struggled and learned something is more valuable than twenty generic entries that all say "AI generated the code and it worked."
+
+The most useful entries are the ones where something went wrong.
