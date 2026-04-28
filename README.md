@@ -28,7 +28,7 @@ Students by the end of the course will be able to ...
 
 ## Schedule
 
-**Course Dates:** March 25, 2025 to March 23, 2026
+**Course Dates:** March 25, 2025 to May 13, 2026
 
 **Class Times:** Tuesday, Thursday 4:00 PM to 6:45 PM Virtual online.
 
