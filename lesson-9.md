@@ -109,8 +109,6 @@ This is why you map boundaries before you write tests. The map tells you where t
 
 ## ⏱️ Part 2 — Map Your Boundaries (35 min)
 
-### Active Learning
-
 Work individually for 20 minutes, then compare with a partner for 15 minutes.
 
 This is not a generic diagram. You are mapping **your** app — the actual files, the actual function calls, the actual data shapes you used.
@@ -198,8 +196,6 @@ Discuss what you found. If the diagram could not answer a question, that is a ga
 ---
 
 ## ⏱️ Part 3 — Unit Tests vs Integration Tests (25 min)
-
-### Lecture
 
 #### What you already know: unit tests
 
@@ -322,8 +318,6 @@ Unit tests are fast and precise — good for testing your library's logic. Integ
 
 ## ⏱️ Part 4 — What to Test in PostKit (20 min)
 
-### Lecture
-
 Not everything needs a test. The goal is to identify the behaviors that are:
 
 - **Load-bearing** — if this breaks, the app does not work
@@ -369,8 +363,6 @@ You will use this list in the next lesson to write test specifications.
 ---
 
 ## ⏱️ Part 5 — What Makes a Test Meaningful (15 min)
-
-### Lecture
 
 A test that never fails is not a test. This was true for your library unit tests and it is true here.
 
