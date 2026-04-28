@@ -1,4 +1,4 @@
-# Lesson 9 — Systems Thinking: What You Built and What to Test
+# Lesson 9 — Systems Thinking: Boundaries and What to Test
 
 ## Overview
 
@@ -9,7 +9,7 @@ Understanding your app as a system is not just an academic exercise. It is what 
 1. If I change something, what else might break?
 2. Where do I need tests?
 
-These questions have the same answer. The places where change propagates are exactly the places that need to be tested.
+These questions have the same answer. The places where change propagates are exactly the places that need tests.
 
 ---
 
@@ -17,108 +17,294 @@ These questions have the same answer. The places where change propagates are exa
 
 By the end of this lesson you should be able to:
 
-- Describe your PostKit app as a system with boundaries and connections
-- Identify which parts of the system are most sensitive to change
+- Define what a system boundary is and identify three types in PostKit
+- Map the actual boundaries in your own app
 - Distinguish between unit tests and integration tests
 - Identify the behaviors in PostKit that are most important to test
 - Explain what makes a test meaningful versus useless
 
 ---
 
-## ⏱️ Part 1 — What You Built (20 min)
+## ⏱️ Part 1 — What Is a Boundary? (15 min)
 
 ### Lecture
 
-A system is a set of parts that work together to produce behavior none of the parts produce alone.
+A **boundary** is any point in your app where one piece of code hands something off to another.
 
-PostKit is a system. No single library filters, searches, formats, and persists posts. The app does that — by composing libraries, connecting state to views, and routing user interactions to the right operations.
+Boundaries are where failures hide. Not because the individual pieces are broken — often each one works fine in isolation. Failures happen at boundaries because the pieces make assumptions about each other, and those assumptions are not always true.
 
-But systems have a property that individual components do not: **changes propagate**.
-
-If you rename a field on the `Post` type, nothing breaks immediately. TypeScript may catch some of it. But somewhere downstream — in a library call, a component prop, a store operation — something will fail. The question is whether you find out during development or after the app is shipped.
-
-This is why understanding your system matters. Not to admire it, but to know where it is fragile.
-
-**Three kinds of boundaries in PostKit:**
-
-**Library boundaries** — the point where your app code calls a PostKit library. What goes in? What comes out? What happens if the library behaves unexpectedly?
-
-**State boundaries** — the point where a component reads from or writes to a store. What shape is the data? Who else depends on it?
-
-**View boundaries** — the point where data becomes UI. What assumptions does the component make about its input? What happens if a field is undefined?
-
-The failures that are hardest to debug happen at boundaries. A value produced correctly in the store arrives malformed at the view. A library returns an unexpected type that silently corrupts a derived value. A route change leaves stale state behind.
+**Three types of boundaries in PostKit:**
 
 ---
 
-## ⏱️ Part 2 — Map Your System (30 min)
+### Library Boundaries
+
+A library boundary is the point where your app calls a PostKit package.
+
+```ts
+// Your code                      ← boundary →  Library code
+const time = formatTime(readingTime(form.body))
+```
+
+Your code hands `form.body` to `readingTime`. The library does something with it and returns a value. Your code uses that value.
+
+At this boundary:
+- What does the library expect? A non-empty string? A specific format?
+- What does it return? A number? An object? `undefined` if the input is empty?
+- What happens if the input is `""` or `null`?
+
+You do not control what happens inside the library. You only control what you send in and how you handle what comes out. That is the boundary.
+
+---
+
+### State Boundaries
+
+A state boundary is the point where a component reads from or writes to a store.
+
+```ts
+// Component reads from the store
+const posts = usePostStore(s => s.posts)
+
+// Component writes to the store
+const updatePost = usePostStore(s => s.updatePost)
+updatePost(post.id, { title: form.title })
+```
+
+At this boundary:
+- What shape is the data the component expects? (`Post[]` not `Post | null`)
+- What happens if the store returns an empty array instead of a populated one?
+- If another component writes to the same store, does this component see the update?
+
+Multiple components can share the same state boundary. A write in the editor affects what the list view reads. The boundary is the connection — and it goes in both directions.
+
+---
+
+### View Boundaries
+
+A view boundary is the point where data becomes UI — where a component receives props and decides what to render.
+
+```tsx
+// Data crosses into the component here
+<PostCard post={post} />
+```
+
+Inside `PostCard`, the component makes assumptions: `post.title` is a string, `post.tags` is an array, `post.status` is one of the valid values.
+
+At this boundary:
+- What does the component assume about its input?
+- What happens if `post.tags` is empty?
+- What happens if `post.updatedAt` is `undefined` for a new post?
+
+View boundaries are where silent rendering failures happen. The component renders, nothing crashes, but something is blank or wrong.
+
+---
+
+### Why Boundaries Matter
+
+The failures that are hardest to debug happen at boundaries. A value produced correctly in the store arrives malformed at the view. A library returns an unexpected type that silently corrupts a derived value. A route change leaves stale state behind.
+
+This is why you map boundaries before you write tests. The map tells you where the risk is.
+
+---
+
+## ⏱️ Part 2 — Map Your Boundaries (35 min)
 
 ### Active Learning
 
-Work individually for 15 minutes, then compare with a partner for 15 minutes.
+Work individually for 20 minutes, then compare with a partner for 15 minutes.
 
-**Step 1 — Draw your app (15 min)**
+This is not a generic diagram. You are mapping **your** app — the actual files, the actual function calls, the actual data shapes you used.
 
-On paper or in a simple diagram tool, map your PostKit app.
+---
 
-Draw:
+**Step 1 — Find your library boundaries (5 min)**
+
+Open your app. Search for every import from a PostKit package.
+
+List each one:
+- Which library is it?
+- Which file calls it?
+- What do you pass in?
+- What do you do with the return value?
+
+Example:
+```
+filterByStatus(posts, statusFilter) → Post[]
+  called in: PostListView.tsx inside useMemo
+  input: posts from store, statusFilter from UI store
+  output: filtered Post[] passed to sortByDate
+```
+
+Do this for every PostKit library call in your app.
+
+---
+
+**Step 2 — Find your state boundaries (5 min)**
+
+List every place a component reads from or writes to a store.
+
+Example:
+```
+usePostStore → posts: Post[]
+  read by: PostListView, PostCard, PostDetailView
+  written by: PostDetailView (updatePost, addPost, deletePost)
+```
+
+Identify any store that more than one component shares. That is a place where a write by one component affects what another component sees.
+
+---
+
+**Step 3 — Find your view boundaries (5 min)**
+
+List the props each major component receives.
+
+Example:
+```
+PostCard: post: Post
+  assumes: post.tags is string[], post.title is non-empty string
+  risk: post.tags might be [] if tags were not required
+```
+
+For each one, note: what would happen if a prop was undefined, empty, or the wrong shape?
+
+---
+
+**Step 4 — Draw the connections (5 min)**
+
+On paper or a simple diagram tool, draw:
+
 - A box for each store
-- A box for each view/component that uses a store
-- A box for each PostKit library you are using
-- Arrows showing data flow: store → component, component → library, library → component
-
-Label each arrow with what is being passed: `Post[]`, `string`, `PostStatus`, etc.
+- A box for each view and major component
+- A box for each PostKit library you call
+- Arrows between them labeled with what is being passed
 
 Then mark:
-- Which connections would break if the `Post` type changed?
-- Which connections go through a PostKit library you do not control?
-- Which component has the most incoming connections?
+- Which connections cross a library boundary? (your code → PostKit package)
+- Which connections cross a state boundary? (store → component or component → store)
+- Which connections cross a view boundary? (component → child component via props)
 
-**Step 2 — The handoff question (15 min)**
+---
 
-Swap diagrams with a partner.
+**Step 5 — Partner review (15 min)**
 
-Without asking any questions, answer these from their diagram alone:
+Swap maps with a partner. Without asking any questions, answer these from their diagram alone:
 
-1. Where does post data come from and where does it go?
+1. Where does post data come from and where does it end up on screen?
 2. If the filter library returned `null` instead of `[]` for no results, which component would break?
-3. If you had to add a new field to `Post`, how many places in their app would need to change?
+3. If `Post.tags` changed from `string[]` to `{ name: string; color: string }[]`, how many places in their app would need to change?
 
 Discuss what you found. If the diagram could not answer a question, that is a gap worth noting.
 
 ---
 
-## ⏱️ Part 3 — Unit Tests vs Integration Tests (20 min)
+## ⏱️ Part 3 — Unit Tests vs Integration Tests (25 min)
 
 ### Lecture
 
-You have already written unit tests — for your library. A unit test checks one function in isolation:
+#### What you already know: unit tests
+
+You have written unit tests for your library. A unit test calls one function with known input and checks that it returns the expected output:
 
 ```ts
 test('filterByStatus returns only matching posts', () => {
   const posts = [
-    { id: '1', status: 'draft', ... },
-    { id: '2', status: 'published', ... },
+    { id: '1', status: 'draft', title: 'A', ... },
+    { id: '2', status: 'published', title: 'B', ... },
   ]
   expect(filterByStatus(posts, 'draft')).toHaveLength(1)
 })
 ```
 
-This test tells you the function works. It tells you nothing about whether the app uses the function correctly.
+This runs fast. It is easy to write. It tells you exactly what broke when it fails.
 
-**Integration tests** check behavior across boundaries — that two or more pieces work correctly together.
+But it only tests the library in isolation. It does not test anything about how the app uses the library.
 
-```tsx
-// Render the PostListView, interact with the status filter,
-// assert that only the right posts appear
-render(<PostListView />)
-fireEvent.click(screen.getByText('Draft'))
-expect(screen.getAllByTestId('post-card')).toHaveLength(1)
+---
+
+#### The gap unit tests leave
+
+Imagine your unit test passes — `filterByStatus` works correctly. Now imagine that in `PostListView.tsx`, you wrote:
+
+```ts
+// Bug: passing the wrong field
+result = filterByStatus(result, tagFilter)  // should be statusFilter
 ```
 
-This test tells you the filter control, the store, the library, and the component are all connected correctly. It catches failures that unit tests miss.
+Your unit test would still pass. The library works fine. The bug is in your app code, at the boundary between the UI and the library — and the unit test cannot see that.
 
-**The gap between them:**
+This is the gap: **unit tests verify that pieces work, not that pieces work together.**
+
+---
+
+#### Integration tests: testing behavior across boundaries
+
+An integration test renders a real component, simulates a real user interaction, and checks what actually appears on screen. It crosses boundaries — state, libraries, components — all at once.
+
+Here is what the setup looks like. You need three tools:
+
+```ts
+import { render, screen, fireEvent } from '@testing-library/react'
+```
+
+- `render` — mounts a component into a simulated browser environment
+- `screen` — lets you query what is visible on screen (by text, role, label, etc.)
+- `fireEvent` — simulates user interactions (clicks, typing, etc.)
+
+These come from React Testing Library, which is designed to test components the way a user would interact with them — not by inspecting implementation details, but by checking what is actually visible.
+
+---
+
+#### Walking through an example
+
+Here is an integration test for the filter behavior in `PostListView`:
+
+```tsx
+test('filtering by draft shows only draft posts', () => {
+  // Step 1: Put known data into the store
+  usePostStore.setState({
+    posts: [
+      makePost({ title: 'Draft post', status: 'draft' }),
+      makePost({ title: 'Published post', status: 'published' }),
+    ]
+  })
+
+  // Step 2: Render the component
+  render(<PostListView />)
+
+  // Step 3: Simulate clicking the Draft filter button
+  fireEvent.click(screen.getByRole('button', { name: 'Draft' }))
+
+  // Step 4: Check what is now on screen
+  expect(screen.getByText('Draft post')).toBeInTheDocument()
+  expect(screen.queryByText('Published post')).not.toBeInTheDocument()
+})
+```
+
+**What each step is doing:**
+
+`usePostStore.setState(...)` — Seeds the store with known data so the test is predictable. Without this, the test depends on whatever happened to be in the store, which makes it unreliable.
+
+`render(<PostListView />)` — Mounts the component. The component reads from the store, runs its `useMemo`, and renders the initial list — both posts visible.
+
+`fireEvent.click(...)` — Simulates clicking the Draft button. This updates the store's `statusFilter`, which triggers a re-render, which re-runs the `useMemo`, which calls `filterByStatus`.
+
+`screen.getByText(...)` / `screen.queryByText(...)` — Queries what is now on screen. `getByText` throws if the element is not found. `queryByText` returns `null` instead of throwing — useful for asserting something is *not* there.
+
+---
+
+#### What this test actually exercises
+
+A single test click crosses all three boundary types from Part 1:
+
+1. **View boundary** — the button click updates UI state
+2. **State boundary** — the status filter is written to the store and read by `useMemo`
+3. **Library boundary** — `filterByStatus` is called with the store data
+
+If any one of those connections is broken, the test fails. It does not tell you exactly which step failed — but it tells you the behavior is broken, which is the first thing you need to know.
+
+---
+
+#### The gap between unit and integration tests
 
 | What broke | Unit test catches it? | Integration test catches it? |
 |---|---|---|
@@ -128,7 +314,7 @@ This test tells you the filter control, the store, the library, and the componen
 | Library returns `null` instead of `[]` | Only if you test that case | Yes |
 | Route change leaves previous filter active | No | Yes |
 
-Unit tests are fast and precise. Integration tests are slower but catch the failures that matter most to users.
+Unit tests are fast and precise — good for testing your library's logic. Integration tests are slower but catch the failures that happen at boundaries, which is where most app bugs live.
 
 **For PostKit, integration tests are more valuable** — because the complexity is not inside any single library or component. It is in how they connect.
 
@@ -170,11 +356,11 @@ Five steps. A failure at any step produces wrong results silently. A test that e
 
 ### Active Learning — Identify Your Test Targets (10 min)
 
-Look at your system map from Part 2.
+Look at your boundary map from Part 2.
 
 For each PostKit acceptance criterion, write:
 
-1. Which connection or boundary is responsible for satisfying it?
+1. Which boundary is responsible for satisfying it?
 2. What input would cause it to fail silently?
 3. Is this something you could verify manually in under 30 seconds? If not, it needs a test.
 
@@ -249,11 +435,12 @@ Any of those failures — the test catches it.
 Use the remaining time to:
 
 1. Complete any acceptance criteria not yet implemented
-2. Finalize your system map — make sure it reflects your current implementation
+2. Finalize your boundary map — make sure it reflects your current implementation, not a generic PostKit diagram
 3. Write your test target list from the active learning exercise
 
 Your test target list should have at least five specific behaviors you want to verify, each with:
 - The behavior in plain language
+- Which boundary it crosses
 - The input that would trigger it
 - The expected output
 - Why it could break silently
@@ -266,15 +453,15 @@ You will use this in the next lesson to write test prompts for AI.
 
 Share with the class:
 
-1. Which connection in your system map has the most dependencies?
+1. Which boundary in your app has the most traffic — the most things passing through it?
 2. Which acceptance criterion are you least confident is working correctly right now?
-3. What is one thing your system map revealed that you did not expect?
+3. What is one thing your boundary map revealed that you did not expect?
 
 ---
 
 ## Reflection
 
-1. What is the difference between a unit test and an integration test? Give an example from PostKit of each.
-2. Look at your system map. If the `Post` type gained a new required field, how many files in your app would need to change?
+1. Define each of the three boundary types in your own words. Give a specific example of each from your PostKit app — not a generic definition, but the actual file and function.
+2. Look at your boundary map. If the `Post` type gained a new required field, how many places in your app would need to change? List them.
 3. Why is the filter pipeline a higher testing priority than, say, the date formatting library?
-4. Describe one behavior from your PostKit app that could break silently — the app would still run, but produce wrong results.
+4. Describe one behavior from your PostKit app that could break silently — the app would still run, but produce wrong results. Which boundary would the failure be at?
