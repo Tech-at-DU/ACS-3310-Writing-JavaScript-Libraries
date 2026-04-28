@@ -430,26 +430,69 @@ Any of those failures — the test catches it.
 
 ---
 
-## ⏱️ Part 6 — Lab: Finish the App and Prepare Test Targets (20 min)
+## ⏱️ Part 6 — Lab: TEST-TARGETS.md (20 min)
 
-Use the remaining time to:
+Create a file called `TEST-TARGETS.md` in the root of your PostKit repo. This is your deliverable for today — show it to the instructor before the end of class.
 
-1. Complete any acceptance criteria not yet implemented
-2. Finalize your boundary map — make sure it reflects your current implementation, not a generic PostKit diagram
-3. Write your test target list from the active learning exercise
+It should have two sections:
 
-Your test target list should have at least five specific behaviors you want to verify, each with:
-- The behavior in plain language
-- Which boundary it crosses
-- The input that would trigger it
-- The expected output
-- Why it could break silently
+---
 
-You will use this in the next lesson to write test prompts for AI.
+**Section 1 — Boundary Map**
+
+Describe your system boundaries in text. For each boundary type, list the actual connections in your app:
+
+```md
+## Boundary Map
+
+### Library Boundaries
+- PostListView.tsx: filterByStatus(posts, statusFilter) → Post[]
+- PostListView.tsx: sortByDate(result, sortDirection) → Post[]
+- PostDetailView.tsx: formatTime(readingTime(form.body)) → string
+- ...
+
+### State Boundaries
+- usePostStore → posts: Post[] — read by PostListView, PostCard, PostDetailView
+- usePostStore → updatePost — written by PostDetailView
+- useUIStore → statusFilter — read by PostListView useMemo
+- ...
+
+### View Boundaries
+- PostCard receives: post: Post — assumes tags is string[], title is non-empty
+- PostDetailView receives: id via useParams — undefined means new post
+- ...
+```
+
+---
+
+**Section 2 — Test Targets**
+
+List at least five specific behaviors you want to verify. Use this format for each — you will paste these directly into AI prompts in lesson 10, so be precise:
+
+```md
+## Test Targets
+
+### T1 — Filter by status shows only matching posts
+Behavior: Clicking the Draft filter shows only draft posts in the list
+Setup: Store contains two posts — one draft, one published
+Action: Render PostListView, click the button labeled 'Draft'
+Assert:
+  - Draft post title appears in the document
+  - Published post title does NOT appear in the document
+Failure: Would catch — wrong variable passed to filterByStatus, filter not connected to store
+
+### T2 — ...
+```
+
+---
+
+You will use this file in lesson 10 to write test prompts for AI. A complete, specific `TEST-TARGETS.md` means lesson 10 starts with a clear plan. A vague one means lesson 10 starts with guesswork.
 
 ---
 
 ## ⏱️ Wrap-up (5 min)
+
+Show `TEST-TARGETS.md` to the instructor before leaving.
 
 Share with the class:
 

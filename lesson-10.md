@@ -73,6 +73,71 @@ If you see `No test files found`, the setup is correct — you just have not wri
 
 ---
 
+### The `makePost` helper
+
+The examples in this lesson use `makePost(...)` to create test data. This is a small factory function you write once and reuse across tests. Create it in `src/test/factories.ts`:
+
+```ts
+import type { Post } from '../types'
+
+let counter = 0
+
+export function makePost(overrides: Partial<Post> = {}): Post {
+  counter++
+  return {
+    id: `post-${counter}`,
+    title: `Test Post ${counter}`,
+    body: 'Body text.',
+    author: 'Test Author',
+    tags: ['test'],
+    category: 'General',
+    status: 'draft',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    ...overrides,
+  }
+}
+```
+
+Use it in tests like this:
+
+```ts
+makePost({ title: 'Draft post', status: 'draft' })
+makePost({ title: 'Published post', status: 'published' })
+```
+
+The `overrides` pattern lets you set only the fields relevant to the test and use sensible defaults for everything else.
+
+---
+
+### Router wrappers
+
+If your components use React Router (`useNavigate`, `<Link>`, `useParams`), rendering them directly in a test will throw an error because there is no router context. Wrap them in `<MemoryRouter>`:
+
+```tsx
+import { MemoryRouter } from 'react-router-dom'
+
+render(
+  <MemoryRouter>
+    <PostListView />
+  </MemoryRouter>
+)
+```
+
+For components that need a specific URL param (like `PostDetailView` which reads `id` from `useParams`), use `initialEntries`:
+
+```tsx
+render(
+  <MemoryRouter initialEntries={['/posts/post-1']}>
+    <Routes>
+      <Route path="/posts/:id" element={<PostDetailView />} />
+    </Routes>
+  </MemoryRouter>
+)
+```
+
+---
+
 ## ⏱️ Part 2 — The Specification Before the Prompt (25 min)
 
 ### Lecture
@@ -143,11 +208,11 @@ Notice that the specification describes behavior from the user's perspective, no
 
 ### Active Learning — Write Your Specifications (15 min)
 
-Take the test target list you built in Lesson 9.
+Open `TEST-TARGETS.md` from your PostKit repo. Your targets are already written in the Behavior/Setup/Action/Assert/Failure format — review them and tighten any that are vague.
 
-For each target, write a full specification using the format above.
+Ask yourself for each one: if I handed this to someone who had never seen my app, could they write the test from this spec alone? If not, add the missing detail.
 
-Aim for at least three complete specifications before moving on. These are what you will use to write your AI prompts.
+Aim to have at least three tight specifications before moving on. These go directly into your AI prompts.
 
 ---
 
@@ -274,15 +339,11 @@ Work on your PostKit test suite.
 - [ ] Each test verified: fails when behavior is broken
 - [ ] Tests cover at least two different acceptance criteria from PostKit.md
 
-### Suggested test targets if you do not have your own list
+### Where to start
 
-**Filter pipeline** — most valuable, covers multiple libraries and store connections
+Work from your `TEST-TARGETS.md`. Start with T1 — the target you marked as highest priority — and work through the list.
 
-**Post creation** — verifies the editor, validation, store, and slug generation all work together
-
-**Persistence** — verify posts in the store match what the storage library serialized and loaded
-
-**Search** — verify the search input correctly narrows the list
+If you are unsure which target to tackle first, the filter pipeline (T1 in the example from lesson 9) is the highest value: it covers a library boundary, a state boundary, and a view boundary in a single test.
 
 ### Working with AI
 
