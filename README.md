@@ -53,10 +53,11 @@ Students by the end of the course will be able to ...
 | 11    | Tue, Apr 28 | [Lesson 9] | - | - |
 | 12    | Thr, Apr 30 | [Lesson 10] | - | - |
 |  -    | **Week 7**  | - | - | - |
-| 13    | Tue, May  5 | - | [PostKit Spec Change] | - |
-| 14    | Thr, May  7 | - | - | - |
+| 13    | Tue, May  5 | [Lesson 11] Session 1 — The Reveal | [PostKit Spec Change] | - |
+| 14    | Thr, May  7 | [Lesson 11] Session 2 — Library Day | - | - |
 |  -    | **Week 8**  | - | - | - |
-| 15    | Tue, May 12 | - | - | - |
+| 15    | Tue, May 12 | [Lesson 11] Session 3 — App Day | - | - |
+| 16    | Thr, May 14 | [Lesson 11] Session 4 — Presentations | - | - |
 
 [HW 1 Utility Lib]: ./hw-1.md
 
@@ -83,6 +84,7 @@ Students by the end of the course will be able to ...
 [Lesson 8]: ./lesson-8.md
 [Lesson 9]: ./lesson-9.md
 [Lesson 10]: ./lesson-10.md
+[Lesson 11]: ./lesson-11.md
 
 
 ## Course Requirements 
