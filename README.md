@@ -57,7 +57,6 @@ Students by the end of the course will be able to ...
 | 14    | Thr, May  7 | [Lesson 11] Session 2 — Library Day | - | - |
 |  -    | **Week 8**  | - | - | - |
 | 15    | Tue, May 12 | [Lesson 11] Session 3 — App Day | - | - |
-| 16    | Thr, May 14 | [Lesson 11] Session 4 — Presentations | - | - |
 
 [HW 1 Utility Lib]: ./hw-1.md
 
