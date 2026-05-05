@@ -2,11 +2,13 @@
 
 ## Overview
 
-The PostKit requirements have changed. One new requirement has been added to the app.
+The response to PostKit is strong, our user base is excited and suggesting new features! management has decied to update the spec and implement a new feature. 
+
+PostKit requirements have changed. One new requirement has been added to the app.
 
 Over the next two weeks you will analyze the change, implement it, reflect on what it revealed, and present your findings to the class.
 
-The implementation is small by design. The work is in understanding what the change touches and why — before, during, and after you write the code.
+The implementation is small by design. The work is in understanding what the change touches and why — before, during, and after you write the code to implement this change.
 
 **Reference documents:**
 - [Updated Requirements](./PostKit-spec-change.md)
@@ -14,7 +16,7 @@ The implementation is small by design. The work is in understanding what the cha
 
 ---
 
-## Session 1 — The Reveal (Tue, May 5)
+## Session 1 —
 
 ### What this session is for
 
@@ -24,7 +26,7 @@ Read the updated requirement together. Predict its impact before touching any co
 
 ### ⏱️ Part 1 — Read the Requirement (15 min)
 
-The instructor will distribute [PostKit-spec-change.md](./PostKit-spec-change.md).
+[PostKit-spec-change.md](./PostKit-spec-change.md).
 
 Read it on your own. Do not open your code yet.
 
@@ -57,7 +59,7 @@ Using the boundary map you drew in lesson 9 as a reference, answer:
 npm test
 ```
 
-Write down which tests break immediately, before you change anything. This is your baseline.
+Write down which tests will break immediately, before you change anything. This is your baseline.
 
 **Step 3 — Predict what breaks after you implement (10 min)**
 
